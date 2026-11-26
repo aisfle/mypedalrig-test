@@ -4813,7 +4813,7 @@ function executeSaveCustomEquipment() {
         for (let i = 1; i <= count; i++) {
             const v = document.getElementById(`cem-outlet-volt-${i}`)?.value || '9V';
             const ma = parseInt(document.getElementById(`cem-outlet-ma-${i}`)?.value) || 500;
-            outlets.push({ id: `out-${i}`, name: `Salida ${i}`, voltage: v, maxMa: ma, isolated: true });
+            outlets.push({ id: `out-${i}`, name: `${currentLang === "en" ? "Outlet" : "Salida"} ${i}`, voltage: v, maxMa: ma, isolated: true });
         }
 
         const newPs = {
@@ -16969,7 +16969,7 @@ function addPresetPowerSupply(presetType) {
             brand: 'Strymon',
             model: 'Ojai',
             name: 'Strymon Ojai',
-            outlets: Array.from({length: 5}, (_, i) => ({ id: `ojai-${now}-${i+1}`, label: `Salida ${i+1}`, voltage: '9V', maxMa: 500 })),
+            outlets: Array.from({length: 5}, (_, i) => ({ id: `ojai-${now}-${i+1}`, label: `${currentLang === "en" ? "Outlet" : "Salida"} ${i+1}`, voltage: '9V', maxMa: 500 })),
             details: '5 salidas aisladas de ultra-alta corriente (5x 9V DC @ 500mA + puerto 24V Thru).',
             manualUrl: 'https://drive.google.com/file/d/1JXOZwg2T_iapFLTY8KsKnUPwNpv-6CGx/view?usp=drive_link',
             imageUrl: 'assets/img/fuentes/strymon-ojai.jpg',
@@ -16982,7 +16982,7 @@ function addPresetPowerSupply(presetType) {
             brand: 'CIOKS',
             model: 'CIOKS 7',
             name: 'CIOKS 7',
-            outlets: Array.from({length: 7}, (_, i) => ({ id: `cioks-${now}-${i+1}`, label: `Salida ${i+1}`, voltage: '9V', maxMa: 660 })),
+            outlets: Array.from({length: 7}, (_, i) => ({ id: `cioks-${now}-${i+1}`, label: `${currentLang === "en" ? "Outlet" : "Salida"} ${i+1}`, voltage: '9V', maxMa: 660 })),
             details: '7 salidas aisladas configurables (9V/12V/15V/18V DC @ 660mA c/u).',
             manualUrl: 'https://drive.google.com/file/d/1bNQdb0uVlinNduIwsSNwwIpqTlxQ8YmM/view?usp=drive_link',
             imageUrl: 'assets/img/fuentes/cioks-7.jpg',
@@ -17129,7 +17129,7 @@ function addPresetPowerSupply(presetType) {
             brand: 'Voodoo Lab',
             model: 'Pedal Power 3 Plus',
             name: 'Voodoo Lab Pedal Power 3 Plus',
-            outlets: Array.from({length: 12}, (_, i) => ({ id: `pp3p-${now}-${i+1}`, label: `Salida ${i+1}`, voltage: '9V', maxMa: 500 })),
+            outlets: Array.from({length: 12}, (_, i) => ({ id: `pp3p-${now}-${i+1}`, label: `${currentLang === "en" ? "Outlet" : "Salida"} ${i+1}`, voltage: '9V', maxMa: 500 })),
             details: '12 salidas aisladas de alta corriente (10x 9V DC @ 500mA + 2x conmutables 9V/12V DC @ 500mA).',
             manualUrl: 'https://drive.google.com/file/d/1iilVTdpm18qoDkhagp_tFjf_1z6M2PQp/view?usp=drive_link',
             imageUrl: 'assets/img/fuentes/voodoo-pp3plus.jpg',
@@ -17142,7 +17142,7 @@ function addPresetPowerSupply(presetType) {
             brand: 'Walrus Audio',
             model: 'Canvas Power 5',
             name: 'Walrus Audio Canvas Power 5',
-            outlets: Array.from({length: 5}, (_, i) => ({ id: `canvas5-${now}-${i+1}`, label: `Salida ${i+1}`, voltage: '9V', maxMa: 500 })),
+            outlets: Array.from({length: 5}, (_, i) => ({ id: `canvas5-${now}-${i+1}`, label: `${currentLang === "en" ? "Outlet" : "Salida"} ${i+1}`, voltage: '9V', maxMa: 500 })),
             details: '5 salidas aisladas de 9V DC @ 500mA (conmutables a 12V/18V).',
             manualUrl: 'https://drive.google.com/file/d/1dvApPzuL7bN3VnsB55VdEXxsUuwJKJTQ/view?usp=drive_link',
             imageUrl: 'assets/img/fuentes/walrus-canvas-5.jpg',
@@ -17155,7 +17155,7 @@ function addPresetPowerSupply(presetType) {
             brand: 'Walrus Audio',
             model: 'Canvas Power 8',
             name: 'Walrus Audio Canvas Power 8',
-            outlets: Array.from({length: 8}, (_, i) => ({ id: `canvas8-${now}-${i+1}`, label: `Salida ${i+1}`, voltage: '9V', maxMa: 500 })),
+            outlets: Array.from({length: 8}, (_, i) => ({ id: `canvas8-${now}-${i+1}`, label: `${currentLang === "en" ? "Outlet" : "Salida"} ${i+1}`, voltage: '9V', maxMa: 500 })),
             details: '8 salidas aisladas de 9V DC @ 500mA (2x conmutables 9V/12V/18V).',
             manualUrl: 'https://drive.google.com/file/d/1dvApPzuL7bN3VnsB55VdEXxsUuwJKJTQ/view?usp=drive_link',
             imageUrl: 'assets/img/fuentes/walrus-canvas-8.jpg',
@@ -17168,7 +17168,7 @@ function addPresetPowerSupply(presetType) {
             brand: 'Walrus Audio',
             model: 'Canvas Power 22',
             name: 'Walrus Audio Canvas Power 22',
-            outlets: Array.from({length: 22}, (_, i) => ({ id: `canvas22-${now}-${i+1}`, label: `Salida ${i+1}`, voltage: '9V', maxMa: 500 })),
+            outlets: Array.from({length: 22}, (_, i) => ({ id: `canvas22-${now}-${i+1}`, label: `${currentLang === "en" ? "Outlet" : "Salida"} ${i+1}`, voltage: '9V', maxMa: 500 })),
             details: '22 salidas aisladas independientes (20x 9V DC @ 500mA + 2x seleccionables 9V/12V/18V DC @ 500mA).',
             manualUrl: 'https://drive.google.com/file/d/1dvApPzuL7bN3VnsB55VdEXxsUuwJKJTQ/view?usp=drive_link',
             imageUrl: 'assets/img/fuentes/walrus-canvas-22.jpg',
@@ -18102,7 +18102,7 @@ function renderInspector(itemId, currentSlotMode = null) {
                 <div class="pedal-svg-fallback hidden w-full h-36 flex items-center justify-center text-[#F15A24] bg-[#F15A24]/10 p-4 rounded-lg">
                     <svg class="w-16 h-16 text-[#F15A24]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="3" ry="3"/><circle cx="9" cy="6" r="1.5" fill="currentColor"/><circle cx="15" cy="6" r="1.5" fill="currentColor"/><circle cx="12" cy="11" r="1" fill="#F15A24"/><circle cx="12" cy="17" r="2.5"/></svg>
                 </div>
-                <label title="Cambiar foto" class="absolute bottom-3 right-3 bg-[#1C1E24]/80 hover:bg-[#20232B] text-[#00A8CC] p-2 rounded-lg cursor-pointer border border-[#2A2D36] hover:border-[#00A8CC] transition-all shadow-md">
+                <label title="${currentLang === 'en' ? 'Change photo' : 'Cambiar foto'}" class="absolute bottom-3 right-3 bg-[#1C1E24]/80 hover:bg-[#20232B] text-[#00A8CC] p-2 rounded-lg cursor-pointer border border-[#2A2D36] hover:border-[#00A8CC] transition-all shadow-md">
                     <i class="fa-solid fa-camera"></i>
                     <input type="file" accept="image/*" class="hidden" onchange="handlePedalPhotoUpload(event, 'INSPECTOR', '${pedal.id}')">
                 </label>
@@ -18112,7 +18112,7 @@ function renderInspector(itemId, currentSlotMode = null) {
                 <div class="w-full h-32 flex items-center justify-center text-[#F15A24] bg-[#F15A24]/10 p-4 rounded-lg">
                     <svg class="w-16 h-16 text-[#F15A24]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="3" ry="3"/><circle cx="9" cy="6" r="1.5" fill="currentColor"/><circle cx="15" cy="6" r="1.5" fill="currentColor"/><circle cx="12" cy="11" r="1" fill="#F15A24"/><circle cx="12" cy="17" r="2.5"/></svg>
                 </div>
-                <label title="Subir foto" class="absolute bottom-3 right-3 bg-[#1C1E24]/80 hover:bg-[#20232B] text-[#00A8CC] p-2 rounded-lg cursor-pointer border border-[#2A2D36] hover:border-[#00A8CC] transition-all shadow-md">
+                <label title="${currentLang === 'en' ? 'Upload photo' : 'Subir foto'}" class="absolute bottom-3 right-3 bg-[#1C1E24]/80 hover:bg-[#20232B] text-[#00A8CC] p-2 rounded-lg cursor-pointer border border-[#2A2D36] hover:border-[#00A8CC] transition-all shadow-md">
                     <i class="fa-solid fa-camera"></i>
                     <input type="file" accept="image/*" class="hidden" onchange="handlePedalPhotoUpload(event, 'INSPECTOR', '${pedal.id}')">
                 </label>
@@ -18155,13 +18155,13 @@ function renderInspector(itemId, currentSlotMode = null) {
                 <div class="relative pt-0.5 pr-32 pb-2 border-b border-[#2A2D36]">
                     <div class="absolute top-0 right-0 flex items-center gap-2 z-10">
                         <div class="flex items-center gap-1 font-mono text-xs">
-                            <span class="text-[#9CA3AF] text-[10px]">Seteo:</span>
+                            <span class="text-[#9CA3AF] text-[10px]">${currentLang === "en" ? "Mode:" : "Seteo:"}</span>
                             <select onchange="toggleInspectorPedalStereo('${pedal.id}', this.value)" ${isMonoOnly ? 'disabled' : ''} class="bg-[#1C1E24] ${modeToDisplay === 'STEREO' ? 'text-[#9E7BB5] border-[#9E7BB5]' : 'text-[#00A8CC] border-[#00A8CC]'} border rounded px-2 py-0.5 text-xs font-bold focus:outline-none ${isMonoOnly ? 'opacity-60 cursor-not-allowed' : ''}">
                                 <option value="MONO" ${modeToDisplay === 'MONO' ? 'selected' : ''}>Mono</option>
                                 ${!isMonoOnly ? `<option value="STEREO" ${modeToDisplay === 'STEREO' ? 'selected' : ''}>Stereo</option>` : ''}
                             </select>
                         </div>
-                        <button onclick="closeInspector()" title="Cerrar detalle" class="text-[#9CA3AF] hover:text-[#FFFFFF] hover:bg-[#2A2D36] p-1.5 rounded-lg transition-all text-sm font-bold ml-1.5">
+                        <button onclick="closeInspector()" title="${currentLang === 'en' ? 'Close details' : 'Cerrar detalle'}" class="text-[#9CA3AF] hover:text-[#FFFFFF] hover:bg-[#2A2D36] p-1.5 rounded-lg transition-all text-sm font-bold ml-1.5">
                             <i class="fa-solid fa-xmark"></i>
                         </button>
                     </div>
@@ -18184,27 +18184,27 @@ function renderInspector(itemId, currentSlotMode = null) {
                         <i class="fa-solid fa-bolt"><i class="fa-solid fa-plug text-[#00A8CC]"></i> ${currentLang === "en" ? "POWER & PHYSICAL OUTLET (INFO)" : "ALIMENTACIÓN & SALIDA FÍSICA (INDICADOR INFORMATIVO)"}
                     </h4>
                     <div class="flex justify-between text-[#FFFFFF]">
-                        <span>Consumo Base:</span>
+                        <span>${currentLang === "en" ? "Base Draw:" : "Consumo Base:"}</span>
                         <span>${pedal.maBase} mA</span>
                     </div>
                     <div class="flex justify-between text-[#00A8CC] font-bold">
-                        <span>Recomendado (+30%):</span>
+                        <span>${currentLang === "en" ? "Recommended (+30%):" : "Recomendado (+30%):"}</span>
                         <span>${pedal.maWithMargin} mA</span>
                     </div>
                     
                     <div class="space-y-2 pt-2 border-t border-[#2A2D36] font-sans">
                         <div>
-                            <label class="text-[10px] text-[#9CA3AF] font-mono block mb-1">Fuente asignada (lectura):</label>
+                            <label class="text-[10px] text-[#9CA3AF] font-mono block mb-1">${currentLang === "en" ? "Assigned supply (read-only):" : "Fuente asignada (lectura):"}</label>
                             <div class="w-full bg-[#1C1E24] text-[#00A8CC] border border-[#2A2D36] rounded-lg px-2.5 py-1.5 text-xs font-mono font-bold flex items-center justify-between">
                                 <span>${currentPs ? `${currentPs.brand} ${currentPs.model}` : (currentLang === 'en' ? 'No supply assigned' : 'Sin fuente asignada')}</span>
-                                <i class="fa-solid fa-lock text-[10px] text-[#9CA3AF]" title="Control centralizado desde el panel de la Fuente"></i>
+                                <i class="fa-solid fa-lock text-[10px] text-[#9CA3AF]" title="${currentLang === 'en' ? 'Centralized control from Power Supply panel' : 'Control centralizado desde el panel de la Fuente'}"></i>
                             </div>
                         </div>
                         <div>
                             <label class="text-[10px] text-[#9CA3AF] font-mono block mb-1">${currentLang === "en" ? "Specific physical outlet (read-only):" : "Salida física específica (lectura):"}</label>
                             <div class="w-full bg-[#1C1E24] text-[#00A8CC] border border-[#2A2D36] rounded-lg px-2.5 py-1.5 text-xs font-mono font-bold flex items-center justify-between">
                                 <span>${assignedOutletObj ? `${assignedOutletObj.label} (${assignedOutletObj.voltage} @ ${assignedOutletObj.maxMa}mA)` : (currentLang === 'en' ? 'No outlet assigned' : 'Sin salida asignada')}</span>
-                                <i class="fa-solid fa-lock text-[10px] text-[#9CA3AF]" title="Control centralizado desde el panel de la Fuente"></i>
+                                <i class="fa-solid fa-lock text-[10px] text-[#9CA3AF]" title="${currentLang === 'en' ? 'Centralized control from Power Supply panel' : 'Control centralizado desde el panel de la Fuente'}"></i>
                             </div>
                         </div>
                         <p class="text-[10px] text-[#9CA3AF] font-sans italic pt-1">
@@ -18216,9 +18216,9 @@ function renderInspector(itemId, currentSlotMode = null) {
                 ${manualButtonHtml}
                 <div class="space-y-2 border-t border-[#2A2D36] pt-4">
                     <h4 class="text-xs font-semibold text-[#FFFFFF] uppercase tracking-wider flex items-center justify-between">
-                        <span><i class="fa-solid fa-note-sticky text-[#00A8CC] mr-1.5"></i>NOTAS PERSONALIZADAS</span>
+                        <span><i class="fa-solid fa-note-sticky text-[#00A8CC] mr-1.5"></i>${currentLang === "en" ? "CUSTOM NOTES" : "NOTAS PERSONALIZADAS"}</span>
                     </h4>
-                    <textarea id="item-notes-textarea" rows="6" placeholder="Notas de parches, presets o comentarios..." class="w-full bg-[#121316] border border-[#2A2D36] rounded-xl p-3 text-xs text-[#FFFFFF] focus:outline-none focus:border-[#00A8CC] resize-y font-sans min-h-[120px]">${pedal.notes || ''}</textarea>
+                    <textarea id="item-notes-textarea" rows="6" placeholder="${currentLang === 'en' ? 'Patch notes, presets, or comments...' : 'Notas de parches, presets o comentarios...'}" class="w-full bg-[#121316] border border-[#2A2D36] rounded-xl p-3 text-xs text-[#FFFFFF] focus:outline-none focus:border-[#00A8CC] resize-y font-sans min-h-[120px]">${pedal.notes || ''}</textarea>
                     <div class="flex justify-end pt-1">
                         <button onclick="saveItemNotes('PEDAL', '${pedal.id}')" class="px-3.5 py-2 bg-[#00A8CC]/20 hover:bg-[#00A8CC]/30 text-[#00A8CC] border border-[#00A8CC]/40 rounded-xl text-xs font-semibold transition-all shadow-sm active:scale-95">
                             Guardar notas
@@ -18256,7 +18256,7 @@ const maBase = pedal.maBase || pedal.maDraw || 20;
                 <div class="pedal-svg-fallback hidden w-full h-36 flex items-center justify-center text-[${themeColor}] bg-[${themeColor}]/10 p-4 rounded-lg">
                     <svg class="w-16 h-16 text-[${themeColor}]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="3" ry="3"/><circle cx="9" cy="6" r="1.5" fill="currentColor"/><circle cx="15" cy="6" r="1.5" fill="currentColor"/><circle cx="12" cy="11" r="1" fill="${themeColor}"/><circle cx="12" cy="17" r="2.5"/></svg>
                 </div>
-                <label title="Cambiar foto" class="absolute bottom-2.5 right-2.5 bg-[#1C1E24]/80 hover:bg-[#20232B] text-[#00A8CC] p-2 rounded-lg cursor-pointer border border-[#2A2D36] hover:border-[#00A8CC] transition-all shadow-md">
+                <label title="${currentLang === 'en' ? 'Change photo' : 'Cambiar foto'}" class="absolute bottom-2.5 right-2.5 bg-[#1C1E24]/80 hover:bg-[#20232B] text-[#00A8CC] p-2 rounded-lg cursor-pointer border border-[#2A2D36] hover:border-[#00A8CC] transition-all shadow-md">
                     <i class="fa-solid fa-camera"></i>
                     <input type="file" accept="image/*" class="hidden" onchange="handlePedalPhotoUpload(event, 'INSPECTOR', '${pedal.id}')">
                 </label>
@@ -18266,7 +18266,7 @@ const maBase = pedal.maBase || pedal.maDraw || 20;
                 <div class="w-full h-32 flex items-center justify-center text-[${themeColor}] bg-[${themeColor}]/10 p-4 rounded-lg">
                     <svg class="w-16 h-16 text-[${themeColor}]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="3" ry="3"/><circle cx="9" cy="6" r="1.5" fill="currentColor"/><circle cx="15" cy="6" r="1.5" fill="currentColor"/><circle cx="12" cy="11" r="1" fill="${themeColor}"/><circle cx="12" cy="17" r="2.5"/></svg>
                 </div>
-                <label title="Subir foto" class="absolute bottom-2.5 right-2.5 bg-[#1C1E24]/80 hover:bg-[#20232B] text-[#00A8CC] p-2 rounded-lg cursor-pointer border border-[#2A2D36] hover:border-[#00A8CC] transition-all shadow-md">
+                <label title="${currentLang === 'en' ? 'Upload photo' : 'Subir foto'}" class="absolute bottom-2.5 right-2.5 bg-[#1C1E24]/80 hover:bg-[#20232B] text-[#00A8CC] p-2 rounded-lg cursor-pointer border border-[#2A2D36] hover:border-[#00A8CC] transition-all shadow-md">
                     <i class="fa-solid fa-camera"></i>
                     <input type="file" accept="image/*" class="hidden" onchange="handlePedalPhotoUpload(event, 'INSPECTOR', '${pedal.id}')">
                 </label>
@@ -18310,13 +18310,13 @@ const maBase = pedal.maBase || pedal.maDraw || 20;
                     <div class="absolute top-0 right-0 flex items-center gap-2 z-10">
                         ${!isFactory ? `
                             <button onclick="openEditPedalModal('${pedal.id}')" class="bg-[#1C1E24] hover:bg-[#20232B] border px-2.5 py-1 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all shadow-sm active:scale-95" style="color: ${themeColor}; border-color: ${themeColor};">
-                                <i class="fa-solid fa-pen-to-square"></i> Editar
+                                <i class="fa-solid fa-pen-to-square"></i> ${currentLang === "en" ? "Edit" : "Editar"}
                             </button>
                         ` : ''}
                         <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold ${badgeClass} shrink-0">
                             ${badgeText}
                         </span>
-                        <button onclick="closeInspector()" title="Cerrar detalle" class="text-[#9CA3AF] hover:text-[#FFFFFF] hover:bg-[#2A2D36] p-1.5 rounded-lg transition-all text-sm font-bold">
+                        <button onclick="closeInspector()" title="${currentLang === 'en' ? 'Close details' : 'Cerrar detalle'}" class="text-[#9CA3AF] hover:text-[#FFFFFF] hover:bg-[#2A2D36] p-1.5 rounded-lg transition-all text-sm font-bold">
                             <i class="fa-solid fa-xmark"></i>
                         </button>
                     </div>
@@ -18380,9 +18380,9 @@ const maBase = pedal.maBase || pedal.maDraw || 20;
                 ${manualButtonHtml}
                 <div class="space-y-2 border-t border-[#2A2D36] pt-4">
                     <h4 class="text-xs font-semibold text-[#FFFFFF] uppercase tracking-wider flex items-center justify-between">
-                        <span><i class="fa-solid fa-note-sticky text-[#00A8CC] mr-1.5"></i>NOTAS PERSONALIZADAS</span>
+                        <span><i class="fa-solid fa-note-sticky text-[#00A8CC] mr-1.5"></i>${currentLang === "en" ? "CUSTOM NOTES" : "NOTAS PERSONALIZADAS"}</span>
                     </h4>
-                    <textarea id="item-notes-textarea" rows="6" placeholder="Notas de parches, presets o comentarios..." class="w-full bg-[#121316] border border-[#2A2D36] rounded-xl p-3 text-xs text-[#FFFFFF] focus:outline-none focus:border-[#00A8CC] resize-y font-sans min-h-[120px]">${pedal.notes || ''}</textarea>
+                    <textarea id="item-notes-textarea" rows="6" placeholder="${currentLang === 'en' ? 'Patch notes, presets, or comments...' : 'Notas de parches, presets o comentarios...'}" class="w-full bg-[#121316] border border-[#2A2D36] rounded-xl p-3 text-xs text-[#FFFFFF] focus:outline-none focus:border-[#00A8CC] resize-y font-sans min-h-[120px]">${pedal.notes || ''}</textarea>
                     <div class="flex justify-end pt-1">
                         <button onclick="saveItemNotes('PEDAL', '${pedal.id}')" class="px-3.5 py-2 bg-[#00A8CC]/20 hover:bg-[#00A8CC]/30 text-[#00A8CC] border border-[#00A8CC]/40 rounded-xl text-xs font-semibold transition-all shadow-sm active:scale-95">
                             Guardar notas
@@ -18461,7 +18461,7 @@ const maBase = pedal.maBase || pedal.maDraw || 20;
                 }
 
                 let addPedalOptionsHtml = assignedPedals.length > 0 ? 
-                    `<option value="">+ Sumar pedal en Split a ${out.label}...</option>` :
+                    `<option value="">+ ${currentLang === "en" ? "Add Split pedal to " + (out.label ? out.label.replace("Salida", "Outlet") : "Outlet") : "Sumar pedal en Split a " + out.label}...</option>` :
                     `<option value="">+ ${currentLang === "en" ? "Connect Chain Pedal to " + (out.label ? out.label.replace("Salida", "Outlet") : "Outlet") : "Conectar Pedal de la Cadena a " + out.label}...</option>`;
 
                 activePedalsInChain.forEach(p => {
@@ -18475,7 +18475,7 @@ const maBase = pedal.maBase || pedal.maDraw || 20;
                     const isExceedingMa = totalMaIfAdded > out.maxMa;
 
                     if (isVoltageIncompatible) {
-                        addPedalOptionsHtml += `<option value="${p.id}" disabled class="text-[#9CA3AF] opacity-50 bg-[#121316]">${p.brand} - ${p.name} (${p.maWithMargin} mA) - Incompatible con salida de ${out.voltage}</option>`;
+                        addPedalOptionsHtml += `<option value="${p.id}" disabled class="text-[#9CA3AF] opacity-50 bg-[#121316]">${p.brand} - ${p.name} (${p.maWithMargin} mA) - ${currentLang === "en" ? "Incompatible with " + out.voltage + " outlet" : "Incompatible con salida de " + out.voltage}</option>`;
                     } else if (isAlreadyAssignedElsewhere) {
                         const existingPs = powerSuppliesDatabase.find(x => x.id === pAssign.psId);
                         const existingOut = existingPs?.outlets?.find(o => o.id === pAssign.outletId);
@@ -18586,7 +18586,7 @@ const maBase = pedal.maBase || pedal.maDraw || 20;
                     <span class="text-xs font-bold px-2.5 py-1 rounded-md bg-[#00A8CC]/10 text-[#00A8CC] border border-[#00A8CC]/20">
                         ${ps.brand}
                     </span>
-                    <button onclick="closeInspector()" title="Cerrar detalle" class="text-[#9CA3AF] hover:text-[#FFFFFF] hover:bg-[#2A2D36] p-1.5 rounded-lg transition-all text-sm font-bold">
+                    <button onclick="closeInspector()" title="${currentLang === 'en' ? 'Close details' : 'Cerrar detalle'}" class="text-[#9CA3AF] hover:text-[#FFFFFF] hover:bg-[#2A2D36] p-1.5 rounded-lg transition-all text-sm font-bold">
                         <i class="fa-solid fa-xmark"></i>
                     </button>
                 </div>
@@ -18956,7 +18956,7 @@ function executeRegisterNewPowerSupply() {
         const ma = parseInt(document.getElementById(`nps-out-ma-${i}`)?.value) || 500;
         outlets.push({
             id: `${psId}-out-${i}`,
-            label: `Salida ${i}`,
+            label: `${currentLang === "en" ? "Outlet" : "Salida"} ${i}`,
             voltage: v,
             maxMa: ma
         });
@@ -19107,14 +19107,15 @@ function openSaveFavoriteModal() {
     const activePowers = currentChainPowerSupplyIds.filter(id => id && id !== 'EMPTY');
     
     if (activePedals.length < 2 || activePowers.length < 1) {
-        let msg = "⚠️ No se puede guardar la cadena:\n\n";
-        if (activePedals.length < 2) msg += "• Debes incorporar al menos 2 pedales en tu cadena.\n";
-        if (activePowers.length < 1) msg += "• Debes agregar al menos 1 fuente de alimentación.\n";
+        let msg = currentLang === 'en' ? "⚠️ Cannot save chain:\n\n" : "⚠️ No se puede guardar la cadena:\n\n";
+        if (activePedals.length < 2) msg += currentLang === 'en' ? "• You must include at least 2 pedals in your chain.\n" : "• Debes incorporar al menos 2 pedales en tu cadena.\n";
+        if (activePowers.length < 1) msg += currentLang === 'en' ? "• You must add at least 1 power supply.\n" : "• Debes agregar al menos 1 fuente de alimentación.\n";
         alert(msg);
         return;
     }
 
-    document.getElementById('fav-name-input').value = `Preset ${favoriteChains.length + 1}`;
+    const defaultPresetName = currentLang === 'en' ? `Preset ${favoriteChains.length + 1}` : `Preset ${favoriteChains.length + 1}`;
+    document.getElementById('fav-name-input').value = defaultPresetName;
     const overwriteSelect = document.getElementById('fav-overwrite-select');
     overwriteSelect.innerHTML = favoriteChains.map((fav, i) => `
         <option value="${i}">${fav.name} (${fav.slots ? fav.slots.filter(x => x && x !== 'EMPTY').length : 0} ${currentLang === "en" ? "pedals" : "pedales"})</option>
@@ -19212,13 +19213,14 @@ function duplicateFavorite(index, e) {
     const copy = JSON.parse(JSON.stringify(original));
 
     let baseName = copy.name || 'Preset';
-    let match = baseName.match(/^(.*?)\s*\(Copia(?:\s*(\d+))?\)$/i);
+    const copyTag = currentLang === 'en' ? 'Copy' : 'Copia';
+    let match = baseName.match(/^(.*?)\s*\((?:Copia|Copy)(?:\s*(\d+))?\)$/i);
     if (match) {
         const root = match[1].trim();
         const num = match[2] ? parseInt(match[2]) + 1 : 2;
-        copy.name = `${root} (Copia ${num})`;
+        copy.name = `${root} (${copyTag} ${num})`;
     } else {
-        copy.name = `${baseName} (Copia)`;
+        copy.name = `${baseName} (${copyTag})`;
     }
 
     favoriteChains.splice(index + 1, 0, copy);
@@ -19232,53 +19234,28 @@ function duplicateCurrentChain() {
     const activePowers = currentChainPowerSupplyIds.filter(id => id && id !== 'EMPTY');
 
     if (activePedals.length < 2 || activePowers.length < 1) {
-        let msg = "⚠️ No se puede copiar la cadena activa:\n\n";
-        if (activePedals.length < 2) msg += "• Debes incorporar al menos 2 pedales en tu cadena.\n";
-        if (activePowers.length < 1) msg += "• Debes agregar al menos 1 fuente de alimentación.\n";
+        let msg = currentLang === 'en' ? "⚠️ Cannot copy active chain:\n\n" : "⚠️ No se puede copiar la cadena activa:\n\n";
+        if (activePedals.length < 2) msg += currentLang === 'en' ? "• You must include at least 2 pedals in your chain.\n" : "• Debes incorporar al menos 2 pedales en tu cadena.\n";
+        if (activePowers.length < 1) msg += currentLang === 'en' ? "• You must add at least 1 power supply.\n" : "• Debes agregar al menos 1 fuente de alimentación.\n";
         alert(msg);
         return;
     }
 
     pushHistory();
-    let newName = `Preset ${favoriteChains.length + 1} (Copia)`;
+    const copyTag = currentLang === 'en' ? 'Copy' : 'Copia';
+    let newName = `Preset ${favoriteChains.length + 1} (${copyTag})`;
     favoriteChains.push({
         name: newName,
         slots: [...currentChainIds],
-        slotModes: JSON.parse(JSON.stringify(chainSlotModes)),
+        slotModes: {...chainSlotModes},
         powerAssignments: JSON.parse(JSON.stringify(currentPowerAssignments)),
-        chainPowerSupplies: [...currentChainPowerSupplyIds],
-        tags: []
+        chainPowerSupplyIds: [...currentChainPowerSupplyIds]
     });
-
     saveStateToLocalStorage();
     renderFavoriteBadges();
     if (typeof renderDashboardStats === 'function') renderDashboardStats();
-    alert(`${currentLang === "en" ? "Chain 100% duplicated! Preset \"" + newName + "\" created." : "¡Cadena duplicada al 100%! Se creó el preset \"" + newName + "\"."}`);
-}
-
-let presetToDeleteIndex = null;
-
-function confirmDeleteFavorite(index, e) {
-    if (e) e.stopPropagation();
-    presetToDeleteIndex = index;
-    renderFavoriteBadges();
-}
-
-function cancelDeleteFavorite(e) {
-    if (e) e.stopPropagation();
-    presetToDeleteIndex = null;
-    renderFavoriteBadges();
-}
-
-function executeDeleteFavorite(index, e) {
-    if (e) e.stopPropagation();
-    if (index < 0 || index >= favoriteChains.length) return;
-    pushHistory();
-    favoriteChains.splice(index, 1);
-    presetToDeleteIndex = null;
-    saveStateToLocalStorage();
-    renderFavoriteBadges();
-    if (typeof renderDashboardStats === 'function') renderDashboardStats();
+    const successMsg = currentLang === 'en' ? `Chain 100% duplicated! Created preset "${newName}".` : `¡Cadena duplicada al 100%! Se creó el preset "${newName}".`;
+    alert(successMsg);
 }
 
 function deleteFavorite(index, e) {
