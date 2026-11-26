@@ -614,9 +614,9 @@
         <div class="space-y-1">
             <label class="text-[11px] font-mono text-[#9CA3AF] uppercase font-bold"><span data-i18n="lbl_dest_inventory">Inventory Destination *</span></label>
             <div class="grid grid-cols-3 gap-2">
-                <button id="cem-dest-collection" onclick="setCemDest('collection')" class="py-1.5 text-xs font-mono font-bold rounded-lg border border-[#F15A24] bg-[#F15A24]/20 text-[#F15A24] cursor-pointer">Colección</button>
-                <button id="cem-dest-wishlist" onclick="setCemDest('wishlist')" class="py-1.5 text-xs font-mono font-semibold rounded-lg border border-[#2A2D36] bg-[#121316] text-[#9CA3AF] cursor-pointer">Wishlist</button>
-                <button id="cem-dest-sale" onclick="setCemDest('sale')" class="py-1.5 text-xs font-mono font-semibold rounded-lg border border-[#2A2D36] bg-[#121316] text-[#9CA3AF] cursor-pointer">En venta</button>
+                <button id="cem-dest-collection" onclick="setCemDest('collection')" class="py-1.5 text-xs font-mono font-bold rounded-lg border border-[#F15A24] bg-[#F15A24]/20 text-[#F15A24] cursor-pointer" data-i18n="dest_collection_short">Collection</button>
+                <button id="cem-dest-wishlist" onclick="setCemDest('wishlist')" class="py-1.5 text-xs font-mono font-semibold rounded-lg border border-[#2A2D36] bg-[#121316] text-[#9CA3AF] cursor-pointer" data-i18n="dest_wishlist_short">Wishlist</button>
+                <button id="cem-dest-sale" onclick="setCemDest('sale')" class="py-1.5 text-xs font-mono font-semibold rounded-lg border border-[#2A2D36] bg-[#121316] text-[#9CA3AF] cursor-pointer" data-i18n="dest_sale_short">For Sale</button>
             </div>
         </div>
 
@@ -704,7 +704,7 @@
         <div class="space-y-3 border-t border-[#2A2D36] pt-3">
             <div>
                 <label class="text-[11px] font-mono text-[#9CA3AF] block mb-1 font-bold"><span data-i18n="lbl_price_usd">Price / Estimated Value ($ USD) (Optional)</span></label>
-                <input type="number" id="cem-price-usd" placeholder="Ej: 150" min="0" step="any" class="w-full bg-[#121316] text-white border border-[#2A2D36] focus:border-[#F15A24] rounded-xl px-3 py-2 text-xs font-mono focus:outline-none">
+                <input type="number" id="cem-price-usd" placeholder="150" min="0" step="any" class="w-full bg-[#121316] text-white border border-[#2A2D36] focus:border-[#F15A24] rounded-xl px-3 py-2 text-xs font-mono focus:outline-none">
             </div>
             <div>
                 <label class="text-[11px] font-mono text-[#9CA3AF] block mb-1 font-bold">PDF Manual (Optional)</label>
@@ -713,7 +713,11 @@
 
             <div>
                 <label class="text-[11px] font-mono text-[#9CA3AF] block mb-1 font-bold"><span data-i18n="lbl_photo_upload">Photo (Optional, max 1MB)</span></label>
-                <input type="file" accept="image/*" onchange="handleCemPhotoUpload(event)" class="w-full bg-[#121316] text-[#9CA3AF] text-xs font-mono border border-[#2A2D36] rounded-xl px-3 py-1.5 cursor-pointer">
+                <div class="flex items-center gap-3">
+                    <label for="cem-photo-file" class="bg-[#20232B] hover:bg-[#2A2D36] text-white text-xs font-semibold px-3 py-1.5 rounded-lg border border-[#2A2D36] cursor-pointer transition-all shrink-0" data-i18n="btn_choose_file">Choose file</label>
+                    <span id="cem-photo-filename" class="text-xs text-[#9CA3AF] truncate font-mono" data-i18n="lbl_no_file">No file chosen</span>
+                    <input type="file" id="cem-photo-file" accept="image/*" onchange="handleCemPhotoUpload(event)" class="hidden">
+                </div>
                 <div id="cem-photo-preview-container" class="mt-2 hidden">
                     <img id="cem-photo-preview" src="" alt="Preview" class="h-16 w-16 object-contain rounded-lg border border-[#2A2D36]">
                 </div>
@@ -1214,15 +1218,18 @@ var i18n = {
         btn_return_to_col: "Back to collection",
         btn_sold: "Sold!",
         
-        chain_title: "ACTIVE SIGNAL CHAIN",
-        chain_subtitle: "Select, swap, or drag & drop any pedal to reorder your rig.",
+        chain_title: "Signal Architecture & Routing",
+        chain_subtitle: "Design your signal routing, analyze power draw in real-time & save your favorite presets.",
         chain_controls: "CONTROLS:",
         btn_new_chain: "+ New Chain",
         btn_save_preset: "Save Preset",
         btn_export_chain: "Export Chain",
+        btn_tech_sheet_pdf: "Tech Sheet (PDF)",
+        btn_routing_sheet_excel: "Routing Sheet (Excel)",
         lbl_chain_draw: "Chain Current Draw",
         lbl_base_draw: "Base Draw:",
         lbl_margin_draw: "Draw (+30%):",
+        sec_favorite_chains: "FAVORITE CHAINS / SAVED PRESETS",
         chain_favorites_presets: "FAVORITE CHAINS / SAVED PRESETS",
         chain_filter_presets_style: "FILTER PRESETS BY MUSICAL STYLE:",
         opt_all_styles: "All Styles",
@@ -1275,6 +1282,13 @@ var i18n = {
         btn_delete: "Delete",
         btn_collection: "Collection",
         
+        lbl_equipment_to_load: "Equipment to load:",
+        dest_collection_short: "Collection",
+        dest_wishlist_short: "Wishlist",
+        dest_sale_short: "For Sale",
+        lbl_eg: "e.g.",
+        btn_choose_file: "Choose file",
+        lbl_no_file: "No file chosen",
         mc_equip_to_load: "Equipment to load:",
         mc_filter_brand: "FILTER BY BRAND:",
         mc_filter_category: "FILTER BY EFFECT CATEGORY:",
@@ -1388,13 +1402,16 @@ var i18n = {
         btn_new_chain: "+ Nueva cadena",
         btn_save_preset: "Guardar preset",
         btn_export_chain: "Exportar Cadena",
+        btn_tech_sheet_pdf: "Ficha Técnica (PDF)",
+        btn_routing_sheet_excel: "Planilla de Ruteo (Excel)",
         lbl_chain_draw: "Consumo de cadena",
         lbl_base_draw: "Consumo Base:",
         lbl_margin_draw: "Consumo +30%:",
+        sec_favorite_chains: "CADENAS FAVORITAS / PRESETS GUARDADOS",
         chain_favorites_presets: "CADENAS FAVORITAS / PRESETS GUARDADOS",
         chain_filter_presets_style: "FILTRAR PRESETS POR ESTILO MUSICAL:",
         opt_all_styles: "Todos los Estilos",
-        empty_saved_chains: 'No saved chains yet. Click "Save Preset" to save yours.',
+        empty_saved_chains: 'No hay cadenas guardadas. Haz clic en "Guardar preset Actual" para guardar la tuya.',
         chain_active_signal_title: "CADENA DE SEÑAL ACTIVA",
         chain_active_signal_subtitle: "Selecciona, cambia o arrastra (Drag & Drop) cualquier pedal para reordenar tu rig.",
         btn_add_slot: "Agregar Slot",
@@ -1443,6 +1460,13 @@ var i18n = {
         btn_delete: "Eliminar",
         btn_collection: "Colección",
         
+        lbl_equipment_to_load: "Equipamiento a cargar:",
+        dest_collection_short: "Colección",
+        dest_wishlist_short: "Wishlist",
+        dest_sale_short: "En venta",
+        lbl_eg: "Ej:",
+        btn_choose_file: "Seleccionar archivo",
+        lbl_no_file: "Sin archivos seleccionados",
         mc_equip_to_load: "Equipamiento a cargar:",
         mc_filter_brand: "FILTRAR POR MARCA:",
         mc_filter_category: "FILTRAR POR CATEGORÍA DE EFECTO:",
@@ -4775,6 +4799,7 @@ function executeSaveCustomEquipment() {
             const newPedal = {
                 id: id,
                 brand: brand,
+                model: model,
                 name: model,
                 maBase: ma,
                 maWithMargin: Math.round(ma * 1.3),
@@ -4813,7 +4838,7 @@ function executeSaveCustomEquipment() {
         for (let i = 1; i <= count; i++) {
             const v = document.getElementById(`cem-outlet-volt-${i}`)?.value || '9V';
             const ma = parseInt(document.getElementById(`cem-outlet-ma-${i}`)?.value) || 500;
-            outlets.push({ id: `out-${i}`, name: `${currentLang === "en" ? "Outlet" : "Salida"} ${i}`, voltage: v, maxMa: ma, isolated: true });
+            outlets.push({ id: `out-${i}`, label: `Salida ${i}`, name: `Salida ${i}`, voltage: v, maxMa: ma, isolated: true });
         }
 
         const newPs = {
@@ -4913,11 +4938,12 @@ function renderMasterCatalogCategoryFilters() {
         'Utilidad & ruteo'
     ];
 
-    let html = `<button onclick="filterMasterCatalogByCategory('ALL')" class="px-2.5 py-1 rounded-lg transition-all font-mono text-xs cursor-pointer ${masterCatalogCategoryFilter === 'ALL' ? 'bg-[#F15A24] text-white border border-[#F15A24]' : 'bg-[#121316] text-[#9CA3AF] hover:text-white border border-[#2A2D36]'}">Todas las categorías</button>`;
+    const allCatText = currentLang === 'en' ? 'All Categories' : 'Todas las categorías';
+    let html = `<button onclick="filterMasterCatalogByCategory('ALL')" class="px-2.5 py-1 rounded-lg transition-all font-mono text-xs cursor-pointer ${masterCatalogCategoryFilter === 'ALL' ? 'bg-[#F15A24] text-white border border-[#F15A24]' : 'bg-[#121316] text-[#9CA3AF] hover:text-white border border-[#2A2D36]'}">${allCatText}</button>`;
     categories.forEach(c => {
-        html += `<button onclick="filterMasterCatalogByCategory('${c}')" class="px-2.5 py-1 rounded-lg transition-all font-mono text-xs cursor-pointer ${masterCatalogCategoryFilter === c ? 'bg-[#F15A24] text-white border border-[#F15A24]' : 'bg-[#121316] text-[#9CA3AF] hover:text-white border border-[#2A2D36]'}">${c}</button>`;
+        const displayName = translateCategory(c);
+        html += `<button onclick="filterMasterCatalogByCategory('${c}')" class="px-2.5 py-1 rounded-lg transition-all font-mono text-xs cursor-pointer ${masterCatalogCategoryFilter === c ? 'bg-[#F15A24] text-white border border-[#F15A24]' : 'bg-[#121316] text-[#9CA3AF] hover:text-white border border-[#2A2D36]'}">${displayName}</button>`;
     });
-
     container.innerHTML = html;
 }
 
