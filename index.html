@@ -195,10 +195,10 @@
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b border-[#2A2D36] pb-3">
                     <div>
                         <h2 class="text-lg font-bold text-white tracking-tight" data-i18n="explore_title">
-                            Dashboard y estadísticas de tu rig
+                            <span data-i18n="explore_title">Dashboard & Rig Analytics</span>
                         </h2>
                         <p class="text-xs text-[#9CA3AF] mt-1" data-i18n="explore_subtitle">
-                            Resumen analítico en tiempo real de tu equipamiento, marcas, valoración económica y salud de rig.
+                            <span data-i18n="explore_subtitle">Real-time analytical summary of your gear, brands, financial valuation & rig health.</span>
                         </p>
                     </div>
 
@@ -208,7 +208,7 @@
                 <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
                     <div class="bg-[#121316] border border-[#2A2D36] p-4 rounded-xl flex items-center justify-between shadow-sm">
                         <div>
-                            <p class="text-[11px] font-mono text-[#8B5CF6] uppercase font-bold" data-i18n="stat_collection_label">EN MI COLECCIÓN</p>
+                            <p class="text-[11px] font-mono text-[#8B5CF6] uppercase font-bold" data-i18n="stat_collection_label">IN MY COLLECTION</p>
                             <h3 id="stat-collection-count" class="text-2xl font-black text-white mt-0.5">0</h3>
                             <p id="stat-collection-val" class="text-[11px] font-mono text-[#F15A24] font-bold mt-1">$0 USD</p>
                         </div>
@@ -219,7 +219,7 @@
 
                     <div class="bg-[#121316] border border-[#2A2D36] p-4 rounded-xl flex items-center justify-between shadow-sm">
                         <div>
-                            <p class="text-[11px] font-mono text-[#8B5CF6] uppercase font-bold" data-i18n="stat_wishlist_label">EN WISHLIST</p>
+                            <p class="text-[11px] font-mono text-[#8B5CF6] uppercase font-bold" data-i18n="stat_wishlist_label">IN WISHLIST</p>
                             <h3 id="stat-wishlist-count" class="text-2xl font-black text-white mt-0.5">0</h3>
                             <p id="stat-wishlist-val" class="text-[11px] font-mono text-[#8B5CF6] font-bold mt-1">$0 USD</p>
                         </div>
@@ -338,7 +338,7 @@
                         Mi colección e inventario
                     </h2>
                     <p class="text-xs text-[#9CA3AF] max-w-xl leading-relaxed" data-i18n="collection_subtitle">
-                        Administrá tus pedales personales, armá cadenas de efecto y configurá tus fuentes de alimentación.
+                        <span data-i18n="collection_subtitle">Manage your personal pedals, build signal chains & configure your power supplies.</span>
                     </p>
                 </div>
                 <div class="flex flex-wrap items-center gap-2 sm:gap-2.5 shrink-0 max-w-full">
@@ -382,7 +382,7 @@
                             <input type="text" id="collection-search-input" oninput="handleCollectionSearch(this.value)" placeholder="Search by name or brand..." data-i18n-ph="ph_search_collection" class="w-full bg-[#121316] text-white placeholder-[#9CA3AF]/60 border border-[#2A2D36] focus:border-[#F15A24] rounded-lg pl-8 pr-3 py-1 text-xs font-mono focus:outline-none transition-all">
                         </div>
                     </div>
-                    <span id="effects-counter" class="text-xs font-mono text-[#9CA3AF]">0 pedales</span>
+                    <span id="effects-counter" class="text-xs font-mono text-[#9CA3AF]">0 pedals</span>
                 </div>
                 <div id="collection-effects-grid" ondragover="allowDropSection(event)" ondrop="handleDropSection(event, 'effects')" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 min-h-[60px] p-1.5 pb-4 border-2 border-dashed border-transparent hover:border-[#F15A24]/30 rounded-xl transition-all"></div>
             </section>
@@ -393,7 +393,7 @@
                     <h3 class="text-sm font-bold text-white flex items-center gap-2 uppercase tracking-wide">
                         <i class="fa-solid fa-screwdriver-wrench text-[#F15A24]"></i> <span data-i18n="sec_utility_pedals">UTILITY PEDALS</span>
                     </h3>
-                    <span id="utility-counter" class="text-xs font-mono text-[#9CA3AF]">0 pedales</span>
+                    <span id="utility-counter" class="text-xs font-mono text-[#9CA3AF]">0 pedals</span>
                 </div>
                 <div id="collection-utility-grid" ondragover="allowDropSection(event)" ondrop="handleDropSection(event, 'utility')" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 min-h-[60px] p-1.5 pb-4 border-2 border-dashed border-transparent hover:border-[#F15A24]/30 rounded-xl transition-all"></div>
             </section>
@@ -404,7 +404,7 @@
                     <h3 class="text-sm font-bold text-white flex items-center gap-2 uppercase tracking-wide">
                         <i class="fa-solid fa-bolt text-[#F15A24]"></i> <span data-i18n="sec_power_supplies">POWER SUPPLIES</span>
                     </h3>
-                    <span id="power-counter" class="text-xs font-mono text-[#9CA3AF]">0 fuentes</span>
+                    <span id="power-counter" class="text-xs font-mono text-[#9CA3AF]">0 power supplies</span>
                 </div>
                 <div id="collection-power-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 min-h-[60px] p-1.5 pb-4"></div>
             </section>
@@ -415,7 +415,7 @@
                     <h3 class="text-sm font-bold text-white flex items-center gap-2 uppercase tracking-wide">
                         <i class="fa-solid fa-heart text-[#8B5CF6]"></i> <span data-i18n="sec_wishlist">WISHLIST</span>
                     </h3>
-                    <span id="wishlist-counter" class="text-xs font-mono text-[#9CA3AF]">0 equipos</span>
+                    <span id="wishlist-counter" class="text-xs font-mono text-[#9CA3AF]">0 items</span>
                 </div>
                 <div id="collection-wishlist-grid" ondragover="allowDropSection(event)" ondrop="handleDropSection(event, 'wishlist')" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 min-h-[60px] p-1.5 pb-4 border-2 border-dashed border-transparent hover:border-[#8B5CF6]/30 rounded-xl transition-all"></div>
             </section>
@@ -426,7 +426,7 @@
                     <h3 class="text-sm font-bold text-white flex items-center gap-2 uppercase tracking-wide">
                         <i class="fa-solid fa-tag text-[#EAB308]"></i> <span data-i18n="sec_for_sale">FOR SALE</span>
                     </h3>
-                    <span id="forsale-counter" class="text-xs font-mono text-[#9CA3AF]">0 equipos</span>
+                    <span id="forsale-counter" class="text-xs font-mono text-[#9CA3AF]">0 items</span>
                 </div>
                 <div id="collection-forsale-grid" ondragover="allowDropSection(event)" ondrop="handleDropSection(event, 'forsale')" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 min-h-[60px] p-1.5 pb-4 border-2 border-dashed border-transparent hover:border-[#EAB308]/30 rounded-xl transition-all"></div>
             </section>
@@ -437,28 +437,28 @@
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#2A2D36] pb-4">
                     <div class="space-y-1">
                         <h2 class="text-lg font-bold text-white tracking-tight" data-i18n="chain_title">
-                            Arquitectura de señal y ruteo
+                            <span data-i18n="chain_title">Signal Architecture & Routing</span>
                         </h2>
                         <p class="text-xs text-[#9CA3AF] leading-relaxed" data-i18n="chain_subtitle">
-                            Diseña el ruteo de tu señal, analiza consumos eléctricos en tiempo real y guarda tus presets favoritos.
+                            <span data-i18n="chain_subtitle">Design your signal routing, analyze power draw in real-time & save your favorite presets.</span>
                         </p>
                     </div>
                     <!-- TELEMETRÍA COMPACTA -->
                     <div class="flex items-center gap-2.5 flex-wrap shrink-0">
                         <div class="bg-[#121316] px-3.5 py-1.5 rounded-xl border border-[#2A2D36] font-mono space-y-0.5 min-w-[160px]">
-                            <span class="text-[#9CA3AF] text-[10px] font-bold block border-b border-[#2A2D36] pb-0.5" data-i18n="lbl_chain_draw">Consumo de cadena</span>
+                            <span class="text-[#9CA3AF] text-[10px] font-bold block border-b border-[#2A2D36] pb-0.5" data-i18n="lbl_chain_draw"><span data-i18n="lbl_chain_draw">Chain Current Draw</span></span>
                             <div class="flex items-center justify-between gap-3 text-[11px]">
-                                <span class="text-[#9CA3AF]" data-i18n="lbl_base_draw">Consumo Base:</span>
+                                <span class="text-[#9CA3AF]" data-i18n="lbl_base_draw">Base Draw:</span>
                                 <span id="base-ma" class="text-[#00A8CC] font-bold">0 mA</span>
                             </div>
                             <div class="flex items-center justify-between gap-3 text-[11px]">
-                                <span class="text-[#9CA3AF]">Consumo +30%:</span>
+                                <span class="text-[#9CA3AF]">Draw (+30%):</span>
                                 <span id="total-ma" class="text-[#F15A24] font-bold">0 mA</span>
                             </div>
                         </div>
                         <div class="bg-[#121316] px-3.5 py-3 rounded-xl border border-[#2A2D36] font-mono text-xs text-[#00A8CC] font-bold flex items-center gap-2">
                             <i class="fa-solid fa-sliders text-[#00A8CC]"></i>
-                            <span id="total-count-badge">0 Pedales</span>
+                            <span id="total-count-badge">0 Pedals</span>
                         </div>
                     </div>
                 </div>
@@ -471,33 +471,33 @@
                         </span>
                     </div>
                     <div class="flex items-center gap-2 text-xs flex-wrap w-full sm:w-auto justify-end">
-                        <button onclick="openNewChainArchitectureModal()" title="Limpiar los slots para armar una nueva cadena" class="flex-1 sm:flex-none justify-center bg-[#00A8CC] hover:bg-[#0092b3] text-[#FFFFFF] px-3.5 py-2 rounded-xl font-bold font-sans flex items-center gap-1.5 transition-all active:scale-95 shadow-md whitespace-nowrap">
+                        <button onclick="openNewChainArchitectureModal()" title="Clear slots to build a new chain" data-i18n-title="title_clear_slots" class="flex-1 sm:flex-none justify-center bg-[#00A8CC] hover:bg-[#0092b3] text-[#FFFFFF] px-3.5 py-2 rounded-xl font-bold font-sans flex items-center gap-1.5 transition-all active:scale-95 shadow-md whitespace-nowrap">
                             + Nueva cadena
                         </button>
-                        <button onclick="openSaveFavoriteModal()" title="Guardar preset de la cadena" class="flex-1 sm:flex-none justify-center bg-[#1C1E24] hover:bg-[#20232B] text-[#FFFFFF] border border-[#2A2D36] hover:border-[#00A8CC]/40 px-3.5 py-2 rounded-xl font-bold font-sans flex items-center gap-1.5 transition-all active:scale-95 shadow-sm whitespace-nowrap">
+                        <button onclick="openSaveFavoriteModal()" title="Save chain preset" data-i18n-title="title_save_preset" class="flex-1 sm:flex-none justify-center bg-[#1C1E24] hover:bg-[#20232B] text-[#FFFFFF] border border-[#2A2D36] hover:border-[#00A8CC]/40 px-3.5 py-2 rounded-xl font-bold font-sans flex items-center gap-1.5 transition-all active:scale-95 shadow-sm whitespace-nowrap">
                             <i class="fa-solid fa-bookmark text-[#00A8CC]"></i> Guardar preset
                         </button>
 
                         <div class="relative inline-block flex-1 sm:flex-none">
-                            <button onclick="toggleExportChainDropdown(event)" title="Exportar ficha técnica o planilla de ruteo" class="w-full justify-center bg-[#1C1E24] hover:bg-[#20232B] text-[#FFFFFF] border border-[#2A2D36] hover:border-[#00A8CC]/40 px-3.5 py-2 rounded-xl font-bold font-sans flex items-center gap-1.5 transition-all active:scale-95 shadow-sm whitespace-nowrap cursor-pointer">
+                            <button onclick="toggleExportChainDropdown(event)" title="Export tech sheet or routing sheet" data-i18n-title="title_export_tech_sheet" class="w-full justify-center bg-[#1C1E24] hover:bg-[#20232B] text-[#FFFFFF] border border-[#2A2D36] hover:border-[#00A8CC]/40 px-3.5 py-2 rounded-xl font-bold font-sans flex items-center gap-1.5 transition-all active:scale-95 shadow-sm whitespace-nowrap cursor-pointer">
                                 <i class="fa-solid fa-file-export text-[#00A8CC]"></i> Exportar Cadena <i class="fa-solid fa-chevron-down text-[10px] text-[#9CA3AF] ml-0.5"></i>
                             </button>
                             <div id="export-chain-dropdown" class="hidden absolute right-0 mt-2 w-56 bg-[#1C1E24] border border-[#2A2D36] rounded-xl shadow-2xl z-50 p-1.5 space-y-1 font-sans">
                                 <button onclick="exportChainToPDF(); toggleExportChainDropdown(event);" class="w-full text-left px-3 py-2 rounded-lg hover:bg-[#121316] text-xs text-white font-semibold flex items-center gap-2.5 transition-all cursor-pointer">
                                     <i class="fa-solid fa-file-pdf text-[#00A8CC] text-sm"></i>
-                                    <span class="font-bold">📄 Ficha Técnica (PDF)</span>
+                                    <span class="font-bold"><span data-i18n="btn_tech_sheet_pdf">📄 Tech Sheet (PDF)</span></span>
                                 </button>
                                 <button onclick="exportChainToExcel(); toggleExportChainDropdown(event);" class="w-full text-left px-3 py-2 rounded-lg hover:bg-[#121316] text-xs text-white font-semibold flex items-center gap-2.5 transition-all cursor-pointer">
                                     <i class="fa-solid fa-file-excel text-[#10B981] text-sm"></i>
-                                    <span class="font-bold">📊 Planilla de Ruteo (Excel .xlsx)</span>
+                                    <span class="font-bold"><span data-i18n="btn_routing_sheet_excel">📊 Routing Sheet (Excel .xlsx)</span></span>
                                 </button>
                             </div>
                         </div>
                         <div class="flex items-center gap-2 flex-1 sm:flex-none w-full sm:w-auto font-sans">
-                            <button onclick="undoChainState()" title="Deshacer cambio (Ctrl+Z)" class="flex-1 justify-center bg-[#1C1E24] hover:bg-[#20232B] text-[#FFFFFF] border border-[#2A2D36] hover:border-[#00A8CC]/50 px-3 py-2 rounded-xl font-semibold font-sans flex items-center gap-1.5 transition-all active:scale-95 shadow-sm whitespace-nowrap">
+                            <button onclick="undoChainState()" title="Undo change (Ctrl+Z)" data-i18n-title="title_undo" class="flex-1 justify-center bg-[#1C1E24] hover:bg-[#20232B] text-[#FFFFFF] border border-[#2A2D36] hover:border-[#00A8CC]/50 px-3 py-2 rounded-xl font-semibold font-sans flex items-center gap-1.5 transition-all active:scale-95 shadow-sm whitespace-nowrap">
                                 <i class="fa-solid fa-rotate-left text-[#00A8CC]"></i> Undo
                             </button>
-                            <button onclick="redoChainState()" title="Rehacer cambio (Ctrl+Y / Ctrl+Shift+Z)" class="flex-1 justify-center bg-[#1C1E24] hover:bg-[#20232B] text-[#FFFFFF] border border-[#2A2D36] hover:border-[#00A8CC]/50 px-3 py-2 rounded-xl font-semibold font-sans flex items-center gap-1.5 transition-all active:scale-95 shadow-sm whitespace-nowrap">
+                            <button onclick="redoChainState()" title="Redo change (Ctrl+Y / Ctrl+Shift+Z)" data-i18n-title="title_redo" class="flex-1 justify-center bg-[#1C1E24] hover:bg-[#20232B] text-[#FFFFFF] border border-[#2A2D36] hover:border-[#00A8CC]/50 px-3 py-2 rounded-xl font-semibold font-sans flex items-center gap-1.5 transition-all active:scale-95 shadow-sm whitespace-nowrap">
                                 <i class="fa-solid fa-rotate-right text-[#00A8CC]"></i> Redo
                             </button>
                         </div>
@@ -525,9 +525,9 @@
             <div id="safety-alert-banner" class="hidden bg-[#F15A24]/10 border border-[#F15A24]/30 p-4 rounded-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-3 text-[#F15A24] text-xs font-mono pulse-critical">
                 <div class="flex items-center gap-2">
                     <i class="fa-solid fa-triangle-exclamation text-[#F15A24] text-lg shrink-0"></i>
-                    <span id="safety-alert-msg">¡Alerta de Seguridad Eléctrica! Revisa las configuraciones de voltaje o amperaje.</span>
+                    <span id="safety-alert-msg"><span data-i18n="alert_electrical_safety">Electrical Safety Alert! Check voltage or amperage settings.</span></span>
                 </div>
-                <span class="text-[11px] text-[#F15A24] shrink-0">Verifica las asignaciones de fuentes y salidas físicas.</span>
+                <span class="text-[11px] text-[#F15A24] shrink-0"><span data-i18n="desc_check_power_outlets">Check power supply and physical outlet assignments.</span></span>
             </div>
 
             <section class="bg-[#1C1E24] rounded-2xl border border-[#2A2D36] p-5 pb-7 shadow-xl space-y-4">
@@ -568,10 +568,10 @@
                         <thead class="bg-[#121316] text-[#9CA3AF] border-b border-[#2A2D36]">
                             <tr>
                                 <th class="py-2.5 px-3 rounded-tl-lg font-semibold">Pedal</th>
-                                <th class="py-2.5 px-3 font-semibold">Consumo (+30%)</th>
+                                <th class="py-2.5 px-3 font-semibold">Draw (+30%)</th>
                                 <th class="py-2.5 px-3 font-semibold" data-i18n="table_outlet_supply">Assigned Supply</th>
                                 <th class="py-2.5 px-3 font-semibold" data-i18n="table_outlet_physical">Physical Outlet</th>
-                                <th class="py-2.5 px-3 rounded-tr-lg font-semibold" data-i18n="table_status">Estado / Alertas</th>
+                                <th class="py-2.5 px-3 rounded-tr-lg font-semibold" data-i18n="table_status"><span data-i18n="table_status">Status / Alerts</span></th>
                             </tr>
                         </thead>
                         <tbody id="energy-summary-tbody" class="divide-y divide-[#2A2D36]"></tbody>
@@ -603,16 +603,16 @@
         <!-- TYPE TOGGLE -->
         <div class="grid grid-cols-2 gap-2 bg-[#121316] p-1 rounded-xl border border-[#2A2D36]">
             <button id="cem-type-pedal" onclick="setCemType('pedal')" class="py-2 text-xs font-bold rounded-lg transition-all bg-[#F15A24] text-white cursor-pointer">
-                <i class="fa-solid fa-sliders"></i> <span data-i18n="type_pedal">Pedal de efecto o utilidad</span>
+                <i class="fa-solid fa-sliders"></i> <span data-i18n="type_pedal"><span data-i18n="type_pedal">Effect or Utility Pedal</span></span>
             </button>
             <button id="cem-type-power" onclick="setCemType('power')" class="py-2 text-xs font-semibold rounded-lg transition-all text-[#9CA3AF] hover:text-white cursor-pointer">
-                <i class="fa-solid fa-bolt"></i> <span data-i18n="type_power">Fuente de alimentación</span>
+                <i class="fa-solid fa-bolt"></i> <span data-i18n="type_power"><span data-i18n="type_power">Power Supply</span></span>
             </button>
         </div>
 
         <!-- DESTINATION SELECTOR -->
         <div class="space-y-1">
-            <label class="text-[11px] font-mono text-[#9CA3AF] uppercase font-bold">Destino en inventario *</label>
+            <label class="text-[11px] font-mono text-[#9CA3AF] uppercase font-bold"><span data-i18n="lbl_dest_inventory">Inventory Destination *</span></label>
             <div class="grid grid-cols-3 gap-2">
                 <button id="cem-dest-collection" onclick="setCemDest('collection')" class="py-1.5 text-xs font-mono font-bold rounded-lg border border-[#F15A24] bg-[#F15A24]/20 text-[#F15A24] cursor-pointer">Colección</button>
                 <button id="cem-dest-wishlist" onclick="setCemDest('wishlist')" class="py-1.5 text-xs font-mono font-semibold rounded-lg border border-[#2A2D36] bg-[#121316] text-[#9CA3AF] cursor-pointer">Wishlist</button>
@@ -624,29 +624,29 @@
         <div id="cem-pedal-fields" class="space-y-3">
             <div class="grid grid-cols-2 gap-3">
                 <div>
-                    <label class="text-[11px] font-mono text-[#9CA3AF] block mb-1 font-bold">Marca *</label>
-                    <input type="text" id="cem-pedal-brand" placeholder="Ej: Boss, Strymon" class="w-full bg-[#121316] text-white border border-[#2A2D36] focus:border-[#F15A24] rounded-xl px-3 py-2 text-xs font-mono focus:outline-none">
+                    <label class="text-[11px] font-mono text-[#9CA3AF] block mb-1 font-bold"><span data-i18n="lbl_brand">Brand *</span></label>
+                    <input type="text" id="cem-pedal-brand" placeholder="e.g. Boss, Strymon" class="w-full bg-[#121316] text-white border border-[#2A2D36] focus:border-[#F15A24] rounded-xl px-3 py-2 text-xs font-mono focus:outline-none">
                 </div>
                 <div>
-                    <label class="text-[11px] font-mono text-[#9CA3AF] block mb-1 font-bold">Modelo / Nombre *</label>
-                    <input type="text" id="cem-pedal-model" placeholder="Ej: BD-2w, Timeline" class="w-full bg-[#121316] text-white border border-[#2A2D36] focus:border-[#F15A24] rounded-xl px-3 py-2 text-xs font-mono focus:outline-none">
+                    <label class="text-[11px] font-mono text-[#9CA3AF] block mb-1 font-bold"><span data-i18n="lbl_model_name">Model / Name *</span></label>
+                    <input type="text" id="cem-pedal-model" placeholder="e.g. BD-2w, Timeline" class="w-full bg-[#121316] text-white border border-[#2A2D36] focus:border-[#F15A24] rounded-xl px-3 py-2 text-xs font-mono focus:outline-none">
                 </div>
             </div>
 
             <div class="grid grid-cols-3 gap-3">
                 <div>
-                    <label class="text-[11px] font-mono text-[#9CA3AF] block mb-1 font-bold">Consumo (mA) *</label>
+                    <label class="text-[11px] font-mono text-[#9CA3AF] block mb-1 font-bold"><span data-i18n="lbl_current_ma">Current Draw (mA) *</span></label>
                     <input type="number" id="cem-pedal-ma" placeholder="Ej: 20" value="20" class="w-full bg-[#121316] text-white border border-[#2A2D36] focus:border-[#F15A24] rounded-xl px-3 py-2 text-xs font-mono focus:outline-none">
                 </div>
                 <div>
-                    <label class="text-[11px] font-mono text-[#9CA3AF] block mb-1 font-bold">Arquitectura I/O *</label>
+                    <label class="text-[11px] font-mono text-[#9CA3AF] block mb-1 font-bold"><span data-i18n="lbl_io_architecture">I/O Architecture *</span></label>
                     <div class="grid grid-cols-2 gap-1">
                         <button id="cem-io-mono" onclick="setCemIo('mono')" class="py-2 text-[10px] font-mono font-bold rounded-lg border border-[#F15A24] bg-[#F15A24]/20 text-[#F15A24] cursor-pointer">Mono</button>
                         <button id="cem-io-stereo" onclick="setCemIo('stereo')" class="py-2 text-[10px] font-mono font-semibold rounded-lg border border-[#2A2D36] bg-[#121316] text-[#9CA3AF] cursor-pointer">Stereo</button>
                     </div>
                 </div>
                 <div>
-                    <label class="text-[11px] font-mono text-[#9CA3AF] block mb-1 font-bold">Voltaje *</label>
+                    <label class="text-[11px] font-mono text-[#9CA3AF] block mb-1 font-bold"><span data-i18n="lbl_voltage_select">Voltage *</span></label>
                     <div class="grid grid-cols-3 gap-1">
                         <button id="cem-volt-9v" onclick="setCemVolt(9)" class="py-2 text-[10px] font-mono font-bold rounded-lg border border-[#F15A24] bg-[#F15A24]/20 text-[#F15A24] cursor-pointer">9V</button>
                         <button id="cem-volt-12v" onclick="setCemVolt(12)" class="py-2 text-[10px] font-mono font-semibold rounded-lg border border-[#2A2D36] bg-[#121316] text-[#9CA3AF] cursor-pointer">12V</button>
@@ -656,17 +656,17 @@
             </div>
 
             <div>
-                <label class="text-[11px] font-mono text-[#9CA3AF] block mb-1 font-bold">Categoría *</label>
+                <label class="text-[11px] font-mono text-[#9CA3AF] block mb-1 font-bold"><span data-i18n="lbl_category">Category *</span></label>
                 <select id="cem-pedal-category" class="w-full bg-[#121316] text-white border border-[#2A2D36] focus:border-[#F15A24] rounded-xl px-3 py-2 text-xs font-mono focus:outline-none">
-                    <option value="Saturación & ganancia">Saturación & ganancia</option>
-                    <option value="Modulación">Modulación</option>
-                    <option value="Delay & eco">Delay & eco</option>
-                    <option value="Reverberación & espacio">Reverberación & espacio</option>
-                    <option value="Dinámica & modelado">Dinámica & modelado</option>
-                    <option value="Pitch & sintetizador">Pitch & sintetizador</option>
-                    <option value="Lo-Fi, glitch & texturas">Lo-Fi, glitch & texturas</option>
-                    <option value="Loopers de frase">Loopers de frase</option>
-                    <option value="Utilidad & ruteo">Utilidad & ruteo</option>
+                    <option value="Saturación & ganancia">Saturation & Gain</option>
+                    <option value="Modulación">Modulation</option>
+                    <option value="Delay & eco">Delay & Echo</option>
+                    <option value="Reverberación & espacio">Reverb & Space</option>
+                    <option value="Dinámica & modelado">Dynamics & Modeling</option>
+                    <option value="Pitch & sintetizador">Pitch & Synth</option>
+                    <option value="Lo-Fi, glitch & texturas">Lo-Fi, Glitch & Textures</option>
+                    <option value="Loopers de frase">Phrase Loopers</option>
+                    <option value="Utilidad & ruteo">Utility & Routing</option>
                 </select>
             </div>
         </div>
@@ -675,23 +675,23 @@
         <div id="cem-power-fields" class="space-y-3 hidden">
             <div class="grid grid-cols-2 gap-3">
                 <div>
-                    <label class="text-[11px] font-mono text-[#9CA3AF] block mb-1 font-bold">Marca de la fuente *</label>
+                    <label class="text-[11px] font-mono text-[#9CA3AF] block mb-1 font-bold"><span data-i18n="lbl_power_brand">Power Supply Brand *</span></label>
                     <input type="text" id="cem-power-brand" placeholder="Ej: Strymon, CIOKS" class="w-full bg-[#121316] text-white border border-[#2A2D36] focus:border-[#F15A24] rounded-xl px-3 py-2 text-xs font-mono focus:outline-none">
                 </div>
                 <div>
-                    <label class="text-[11px] font-mono text-[#9CA3AF] block mb-1 font-bold">Modelo / Nombre *</label>
-                    <input type="text" id="cem-power-model" placeholder="Ej: Zuma, DC10" class="w-full bg-[#121316] text-white border border-[#2A2D36] focus:border-[#F15A24] rounded-xl px-3 py-2 text-xs font-mono focus:outline-none">
+                    <label class="text-[11px] font-mono text-[#9CA3AF] block mb-1 font-bold"><span data-i18n="lbl_model_name">Model / Name *</span></label>
+                    <input type="text" id="cem-power-model" placeholder="e.g. Zuma, DC10" class="w-full bg-[#121316] text-white border border-[#2A2D36] focus:border-[#F15A24] rounded-xl px-3 py-2 text-xs font-mono focus:outline-none">
                 </div>
             </div>
 
             <div>
-                <label class="text-[11px] font-mono text-[#9CA3AF] block mb-1 font-bold">Cantidad de salidas aisladas *</label>
+                <label class="text-[11px] font-mono text-[#9CA3AF] block mb-1 font-bold"><span data-i18n="lbl_outlet_count">Isolated Outlets Count *</span></label>
                 <input type="number" id="cem-power-outlet-count" value="5" min="1" max="24" onchange="generateCemOutletRows()" class="w-full bg-[#121316] text-white border border-[#2A2D36] focus:border-[#F15A24] rounded-xl px-3 py-2 text-xs font-mono focus:outline-none">
             </div>
 
             <div class="space-y-2 border-t border-[#2A2D36] pt-3">
                 <div class="flex items-center justify-between">
-                    <span class="text-[11px] font-mono text-white font-bold">Configuración de Salidas</span>
+                    <span class="text-[11px] font-mono text-white font-bold"><span data-i18n="title_outlets_config">Outlets Configuration</span></span>
                     <button onclick="copyCemOutlet1ToAll()" class="text-[10px] font-mono text-[#00A8CC] hover:underline cursor-pointer">
                         <i class="fa-solid fa-copy"></i> Copiar Salida 1 a todas
                     </button>
@@ -703,16 +703,16 @@
         <!-- COMMON FIELDS -->
         <div class="space-y-3 border-t border-[#2A2D36] pt-3">
             <div>
-                <label class="text-[11px] font-mono text-[#9CA3AF] block mb-1 font-bold">Precio / Valor estimado ($ USD) (Opcional)</label>
+                <label class="text-[11px] font-mono text-[#9CA3AF] block mb-1 font-bold"><span data-i18n="lbl_price_usd">Price / Estimated Value ($ USD) (Optional)</span></label>
                 <input type="number" id="cem-price-usd" placeholder="Ej: 150" min="0" step="any" class="w-full bg-[#121316] text-white border border-[#2A2D36] focus:border-[#F15A24] rounded-xl px-3 py-2 text-xs font-mono focus:outline-none">
             </div>
             <div>
-                <label class="text-[11px] font-mono text-[#9CA3AF] block mb-1 font-bold">PDF Manual (Opcional)</label>
+                <label class="text-[11px] font-mono text-[#9CA3AF] block mb-1 font-bold">PDF Manual (Optional)</label>
                 <input type="url" id="cem-manual-url" placeholder="https://..." class="w-full bg-[#121316] text-white border border-[#2A2D36] focus:border-[#F15A24] rounded-xl px-3 py-2 text-xs font-mono focus:outline-none">
             </div>
 
             <div>
-                <label class="text-[11px] font-mono text-[#9CA3AF] block mb-1 font-bold">Foto (Opcional, máx 1MB)</label>
+                <label class="text-[11px] font-mono text-[#9CA3AF] block mb-1 font-bold"><span data-i18n="lbl_photo_upload">Photo (Optional, max 1MB)</span></label>
                 <input type="file" accept="image/*" onchange="handleCemPhotoUpload(event)" class="w-full bg-[#121316] text-[#9CA3AF] text-xs font-mono border border-[#2A2D36] rounded-xl px-3 py-1.5 cursor-pointer">
                 <div id="cem-photo-preview-container" class="mt-2 hidden">
                     <img id="cem-photo-preview" src="" alt="Preview" class="h-16 w-16 object-contain rounded-lg border border-[#2A2D36]">
@@ -721,8 +721,8 @@
         </div>
 
         <div class="flex justify-end gap-2 pt-2 border-t border-[#2A2D36]">
-            <button onclick="closeCustomEquipmentModal()" class="px-4 py-2 rounded-xl text-xs font-semibold bg-[#121316] text-[#9CA3AF] hover:text-white border border-[#2A2D36] cursor-pointer">Cancelar</button>
-            <button onclick="executeSaveCustomEquipment()" class="px-5 py-2 rounded-xl text-xs font-bold bg-[#F15A24] text-white hover:bg-[#d94d1b] shadow-md cursor-pointer">Guardar equipo</button>
+            <button onclick="closeCustomEquipmentModal()" class="px-4 py-2 rounded-xl text-xs font-semibold bg-[#121316] text-[#9CA3AF] hover:text-white border border-[#2A2D36] cursor-pointer"><span data-i18n="btn_cancel">Cancel</span></button>
+            <button onclick="executeSaveCustomEquipment()" class="px-5 py-2 rounded-xl text-xs font-bold bg-[#F15A24] text-white hover:bg-[#d94d1b] shadow-md cursor-pointer"><span data-i18n="btn_save_equipment">Save Equipment</span></button>
         </div>
     </div>
 </div>
@@ -736,10 +736,10 @@
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-[#2A2D36] pb-4">
             <div>
                 <h3 class="text-lg font-bold text-[#FFFFFF] flex items-center gap-2" data-i18n="modal_catalog_title">
-                    <i class="fa-solid fa-layer-group text-[#F15A24]"></i> Catálogo Maestro de Fabricantes
+                    <i class="fa-solid fa-layer-group text-[#F15A24]"></i> <span data-i18n="modal_catalog_title">Master Catalog - Manufacturers</span>
                 </h3>
                 <p class="text-xs text-[#9CA3AF]" data-i18n="modal_catalog_subtitle">
-                    Explorá la base de datos oficial auditada e incorporá pedales o fuentes a tu colección o wishlist con un clic.
+                    <span data-i18n="modal_catalog_subtitle">Browse the official audited database and add pedals or power supplies with one click.</span>
                 </p>
             </div>
             <button onclick="closeMasterCatalogModal()" class="text-[#9CA3AF] hover:text-[#FFFFFF] text-lg px-2 py-1 rounded-lg hover:bg-[#20232B] transition-colors self-end sm:self-auto cursor-pointer">
@@ -754,10 +754,10 @@
             </span>
             <div class="grid grid-cols-2 sm:flex sm:items-center gap-2 w-full sm:w-auto items-stretch">
                 <button id="mc-toggle-pedal" onclick="switchMasterCatalogEquipmentType('PEDAL')" class="flex-1 sm:flex-initial px-3 py-2.5 sm:py-1.5 rounded-lg text-xs font-bold transition-all bg-[#F15A24] text-white border border-[#F15A24] flex items-center justify-center text-center gap-2 cursor-pointer shadow-sm h-full">
-                    <i class="fa-solid fa-sliders shrink-0"></i> Pedal de efecto o utilidad
+                    <i class="fa-solid fa-sliders shrink-0"></i> <span data-i18n="type_pedal">Effect or Utility Pedal</span>
                 </button>
                 <button id="mc-toggle-power" onclick="switchMasterCatalogEquipmentType('POWER')" class="flex-1 sm:flex-initial px-3 py-2.5 sm:py-1.5 rounded-lg text-xs font-semibold transition-all bg-[#1C1E24] text-[#9CA3AF] hover:text-white border border-[#2A2D36] flex items-center justify-center text-center gap-2 cursor-pointer h-full">
-                    <i class="fa-solid fa-bolt shrink-0"></i> Fuente de alimentación
+                    <i class="fa-solid fa-bolt shrink-0"></i> <span data-i18n="type_power">Power Supply</span>
                 </button>
             </div>
         </div>
@@ -766,19 +766,19 @@
         <div class="space-y-3 bg-[#121316] p-4 rounded-xl border border-[#2A2D36]">
             <div class="relative">
                 <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-[#9CA3AF] text-xs"></i>
-                <input type="text" id="master-catalog-search-input" oninput="handleMasterCatalogSearch(this.value)" placeholder="Buscar por nombre, marca o modelo..." class="w-full bg-[#121316] text-white placeholder-[#9CA3AF]/60 border border-[#2A2D36] focus:border-[#F15A24] rounded-xl pl-9 pr-4 py-2.5 text-xs font-mono focus:outline-none transition-all">
+                <input type="text" id="master-catalog-search-input" oninput="handleMasterCatalogSearch(this.value)" placeholder="Search by name, brand, or model..." data-i18n-ph="ph_search_catalog" class="w-full bg-[#121316] text-white placeholder-[#9CA3AF]/60 border border-[#2A2D36] focus:border-[#F15A24] rounded-xl pl-9 pr-4 py-2.5 text-xs font-mono focus:outline-none transition-all">
             </div>
 
             <div class="space-y-1.5">
                 <div class="text-[11px] font-mono text-[#F15A24] uppercase font-bold flex items-center gap-1.5">
-                    <i class="fa-solid fa-filter text-xs"></i> FILTRAR POR MARCA:
+                    <i class="fa-solid fa-filter text-xs"></i> <span data-i18n="mc_filter_brand">FILTER BY BRAND:</span>
                 </div>
                 <div id="master-catalog-brand-filters" class="flex flex-wrap gap-1.5 text-xs font-mono"></div>
             </div>
 
             <div class="space-y-1.5 border-t border-[#2A2D36] pt-2">
                 <div class="text-[11px] font-mono text-[#F15A24] uppercase font-bold flex items-center gap-1.5">
-                    <i class="fa-solid fa-sliders text-xs"></i> FILTRAR POR CATEGORÍA DE EFECTO:
+                    <i class="fa-solid fa-sliders text-xs"></i> <span data-i18n="mc_filter_category">FILTER BY EFFECT CATEGORY:</span>
                 </div>
                 <div id="master-catalog-category-filters" class="flex flex-wrap gap-1.5 text-xs font-mono"></div>
             </div>
@@ -794,7 +794,7 @@
         <div class="flex justify-between items-center border-b border-[#2A2D36] pb-3">
             <h3 class="text-base font-bold text-[#FFFFFF] flex items-center gap-2">
                 <i class="fa-solid fa-sliders text-[#F15A24]"></i>
-                <span id="np-modal-title">Registrar nuevo pedal al catálogo</span>
+                <span id="np-modal-title"><span data-i18n="title_register_new_pedal">Register new pedal to catalog</span></span>
             </h3>
             <button onclick="closeNewPedalModal()" class="text-[#9CA3AF] hover:text-[#FFFFFF] text-sm">
                 <i class="fa-solid fa-xmark"></i>
@@ -803,25 +803,25 @@
 
         <div class="space-y-2 bg-[#121316] p-3 rounded-xl border border-[#2A2D36]">
             <label class="text-xs text-[#F15A24] font-bold block font-mono flex items-center gap-1.5">
-                <i class="fa-solid fa-camera"></i> Subir Foto del Pedal (Máx 1 MB)
+                <i class="fa-solid fa-camera"></i> <span data-i18n="lbl_upload_pedal_photo">Upload Pedal Photo (Max 1MB)</span>
             </label>
             <div class="flex items-center gap-3">
                 <input type="file" id="np-photo-file" accept="image/*" onchange="handlePedalPhotoUpload(event, 'NEW')" class="text-xs text-[#9CA3AF] file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-[#121316] file:text-[#F15A24] hover:file:bg-[#20232B] cursor-pointer">
             </div>
             <div id="np-photo-preview-container" class="hidden pt-2 flex justify-center">
-                <img id="np-photo-preview" src="" alt="Vista previa" class="h-28 object-contain rounded-lg border border-[#2A2D36]">
+                <img id="np-photo-preview" src="" alt="Preview" class="h-28 object-contain rounded-lg border border-[#2A2D36]">
             </div>
             <p id="np-photo-error" class="hidden text-[11px] text-[#F15A24] font-mono"></p>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div class="space-y-1">
-                <label class="text-xs text-[#9CA3AF] block font-mono">Nombre del pedal *</label>
-                <input type="text" id="np-name" placeholder="Ej: OD-2 TURBO OverDrive" class="w-full bg-[#121316] border border-[#2A2D36] rounded-xl px-3 py-2 text-sm text-[#FFFFFF] focus:outline-none focus:border-[#F15A24]">
+                <label class="text-xs text-[#9CA3AF] block font-mono"><span data-i18n="lbl_pedal_name">Pedal Name *</span></label>
+                <input type="text" id="np-name" placeholder="e.g. OD-2 TURBO OverDrive" class="w-full bg-[#121316] border border-[#2A2D36] rounded-xl px-3 py-2 text-sm text-[#FFFFFF] focus:outline-none focus:border-[#F15A24]">
             </div>
             <div class="space-y-1">
-                <label class="text-xs text-[#9CA3AF] block font-mono">Marca / Fabricante *</label>
-                <input type="text" id="np-brand" placeholder="Ej: Boss" class="w-full bg-[#121316] border border-[#2A2D36] rounded-xl px-3 py-2 text-sm text-[#FFFFFF] focus:outline-none focus:border-[#F15A24]">
+                <label class="text-xs text-[#9CA3AF] block font-mono"><span data-i18n="lbl_brand_manufacturer">Brand / Manufacturer *</span></label>
+                <input type="text" id="np-brand" placeholder="e.g. Boss" class="w-full bg-[#121316] border border-[#2A2D36] rounded-xl px-3 py-2 text-sm text-[#FFFFFF] focus:outline-none focus:border-[#F15A24]">
             </div>
         </div>
 </div></div>
@@ -839,7 +839,7 @@
 
         <div class="grid grid-cols-2 gap-2 bg-[#121316] p-1 rounded-xl border border-[#2A2D36] text-xs font-mono text-center">
             <button id="tab-mode-new" onclick="setSaveFavMode('NEW')" class="py-2 rounded-lg bg-[#F15A24] text-[#FFFFFF] font-bold transition-all">
-                Nueva Cadena
+                <span data-i18n="modal_new_chain_title">New Chain</span>
             </button>
             <button id="tab-mode-overwrite" onclick="setSaveFavMode('OVERWRITE')" class="py-2 rounded-lg text-[#9CA3AF] hover:text-[#FFFFFF] transition-all">
                 Sobrescribir Existente
@@ -847,18 +847,18 @@
         </div>
 
         <div id="fav-form-new" class="space-y-2">
-            <label class="text-xs text-[#9CA3AF] block font-mono">Nombre del Preset / Cadena *</label>
-            <input type="text" id="fav-name-input" placeholder="Ej: Preset Wet-Dry Shoegaze" class="w-full bg-[#121316] border border-[#2A2D36] rounded-xl px-3 py-2 text-sm text-[#FFFFFF] focus:outline-none focus:border-[#F15A24]">
+            <label class="text-xs text-[#9CA3AF] block font-mono"><span data-i18n="lbl_preset_chain_name">Preset / Chain Name *</span></label>
+            <input type="text" id="fav-name-input" placeholder="e.g. Wet-Dry Shoegaze Preset" class="w-full bg-[#121316] border border-[#2A2D36] rounded-xl px-3 py-2 text-sm text-[#FFFFFF] focus:outline-none focus:border-[#F15A24]">
         </div>
 
         <div id="fav-form-overwrite" class="space-y-2 hidden">
-            <label class="text-xs text-[#9CA3AF] block font-mono">Selecciona la cadena a reemplazar *</label>
+            <label class="text-xs text-[#9CA3AF] block font-mono"><span data-i18n="lbl_select_chain_replace">Select chain to replace *</span></label>
             <select id="fav-overwrite-select" onchange="onOverwriteSelectChange()" class="w-full bg-[#121316] border border-[#2A2D36] rounded-xl px-3 py-2 text-sm text-[#FFFFFF] focus:outline-none focus:border-[#F15A24] font-mono text-xs"></select>
         </div>
 
         <div class="space-y-2 pt-1 border-t border-[#2A2D36]/60">
             <div class="flex justify-between items-center text-xs font-mono">
-                <label class="text-[#9CA3AF]">Estilos musicales (1 a 4 opcionales):</label>
+                <label class="text-[#9CA3AF]"><span data-i18n="lbl_musical_styles">Musical styles (1 to 4 optional):</span></label>
                 <span id="fav-tag-count-label" class="text-[11px] text-[#F15A24] font-bold">0 / 4 seleccionados</span>
             </div>
             <div id="fav-tags-selector" class="flex flex-wrap gap-1.5 max-h-40 overflow-y-auto p-2 bg-[#121316] border border-[#2A2D36] rounded-xl text-xs scrollbar-thin"></div>
@@ -866,7 +866,7 @@
 
         <div class="flex justify-end gap-3 pt-3 border-t border-[#2A2D36]">
             <button onclick="closeSaveFavoriteModal()" class="px-4 py-2 rounded-xl text-xs font-semibold text-[#9CA3AF] hover:text-[#FFFFFF] bg-[#121316] hover:bg-[#20232B] transition-all cursor-pointer">
-                Cancelar
+                <span data-i18n="btn_cancel">Cancel</span>
             </button>
             <button onclick="executeSaveFavorite()" class="px-4 py-2 rounded-xl text-xs font-bold text-[#FFFFFF] bg-[#F15A24] hover:bg-[#d44d1b] transition-all shadow-md flex items-center gap-2 cursor-pointer active:scale-95">
                 <i class="fa-solid fa-bookmark"></i> Guardar Preset
@@ -879,13 +879,13 @@
     <div onclick="event.stopPropagation()" class="bg-[#1C1E24] border border-[#2A2D36] rounded-2xl max-w-lg w-full p-6 space-y-4 shadow-2xl cursor-default">
         <div class="flex justify-between items-center border-b border-[#2A2D36] pb-3">
             <h3 class="text-base font-bold text-[#FFFFFF] flex items-center gap-2">
-                <i class="fa-solid fa-bolt text-[#00A8CC]"></i> Agregar Fuente a la Cadena
+                <i class="fa-solid fa-bolt text-[#00A8CC]"></i> <span data-i18n="title_add_power_to_chain">Add Power Supply to Chain</span>
             </h3>
             <button onclick="closeAddPowerSupplyToChainModal()" class="text-[#9CA3AF] hover:text-[#FFFFFF] text-sm">
                 <i class="fa-solid fa-xmark"></i>
             </button>
         </div>
-        <p class="text-xs text-[#9CA3AF]">Selecciona una fuente de tu colección (Pestaña 1) para asignarla a esta cadena activa:</p>
+        <p class="text-xs text-[#9CA3AF]"><span data-i18n="desc_select_power_from_col">Select a power supply from your collection (Tab 1) to assign it to this active chain:</span></p>
         <div id="add-ps-to-chain-list" class="space-y-3 max-h-72 overflow-y-auto pr-1"></div>
         <div class="flex justify-end pt-3 border-t border-[#2A2D36]">
             <button onclick="closeAddPowerSupplyToChainModal()" class="px-4 py-2 rounded-xl text-xs font-semibold text-[#9CA3AF] hover:text-[#FFFFFF] bg-[#121316] hover:bg-[#20232B] transition-all">
@@ -899,7 +899,7 @@
     <div onclick="event.stopPropagation()" class="bg-[#1C1E24] border border-[#2A2D36] rounded-2xl max-w-xl w-full p-6 space-y-4 shadow-2xl max-h-[90vh] overflow-y-auto cursor-default">
         <div class="flex justify-between items-center border-b border-[#2A2D36] pb-3">
             <h3 class="text-base font-bold text-[#FFFFFF] flex items-center gap-2">
-                <i class="fa-solid fa-bolt text-[#00A8CC]"></i> Creador Custom de Fuente de Alimentación
+                <i class="fa-solid fa-bolt text-[#00A8CC]"></i> <span data-i18n="title_custom_power_creator">Custom Power Supply Creator</span>
             </h3>
             <button onclick="closeNewPowerSupplyModal()" class="text-[#9CA3AF] hover:text-[#FFFFFF] text-sm">
                 <i class="fa-solid fa-xmark"></i>
@@ -908,26 +908,26 @@
 
         <div class="space-y-2 bg-[#121316] p-3 rounded-xl border border-[#2A2D36]">
             <label class="text-xs text-[#00A8CC] font-bold block font-mono flex items-center gap-1.5">
-                <i class="fa-solid fa-camera"></i> Subir Foto de la Fuente (Máx 1 MB)
+                <i class="fa-solid fa-camera"></i> <span data-i18n="lbl_upload_power_photo">Upload Power Supply Photo (Max 1MB)</span>
             </label>
             <div class="flex flex-col gap-2">
                 <input type="file" id="nps-photo-file" accept="image/*" onchange="handlePowerSupplyPhotoUpload(event, 'NEW')" class="text-xs text-[#9CA3AF] file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-[#121316] file:text-[#00A8CC] hover:file:bg-[#20232B] cursor-pointer">
-                <input type="text" id="nps-photo-url" placeholder="O pegar URL directa de imagen (opcional)" class="w-full bg-[#1C1E24] border border-[#2A2D36] rounded-xl px-3 py-1.5 text-xs text-[#FFFFFF] focus:outline-none focus:border-[#00A8CC] font-mono">
+                <input type="text" id="nps-photo-url" placeholder="Or paste direct image URL (optional)" data-i18n-ph="ph_image_url" class="w-full bg-[#1C1E24] border border-[#2A2D36] rounded-xl px-3 py-1.5 text-xs text-[#FFFFFF] focus:outline-none focus:border-[#00A8CC] font-mono">
             </div>
             <div id="nps-photo-preview-container" class="hidden pt-2 flex justify-center">
-                <img id="nps-photo-preview" src="" alt="Vista previa" class="h-28 object-contain rounded-lg border border-[#2A2D36]">
+                <img id="nps-photo-preview" src="" alt="Preview" class="h-28 object-contain rounded-lg border border-[#2A2D36]">
             </div>
             <p id="nps-photo-error" class="hidden text-[11px] text-[#F15A24] font-mono"></p>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div class="space-y-1">
-                <label class="text-xs text-[#9CA3AF] block font-mono">Marca / Fabricante *</label>
-                <input type="text" id="nps-brand" placeholder="Ej: Strymon" class="w-full bg-[#121316] border border-[#2A2D36] rounded-xl px-3 py-2 text-sm text-[#FFFFFF] focus:outline-none focus:border-[#00A8CC]">
+                <label class="text-xs text-[#9CA3AF] block font-mono"><span data-i18n="lbl_brand_manufacturer">Brand / Manufacturer *</span></label>
+                <input type="text" id="nps-brand" placeholder="e.g. Strymon" class="w-full bg-[#121316] border border-[#2A2D36] rounded-xl px-3 py-2 text-sm text-[#FFFFFF] focus:outline-none focus:border-[#00A8CC]">
             </div>
             <div class="space-y-1">
-                <label class="text-xs text-[#9CA3AF] block font-mono">Modelo *</label>
-                <input type="text" id="nps-model" placeholder="Ej: Zuma" class="w-full bg-[#121316] border border-[#2A2D36] rounded-xl px-3 py-2 text-sm text-[#FFFFFF] focus:outline-none focus:border-[#00A8CC]">
+                <label class="text-xs text-[#9CA3AF] block font-mono"><span data-i18n="lbl_model">Model *</span></label>
+                <input type="text" id="nps-model" placeholder="e.g. Zuma" class="w-full bg-[#121316] border border-[#2A2D36] rounded-xl px-3 py-2 text-sm text-[#FFFFFF] focus:outline-none focus:border-[#00A8CC]">
             </div>
         </div>
 </div></div>
@@ -943,12 +943,12 @@
             </button>
         </div>
         <div class="space-y-2">
-            <label class="text-xs text-[#9CA3AF] block font-mono">URL del Manual (PDF / Google Drive / Web)</label>
+            <label class="text-xs text-[#9CA3AF] block font-mono"><span data-i18n="lbl_manual_url">Manual URL (PDF / Google Drive / Web)</span></label>
             <input type="text" id="manual-url-input" placeholder="https://drive.google.com/file/d/..." class="w-full bg-[#121316] border border-[#2A2D36] rounded-xl px-3 py-2 text-sm text-[#FFFFFF] focus:outline-none focus:border-[#00A8CC]">
         </div>
         <div class="flex justify-end gap-3 pt-2">
             <button onclick="closeEditManualModal()" class="px-4 py-2 rounded-xl text-xs font-semibold text-[#9CA3AF] hover:text-[#FFFFFF] bg-[#121316] hover:bg-[#20232B]">
-                Cancelar
+                <span data-i18n="btn_cancel">Cancel</span>
             </button>
             <button onclick="saveItemManualUrl()" class="px-4 py-2 rounded-xl text-xs font-bold text-[#FFFFFF] bg-[#00A8CC] hover:bg-[#0092b3]">
                 Guardar Manual
@@ -968,12 +968,12 @@
             </button>
         </div>
         <div class="space-y-2 py-2">
-            <p class="text-sm font-semibold text-[#FFFFFF]">¿Desea eliminar el pedal definitivamente?</p>
+            <p class="text-sm font-semibold text-[#FFFFFF]"><span data-i18n="confirm_delete_pedal">Do you want to permanently delete this pedal?</span></p>
             <p id="delete-pedal-target-name" class="text-xs font-mono text-[#00A8CC] bg-[#121316] p-2.5 rounded-xl border border-[#2A2D36]"></p>
         </div>
         <div class="flex justify-end gap-3 pt-2 border-t border-[#2A2D36]">
             <button onclick="closeDeletePedalModal()" class="px-4 py-2 rounded-xl text-xs font-semibold text-[#9CA3AF] hover:text-[#FFFFFF] bg-[#121316] hover:bg-[#20232B] transition-all">
-                Cancelar
+                <span data-i18n="btn_cancel">Cancel</span>
             </button>
             <button onclick="executeDeletePedal()" class="px-4 py-2 rounded-xl text-xs font-bold text-[#FFFFFF] bg-[#F15A24] hover:bg-[#d44d1b] transition-all shadow-lg">
                 Afirmar
@@ -993,12 +993,12 @@
             </button>
         </div>
         <div class="space-y-2 py-2">
-            <p class="text-sm font-semibold text-[#FFFFFF]">¿Desea eliminar la fuente de alimentación?</p>
+            <p class="text-sm font-semibold text-[#FFFFFF]"><span data-i18n="confirm_delete_power">Do you want to delete this power supply?</span></p>
             <p id="delete-power-target-name" class="text-xs font-mono text-[#00A8CC] bg-[#121316] p-2.5 rounded-xl border border-[#2A2D36]"></p>
         </div>
         <div class="flex justify-end gap-3 pt-2 border-t border-[#2A2D36]">
             <button onclick="closeDeletePowerSupplyModal()" class="px-4 py-2 rounded-xl text-xs font-semibold text-[#9CA3AF] hover:text-[#FFFFFF] bg-[#121316] hover:bg-[#20232B] transition-all">
-                Cancelar
+                <span data-i18n="btn_cancel">Cancel</span>
             </button>
             <button onclick="executeDeletePowerSupply()" class="px-4 py-2 rounded-xl text-xs font-bold text-[#FFFFFF] bg-[#F15A24] hover:bg-[#d44d1b] transition-all shadow-lg">
                 Afirmar
@@ -1013,10 +1013,10 @@
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-[#2A2D36] pb-4">
             <div>
                 <h3 class="text-lg font-bold text-[#FFFFFF] flex items-center gap-2">
-                    <i class="fa-solid fa-layer-group text-[#8B5CF6]"></i> Catálogo de pedales para wishlist
+                    <i class="fa-solid fa-layer-group text-[#8B5CF6]"></i> <span data-i18n="title_pedal_catalog_wishlist">Pedal catalog for wishlist</span>
                 </h3>
                 <p class="text-xs text-[#9CA3AF]">
-                    Explorá los pedales del catálogo ordenados de A-Z y agregalos a tu lista de deseos.
+                    <span data-i18n="desc_explore_catalog_az">Browse catalog pedals A-Z and add them to your wishlist.</span>
                 </p>
             </div>
             <button onclick="closeMasterWishlistModal()" class="text-[#9CA3AF] hover:text-[#FFFFFF] text-lg px-2 py-1 rounded-lg hover:bg-[#20232B] transition-colors self-end sm:self-auto">
@@ -1028,7 +1028,7 @@
         <div class="space-y-3 bg-[#121316] p-4 rounded-xl border border-[#2A2D36]">
             <div class="flex flex-col sm:flex-row gap-3">
                 <div class="relative flex-1">
-                    <input type="text" id="mw-search" oninput="handleMasterWishlistSearch(this.value)" placeholder="🔍 Buscar por nombre, marca o modelo..." class="w-full bg-[#1C1E24] text-[#FFFFFF] placeholder-[#9CA3AF]/60 border border-[#2A2D36] focus:border-[#8B5CF6] rounded-xl px-4 py-2.5 text-xs font-mono focus:outline-none transition-all shadow-inner">
+                    <input type="text" id="mw-search" oninput="handleMasterWishlistSearch(this.value)" placeholder="🔍 Search by name, brand, or model..." data-i18n-ph="ph_search_catalog" class="w-full bg-[#1C1E24] text-[#FFFFFF] placeholder-[#9CA3AF]/60 border border-[#2A2D36] focus:border-[#8B5CF6] rounded-xl px-4 py-2.5 text-xs font-mono focus:outline-none transition-all shadow-inner">
                 </div>
             </div>
 </div></div></div>
@@ -1038,7 +1038,7 @@
         <div class="flex justify-between items-center border-b border-[#2A2D36] pb-3">
             <h3 class="text-base font-bold text-[#FFFFFF] flex items-center gap-2">
                 <i class="fa-solid fa-gift text-[#8B5CF6]"></i>
-                <span id="nw-modal-title">Agregar pedal a lista de deseos</span>
+                <span id="nw-modal-title"><span data-i18n="title_add_pedal_to_wishlist">Add pedal to wishlist</span></span>
             </h3>
             <button onclick="closeNewWishlistPedalModal()" class="text-[#9CA3AF] hover:text-[#FFFFFF] text-sm">
                 <i class="fa-solid fa-xmark"></i>
@@ -1047,25 +1047,25 @@
 
         <div class="space-y-2 bg-[#121316] p-3 rounded-xl border border-[#2A2D36]">
             <label class="text-xs text-[#8B5CF6] font-bold block font-mono flex items-center gap-1.5">
-                <i class="fa-solid fa-camera"></i> Subir Foto del Pedal (Máx 1 MB)
+                <i class="fa-solid fa-camera"></i> <span data-i18n="lbl_upload_pedal_photo">Upload Pedal Photo (Max 1MB)</span>
             </label>
             <div class="flex items-center gap-3">
                 <input type="file" id="nw-photo-file" accept="image/*" onchange="handlePedalPhotoUpload(event, 'WISHLIST_NEW')" class="text-xs text-[#9CA3AF] file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-[#121316] file:text-[#8B5CF6] hover:file:bg-[#20232B] cursor-pointer">
             </div>
             <div id="nw-photo-preview-container" class="hidden pt-2 flex justify-center">
-                <img id="nw-photo-preview" src="" alt="Vista previa" class="h-28 object-contain rounded-lg border border-[#2A2D36]">
+                <img id="nw-photo-preview" src="" alt="Preview" class="h-28 object-contain rounded-lg border border-[#2A2D36]">
             </div>
             <p id="nw-photo-error" class="hidden text-[11px] text-[#F15A24] font-mono"></p>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div class="space-y-1">
-                <label class="text-xs text-[#9CA3AF] block font-mono">Nombre del pedal *</label>
+                <label class="text-xs text-[#9CA3AF] block font-mono"><span data-i18n="lbl_pedal_name">Pedal Name *</span></label>
                 <input type="text" id="nw-name" placeholder="Ej: Bonsai" class="w-full bg-[#121316] border border-[#2A2D36] rounded-xl px-3 py-2 text-sm text-[#FFFFFF] focus:outline-none focus:border-[#8B5CF6]">
             </div>
             <div class="space-y-1">
-                <label class="text-xs text-[#9CA3AF] block font-mono">Marca / Fabricante *</label>
-                <input type="text" id="nw-brand" placeholder="Ej: JHS Pedals" class="w-full bg-[#121316] border border-[#2A2D36] rounded-xl px-3 py-2 text-sm text-[#FFFFFF] focus:outline-none focus:border-[#8B5CF6]">
+                <label class="text-xs text-[#9CA3AF] block font-mono"><span data-i18n="lbl_brand_manufacturer">Brand / Manufacturer *</span></label>
+                <input type="text" id="nw-brand" placeholder="e.g. JHS Pedals" class="w-full bg-[#121316] border border-[#2A2D36] rounded-xl px-3 py-2 text-sm text-[#FFFFFF] focus:outline-none focus:border-[#8B5CF6]">
             </div>
         </div>
 </div></div>
@@ -1073,13 +1073,13 @@
 <div id="image-zoom-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] hidden flex items-center justify-center p-4 animate-fade-in" onclick="closeImageZoomModal(event)">
         <div onclick="event.stopPropagation()" class="bg-[#1C1E24] border border-[#2A2D36] rounded-2xl max-w-lg w-full p-4 relative space-y-3 shadow-2xl cursor-default" onclick="event.stopPropagation()">
             <div class="flex items-center justify-between border-b border-[#2A2D36] pb-2.5">
-                <h3 id="image-zoom-title" class="text-sm font-bold text-[#FFFFFF] truncate max-w-[85%]">Vista Previa del Pedal</h3>
-                <button onclick="closeImageZoomModal()" title="Cerrar vista previa" class="text-[#9CA3AF] hover:text-[#FFFFFF] hover:bg-[#2A2D36] p-1.5 rounded-lg transition-all text-sm font-bold">
+                <h3 id="image-zoom-title" class="text-sm font-bold text-[#FFFFFF] truncate max-w-[85%]"><span data-i18n="title_pedal_preview">Pedal Preview</span></h3>
+                <button onclick="closeImageZoomModal()" title="Close preview" data-i18n-title="title_close_preview" class="text-[#9CA3AF] hover:text-[#FFFFFF] hover:bg-[#2A2D36] p-1.5 rounded-lg transition-all text-sm font-bold">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
             <div class="flex justify-center items-center bg-[#121316] p-4 rounded-xl border border-[#2A2D36] min-h-[220px]">
-                <img id="image-zoom-img" src="" alt="Pedal Ampliado" class="max-h-[65vh] max-w-full object-contain rounded-lg shadow-md">
+                <img id="image-zoom-img" src="" alt="Enlarged Pedal" class="max-h-[65vh] max-w-full object-contain rounded-lg shadow-md">
             </div>
         </div>
 </div>
@@ -4098,7 +4098,7 @@ function renderDashboardStats() {
                         </span>
                     </div>
                     <p class="text-xs text-[#9CA3AF] leading-relaxed font-sans pt-1">
-                        ${currentLang === 'en' ? `<strong>${withManual} of ${totalItems} equipment</strong> have linked PDF manual. ${missingManual > 0 ? `${missingManual} manual(s) missing link.` : 'Full technical documentation at 100%!'}` : `<strong>${withManual} de ${totalItems} equipos</strong> cuentan con manual PDF enlazado. ${missingManual > 0 ? `Faltan ${missingManual} manuales por vincular.` : '¡Legajo técnico completo al 100%!'}`}
+                        ${currentLang === 'en' ? `<strong>${withManual} of ${totalItems} equipment</strong> have linked PDF manual. ${missingManual > 0 ? `${missingManual} manual(s) missing link.` : 'Full technical documentation at 100%!'}` : `<strong>${withManual} de ${totalItems} equipos</strong> cuentan con manual PDF enlazado. ${missingManual > 0 ? `${currentLang === "en" ? missingManual + " manual(s) missing link." : "Faltan " + missingManual + " manuales por vincular."}` : '¡Legajo técnico completo al 100%!'}`}
                     </p>
                     ${missingManualItems.length > 0 ? `
                         <div class="mt-2 pt-2 border-t border-[#2A2D36] text-[11px] font-mono">
@@ -4173,8 +4173,8 @@ function renderCollectionPedals() {
         utilityList = utilityList.filter(p => (p.name || '').toLowerCase().includes(q) || (p.brand || '').toLowerCase().includes(q));
     }
 
-    if (effectsCounter) effectsCounter.textContent = `${effectsList.length} pedal${effectsList.length !== 1 ? 'es' : ''}`;
-    if (utilityCounter) utilityCounter.textContent = `${utilityList.length} pedal${utilityList.length !== 1 ? 'es' : ''}`;
+    if (effectsCounter) effectsCounter.textContent = `${effectsList.length} ${currentLang === 'en' ? (effectsList.length === 1 ? 'pedal' : 'pedals') : (effectsList.length === 1 ? 'pedal' : 'pedales')}`;
+    if (utilityCounter) utilityCounter.textContent = `${utilityList.length} ${currentLang === 'en' ? (utilityList.length === 1 ? 'pedal' : 'pedals') : (utilityList.length === 1 ? 'pedal' : 'pedales')}`;
 
     effectsGrid.innerHTML = effectsList.length === 0 ? '<span class="text-xs text-[#9CA3AF] italic col-span-full">No hay pedales de efecto.</span>' : '';
     effectsList.forEach(p => effectsGrid.appendChild(createPedalCatalogCard(p, 'effects')));
@@ -4198,7 +4198,7 @@ function renderCollectionPower() {
         list = list.filter(ps => (ps.name || '').toLowerCase().includes(q) || (ps.brand || '').toLowerCase().includes(q));
     }
 
-    if (counter) counter.textContent = `${list.length} fuente${list.length !== 1 ? 's' : ''}`;
+    if (counter) counter.textContent = `${list.length} ${currentLang === 'en' ? (list.length === 1 ? 'power supply' : 'power supplies') : (list.length === 1 ? 'fuente' : 'fuentes')}`;
     grid.innerHTML = list.length === 0 ? (currentLang === 'en' ? '<span class="text-xs text-[#9CA3AF] italic col-span-full">No power supplies in your collection.</span>' : '<span class="text-xs text-[#9CA3AF] italic col-span-full">No hay fuentes en tu colección.</span>') : '';
 
     list.forEach(ps => {
@@ -4216,23 +4216,23 @@ function renderCollectionPower() {
                         ${ps.brand}
                     </span>
                     <span class="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-[#121316] text-[#00A8CC] border border-[#2A2D36]">
-                        ${outletCount} salidas
+                        ${outletCount} ${currentLang === "en" ? "outlets" : "salidas"}
                     </span>
                 </div>
                 <div class="flex items-center gap-2.5 my-1.5">
                     ${photoHtml}
                     <div class="min-w-0 flex-1">
                         <h4 class="font-bold text-xs sm:text-sm text-white group-hover:text-[#F15A24] transition-colors line-clamp-2 leading-tight" title="${(ps.brand ? ps.brand + ' - ' : '') + (ps.model || ps.name)}">${getCleanItemDisplayName(ps)}</h4>
-                        <p class="text-[10px] text-[#9CA3AF] truncate">${outletCount} salidas aisladas</p>
+                        <p class="text-[10px] text-[#9CA3AF] truncate">${outletCount} ${currentLang === "en" ? "isolated outlets" : "salidas aisladas"}</p>
                     </div>
                 </div>
             </div>
             <div class="mt-3 pt-2 border-t border-[#2A2D36] flex items-center justify-start">
                 <button onclick="event.stopPropagation(); movePowerSupplyToForSale('${ps.id}')" class="bg-[#121316] hover:bg-[#20232B] text-[#9CA3AF] border border-[#2A2D36] hover:border-[#EAB308]/40 px-2.5 py-1 rounded-lg text-xs font-mono font-semibold inline-flex items-center gap-1.5 transition-all cursor-pointer self-start">
-                    <i class="fa-solid fa-tag text-xs text-[#EAB308]"></i> Vender
+                    <i class="fa-solid fa-tag text-xs text-[#EAB308]"></i> ${currentLang === "en" ? "Sell" : "Vender"}
                 </button>
             </div>
-            <button onclick="promptDeletePowerSupply('${ps.id}', event)" title="Eliminar fuente definitivamente" class="absolute top-2.5 right-2.5 text-[#9CA3AF] hover:text-[#F15A24] p-1.5 rounded-lg hover:bg-[#121316] transition-all z-10 cursor-pointer">
+            <button onclick="promptDeletePowerSupply('${ps.id}', event)" title="${currentLang === 'en' ? 'Delete power supply permanently' : 'Eliminar fuente definitivamente'}" class="absolute top-2.5 right-2.5 text-[#9CA3AF] hover:text-[#F15A24] p-1.5 rounded-lg hover:bg-[#121316] transition-all z-10 cursor-pointer">
                 <i class="fa-solid fa-trash-can text-xs"></i>
             </button>
         `;
@@ -4258,7 +4258,7 @@ function renderCollectionWishlist() {
         list = list.filter(item => (item.name || '').toLowerCase().includes(q) || (item.brand || '').toLowerCase().includes(q));
     }
 
-    if (counter) counter.textContent = `${list.length} equipo${list.length !== 1 ? 's' : ''}`;
+    if (counter) counter.textContent = `${list.length} ${currentLang === 'en' ? (list.length === 1 ? 'item' : 'items') : (list.length === 1 ? 'equipo' : 'equipos')}`;
     grid.innerHTML = list.length === 0 ? (currentLang === 'en' ? '<span class="text-xs text-[#9CA3AF] italic col-span-full">Your Wishlist is empty.</span>' : '<span class="text-xs text-[#9CA3AF] italic col-span-full">No hay equipos en tu lista de deseos.</span>') : '';
 
     list.forEach(item => {
@@ -4302,13 +4302,13 @@ function renderCollectionForSale() {
                     ${photoHtml}
                     <div class="min-w-0 flex-1">
                         <h4 class="font-bold text-xs sm:text-sm text-white group-hover:text-[#EAB308] transition-colors line-clamp-2 leading-tight" title="${(ps.brand ? ps.brand + ' - ' : '') + (ps.model || ps.name)}">${getCleanItemDisplayName(ps)}</h4>
-                        <p class="text-[10px] text-[#9CA3AF] truncate">${outletCount} salidas aisladas</p>
+                        <p class="text-[10px] text-[#9CA3AF] truncate">${outletCount} ${currentLang === "en" ? "isolated outlets" : "salidas aisladas"}</p>
                     </div>
                 </div>
             </div>
             <div class="mt-3 pt-2 border-t border-[#2A2D36] flex items-center justify-start">
                 <div class="flex items-center gap-2 self-start flex-wrap">
-                    <button onclick="event.stopPropagation(); restorePowerSupplyFromForSale('${ps.id}')" class="bg-[#121316] hover:bg-[#20232B] text-[#9CA3AF] border border-[#2A2D36] hover:border-[#00A8CC]/40 px-2.5 py-1 rounded-lg text-xs font-mono font-semibold inline-flex items-center gap-1.5 transition-all cursor-pointer whitespace-nowrap"><i class="fa-solid fa-rotate-left text-xs text-[#00A8CC]"></i> Vuelta a colección</button>
+                    <button onclick="event.stopPropagation(); restorePowerSupplyFromForSale('${ps.id}')" class="bg-[#121316] hover:bg-[#20232B] text-[#9CA3AF] border border-[#2A2D36] hover:border-[#00A8CC]/40 px-2.5 py-1 rounded-lg text-xs font-mono font-semibold inline-flex items-center gap-1.5 transition-all cursor-pointer whitespace-nowrap"><i class="fa-solid fa-rotate-left text-xs text-[#00A8CC]"></i> ${currentLang === "en" ? "Back to collection" : "Vuelta a colección"}</button>
                     <button onclick="event.stopPropagation(); executeDeleteForSaleItem('${ps.id}')" class="bg-[#121316] hover:bg-[#20232B] text-[#9CA3AF] border border-[#2A2D36] hover:border-[#F15A24]/40 px-2.5 py-1 rounded-lg text-xs font-mono font-semibold inline-flex items-center gap-1.5 transition-all cursor-pointer whitespace-nowrap"><i class="fa-solid fa-check text-xs text-[#F15A24]"></i> ¡Vendido!</button>
                 </div>
             </div>
@@ -4337,13 +4337,13 @@ function createPedalCatalogCard(pedal, sectionType = 'effects') {
 
     let actionBtnHtml = '';
     if (sectionType === 'effects' || sectionType === 'utility') {
-        actionBtnHtml = `<button onclick="event.stopPropagation(); movePedalToForSale('${pedal.id}')" class="bg-[#121316] hover:bg-[#20232B] text-[#9CA3AF] border border-[#2A2D36] hover:border-[#EAB308]/40 px-2.5 py-1 rounded-lg text-xs font-mono font-semibold inline-flex items-center gap-1.5 transition-all cursor-pointer self-start"><i class="fa-solid fa-tag text-xs text-[#EAB308]"></i> Vender</button>`;
+        actionBtnHtml = `<button onclick="event.stopPropagation(); movePedalToForSale('${pedal.id}')" class="bg-[#121316] hover:bg-[#20232B] text-[#9CA3AF] border border-[#2A2D36] hover:border-[#EAB308]/40 px-2.5 py-1 rounded-lg text-xs font-mono font-semibold inline-flex items-center gap-1.5 transition-all cursor-pointer self-start"><i class="fa-solid fa-tag text-xs text-[#EAB308]"></i> ${currentLang === "en" ? "Sell" : "Vender"}</button>`;
     } else if (sectionType === 'wishlist') {
-        actionBtnHtml = `<button onclick="event.stopPropagation(); moveWishlistToCollection('${pedal.id}')" class="bg-[#121316] hover:bg-[#20232B] text-[#9CA3AF] border border-[#2A2D36] hover:border-[#8B5CF6]/40 px-2.5 py-1 rounded-lg text-xs font-mono font-semibold inline-flex items-center gap-1.5 transition-all cursor-pointer self-start"><i class="fa-solid fa-cart-shopping text-xs text-[#8B5CF6]"></i> ¡Lo compré!</button>`;
+        actionBtnHtml = `<button onclick="event.stopPropagation(); moveWishlistToCollection('${pedal.id}')" class="bg-[#121316] hover:bg-[#20232B] text-[#9CA3AF] border border-[#2A2D36] hover:border-[#8B5CF6]/40 px-2.5 py-1 rounded-lg text-xs font-mono font-semibold inline-flex items-center gap-1.5 transition-all cursor-pointer self-start"><i class="fa-solid fa-cart-shopping text-xs text-[#8B5CF6]"></i> ${currentLang === "en" ? "I bought it!" : "¡Lo compré!"}</button>`;
     } else if (sectionType === 'forsale') {
         actionBtnHtml = `
             <div class="flex items-center gap-2 self-start flex-wrap">
-                <button onclick="event.stopPropagation(); restorePedalFromForSale('${pedal.id}')" class="bg-[#121316] hover:bg-[#20232B] text-[#9CA3AF] border border-[#2A2D36] hover:border-[#00A8CC]/40 px-2.5 py-1 rounded-lg text-xs font-mono font-semibold inline-flex items-center gap-1.5 transition-all cursor-pointer whitespace-nowrap"><i class="fa-solid fa-rotate-left text-xs text-[#00A8CC]"></i> Vuelta a colección</button>
+                <button onclick="event.stopPropagation(); restorePedalFromForSale('${pedal.id}')" class="bg-[#121316] hover:bg-[#20232B] text-[#9CA3AF] border border-[#2A2D36] hover:border-[#00A8CC]/40 px-2.5 py-1 rounded-lg text-xs font-mono font-semibold inline-flex items-center gap-1.5 transition-all cursor-pointer whitespace-nowrap"><i class="fa-solid fa-rotate-left text-xs text-[#00A8CC]"></i> ${currentLang === "en" ? "Back to collection" : "Vuelta a colección"}</button>
                 <button onclick="event.stopPropagation(); executeDeleteForSaleItem('${pedal.id}')" class="bg-[#121316] hover:bg-[#20232B] text-[#9CA3AF] border border-[#2A2D36] hover:border-[#F15A24]/40 px-2.5 py-1 rounded-lg text-xs font-mono font-semibold inline-flex items-center gap-1.5 transition-all cursor-pointer whitespace-nowrap"><i class="fa-solid fa-check text-xs text-[#F15A24]"></i> ¡Vendido!</button>
             </div>`;
     }
@@ -4370,7 +4370,7 @@ function createPedalCatalogCard(pedal, sectionType = 'effects') {
         <div class="mt-3 pt-2 border-t border-[#2A2D36] flex items-center justify-start">
             ${actionBtnHtml}
         </div>
-        <button onclick="promptDeletePedal('${pedal.id}', event)" title="Eliminar pedal definitivamente" class="absolute top-2.5 right-2.5 text-[#9CA3AF] hover:text-[#F15A24] p-1.5 rounded-lg hover:bg-[#121316] transition-all z-10 cursor-pointer">
+        <button onclick="promptDeletePedal('${pedal.id}', event)" title="${currentLang === 'en' ? 'Delete pedal permanently' : 'Eliminar pedal definitivamente'}" class="absolute top-2.5 right-2.5 text-[#9CA3AF] hover:text-[#F15A24] p-1.5 rounded-lg hover:bg-[#121316] transition-all z-10 cursor-pointer">
             <i class="fa-solid fa-trash-can text-xs"></i>
         </button>
     `;
@@ -4950,7 +4950,7 @@ function renderMasterCatalog() {
                             ${ps.brand}
                         </span>
                         <span class="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-[#121316] text-[#00A8CC] border border-[#2A2D36]">
-                            ${outletCount} salidas
+                            ${outletCount} ${currentLang === "en" ? "outlets" : "salidas"}
                         </span>
                     </div>
                     <div class="flex items-center gap-2.5 my-1.5">
@@ -4967,7 +4967,7 @@ function renderMasterCatalog() {
                         <i class="fa-solid fa-heart text-xs text-[#8B5CF6]"></i> Wishlist
                     </button>
                     <button onclick="addFactoryPowerSupplyToCollection('${ps.presetType}')" class="bg-[#121316] hover:bg-[#20232B] text-[#F15A24] border border-[#2A2D36] hover:border-[#F15A24]/40 px-2 py-1 rounded-lg text-xs font-semibold flex items-center justify-center gap-1 transition-all cursor-pointer">
-                        <i class="fa-solid fa-layer-group text-xs text-[#F15A24]"></i> Colección
+                        <i class="fa-solid fa-layer-group text-xs text-[#F15A24]"></i> ${currentLang === "en" ? "Collection" : "Colección"}
                     </button>
                 </div>
             `;
@@ -5029,7 +5029,7 @@ function renderMasterCatalog() {
                     <i class="fa-solid fa-heart text-xs text-[#8B5CF6]"></i> Wishlist
                 </button>
                 <button onclick="addFactoryPedalToCollection('${pedal.id}')" class="bg-[#121316] hover:bg-[#20232B] text-[#F15A24] border border-[#2A2D36] hover:border-[#F15A24]/40 px-2 py-1 rounded-lg text-xs font-semibold flex items-center justify-center gap-1 transition-all cursor-pointer">
-                    <i class="fa-solid fa-layer-group text-xs text-[#F15A24]"></i> Colección
+                    <i class="fa-solid fa-layer-group text-xs text-[#F15A24]"></i> ${currentLang === "en" ? "Collection" : "Colección"}
                 </button>
             </div>
         `;
@@ -5048,7 +5048,7 @@ function addFactoryPedalToCollection(id) {
         pedalDatabase.push(copy);
         saveStateToLocalStorage();
         refreshAllCollectionViews();
-        alert(`¡${item.name} agregado a tu colección!`);
+        alert(`${currentLang === "en" ? item.name + " added to your collection!" : "¡" + item.name + " agregado a tu colección!"}`);
     } else {
         alert(currentLang === 'en' ? 'This pedal is already in your collection.' : 'Este pedal ya se encuentra en tu colección.');
     }
@@ -16152,7 +16152,7 @@ function checkGlobalElectricalSafety() {
     activePowerSuppliesInChain.forEach(ps => {
         const stats = computePowerSupplyStats(ps.id);
         if (stats.isOverloaded) {
-            criticalAlerts.push(`⚠️ <strong>Capacidad Total Excedida en ${(ps.brand && !getCleanItemDisplayName(ps).toLowerCase().includes(ps.brand.toLowerCase())) ? ps.brand + ' - ' + getCleanItemDisplayName(ps) : getCleanItemDisplayName(ps)}:</strong> El consumo acumulado (${stats.usedMa} mA) supera la capacidad máxima total de la fuente (${stats.totalCapacity} mA).`);
+            criticalAlerts.push(`⚠️ <strong>${currentLang === 'en' ? 'Total Capacity Exceeded on ' : 'Capacidad Total Excedida en '}${(ps.brand && !getCleanItemDisplayName(ps).toLowerCase().includes(ps.brand.toLowerCase())) ? ps.brand + ' - ' + getCleanItemDisplayName(ps) : getCleanItemDisplayName(ps)}:</strong> ${currentLang === 'en' ? 'Cumulative draw (' + stats.usedMa + ' mA) exceeds maximum power supply capacity (' + stats.totalCapacity + ' mA).' : 'El consumo acumulado (' + stats.usedMa + ' mA) supera la capacidad máxima total de la fuente (' + stats.totalCapacity + ' mA).'}`);
         }
     });
 
@@ -16219,22 +16219,22 @@ function renderCatalog(brandFilter = 'ALL') {
                     </svg>
                 </div>
                 <div class="space-y-1">
-                    <h3 class="text-base font-bold text-[#FFFFFF]">Tu colección personal está vacía</h3>
+                    <h3 class="text-base font-bold text-[#FFFFFF]">${currentLang === "en" ? "Your personal collection is empty" : "Tu colección personal está vacía"}</h3>
                     <p class="text-xs text-[#9CA3AF] max-w-md mx-auto leading-relaxed">
-                        Explorá el Catálogo de pedales para agregar tu equipamiento o agregá un pedal personalizado.
+                        ${currentLang === "en" ? "Explore the Pedal Catalog to add your gear or add custom equipment." : "Explorá el Catálogo de pedales para agregar tu equipamiento o agregá un pedal personalizado."}
                     </p>
                 </div>
 
             </div>
         `;
     } else if (effects.length === 0) {
-        effectsGrid.innerHTML = `<span class="text-xs text-[#9CA3AF] italic col-span-full">No hay pedales de efecto en tu colección con este filtro.</span>`;
+        effectsGrid.innerHTML = `${currentLang === "en" ? "<span class=\"text-xs text-[#9CA3AF] italic col-span-full\">No effect pedals in your collection with this filter.</span>" : "<span class=\"text-xs text-[#9CA3AF] italic col-span-full\">No hay pedales de efecto en tu colección con este filtro.</span>"}`;
     } else {
         effects.forEach(pedal => effectsGrid.appendChild(createPedalCatalogCard(pedal)));
     }
 
     if (utilities.length === 0 && pedalDatabase.length > 0) {
-        utilityGrid.innerHTML = `<span class="text-xs text-[#9CA3AF] italic col-span-full">No hay pedales de utilidad en tu colección con este filtro.</span>`;
+        utilityGrid.innerHTML = `${currentLang === "en" ? "<span class=\"text-xs text-[#9CA3AF] italic col-span-full\">No utility pedals in your collection with this filter.</span>" : "<span class=\"text-xs text-[#9CA3AF] italic col-span-full\">No hay pedales de utilidad en tu colección con este filtro.</span>"}`;
     } else {
         utilities.forEach(pedal => utilityGrid.appendChild(createPedalCatalogCard(pedal)));
     }
@@ -16301,7 +16301,7 @@ function updateBatchDeleteButtonState() {
 function executeDeleteSelectedPedals() {
     const count = selectedPedalIds.size;
     if (count === 0) return;
-    const confirmBatch = confirm(`¿Estás seguro de que deseas eliminar los ${count} pedales seleccionados del catálogo?`);
+    const confirmBatch = confirm(`${currentLang === "en" ? "Are you sure you want to delete the " + count + " selected pedals from the catalog?" : "¿Estás seguro de que deseas eliminar los " + count + " pedales seleccionados del catálogo?"}`);
     if (!confirmBatch) return;
     pushHistory();
     selectedPedalIds.forEach(id => {
@@ -16932,7 +16932,7 @@ function addFactoryPowerSupplyToCollection(presetType) {
         powerSuppliesDatabase.push(newPs);
         saveStateToLocalStorage();
         refreshAllCollectionViews();
-        alert(`¡${newPs.name} agregada a tu colección!`);
+        alert(`${currentLang === "en" ? newPs.name + " added to your collection!" : "¡" + newPs.name + " agregada a tu colección!"}`);
     }
 }
 
@@ -17203,7 +17203,7 @@ function renderSignalChain() {
                     </div>
                     <div>
                         <span class="text-[10px] font-mono font-bold text-[#8B5CF6] uppercase tracking-widest block">ARQUITECTURA PARALELA</span>
-                        <h3 class="text-xs font-bold text-white font-mono">Bucle paralelo</h3>
+                        <h3 class="text-xs font-bold text-white font-mono">${currentLang === "en" ? "Parallel loop" : "Bucle paralelo"}</h3>
                     </div>
                 </div>
                 <div class="flex items-center gap-3">
@@ -17392,7 +17392,7 @@ function renderSignalChain() {
     const totalCountBadgeEl = document.getElementById('total-count-badge');
     if (baseMaEl) baseMaEl.textContent = `${baseMaSum} mA`;
     if (totalMaEl) totalMaEl.textContent = `${totalMaSum} mA`;
-    if (totalCountBadgeEl) totalCountBadgeEl.textContent = `${activeCount} Pedales`;
+    if (totalCountBadgeEl) totalCountBadgeEl.textContent = `${activeCount} ${currentLang === "en" ? (activeCount === 1 ? "Pedal" : "Pedals") : "Pedales"}`;
 
     // --- STEREO TO MONO COLLAPSE NOTICE ---
     let firstCollapseSlotNum = null;
@@ -17413,7 +17413,7 @@ function renderSignalChain() {
             noticeEl.innerHTML = `
                 <div class="bg-[#F59E0B]/10 border border-[#F59E0B]/40 text-[#F59E0B] p-3 rounded-xl text-xs font-sans flex items-center gap-2 mt-3 animate-fade-in">
                     <i class="fa-solid fa-circle-info text-base shrink-0"></i>
-                    <span><strong>Aviso:</strong> El pedal mono colapsará la señal estéreo a partir de la posición #${firstCollapseSlotNum}.</span>
+                    <span><strong>${currentLang === "en" ? "Notice:" : "Aviso:"}</strong> ${currentLang === "en" ? "The mono pedal will collapse stereo signal starting at position #" + firstCollapseSlotNum : "El pedal mono colapsará la señal estéreo a partir de la posición #" + firstCollapseSlotNum}.</span>
                 </div>
             `;
             noticeEl.classList.remove('hidden');
@@ -17572,8 +17572,8 @@ function openAddPowerSupplyToChainModal() {
         listContainer.innerHTML = `
             <div class="text-center py-6 text-[#9CA3AF] space-y-2">
                 <i class="fa-solid fa-plug-circle-check text-2xl text-[#F15A24]/60"></i>
-                <p class="text-xs font-semibold text-[#FFFFFF]">Todas las fuentes de tu colección ya fueron agregadas a esta cadena.</p>
-                <p class="text-[11px] text-[#9CA3AF]">Puedes registrar una nueva fuente en la Pestaña 1 ("Mi colección de pedales").</p>
+                <p class="text-xs font-semibold text-[#FFFFFF]">${currentLang === "en" ? "All power supplies in your collection have been added to this chain." : "Todas las fuentes de tu colección ya fueron agregadas a esta cadena."}</p>
+                <p class="text-[11px] text-[#9CA3AF]">${currentLang === "en" ? "You can register a new power supply in My Collection tab." : "Puedes registrar una nueva fuente en la Pestaña 1 (\"Mi colección de pedales\")."}</p>
             </div>
         `;
     } else {
@@ -17591,7 +17591,7 @@ function openAddPowerSupplyToChainModal() {
                     </div>
                 </div>
                 <button onclick="addPowerSupplyToChain('${ps.id}'); closeAddPowerSupplyToChainModal();" class="bg-[#F15A24] hover:bg-[#d94d1b] text-[#FFFFFF] font-bold px-3 py-1.5 rounded-lg text-xs shrink-0 transition-all shadow-md active:scale-95">
-                    + Agregar
+                    ${currentLang === "en" ? "+ Add" : "+ Agregar"}
                 </button>
             `;
             listContainer.appendChild(item);
@@ -17653,7 +17653,7 @@ function renderChainPowerSupplies() {
         if (stats.percentage >= 80 && stats.percentage <= 100) {
             barColor = 'bg-[#F15A24]';
             textColor = 'text-[#F15A24]';
-            statusBadge = `<span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-[#F15A24]/20 text-[#F15A24] border border-[#F15A24]/40">Carga Alta</span>`;
+            statusBadge = `<span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-[#F15A24]/20 text-[#F15A24] border border-[#F15A24]/40">${currentLang === "en" ? "High Load" : "Carga Alta"}</span>`;
         } else if (stats.isOverloaded || stats.hasConflict) {
             barColor = 'bg-[#F15A24] pulse-critical';
             textColor = 'text-[#F15A24]';
@@ -17664,7 +17664,7 @@ function renderChainPowerSupplies() {
         card.className = "bg-[#1C1E24] border border-[#2A2D36] hover:border-[#F15A24]/50 rounded-xl p-4 pb-6 transition-all hover:shadow-lg cursor-pointer flex flex-col justify-between group relative";
         card.onclick = () => inspectPowerSupply(ps.id);
         card.innerHTML = `
-            <button onclick="removePowerSupplyFromChain('${ps.id}', event)" title="Quitar fuente de esta cadena" class="absolute top-2.5 right-2.5 text-[#9CA3AF] hover:text-[#F15A24] text-xs w-6 h-6 flex items-center justify-center rounded-lg hover:bg-[#121316] transition-all z-10">
+            <button onclick="removePowerSupplyFromChain('${ps.id}', event)" title="${currentLang === 'en' ? 'Remove power supply from this chain' : 'Quitar fuente de esta cadena'}" class="absolute top-2.5 right-2.5 text-[#9CA3AF] hover:text-[#F15A24] text-xs w-6 h-6 flex items-center justify-center rounded-lg hover:bg-[#121316] transition-all z-10">
                 <i class="fa-solid fa-xmark"></i>
             </button>
             <div>
@@ -17678,7 +17678,7 @@ function renderChainPowerSupplies() {
                     ${photoTag}
                     <div class="min-w-0 flex-1">
                         <h3 class="font-bold text-xs sm:text-sm text-[#FFFFFF] group-hover:text-[#F15A24] transition-colors line-clamp-2 leading-tight" title="${(ps.brand ? ps.brand + ' - ' : '') + (ps.model || ps.name)}">${getCleanItemDisplayName(ps)}</h3>
-                        <p class="text-[10px] text-[#9CA3AF] font-mono">${ps.outlets ? ps.outlets.length : 0} Salidas</p>
+                        <p class="text-[10px] text-[#9CA3AF] font-mono">${ps.outlets ? ps.outlets.length : 0} ${currentLang === "en" ? "Outlets" : "Salidas"}</p>
                     </div>
                 </div>
                 
@@ -17750,7 +17750,7 @@ function renderEnergySummaryTable() {
                 if (isError) {
                     statusHtml = `<span class="text-[#F15A24] font-bold pulse-critical">⚠️ ${errorMsgs.join(' / ')}</span>`;
                 } else {
-                    statusHtml = `<span class="text-[#EAB308] font-bold">✓ Conectado</span>`;
+                    statusHtml = `<span class="text-[#EAB308] font-bold">${currentLang === "en" ? "✓ Connected" : "✓ Conectado"}</span>`;
                 }
             }
         }
@@ -18089,10 +18089,10 @@ function renderInspector(itemId, currentSlotMode = null) {
                 if (outObj) {
                     const sumMa = pedalDatabase.filter(x => currentChainIds.includes(x.id) && getPedalPowerAssignment(x.id).psId === currentPs.id && getPedalPowerAssignment(x.id).outletId === outObj.id).reduce((s, x) => s + x.maWithMargin, 0);
                     if (sumMa > outObj.maxMa) {
-                        safetyWarning += `<div class="bg-[#F15A24]/20 border border-[#F15A24]/50 text-[#F15A24] p-2.5 rounded-lg text-[11px] font-mono">¡Salida sobrecargada! (${sumMa} mA / Máx ${outObj.maxMa} mA). Se recomienda reasignar el pedal a una salida con mayor margen ó a otra fuente.</div>`;
+                        safetyWarning += `<div class="bg-[#F15A24]/20 border border-[#F15A24]/50 text-[#F15A24] p-2.5 rounded-lg text-[11px] font-mono">${currentLang === "en" ? "Outlet overloaded! (" + sumMa + " mA / Max " + outObj.maxMa + " mA). Reassigning pedal recommended." : "¡Salida sobrecargada! (" + sumMa + " mA / Máx " + outObj.maxMa + " mA). Se recomienda reasignar el pedal."}</div>`;
                     }
                     if (outObj.voltage !== '9V') {
-                        safetyWarning += `<div class="bg-[#F15A24]/30 border border-[#F15A24] text-[#F15A24] p-2.5 rounded-lg text-[11px] font-mono font-bold pulse-critical">⚠️ ¡Peligro Crítico! Voltaje incompatible. Salida configurada a ${outObj.voltage}.</div>`;
+                        safetyWarning += `<div class="bg-[#F15A24]/30 border border-[#F15A24] text-[#F15A24] p-2.5 rounded-lg text-[11px] font-mono font-bold pulse-critical">⚠️ ${currentLang === "en" ? "Critical Warning! Incompatible voltage. Outlet set to " + outObj.voltage : "¡Peligro Crítico! Voltaje incompatible. Salida configurada a " + outObj.voltage}.</div>`;
                     }
                 }
             }
@@ -18125,7 +18125,7 @@ function renderInspector(itemId, currentSlotMode = null) {
                     manualButtonHtml = `
                         <div class="pt-1">
                             <a href="${pedal.manualUrl}" target="_blank" rel="noopener noreferrer" class="w-full text-[#00A8CC] bg-[#00A8CC]/10 hover:bg-[#00A8CC]/20 border border-[#00A8CC]/30 font-semibold py-2.5 px-3 rounded-xl text-xs flex items-center justify-center gap-2 transition-all shadow-md active:scale-95">
-                                <i class="fa-solid fa-file-pdf"></i> Abrir Manual PDF
+                                <i class="fa-solid fa-file-pdf"></i> ${currentLang === "en" ? "Open PDF Manual" : "Abrir Manual PDF"}
                             </a>
                         </div>
                     `;
@@ -18133,7 +18133,7 @@ function renderInspector(itemId, currentSlotMode = null) {
                     manualButtonHtml = `
                         <div class="pt-1 flex items-center gap-2">
                             <a href="${pedal.manualUrl}" target="_blank" rel="noopener noreferrer" class="flex-1 text-[#00A8CC] bg-[#00A8CC]/10 hover:bg-[#00A8CC]/20 border border-[#00A8CC]/30 font-semibold py-2.5 px-3 rounded-xl text-xs flex items-center justify-center gap-2 transition-all shadow-md active:scale-95">
-                                <i class="fa-solid fa-file-pdf"></i> Abrir Manual PDF
+                                <i class="fa-solid fa-file-pdf"></i> ${currentLang === "en" ? "Open PDF Manual" : "Abrir Manual PDF"}
                             </a>
                             <button onclick="openEditManualModal('${isWishlist ? 'WISHLIST' : 'PEDAL'}', '${pedal.id}')" title="${currentLang === 'en' ? 'Edit Manual URL' : 'Editar URL del Manual'}" class="bg-[#1C1E24] hover:bg-[#20232B] text-[#9CA3AF] hover:text-[#FFFFFF] border border-[#2A2D36] p-2.5 rounded-xl text-xs cursor-pointer">
                                 <i class="fa-solid fa-pen"></i>
@@ -18145,7 +18145,7 @@ function renderInspector(itemId, currentSlotMode = null) {
                 manualButtonHtml = `
                     <div class="pt-1">
                         <button onclick="openEditManualModal('${isWishlist ? 'WISHLIST' : 'PEDAL'}', '${pedal.id}')" class="w-full bg-[#121316] hover:bg-[#20232B] text-[#00A8CC] border border-[#2A2D36] hover:border-[#00A8CC]/50 font-semibold py-2.5 px-3 rounded-xl text-xs flex items-center justify-center gap-2 transition-all shadow-md active:scale-95 cursor-pointer">
-                            <i class="fa-solid fa-plus"></i> Agregar URL del manual
+                            <i class="fa-solid fa-plus"></i> ${currentLang === "en" ? "Add manual URL" : "Agregar URL del manual"}
                         </button>
                     </div>
                 `;
@@ -18196,19 +18196,19 @@ function renderInspector(itemId, currentSlotMode = null) {
                         <div>
                             <label class="text-[10px] text-[#9CA3AF] font-mono block mb-1">Fuente asignada (lectura):</label>
                             <div class="w-full bg-[#1C1E24] text-[#00A8CC] border border-[#2A2D36] rounded-lg px-2.5 py-1.5 text-xs font-mono font-bold flex items-center justify-between">
-                                <span>${currentPs ? `${currentPs.brand} ${currentPs.model}` : 'Sin fuente asignada'}</span>
+                                <span>${currentPs ? `${currentPs.brand} ${currentPs.model}` : (currentLang === 'en' ? 'No supply assigned' : 'Sin fuente asignada')}</span>
                                 <i class="fa-solid fa-lock text-[10px] text-[#9CA3AF]" title="Control centralizado desde el panel de la Fuente"></i>
                             </div>
                         </div>
                         <div>
                             <label class="text-[10px] text-[#9CA3AF] font-mono block mb-1">${currentLang === "en" ? "Specific physical outlet (read-only):" : "Salida física específica (lectura):"}</label>
                             <div class="w-full bg-[#1C1E24] text-[#00A8CC] border border-[#2A2D36] rounded-lg px-2.5 py-1.5 text-xs font-mono font-bold flex items-center justify-between">
-                                <span>${assignedOutletObj ? `${assignedOutletObj.label} (${assignedOutletObj.voltage} @ ${assignedOutletObj.maxMa}mA)` : 'Sin salida asignada'}</span>
+                                <span>${assignedOutletObj ? `${assignedOutletObj.label} (${assignedOutletObj.voltage} @ ${assignedOutletObj.maxMa}mA)` : (currentLang === 'en' ? 'No outlet assigned' : 'Sin salida asignada')}</span>
                                 <i class="fa-solid fa-lock text-[10px] text-[#9CA3AF]" title="Control centralizado desde el panel de la Fuente"></i>
                             </div>
                         </div>
                         <p class="text-[10px] text-[#9CA3AF] font-sans italic pt-1">
-                            <i class="fa-solid fa-circle-info text-[#00A8CC] mr-1"></i>Para asignar o modificar la conexión, hazlo desde la vista "Mis cadenas de pedales" (Pestaña 2).
+                            <i class="fa-solid fa-circle-info text-[#00A8CC] mr-1"></i>${currentLang === "en" ? "To assign or modify connection, do so from My Chains tab." : "Para asignar o modificar la conexión, hazlo desde la vista \"Mis cadenas de pedales\" (Pestaña 2)."}
                         </p>
                         ${safetyWarning}
                     </div>
@@ -18279,7 +18279,7 @@ const maBase = pedal.maBase || pedal.maDraw || 20;
                     manualButtonHtml = `
                         <div class="pt-1">
                             <a href="${pedal.manualUrl}" target="_blank" rel="noopener noreferrer" class="w-full text-[#00A8CC] bg-[#00A8CC]/10 hover:bg-[#00A8CC]/20 border border-[#00A8CC]/30 font-semibold py-2.5 px-3 rounded-xl text-xs flex items-center justify-center gap-2 transition-all shadow-md active:scale-95">
-                                <i class="fa-solid fa-file-pdf"></i> Abrir Manual PDF
+                                <i class="fa-solid fa-file-pdf"></i> ${currentLang === "en" ? "Open PDF Manual" : "Abrir Manual PDF"}
                             </a>
                         </div>
                     `;
@@ -18287,7 +18287,7 @@ const maBase = pedal.maBase || pedal.maDraw || 20;
                     manualButtonHtml = `
                         <div class="pt-1 flex items-center gap-2">
                             <a href="${pedal.manualUrl}" target="_blank" rel="noopener noreferrer" class="flex-1 text-[#00A8CC] bg-[#00A8CC]/10 hover:bg-[#00A8CC]/20 border border-[#00A8CC]/30 font-semibold py-2.5 px-3 rounded-xl text-xs flex items-center justify-center gap-2 transition-all shadow-md active:scale-95">
-                                <i class="fa-solid fa-file-pdf"></i> Abrir Manual PDF
+                                <i class="fa-solid fa-file-pdf"></i> ${currentLang === "en" ? "Open PDF Manual" : "Abrir Manual PDF"}
                             </a>
                             <button onclick="openEditManualModal('${isWishlist ? 'WISHLIST' : 'PEDAL'}', '${pedal.id}')" title="${currentLang === 'en' ? 'Edit Manual URL' : 'Editar URL del Manual'}" class="bg-[#1C1E24] hover:bg-[#20232B] text-[#9CA3AF] hover:text-[#FFFFFF] border border-[#2A2D36] p-2.5 rounded-xl text-xs cursor-pointer">
                                 <i class="fa-solid fa-pen"></i>
@@ -18299,7 +18299,7 @@ const maBase = pedal.maBase || pedal.maDraw || 20;
                 manualButtonHtml = `
                     <div class="pt-1">
                         <button onclick="openEditManualModal('${isWishlist ? 'WISHLIST' : 'PEDAL'}', '${pedal.id}')" class="w-full bg-[#121316] hover:bg-[#20232B] text-[#00A8CC] border border-[#2A2D36] hover:border-[#00A8CC]/50 font-semibold py-2.5 px-3 rounded-xl text-xs flex items-center justify-center gap-2 transition-all shadow-md active:scale-95 cursor-pointer">
-                            <i class="fa-solid fa-plus"></i> Agregar URL del manual
+                            <i class="fa-solid fa-plus"></i> ${currentLang === "en" ? "Add manual URL" : "Agregar URL del manual"}
                         </button>
                     </div>
                 `;
@@ -18342,7 +18342,7 @@ const maBase = pedal.maBase || pedal.maDraw || 20;
                         </p>
                         <div class="pt-2.5 border-t border-[#2A2D36] font-mono space-y-1 text-xs">
                             <div class="font-bold" style="color: ${themeColor}">
-                                Consumo Base: ${maBase} mA
+                                ${currentLang === 'en' ? 'Base Draw:' : 'Consumo Base:'} ${maBase} mA
                             </div>
                             <div class="text-[#00A8CC] font-bold">
                                 Recomendado (+30%): ${maSafety} mA
@@ -18360,7 +18360,7 @@ const maBase = pedal.maBase || pedal.maDraw || 20;
                                     <span id="insp-price-val-${pedal.id}" class="font-bold text-sm ${isCustomPedalPrice ? 'text-[#F15A24]' : 'text-white'}">
                                         $ ${displayPedalPrice} USD
                                     </span>
-                                    <button onclick="toggleInspectorPriceEditBox('PEDAL', '${pedal.id}')" title="Modificar valor" class="text-[#9CA3AF] hover:text-[#F15A24] p-1.5 rounded-lg hover:bg-[#1C1E24] transition-all cursor-pointer">
+                                    <button onclick="toggleInspectorPriceEditBox('PEDAL', '${pedal.id}')" title="${currentLang === 'en' ? 'Edit price' : 'Modificar valor'}" class="text-[#9CA3AF] hover:text-[#F15A24] p-1.5 rounded-lg hover:bg-[#1C1E24] transition-all cursor-pointer">
                                         <i class="fa-solid fa-pen text-xs"></i>
                                     </button>
                                 </div>
@@ -18462,7 +18462,7 @@ const maBase = pedal.maBase || pedal.maDraw || 20;
 
                 let addPedalOptionsHtml = assignedPedals.length > 0 ? 
                     `<option value="">+ Sumar pedal en Split a ${out.label}...</option>` :
-                    `<option value="">+ Conectar Pedal de la Cadena a ${out.label}...</option>`;
+                    `<option value="">+ ${currentLang === "en" ? "Connect Chain Pedal to " + (out.label ? out.label.replace("Salida", "Outlet") : "Outlet") : "Conectar Pedal de la Cadena a " + out.label}...</option>`;
 
                 activePedalsInChain.forEach(p => {
                     const pAssign = getPedalPowerAssignment(p.id);
@@ -18533,7 +18533,7 @@ const maBase = pedal.maBase || pedal.maDraw || 20;
                     `).join(' ') : '<span class="text-[#9CA3AF] italic text-[11px]">${currentLang === "en" ? "No pedals connected" : "Sin pedales conectados"}</span>';
 
                 const splitBadgeHtml = assignedPedals.length >= 2 ?
-                    `<span class="text-[10px] font-mono bg-[#00A8CC]/20 text-[#00A8CC] border border-[#00A8CC]/30 px-2 py-0.5 rounded font-bold flex items-center gap-1"><i class="fa-solid fa-code-branch text-[#00A8CC]"></i> Split (${assignedPedals.length} pedales)</span>` : '';
+                    `<span class="text-[10px] font-mono bg-[#00A8CC]/20 text-[#00A8CC] border border-[#00A8CC]/30 px-2 py-0.5 rounded font-bold flex items-center gap-1"><i class="fa-solid fa-code-branch text-[#00A8CC]"></i> Split (${assignedPedals.length} ${currentLang === "en" ? (assignedPedals.length === 1 ? "pedal" : "pedals") : "pedales"})</span>` : '';
 
                 return `
                     <div class="bg-[#121316] p-3 rounded-xl border ${isOver || isVoltageAlert ? 'border-[#F15A24]/80 bg-[#F15A24]/10' : 'border-[#2A2D36]'} space-y-2">
@@ -18574,7 +18574,7 @@ const maBase = pedal.maBase || pedal.maDraw || 20;
             !isFactoryPs ? `
                 <div class="pt-1 flex items-center gap-2">
                     <button onclick="openEditManualModal('POWER', '${ps.id}')" class="flex-1 bg-[#121316] hover:bg-[#20232B] text-[#00A8CC] border border-[#2A2D36] hover:border-[#00A8CC]/50 font-semibold py-2.5 px-3 rounded-xl text-xs flex items-center justify-center gap-2 transition-all shadow-md">
-                        <i class="fa-solid fa-plus"></i> Agregar URL del manual
+                        <i class="fa-solid fa-plus"></i> ${currentLang === "en" ? "Add manual URL" : "Agregar URL del manual"}
                     </button>
                 </div>
             ` : ''
@@ -18626,7 +18626,7 @@ const maBase = pedal.maBase || pedal.maDraw || 20;
                                 <span id="insp-price-val-${ps.id}" class="font-bold text-sm ${isCustomPsPrice ? 'text-[#F15A24]' : 'text-white'}">
                                     $ ${displayPsPrice} USD
                                 </span>
-                                <button onclick="toggleInspectorPriceEditBox('POWER', '${ps.id}')" title="Modificar valor" class="text-[#9CA3AF] hover:text-[#F15A24] p-1.5 rounded-lg hover:bg-[#1C1E24] transition-all cursor-pointer">
+                                <button onclick="toggleInspectorPriceEditBox('POWER', '${ps.id}')" title="${currentLang === 'en' ? 'Edit price' : 'Modificar valor'}" class="text-[#9CA3AF] hover:text-[#F15A24] p-1.5 rounded-lg hover:bg-[#1C1E24] transition-all cursor-pointer">
                                     <i class="fa-solid fa-pen text-xs"></i>
                                 </button>
                             </div>
@@ -18647,7 +18647,7 @@ const maBase = pedal.maBase || pedal.maDraw || 20;
             ${psManualButtonHtml}
             <div class="space-y-2 border-t border-[#2A2D36] pt-4">
                 <h4 class="text-xs font-semibold text-[#FFFFFF] uppercase tracking-wider flex items-center justify-between">
-                    <span><i class="fa-solid fa-note-sticky text-[#00A8CC] mr-1.5"></i>Notas de la fuente</span>
+                    <span><i class="fa-solid fa-note-sticky text-[#00A8CC] mr-1.5"></i>${currentLang === "en" ? "Power Supply Notes" : "Notas de la fuente"}</span>
                 </h4>
                 <textarea id="item-notes-textarea" rows="10" placeholder="${currentLang === 'en' ? 'Connection notes, special outlets or splitter...' : 'Notas de conexión, salidas especiales o splitter...'}" class="w-full bg-[#121316] border border-[#2A2D36] rounded-xl p-3 text-xs text-[#FFFFFF] focus:outline-none focus:border-[#00A8CC] resize-y font-sans min-h-[160px]">${ps.notes || ''}</textarea>
                 <div class="flex justify-end">
@@ -18967,7 +18967,7 @@ function executeRegisterNewPowerSupply() {
         model,
         name: `${brand} ${model}`,
         outlets,
-        details: details || `${count} salidas aisladas personalizadas.`,
+        details: details || `${count} ${currentLang === "en" ? "custom isolated outlets." : "salidas aisladas personalizadas."}`,
         manualUrl: manualUrl,
         imageUrl: tempPowerPhotoBase64 || photoUrlInput || null,
         notes: ''
@@ -19117,7 +19117,7 @@ function openSaveFavoriteModal() {
     document.getElementById('fav-name-input').value = `Preset ${favoriteChains.length + 1}`;
     const overwriteSelect = document.getElementById('fav-overwrite-select');
     overwriteSelect.innerHTML = favoriteChains.map((fav, i) => `
-        <option value="${i}">${fav.name} (${fav.slots ? fav.slots.filter(x => x && x !== 'EMPTY').length : 0} pedales)</option>
+        <option value="${i}">${fav.name} (${fav.slots ? fav.slots.filter(x => x && x !== 'EMPTY').length : 0} ${currentLang === "en" ? "pedals" : "pedales"})</option>
     `).join('');
     selectedSaveFavTags = [];
     setSaveFavMode('NEW');
@@ -19253,7 +19253,7 @@ function duplicateCurrentChain() {
     saveStateToLocalStorage();
     renderFavoriteBadges();
     if (typeof renderDashboardStats === 'function') renderDashboardStats();
-    alert(`¡Cadena duplicada al 100%! Se creó el preset "${newName}".`);
+    alert(`${currentLang === "en" ? "Chain 100% duplicated! Preset \"" + newName + "\" created." : "¡Cadena duplicada al 100%! Se creó el preset \"" + newName + "\"."}`);
 }
 
 let presetToDeleteIndex = null;
@@ -19327,7 +19327,7 @@ function renderFavoriteBadges() {
     }
     
     if (filteredFavs.length === 0) {
-        container.innerHTML = `<span class="text-xs text-[#9CA3AF] italic">No hay presets guardados con el estilo "${currentTagFilter}".</span>`;
+        container.innerHTML = `${currentLang === "en" ? "<span class=\"text-xs text-[#9CA3AF] italic\">No saved presets with style \"" + currentTagFilter + "\".</span>" : "<span class=\"text-xs text-[#9CA3AF] italic\">No hay presets guardados con el estilo \"" + currentTagFilter + "\".</span>"}`;
         return;
     }
 
@@ -19374,13 +19374,13 @@ function renderFavoriteBadges() {
                         <button onclick="duplicateFavorite(${i}, event)" title="Duplicar preset al 100%" class="text-[#9CA3AF] hover:text-[#00A8CC] text-xs p-0.5 transition-colors cursor-pointer">
                             <i class="fa-solid fa-copy"></i>
                         </button>
-                        <button onclick="confirmDeleteFavorite(${i}, event)" title="Eliminar preset" class="text-[#9CA3AF] hover:text-[#F15A24] text-xs p-0.5 transition-colors cursor-pointer">
+                        <button onclick="confirmDeleteFavorite(${i}, event)" title="${currentLang === 'en' ? 'Delete preset' : 'Eliminar preset'}" class="text-[#9CA3AF] hover:text-[#F15A24] text-xs p-0.5 transition-colors cursor-pointer">
                             <i class="fa-solid fa-trash-can"></i>
                         </button>
                     </div>
                 </div>
                 <div class="text-[10px] text-[#9CA3AF]">
-                    ${count} pedales • <span class="text-[#00A8CC]">${ma} mA</span>
+                    ${count} ${currentLang === "en" ? (count === 1 ? "pedal" : "pedals") : "pedales"} • <span class="text-[#00A8CC]">${ma} mA</span>
                 </div>
                 ${tagsHtml}
             </div>
@@ -19614,14 +19614,14 @@ function renderMasterWishlistCatalog() {
     filtered.sort((a, b) => a.brand.localeCompare(b.brand) || a.name.localeCompare(b.name));
 
     if (counter) {
-        counter.textContent = `Mostrando ${filtered.length} pedales`;
+        counter.textContent = `${currentLang === "en" ? "Showing " + filtered.length + " pedals" : "Mostrando " + filtered.length + " pedales"}`;
     }
 
     if (filtered.length === 0) {
         grid.innerHTML = `
             <div class="col-span-full py-12 text-center text-[#9CA3AF] space-y-2">
                 <i class="fa-solid fa-magnifying-glass text-2xl text-[#2A2D36]"></i>
-                <p class="text-xs font-mono">No se encontraron pedales en el catálogo con los filtros aplicados.</p>
+                <p class="text-xs font-mono">${currentLang === "en" ? "No pedals found in catalog with applied filters." : "No se encontraron pedales en el catálogo con los filtros aplicados."}</p>
             </div>
         `;
         return;
@@ -19943,21 +19943,21 @@ function exportChainToPDF() {
                 <div>
                     <span class="text-[10px] font-mono font-bold text-[#8B5CF6] uppercase tracking-widest block">MY PEDAL RIG • TECH RIDER</span>
                     <h2 class="text-lg font-black text-white tracking-tight mt-0.5" data-i18n="lbl_active_chain">Cadena Activa de Escenario</h2>
-                    <p class="text-xs text-[#9CA3AF] mt-0.5">Ficha técnica oficial de ruteo de audio, alimentación y requerimientos eléctricos.</p>
+                    <p class="text-xs text-[#9CA3AF] mt-0.5">${currentLang === "en" ? "Official technical spec sheet for audio routing, power, and electrical requirements." : "Ficha técnica oficial de ruteo de audio, alimentación y requerimientos eléctricos."}</p>
                 </div>
                 <div class="text-right text-xs font-mono text-[#9CA3AF] shrink-0">
                     <div>${todayStr}</div>
-                    <div class="text-[#00A8CC] font-bold text-[11px] mt-0.5">${activeSlots.length} pedales • ${activePowersInChain.length} fuentes</div>
+                    <div class="text-[#00A8CC] font-bold text-[11px] mt-0.5">${activeSlots.length} ${currentLang === "en" ? (activeSlots.length === 1 ? "pedal" : "pedals") : "pedales"} • ${activePowersInChain.length} ${currentLang === "en" ? (activePowersInChain.length === 1 ? "power supply" : "power supplies") : "fuentes"}</div>
                 </div>
             </div>
 
             <div class="grid grid-cols-3 gap-3 text-xs font-mono">
                 <div class="bg-[#1C1E24] p-3 rounded-xl border border-[#2A2D36]">
-                    <span class="text-[10px] text-[#9CA3AF] block">Pedales en cadena:</span>
+                    <span class="text-[10px] text-[#9CA3AF] block">${currentLang === "en" ? "Chain pedals:" : "Pedales en cadena:"}</span>
                     <strong class="text-[#F15A24] text-sm block mt-0.5">${activeSlots.length} unidades</strong>
                 </div>
                 <div class="bg-[#1C1E24] p-3 rounded-xl border border-[#2A2D36]">
-                    <span class="text-[10px] text-[#9CA3AF] block">Consumo acumulado:</span>
+                    <span class="text-[10px] text-[#9CA3AF] block">${currentLang === "en" ? "Cumulative draw:" : "Consumo acumulado:"}</span>
                     <strong class="text-[#00A8CC] text-sm block mt-0.5">${totalMa} mA (+30% seg)</strong>
                 </div>
                 <div class="bg-[#1C1E24] p-3 rounded-xl border border-[#2A2D36]">
@@ -19968,7 +19968,7 @@ function exportChainToPDF() {
 
             <div class="space-y-2 pt-2">
                 <div class="text-[11px] font-mono text-[#F15A24] uppercase font-bold flex items-center gap-1.5">
-                    <i class="fa-solid fa-diagram-project text-xs"></i> 1. RUTEO DE SEÑAL DE AUDIO (ORDEN DE CADENA)
+                    <i class="fa-solid fa-diagram-project text-xs"></i> ${currentLang === "en" ? "1. AUDIO SIGNAL ROUTING (CHAIN ORDER)" : "1. RUTEO DE SEÑAL DE AUDIO (ORDEN DE CADENA)"}
                 </div>
                 <div class="space-y-1.5">
                     ${audioListHtml}
