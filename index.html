@@ -255,7 +255,7 @@
                 <div class="border-t border-[#2A2D36] pt-3.5 mt-1 space-y-2.5">
                     <div class="flex items-center justify-between gap-2 flex-wrap">
                         <div class="text-[11px] font-mono text-[#8B5CF6] uppercase font-bold flex items-center gap-1.5">
-                            <i class="fa-solid fa-sack-dollar text-xs"></i> VALORACIÓN FINANCIERA E INVERSIÓN:
+                            <i class="fa-solid fa-sack-dollar text-xs"></i> <span data-i18n="exp_section_finances">FINANCIAL VALUATION & INVESTMENT:</span>
                         </div>
                     </div>
                     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2.5 pt-1 text-xs font-mono">
@@ -288,7 +288,7 @@
                 <div class="bg-[#1C1E24] border border-[#2A2D36] p-5 rounded-2xl space-y-4">
                     <div class="flex items-center justify-between border-b border-[#2A2D36] pb-3">
                         <h3 class="text-sm font-bold text-white flex items-center gap-2 uppercase tracking-wide">
-                            <i class="fa-solid fa-chart-pie text-[#8B5CF6]"></i> ADN POR TIPO DE EFECTO
+                            <i class="fa-solid fa-chart-pie text-[#8B5CF6]"></i> <span data-i18n="exp_dna_effect_type">EFFECT TYPE DNA</span>
                         </h3>
                         <span class="text-[10px] font-mono text-[#9CA3AF]" data-i18n="exp_distribution_pct">Distribution %</span>
                     </div>
@@ -355,14 +355,14 @@
             <div class="bg-[#1C1E24] border border-[#2A2D36] p-4 rounded-2xl space-y-3">
                 <div class="space-y-1.5">
                     <div class="text-[11px] font-mono text-[#F15A24] uppercase font-bold flex items-center gap-1.5">
-                        <i class="fa-solid fa-filter text-xs"></i> FILTRO POR MARCA:
+                        <i class="fa-solid fa-filter text-xs"></i> <span data-i18n="col_filter_brand">FILTER BY BRAND:</span>
                     </div>
                     <div id="brand-filters" class="flex flex-wrap gap-1.5 text-xs font-mono"></div>
                 </div>
 
                 <div class="border-t border-[#2A2D36] pt-3 space-y-1.5">
                     <div class="text-[11px] font-mono text-[#F15A24] uppercase font-bold flex items-center gap-1.5">
-                        <i class="fa-solid fa-sliders text-xs"></i> FILTRO POR TIPO DE EFECTO:
+                        <i class="fa-solid fa-sliders text-xs"></i> <span data-i18n="col_filter_effect">FILTER BY EFFECT TYPE:</span>
                     </div>
                     <div id="category-filters" class="flex flex-wrap gap-1.5 text-xs font-mono"></div>
                 </div>
@@ -374,12 +374,12 @@
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#2A2D36] pb-2">
                     <div class="flex items-center gap-3">
                         <h3 class="text-sm font-bold text-white flex items-center gap-2 uppercase tracking-wide">
-                            <i class="fa-solid fa-sliders text-[#F15A24]"></i> PEDALES DE EFECTO
+                            <i class="fa-solid fa-sliders text-[#F15A24]"></i> <span data-i18n="sec_effect_pedals">EFFECT PEDALS</span>
                         </h3>
                         <!-- SEARCH BAR (Fuente 209) -->
                         <div class="relative w-48 sm:w-64">
                             <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-[#9CA3AF] text-xs"></i>
-                            <input type="text" id="collection-search-input" oninput="handleCollectionSearch(this.value)" placeholder="Buscar por nombre o marca..." class="w-full bg-[#121316] text-white placeholder-[#9CA3AF]/60 border border-[#2A2D36] focus:border-[#F15A24] rounded-lg pl-8 pr-3 py-1 text-xs font-mono focus:outline-none transition-all">
+                            <input type="text" id="collection-search-input" oninput="handleCollectionSearch(this.value)" placeholder="Search by name or brand..." data-i18n-ph="ph_search_collection" class="w-full bg-[#121316] text-white placeholder-[#9CA3AF]/60 border border-[#2A2D36] focus:border-[#F15A24] rounded-lg pl-8 pr-3 py-1 text-xs font-mono focus:outline-none transition-all">
                         </div>
                     </div>
                     <span id="effects-counter" class="text-xs font-mono text-[#9CA3AF]">0 pedales</span>
@@ -391,7 +391,7 @@
             <section class="space-y-3">
                 <div class="flex items-center justify-between border-b border-[#2A2D36] pb-2">
                     <h3 class="text-sm font-bold text-white flex items-center gap-2 uppercase tracking-wide">
-                        <i class="fa-solid fa-screwdriver-wrench text-[#F15A24]"></i> PEDALES DE UTILIDAD
+                        <i class="fa-solid fa-screwdriver-wrench text-[#F15A24]"></i> <span data-i18n="sec_utility_pedals">UTILITY PEDALS</span>
                     </h3>
                     <span id="utility-counter" class="text-xs font-mono text-[#9CA3AF]">0 pedales</span>
                 </div>
@@ -402,7 +402,7 @@
             <section class="space-y-3">
                 <div class="flex items-center justify-between border-b border-[#2A2D36] pb-2">
                     <h3 class="text-sm font-bold text-white flex items-center gap-2 uppercase tracking-wide">
-                        <i class="fa-solid fa-bolt text-[#F15A24]"></i> FUENTES DE ALIMENTACIÓN
+                        <i class="fa-solid fa-bolt text-[#F15A24]"></i> <span data-i18n="sec_power_supplies">POWER SUPPLIES</span>
                     </h3>
                     <span id="power-counter" class="text-xs font-mono text-[#9CA3AF]">0 fuentes</span>
                 </div>
@@ -413,7 +413,7 @@
             <section class="space-y-3">
                 <div class="flex items-center justify-between border-b border-[#2A2D36] pb-2">
                     <h3 class="text-sm font-bold text-white flex items-center gap-2 uppercase tracking-wide">
-                        <i class="fa-solid fa-heart text-[#8B5CF6]"></i> WISHLIST
+                        <i class="fa-solid fa-heart text-[#8B5CF6]"></i> <span data-i18n="sec_wishlist">WISHLIST</span>
                     </h3>
                     <span id="wishlist-counter" class="text-xs font-mono text-[#9CA3AF]">0 equipos</span>
                 </div>
@@ -424,7 +424,7 @@
             <section class="space-y-3">
                 <div class="flex items-center justify-between border-b border-[#2A2D36] pb-2">
                     <h3 class="text-sm font-bold text-white flex items-center gap-2 uppercase tracking-wide">
-                        <i class="fa-solid fa-tag text-[#EAB308]"></i> EN VENTA
+                        <i class="fa-solid fa-tag text-[#EAB308]"></i> <span data-i18n="sec_for_sale">FOR SALE</span>
                     </h3>
                     <span id="forsale-counter" class="text-xs font-mono text-[#9CA3AF]">0 equipos</span>
                 </div>
@@ -467,7 +467,7 @@
                 <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-[#121316] p-2.5 rounded-xl border border-[#2A2D36]">
                     <div class="flex items-center gap-2">
                         <span class="text-[11px] font-mono font-bold text-[#00A8CC] uppercase flex items-center gap-1.5 px-2">
-                            <i class="fa-solid fa-wand-magic-sparkles text-[#00A8CC]"></i> CONTROLES:
+                            <i class="fa-solid fa-wand-magic-sparkles text-[#00A8CC]"></i> <span data-i18n="chain_controls">CONTROLS:</span>
                         </span>
                     </div>
                     <div class="flex items-center gap-2 text-xs flex-wrap w-full sm:w-auto justify-end">
@@ -514,7 +514,7 @@
 
                 <div class="space-y-1.5">
                     <span class="text-[11px] font-mono font-bold text-[#00A8CC] uppercase flex items-center gap-1.5">
-                            <i class="fa-solid fa-tags text-[#00A8CC]"></i> FILTRAR PRESETS POR ESTILO MUSICAL:
+                            <i class="fa-solid fa-tags text-[#00A8CC]"></i> <span data-i18n="chain_filter_presets_style">FILTER PRESETS BY MUSICAL STYLE:</span>
                         </span>
                     <div id="preset-tag-filters" class="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs"></div>
                 </div>
@@ -533,8 +533,8 @@
             <section class="bg-[#1C1E24] rounded-2xl border border-[#2A2D36] p-5 pb-7 shadow-xl space-y-4">
                 <div class="flex flex-wrap justify-between items-center gap-2 border-b border-[#2A2D36] pb-3">
                     <div>
-                        <h3 class="text-sm font-bold text-white uppercase tracking-wide flex items-center gap-2 shrink-0"><i class="fa-solid fa-diagram-project text-[#00A8CC]"></i> CADENA DE SEÑAL ACTIVA</h3>
-                        <p class="text-xs text-[#9CA3AF]">Selecciona, cambia o arrastra (Drag & Drop) cualquier pedal para reordenar tu rig.</p>
+                        <h3 class="text-sm font-bold text-white uppercase tracking-wide flex items-center gap-2 shrink-0"><i class="fa-solid fa-diagram-project text-[#00A8CC]"></i> <span data-i18n="chain_active_signal_title">ACTIVE SIGNAL CHAIN</span></h3>
+                        <p class="text-xs text-[#9CA3AF]" data-i18n="chain_active_signal_subtitle">Select, swap, or drag & drop any pedal to reorder your rig.</p>
                     </div>
                 </div>
                 <div id="chain-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 pb-4"></div>
@@ -546,9 +546,9 @@
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-[#2A2D36] pb-3">
                     <div>
                         <h3 class="text-sm font-bold text-white flex items-center gap-2 uppercase tracking-wide">
-                            <i class="fa-solid fa-bolt text-[#00A8CC]"></i> FUENTES DE ENERGÍA DE MI CADENA
+                            <i class="fa-solid fa-bolt text-[#00A8CC]"></i> <span data-i18n="chain_power_title">CHAIN POWER SUPPLIES</span>
                         </h3>
-                        <p class="text-xs text-[#9CA3AF]">Monitoreo de miliamperios (mA) y asignación de salidas físicas para las fuentes agregadas a esta cadena de pedales.</p>
+                        <p class="text-xs text-[#9CA3AF]" data-i18n="chain_power_subtitle">Milliamps (mA) monitoring and physical outlet assignment for power supplies added to this pedal chain.</p>
                     </div>
                 </div>
                 <div id="chain-power-supplies-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 pb-4"></div>
@@ -558,9 +558,9 @@
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-[#2A2D36] pb-3">
                     <div>
                         <h3 class="text-sm font-bold text-white flex items-center gap-2 uppercase tracking-wide">
-                            <i class="fa-solid fa-clipboard-list text-[#00A8CC]"></i> RESUMEN DE POTENCIA
+                            <i class="fa-solid fa-clipboard-list text-[#00A8CC]"></i> <span data-i18n="chain_power_summary_title">POWER SUMMARY</span>
                         </h3>
-                        <p class="text-xs text-[#9CA3AF]">Diagnóstico detallado de consumo y estado eléctrico exclusivamente para los pedales de la cadena activa.</p>
+                        <p class="text-xs text-[#9CA3AF]" data-i18n="chain_power_summary_subtitle">Detailed current draw and electrical status diagnostics exclusively for pedals in the active chain.</p>
                     </div>
                 </div>
                 <div class="overflow-x-auto">
@@ -569,8 +569,8 @@
                             <tr>
                                 <th class="py-2.5 px-3 rounded-tl-lg font-semibold">Pedal</th>
                                 <th class="py-2.5 px-3 font-semibold">Consumo (+30%)</th>
-                                <th class="py-2.5 px-3 font-semibold">Fuente Asignada</th>
-                                <th class="py-2.5 px-3 font-semibold">Salida Física</th>
+                                <th class="py-2.5 px-3 font-semibold" data-i18n="table_outlet_supply">Assigned Supply</th>
+                                <th class="py-2.5 px-3 font-semibold" data-i18n="table_outlet_physical">Physical Outlet</th>
                                 <th class="py-2.5 px-3 rounded-tr-lg font-semibold" data-i18n="table_status">Estado / Alertas</th>
                             </tr>
                         </thead>
@@ -1394,7 +1394,7 @@ var i18n = {
         chain_favorites_presets: "CADENAS FAVORITAS / PRESETS GUARDADOS",
         chain_filter_presets_style: "FILTRAR PRESETS POR ESTILO MUSICAL:",
         opt_all_styles: "Todos los Estilos",
-        empty_saved_chains: 'No hay cadenas guardadas. Haz clic en "Guardar preset Actual" para guardar la tuya.',
+        empty_saved_chains: '${currentLang === "en" ? "No saved chains yet. Click \"Save Preset\" to save yours." : "No hay cadenas guardadas. Haz clic en \"Guardar preset Actual\" para guardar la tuya."}',
         chain_active_signal_title: "CADENA DE SEÑAL ACTIVA",
         chain_active_signal_subtitle: "Selecciona, cambia o arrastra (Drag & Drop) cualquier pedal para reordenar tu rig.",
         btn_add_slot: "Agregar Slot",
@@ -4179,7 +4179,7 @@ function renderCollectionPedals() {
     effectsGrid.innerHTML = effectsList.length === 0 ? '<span class="text-xs text-[#9CA3AF] italic col-span-full">No hay pedales de efecto.</span>' : '';
     effectsList.forEach(p => effectsGrid.appendChild(createPedalCatalogCard(p, 'effects')));
 
-    utilityGrid.innerHTML = utilityList.length === 0 ? '<span class="text-xs text-[#9CA3AF] italic col-span-full">No hay pedales de utilidad.</span>' : '';
+    utilityGrid.innerHTML = utilityList.length === 0 ? '${currentLang === "en" ? "<span class=\"text-xs text-[#9CA3AF] italic col-span-full\">No utility pedals in collection.</span>" : "<span class=\"text-xs text-[#9CA3AF] italic col-span-full\">No hay pedales de utilidad.</span>"}' : '';
     utilityList.forEach(p => utilityGrid.appendChild(createPedalCatalogCard(p, 'utility')));
 }
 
@@ -4259,7 +4259,7 @@ function renderCollectionWishlist() {
     }
 
     if (counter) counter.textContent = `${list.length} equipo${list.length !== 1 ? 's' : ''}`;
-    grid.innerHTML = list.length === 0 ? '<span class="text-xs text-[#9CA3AF] italic col-span-full">No hay equipos en tu lista de deseos.</span>' : '';
+    grid.innerHTML = list.length === 0 ? '${currentLang === "en" ? "<span class=\"text-xs text-[#9CA3AF] italic col-span-full\">Your Wishlist is empty.</span>" : "<span class=\"text-xs text-[#9CA3AF] italic col-span-full\">No hay equipos en tu lista de deseos.</span>"}' : '';
 
     list.forEach(item => {
         grid.appendChild(createPedalCatalogCard(item, 'wishlist'));
@@ -4507,7 +4507,7 @@ function renderBrandFilters() {
     }
 
     if (brands.length === 0) {
-        container.innerHTML = '<span class="text-xs text-[#9CA3AF] italic">No hay marcas registradas en tu colección.</span>';
+        container.innerHTML = '${currentLang === "en" ? "<span class=\"text-xs text-[#9CA3AF] italic\">No registered brands in your collection.</span>" : "<span class=\"text-xs text-[#9CA3AF] italic\">No hay marcas registradas en tu colección.</span>"}';
         return;
     }
 
@@ -17382,7 +17382,7 @@ function renderSignalChain() {
             <div class="w-10 h-10 rounded-full bg-[#121316] group-hover:bg-[#F15A24] text-[#9CA3AF] group-hover:text-[#FFFFFF] flex items-center justify-center transition-all mb-2">
                 <i class="fa-solid fa-plus text-lg"></i>
             </div>
-            <span class="text-xs font-semibold text-[#9CA3AF] group-hover:text-[#F15A24] transition-colors">Agregar Slot</span>
+            <span class="text-xs font-semibold text-[#9CA3AF] group-hover:text-[#F15A24] transition-colors">${currentLang === "en" ? "Add Slot" : "Agregar Slot"}</span>
         `;
     }
     container.appendChild(addCard);
@@ -17702,7 +17702,7 @@ function renderChainPowerSupplies() {
         <div class="w-10 h-10 rounded-full bg-[#121316] group-hover:bg-[#F15A24] text-[#9CA3AF] group-hover:text-[#FFFFFF] flex items-center justify-center transition-all mb-2">
             <i class="fa-solid fa-plus text-lg"></i>
         </div>
-        <span class="text-xs font-semibold text-[#9CA3AF] group-hover:text-[#F15A24] transition-colors">Agregar Fuente</span>
+        <span class="text-xs font-semibold text-[#9CA3AF] group-hover:text-[#F15A24] transition-colors">${currentLang === "en" ? "Add Power Supply" : "Agregar Fuente"}</span>
     `;
     container.appendChild(addPsCard);
 }
@@ -17713,7 +17713,7 @@ function renderEnergySummaryTable() {
     tbody.innerHTML = '';
     const activePedalsInChain = currentChainIds.filter(id => id && id !== 'EMPTY').map(id => pedalDatabase.find(p => p.id === id)).filter(Boolean);
     if (activePedalsInChain.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="5" class="py-6 text-center text-[#9CA3AF] italic">No hay pedales asignados en la cadena activa.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="5" class="py-6 text-center text-[#9CA3AF] italic">${currentLang === "en" ? "No pedals assigned in the active chain." : "No hay pedales asignados en la cadena activa."}</td></tr>`;
         return;
     }
     activePedalsInChain.forEach(p => {
@@ -19299,7 +19299,7 @@ function renderPresetTagFilters() {
                 ? 'bg-[#F15A24]/10 border border-[#F15A24]/40 text-[#F15A24] font-bold' 
                 : 'bg-[#121316] border border-[#2A2D36] text-[#9CA3AF] hover:bg-[#20232B] hover:text-[#FFFFFF]'
             }">
-                ${tag === 'ALL' ? 'Todos los Estilos' : tag}
+                ${tag === 'ALL' ? (currentLang === 'en' ? 'All Styles' : 'Todos los Estilos') : tag}
             </button>
         `;
     }).join('');
@@ -19322,7 +19322,7 @@ function renderFavoriteBadges() {
     });
 
     if (favoriteChains.length === 0) {
-        container.innerHTML = `<span class="text-xs text-[#9CA3AF] italic">No hay cadenas guardadas. Haz clic en "Guardar preset Actual" para guardar la tuya.</span>`;
+        container.innerHTML = `<span class="text-xs text-[#9CA3AF] italic">${currentLang === "en" ? "No saved chains yet. Click \"Save Preset\" to save yours." : "No hay cadenas guardadas. Haz clic en \"Guardar preset Actual\" para guardar la tuya."}</span>`;
         return;
     }
     
