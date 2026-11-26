@@ -194,10 +194,10 @@
             <div class="bg-[#1C1E24] border-2 border-[#8B5CF6] p-5 rounded-2xl shadow-xl space-y-4">
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b border-[#2A2D36] pb-3">
                     <div>
-                        <h2 class="text-lg font-bold text-white tracking-tight">
+                        <h2 class="text-lg font-bold text-white tracking-tight" data-i18n="explore_title">
                             Dashboard y estadísticas de tu rig
                         </h2>
-                        <p class="text-xs text-[#9CA3AF] mt-1">
+                        <p class="text-xs text-[#9CA3AF] mt-1" data-i18n="explore_subtitle">
                             Resumen analítico en tiempo real de tu equipamiento, marcas, valoración económica y salud de rig.
                         </p>
                     </div>
@@ -208,7 +208,7 @@
                 <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
                     <div class="bg-[#121316] border border-[#2A2D36] p-4 rounded-xl flex items-center justify-between shadow-sm">
                         <div>
-                            <p class="text-[11px] font-mono text-[#8B5CF6] uppercase font-bold">EN MI COLECCIÓN</p>
+                            <p class="text-[11px] font-mono text-[#8B5CF6] uppercase font-bold" data-i18n="stat_collection_label">EN MI COLECCIÓN</p>
                             <h3 id="stat-collection-count" class="text-2xl font-black text-white mt-0.5">0</h3>
                             <p id="stat-collection-val" class="text-[11px] font-mono text-[#F15A24] font-bold mt-1">$0 USD</p>
                         </div>
@@ -219,7 +219,7 @@
 
                     <div class="bg-[#121316] border border-[#2A2D36] p-4 rounded-xl flex items-center justify-between shadow-sm">
                         <div>
-                            <p class="text-[11px] font-mono text-[#8B5CF6] uppercase font-bold">EN WISHLIST</p>
+                            <p class="text-[11px] font-mono text-[#8B5CF6] uppercase font-bold" data-i18n="stat_wishlist_label">EN WISHLIST</p>
                             <h3 id="stat-wishlist-count" class="text-2xl font-black text-white mt-0.5">0</h3>
                             <p id="stat-wishlist-val" class="text-[11px] font-mono text-[#8B5CF6] font-bold mt-1">$0 USD</p>
                         </div>
@@ -334,10 +334,10 @@
             <!-- TOP ACTION BAR -->
             <div class="bg-[#1C1E24] border-2 border-[#F15A24] rounded-2xl p-5 shadow-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-5">
                 <div class="space-y-1 min-w-[280px] flex-1">
-                    <h2 class="text-lg font-bold text-white tracking-tight whitespace-nowrap">
+                    <h2 class="text-lg font-bold text-white tracking-tight whitespace-nowrap" data-i18n="collection_title">
                         Mi colección e inventario
                     </h2>
-                    <p class="text-xs text-[#9CA3AF] max-w-xl leading-relaxed">
+                    <p class="text-xs text-[#9CA3AF] max-w-xl leading-relaxed" data-i18n="collection_subtitle">
                         Administrá tus pedales personales, armá cadenas de efecto y configurá tus fuentes de alimentación.
                     </p>
                 </div>
@@ -436,19 +436,19 @@
                 <!-- FILA 1: TÍTULO / DESCRIPCIÓN + TELEMETRÍA (CONSUMO Y PEDALES) -->
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#2A2D36] pb-4">
                     <div class="space-y-1">
-                        <h2 class="text-lg font-bold text-white tracking-tight">
+                        <h2 class="text-lg font-bold text-white tracking-tight" data-i18n="chain_title">
                             Arquitectura de señal y ruteo
                         </h2>
-                        <p class="text-xs text-[#9CA3AF] leading-relaxed">
+                        <p class="text-xs text-[#9CA3AF] leading-relaxed" data-i18n="chain_subtitle">
                             Diseña el ruteo de tu señal, analiza consumos eléctricos en tiempo real y guarda tus presets favoritos.
                         </p>
                     </div>
                     <!-- TELEMETRÍA COMPACTA -->
                     <div class="flex items-center gap-2.5 flex-wrap shrink-0">
                         <div class="bg-[#121316] px-3.5 py-1.5 rounded-xl border border-[#2A2D36] font-mono space-y-0.5 min-w-[160px]">
-                            <span class="text-[#9CA3AF] text-[10px] font-bold block border-b border-[#2A2D36] pb-0.5">Consumo de cadena</span>
+                            <span class="text-[#9CA3AF] text-[10px] font-bold block border-b border-[#2A2D36] pb-0.5" data-i18n="lbl_chain_draw">Consumo de cadena</span>
                             <div class="flex items-center justify-between gap-3 text-[11px]">
-                                <span class="text-[#9CA3AF]">Consumo Base:</span>
+                                <span class="text-[#9CA3AF]" data-i18n="lbl_base_draw">Consumo Base:</span>
                                 <span id="base-ma" class="text-[#00A8CC] font-bold">0 mA</span>
                             </div>
                             <div class="flex items-center justify-between gap-3 text-[11px]">
@@ -571,7 +571,7 @@
                                 <th class="py-2.5 px-3 font-semibold">Consumo (+30%)</th>
                                 <th class="py-2.5 px-3 font-semibold">Fuente Asignada</th>
                                 <th class="py-2.5 px-3 font-semibold">Salida Física</th>
-                                <th class="py-2.5 px-3 rounded-tr-lg font-semibold">Estado / Alertas</th>
+                                <th class="py-2.5 px-3 rounded-tr-lg font-semibold" data-i18n="table_status">Estado / Alertas</th>
                             </tr>
                         </thead>
                         <tbody id="energy-summary-tbody" class="divide-y divide-[#2A2D36]"></tbody>
@@ -592,7 +592,7 @@
 <div id="custom-equipment-modal" onclick="closeCustomEquipmentModal()" class="hidden fixed inset-0 bg-[#121316]/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 cursor-pointer">
     <div onclick="event.stopPropagation()" class="bg-[#1C1E24] border border-[#2A2D36] rounded-2xl max-w-xl w-full p-6 relative space-y-4 shadow-2xl overflow-y-auto max-h-[90vh] cursor-default">
         <div class="flex items-center justify-between border-b border-[#2A2D36] pb-3">
-            <h3 class="text-base font-bold text-white flex items-center gap-2">
+            <h3 class="text-base font-bold text-white flex items-center gap-2" data-i18n="modal_custom_title">
                 <i class="fa-solid fa-plus text-[#F15A24]"></i> Cargar equipo personalizado
             </h3>
             <button onclick="closeCustomEquipmentModal()" class="text-[#9CA3AF] hover:text-white p-1.5 rounded-lg hover:bg-[#121316] transition-all cursor-pointer">
@@ -603,10 +603,10 @@
         <!-- TYPE TOGGLE -->
         <div class="grid grid-cols-2 gap-2 bg-[#121316] p-1 rounded-xl border border-[#2A2D36]">
             <button id="cem-type-pedal" onclick="setCemType('pedal')" class="py-2 text-xs font-bold rounded-lg transition-all bg-[#F15A24] text-white cursor-pointer">
-                <i class="fa-solid fa-sliders"></i> Pedal de efecto o utilidad
+                <i class="fa-solid fa-sliders"></i> <span data-i18n="type_pedal">Pedal de efecto o utilidad</span>
             </button>
             <button id="cem-type-power" onclick="setCemType('power')" class="py-2 text-xs font-semibold rounded-lg transition-all text-[#9CA3AF] hover:text-white cursor-pointer">
-                <i class="fa-solid fa-bolt"></i> Fuente de alimentación
+                <i class="fa-solid fa-bolt"></i> <span data-i18n="type_power">Fuente de alimentación</span>
             </button>
         </div>
 
@@ -735,10 +735,10 @@
         <!-- MODAL HEADER -->
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-[#2A2D36] pb-4">
             <div>
-                <h3 class="text-lg font-bold text-[#FFFFFF] flex items-center gap-2">
+                <h3 class="text-lg font-bold text-[#FFFFFF] flex items-center gap-2" data-i18n="modal_catalog_title">
                     <i class="fa-solid fa-layer-group text-[#F15A24]"></i> Catálogo Maestro de Fabricantes
                 </h3>
-                <p class="text-xs text-[#9CA3AF]">
+                <p class="text-xs text-[#9CA3AF]" data-i18n="modal_catalog_subtitle">
                     Explorá la base de datos oficial auditada e incorporá pedales o fuentes a tu colección o wishlist con un clic.
                 </p>
             </div>
@@ -1098,17 +1098,19 @@ var i18n = {
         btn_export_backup: "Export Backup",
         btn_import_backup: "Load Backup",
         
-        explore_subtitle: "Analytical dashboard & diagnosis for your pedal rig",
-        stat_valuation: "RIG VALUATION",
-        stat_health: "RIG HEALTH",
-        stat_forsale: "FOR SALE (RECOVERABLE)",
-        stat_pedals: "PEDALS IN COLLECTION",
+        explore_title: "Dashboard & Rig Analytics",
+        explore_subtitle: "Real-time analytical summary of your gear, brands, financial valuation & rig health.",
+        stat_collection_label: "IN MY COLLECTION",
+        stat_wishlist_label: "IN WISHLIST",
+        stat_forsale_label: "FOR SALE (RECOVERABLE)",
+        stat_chains_label: "MY CHAINS",
         chart_brands: "Brand Distribution",
         chart_effects: "Effect Type Breakdown",
         chart_top3: "Top 3 Most Used Pedals",
         chart_diagnostics: "Power & Signal Diagnostics",
         
-        collection_subtitle: "Inventory management for pedals, power supplies & lists",
+        collection_title: "My Collection & Inventory",
+        collection_subtitle: "Manage your personal pedals, build signal chains & configure your power supplies.",
         btn_search_catalog: "Search pedal or power supply",
         btn_add_custom: "Add custom equipment",
         sec_effect_pedals: "Effect Pedals",
@@ -1121,6 +1123,30 @@ var i18n = {
         empty_power: "No power supplies added yet.",
         empty_for_sale: "No equipment marked for sale.",
         empty_wishlist: "Your Wishlist is empty.",
+        
+        chain_title: "Signal Architecture & Routing",
+        chain_subtitle: "Design your signal routing, analyze power draw in real-time & save your favorite presets.",
+        lbl_chain_draw: "Chain Current Draw",
+        lbl_base_draw: "Base Draw:",
+        lbl_margin_draw: "With 25% Margin:",
+        lbl_active_chain: "Active Stage Chain",
+        preset_live: "Live",
+        preset_rehearsal: "Rehearsal",
+        preset_home: "Home",
+        preset_studio: "Studio",
+        lbl_architecture: "Signal Architecture",
+        arch_series: "Series",
+        arch_parallel: "Parallel Loop",
+        lbl_patch_cables: "Patch cables needed",
+        table_equipment: "Pedal / Equipment",
+        table_draw: "Current Draw (mA)",
+        table_outlet: "Assigned Outlet",
+        table_voltage: "Voltage",
+        table_status: "Status / Alerts",
+        status_connected: "✓ Connected",
+        status_voltage_error: "⚠️ Voltage Error",
+        status_overloaded: "⚠️ Overloaded",
+        btn_export_csv: "Export Tech Rider (CSV)",
         
         inspector_title: "Technical Specs & Inspection",
         inspector_empty: "Select a pedal or power supply to view details",
@@ -1135,27 +1161,8 @@ var i18n = {
         btn_edit: "Edit",
         btn_delete: "Delete",
         
-        chain_subtitle: "Official routing, power & electrical technical rider.",
-        lbl_active_chain: "Active Stage Chain",
-        preset_live: "Live",
-        preset_rehearsal: "Rehearsal",
-        preset_home: "Home",
-        preset_studio: "Studio",
-        lbl_architecture: "Signal Architecture",
-        arch_series: "Series",
-        arch_parallel: "Parallel Loop",
-        lbl_patch_cables: "Patch cables needed",
-        table_equipment: "Pedal / Equipment",
-        table_draw: "Current Draw (mA)",
-        table_outlet: "Assigned Outlet",
-        table_voltage: "Voltage",
-        table_status: "Status",
-        status_connected: "✓ Connected",
-        status_voltage_error: "⚠️ Voltage Error",
-        status_overloaded: "⚠️ Overloaded",
-        btn_export_csv: "Export Tech Rider (CSV)",
-        
-        modal_catalog_title: "Master Catalog - Pedals & Power Supplies",
+        modal_catalog_title: "Master Catalog - Manufacturers",
+        modal_catalog_subtitle: "Browse the official audited database and add pedals or power supplies with one click.",
         ph_search_catalog: "Search by brand or model...",
         opt_all_brands: "All Brands",
         opt_all_categories: "All Categories",
@@ -1186,17 +1193,19 @@ var i18n = {
         btn_export_backup: "Exportar backup",
         btn_import_backup: "Cargar backup",
         
-        explore_subtitle: "Dashboard analítico y diagnóstico de tu rig de pedales",
-        stat_valuation: "VALORIZACIÓN DEL RIG",
-        stat_health: "SALUD DEL RIG",
-        stat_forsale: "EN VENTA (RECUPERABLE)",
-        stat_pedals: "PEDALES EN COLECCIÓN",
+        explore_title: "Dashboard y estadísticas de tu rig",
+        explore_subtitle: "Resumen analítico en tiempo real de tu equipamiento, marcas, valoración económica y salud de rig.",
+        stat_collection_label: "EN MI COLECCIÓN",
+        stat_wishlist_label: "EN WISHLIST",
+        stat_forsale_label: "EN VENTA (RECUPERABLE)",
+        stat_chains_label: "MIS CADENAS",
         chart_brands: "Distribución por Marcas",
         chart_effects: "Desglose por Tipo de Efecto",
         chart_top3: "Top 3 Pedales Más Usados",
         chart_diagnostics: "Diagnóstico de Energía y Señal",
         
-        collection_subtitle: "Gestión de inventario, pedales, fuentes y listas de venta",
+        collection_title: "Mi colección e inventario",
+        collection_subtitle: "Administrá tus pedales personales, armá cadenas de efecto y configurá tus fuentes de alimentación.",
         btn_search_catalog: "Buscar pedal o fuente",
         btn_add_custom: "Cargar equipo personalizado",
         sec_effect_pedals: "Pedales de efecto",
@@ -1209,6 +1218,30 @@ var i18n = {
         empty_power: "No tenés fuentes de alimentación cargadas.",
         empty_for_sale: "No tenés equipos marcados en venta.",
         empty_wishlist: "Tu Wishlist está vacía.",
+        
+        chain_title: "Arquitectura de señal y ruteo",
+        chain_subtitle: "Diseña el ruteo de tu señal, analiza consumos eléctricos en tiempo real y guarda tus presets favoritos.",
+        lbl_chain_draw: "Consumo de cadena",
+        lbl_base_draw: "Consumo Base:",
+        lbl_margin_draw: "Con Margen 25%:",
+        lbl_active_chain: "Cadena Activa de Escenario",
+        preset_live: "En vivo",
+        preset_rehearsal: "Ensayo",
+        preset_home: "Casa",
+        preset_studio: "Estudio",
+        lbl_architecture: "Arquitectura de señal",
+        arch_series: "Serie",
+        arch_parallel: "Loop Paralelo",
+        lbl_patch_cables: "Cables patch necesarios",
+        table_equipment: "Pedal / Equipo",
+        table_draw: "Consumo (mA)",
+        table_outlet: "Salida Asignada",
+        table_voltage: "Voltaje",
+        table_status: "Estado / Alertas",
+        status_connected: "✓ Conectado",
+        status_voltage_error: "⚠️ Error Voltaje",
+        status_overloaded: "⚠️ Sobreconsumo",
+        btn_export_csv: "Exportar Tech Rider (CSV)",
         
         inspector_title: "Ficha Técnica e Inspección",
         inspector_empty: "Seleccioná un pedal o fuente para ver detalles",
@@ -1223,27 +1256,8 @@ var i18n = {
         btn_edit: "Editar",
         btn_delete: "Eliminar",
         
-        chain_subtitle: "Ficha técnica oficial de ruteo, alimentación y requerimientos eléctricos.",
-        lbl_active_chain: "Cadena Activa de Escenario",
-        preset_live: "En vivo",
-        preset_rehearsal: "Ensayo",
-        preset_home: "Casa",
-        preset_studio: "Estudio",
-        lbl_architecture: "Signal Architecture",
-        arch_series: "Serie",
-        arch_parallel: "Loop Paralelo",
-        lbl_patch_cables: "Cables patch necesarios",
-        table_equipment: "Pedal / Equipo",
-        table_draw: "Consumo (mA)",
-        table_outlet: "Salida Asignada",
-        table_voltage: "Voltaje",
-        table_status: "Estado",
-        status_connected: "✓ Conectado",
-        status_voltage_error: "⚠️ Error Voltaje",
-        status_overloaded: "⚠️ Sobreconsumo",
-        btn_export_csv: "Exportar Tech Rider (CSV)",
-        
-        modal_catalog_title: "Catálogo Maestro de Pedales y Fuentes",
+        modal_catalog_title: "Catálogo Maestro de Fabricantes",
+        modal_catalog_subtitle: "Explorá la base de datos oficial auditada e incorporá pedales o fuentes a tu colección o wishlist con un clic.",
         ph_search_catalog: "Buscar por marca o modelo...",
         opt_all_brands: "Todas las marcas",
         opt_all_categories: "Todas las categorías",
@@ -18643,7 +18657,7 @@ function exportChainToPDF() {
             <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-[#2A2D36] pb-3 gap-2">
                 <div>
                     <span class="text-[10px] font-mono font-bold text-[#8B5CF6] uppercase tracking-widest block">MY PEDAL RIG • TECH RIDER</span>
-                    <h2 class="text-lg font-black text-white tracking-tight mt-0.5">Cadena Activa de Escenario</h2>
+                    <h2 class="text-lg font-black text-white tracking-tight mt-0.5" data-i18n="lbl_active_chain">Cadena Activa de Escenario</h2>
                     <p class="text-xs text-[#9CA3AF] mt-0.5">Ficha técnica oficial de ruteo de audio, alimentación y requerimientos eléctricos.</p>
                 </div>
                 <div class="text-right text-xs font-mono text-[#9CA3AF] shrink-0">
@@ -18688,7 +18702,7 @@ function exportChainToPDF() {
                                 <th class="py-2 px-3">Pedal</th>
                                 <th class="py-2 px-3">Fuente</th>
                                 <th class="py-2 px-3">Salida</th>
-                                <th class="py-2 px-3">Voltaje</th>
+                                <th class="py-2 px-3" data-i18n="table_voltage">Voltaje</th>
                                 <th class="py-2 px-3">Consumo</th>
                                 <th class="py-2 px-3">Estado</th>
                             </tr>
