@@ -171,15 +171,15 @@
     </div>
     <!-- RIGHT BLOCK: BACKUP & LANGUAGE TOGGLE -->
     <div class="flex items-stretch gap-1.5 bg-[#121316] border border-[#2A2D36] p-1 rounded-xl shrink-0 w-full sm:w-auto">
-        <button onclick="exportFullBackup()" title="Export Backup / Exportar backup" class="flex-1 sm:flex-none justify-center bg-[#1C1E24] hover:bg-[#20232B] text-[#F15A24] border border-[#2A2D36] hover:border-[#F15A24]/50 px-2.5 py-1.5 rounded-lg font-semibold flex items-center gap-1.5 text-xs transition-all active:scale-95 cursor-pointer h-full">
-            <i class="fa-solid fa-download"></i> <span data-i18n="btn_export_backup">Export Backup</span>
+        <button onclick="exportFullBackup()" title="Export Backup / Exportar backup" class="flex-1 sm:flex-none justify-center items-center bg-[#1C1E24] hover:bg-[#20232B] text-[#F15A24] border border-[#2A2D36] hover:border-[#F15A24]/50 px-2 sm:px-2.5 py-1.5 rounded-lg font-semibold flex gap-1.5 text-[11px] sm:text-xs whitespace-nowrap transition-all active:scale-95 cursor-pointer h-full">
+            <i class="fa-solid fa-download shrink-0"></i> <span data-i18n="btn_export_backup">Export Backup</span>
         </button>
-        <label title="Load Backup / Cargar backup" class="flex-1 sm:flex-none justify-center bg-[#1C1E24] hover:bg-[#20232B] text-white hover:text-[#00A8CC] border border-[#2A2D36] hover:border-[#00A8CC] px-2.5 py-1.5 rounded-lg font-semibold flex items-center gap-1.5 text-xs cursor-pointer transition-all active:scale-95 h-full">
-            <i class="fa-solid fa-upload"></i> <span data-i18n="btn_import_backup">Load Backup</span>
+        <label title="Load Backup / Cargar backup" class="flex-1 sm:flex-none justify-center items-center bg-[#1C1E24] hover:bg-[#20232B] text-white hover:text-[#00A8CC] border border-[#2A2D36] hover:border-[#00A8CC] px-2 sm:px-2.5 py-1.5 rounded-lg font-semibold flex gap-1.5 text-[11px] sm:text-xs whitespace-nowrap cursor-pointer transition-all active:scale-95 h-full">
+            <i class="fa-solid fa-upload shrink-0"></i> <span data-i18n="btn_import_backup">Load Backup</span>
             <input type="file" id="import-file-input" accept=".json" onchange="importFullBackup(event)" class="hidden">
         </label>
-        <button id="btn-lang-toggle" onclick="toggleLanguage()" title="Switch Language / Cambiar Idioma" class="justify-center bg-[#1C1E24] hover:bg-[#20232B] text-white border border-[#2A2D36] hover:border-[#8B5CF6]/50 px-2.5 py-1.5 rounded-lg font-bold flex items-center gap-1.5 text-xs transition-all active:scale-95 cursor-pointer shrink-0 h-full">
-            <i class="fa-solid fa-globe text-[#00A8CC]"></i> <span id="lang-toggle-label" class="font-mono"><span class="text-[#00A8CC] font-bold">EN</span><span class="text-[#4B5563] mx-0.5">|</span><span class="text-[#6B7280]">ES</span></span>
+        <button id="btn-lang-toggle" onclick="toggleLanguage()" title="Switch Language / Cambiar Idioma" class="justify-center items-center bg-[#1C1E24] hover:bg-[#20232B] text-white border border-[#2A2D36] hover:border-[#8B5CF6]/50 px-2 sm:px-2.5 py-1.5 rounded-lg font-bold flex gap-1.5 text-[11px] sm:text-xs whitespace-nowrap transition-all active:scale-95 cursor-pointer shrink-0 h-full">
+            <i class="fa-solid fa-globe text-[#00A8CC] shrink-0"></i> <span id="lang-toggle-label" class="font-mono"><span class="text-[#00A8CC] font-bold">EN</span><span class="text-[#4B5563] mx-0.5">|</span><span class="text-[#6B7280]">ES</span></span>
         </button>
     </div>
 </header>
