@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1087,6 +1087,60 @@
 <script>
 
 // --- i18n INTERNATIONALIZATION ENGINE (EN / ES) ---
+
+// --- BILINGUAL LOOKUP HELPERS FOR CATALOG & LOCALSTORAGE ---
+function getPedalDescription(pedal) {
+    if (!pedal) return '';
+    if (currentLang === 'en') {
+        if (pedal.descriptionEn || pedal.descEn) return pedal.descriptionEn || pedal.descEn;
+        const fb = typeof DEFAULT_PEDALS_FALLBACK !== 'undefined' ? DEFAULT_PEDALS_FALLBACK.find(f => f.id === pedal.id) : null;
+        if (fb && (fb.descriptionEn || fb.descEn)) return fb.descriptionEn || fb.descEn;
+        if (fb && (fb.description || fb.desc)) return fb.description || fb.desc;
+    }
+    return pedal.description || pedal.desc || '';
+}
+
+function getPedalCategoryDisplayName(pedal) {
+    if (!pedal) return '';
+    if (currentLang === 'en') {
+        if (pedal.categoryEn) return pedal.categoryEn;
+        const fb = typeof DEFAULT_PEDALS_FALLBACK !== 'undefined' ? DEFAULT_PEDALS_FALLBACK.find(f => f.id === pedal.id) : null;
+        if (fb && fb.categoryEn) return fb.categoryEn;
+        return getCategoryDisplayName(getEffectCategory(pedal));
+    }
+    return getEffectCategory(pedal);
+}
+
+function getCategoryDisplayName(catKey) {
+    if (!catKey) return '';
+    if (currentLang === 'en') {
+        const catMapEN = {
+            "Saturación & ganancia": "Saturation & Gain",
+            "Modulación": "Modulation",
+            "Delay & eco": "Delay & Echo",
+            "Reverberación & espacio": "Reverb & Space",
+            "Dinámica & modelado": "Dynamics & Modeling",
+            "Pitch & sintetizador": "Pitch & Synth",
+            "Lo-Fi, glitch & texturas": "Lo-Fi, Glitch & Textures",
+            "Loopers de frase": "Phrase Loopers",
+            "Utilidad & ruteo": "Utility & Routing",
+            "Varios & multi-FX": "Misc & Multi-FX"
+        };
+        return catMapEN[catKey] || catKey;
+    }
+    return catKey;
+}
+
+function getPowerSupplyDetails(ps) {
+    if (!ps) return '';
+    if (currentLang === 'en') {
+        if (ps.detailsEn || ps.specOutEn) return ps.detailsEn || ps.specOutEn;
+        const fb = typeof DEFAULT_POWER_SUPPLIES_FALLBACK !== 'undefined' ? DEFAULT_POWER_SUPPLIES_FALLBACK.find(f => f.id === ps.id || f.presetType === ps.presetType) : null;
+        if (fb && (fb.detailsEn || fb.specOutEn)) return fb.detailsEn || fb.specOutEn;
+        if (fb && (fb.details || fb.specOut)) return fb.details || fb.specOut;
+    }
+    return ps.details || ps.specOut || '';
+}
 var currentLang = 'en';
 
 var i18n = {
@@ -1294,12 +1348,7 @@ function initLanguage() {
     if (saved && (saved === 'en' || saved === 'es')) {
         currentLang = saved;
     } else {
-        const navLang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
-        if (navLang.startsWith('es')) {
-            currentLang = 'es';
-        } else {
-            currentLang = 'en';
-        }
+        currentLang = 'en';
     }
     updateLanguageUI();
 }
@@ -1345,6 +1394,8 @@ function updateLanguageUI() {
         if (activeTab === 'explore') {
             if (typeof renderDashboardStats === 'function') renderDashboardStats();
         } else if (activeTab === 'collection') {
+            if (typeof renderBrandFilters === 'function') renderBrandFilters();
+            if (typeof renderCategoryFilters === 'function') renderCategoryFilters();
             if (typeof renderCollectionPedals === 'function') renderCollectionPedals();
             if (typeof renderCollectionPower === 'function') renderCollectionPower();
             if (typeof renderCollectionForSale === 'function') renderCollectionForSale();
@@ -1353,6 +1404,19 @@ function updateLanguageUI() {
             if (typeof renderSignalChain === 'function') renderSignalChain();
             if (typeof renderEnergySummaryTable === 'function') renderEnergySummaryTable();
         }
+    }
+
+    if (typeof activeInspectorId !== 'undefined' && activeInspectorId) {
+        if (typeof renderInspector === 'function') renderInspector(activeInspectorId);
+    } else if (typeof activeTab !== 'undefined') {
+        if (typeof renderTabEmptyInspector === 'function') renderTabEmptyInspector(activeTab);
+    }
+
+    const mcModal = document.getElementById('master-catalog-modal');
+    if (mcModal && !mcModal.classList.contains('hidden')) {
+        if (typeof renderMasterCatalogBrandFilters === 'function') renderMasterCatalogBrandFilters();
+        if (typeof renderMasterCatalogCategoryFilters === 'function') renderMasterCatalogCategoryFilters();
+        if (typeof renderMasterCatalog === 'function') renderMasterCatalog();
     }
 }
 
@@ -4117,9 +4181,9 @@ function createPedalCatalogCard(pedal, sectionType = 'effects') {
     card.ondragstart = (e) => handleDragStartPedalCard(e, pedal.id);
 
     const photoTag = getPedalIconHTML(pedal, 'w-10 h-10');
-    const descText = (currentLang === 'en' && (pedal.descriptionEn || pedal.descEn)) ? (pedal.descriptionEn || pedal.descEn) : (pedal.description || pedal.desc || '');
+    const descText = getPedalDescription(pedal);
     const descHtml = descText ? `<p title="${descText.replace(/"/g, '&quot;')}" class="text-xs text-[#9CA3AF] line-clamp-2 hover:line-clamp-none italic transition-all cursor-help mt-1.5">${descText}</p>` : '';
-    const categoryText = (currentLang === 'en' && pedal.categoryEn) ? pedal.categoryEn : getEffectCategory(pedal);
+    const categoryText = getPedalCategoryDisplayName(pedal);
 
     card.className = 'bg-[#1C1E24] border border-[#2A2D36] hover:border-[#F15A24]/50 rounded-xl p-4 pb-6 transition-all hover:shadow-lg cursor-pointer flex flex-col justify-between group relative';
     card.onclick = () => {
@@ -4303,7 +4367,8 @@ function renderBrandFilters() {
         return;
     }
 
-    let html = `<button onclick="filterCatalog('ALL')" class="px-3 py-1 rounded-lg transition-all font-mono font-semibold cursor-pointer ${currentBrandFilter === 'ALL' ? 'bg-[#F15A24] text-white border border-[#F15A24]' : 'bg-[#121316] text-[#9CA3AF] hover:text-white border border-[#2A2D36]'}">Todas las marcas (${brands.length})</button>`;
+    const allBrandLabel = currentLang === 'en' ? `All Brands (${brands.length})` : `Todas las marcas (${brands.length})`;
+    let html = `<button onclick="filterCatalog('ALL')" class="px-3 py-1 rounded-lg transition-all font-mono font-semibold cursor-pointer ${currentBrandFilter === 'ALL' ? 'bg-[#F15A24] text-white border border-[#F15A24]' : 'bg-[#121316] text-[#9CA3AF] hover:text-white border border-[#2A2D36]'}">${allBrandLabel}</button>`;
 
     brands.forEach(b => {
         const safeBrand = b.replace(/'/g, "\\'");
@@ -4342,17 +4407,17 @@ function renderCategoryFilters() {
     }
 
     if (categories.length === 0) {
-        container.innerHTML = '<span class="text-xs text-[#9CA3AF] italic">No hay categorías registradas en tu colección.</span>';
+        container.innerHTML = currentLang === 'en' ? '<span class="text-xs text-[#9CA3AF] italic">No registered categories in your collection.</span>' : '<span class="text-xs text-[#9CA3AF] italic">No hay categorías registradas en tu colección.</span>';
         return;
     }
 
-    let html = `<button onclick="filterCatalogByCategory('ALL')" class="px-3 py-1 rounded-lg transition-all font-mono font-semibold cursor-pointer ${currentCategoryFilter === 'ALL' ? 'bg-[#F15A24] text-white border border-[#F15A24]' : 'bg-[#121316] text-[#9CA3AF] hover:text-white border border-[#2A2D36]'}">Todas las categorías (${categories.length})</button>`;
-
+    const allCatLabel = currentLang === 'en' ? `All Categories (${categories.length})` : `Todas las categorías (${categories.length})`;
+    let html = `<button onclick="filterCatalogByCategory('ALL')" class="px-3 py-1 rounded-lg transition-all font-mono font-semibold cursor-pointer ${currentCategoryFilter === 'ALL' ? 'bg-[#F15A24] text-white border border-[#F15A24]' : 'bg-[#121316] text-[#9CA3AF] hover:text-white border border-[#2A2D36]'}">${allCatLabel}</button>`;
     categories.forEach(c => {
         const safeCat = c.replace(/'/g, "\\'");
-        html += `<button onclick="filterCatalogByCategory('${safeCat}')" class="px-3 py-1 rounded-lg transition-all font-mono font-semibold cursor-pointer ${currentCategoryFilter === c ? 'bg-[#F15A24] text-white border border-[#F15A24]' : 'bg-[#121316] text-[#9CA3AF] hover:text-white border border-[#2A2D36]'}">${c}</button>`;
+        const displayName = getCategoryDisplayName(c);
+        html += `<button onclick="filterCatalogByCategory('${safeCat}')" class="px-3 py-1 rounded-lg transition-all font-mono font-semibold cursor-pointer ${currentCategoryFilter === c ? 'bg-[#F15A24] text-white border border-[#F15A24]' : 'bg-[#121316] text-[#9CA3AF] hover:text-white border border-[#2A2D36]'}">${displayName}</button>`;
     });
-
     container.innerHTML = html;
 }
 
@@ -4679,7 +4744,8 @@ function renderMasterCatalogBrandFilters() {
     const brands = Array.from(brandSet).sort();
     const activeColorClass = masterCatalogEquipmentType === 'POWER' ? 'bg-[#00A8CC] text-white border border-[#00A8CC]' : 'bg-[#F15A24] text-white border border-[#F15A24]';
 
-    let html = `<button onclick="filterMasterCatalogByBrand('ALL')" class="px-2.5 py-1 rounded-lg transition-all font-mono text-xs cursor-pointer ${masterCatalogBrandFilter === 'ALL' ? activeColorClass : 'bg-[#121316] text-[#9CA3AF] hover:text-white border border-[#2A2D36]'}">Todas las marcas</button>`;
+    const allMasterBrandLabel = currentLang === 'en' ? 'All Brands' : 'Todas las marcas';
+    let html = `<button onclick="filterMasterCatalogByBrand('ALL')" class="px-2.5 py-1 rounded-lg transition-all font-mono text-xs cursor-pointer ${masterCatalogBrandFilter === 'ALL' ? activeColorClass : 'bg-[#121316] text-[#9CA3AF] hover:text-white border border-[#2A2D36]'}">${allMasterBrandLabel}</button>`;
     brands.forEach(b => {
         html += `<button onclick="filterMasterCatalogByBrand('${b}')" class="px-2.5 py-1 rounded-lg transition-all font-mono text-xs cursor-pointer ${masterCatalogBrandFilter === b ? activeColorClass : 'bg-[#121316] text-[#9CA3AF] hover:text-white border border-[#2A2D36]'}">${b}</button>`;
     });
@@ -4785,9 +4851,9 @@ function renderMasterCatalog() {
         card.className = 'bg-[#1C1E24] border border-[#2A2D36] hover:border-[#F15A24]/50 rounded-xl p-4 pb-5 transition-all hover:shadow-lg flex flex-col justify-between group relative';
 
         const photoHtml = getPedalIconHTML(pedal, 'w-10 h-10');
-        const descText = (currentLang === 'en' && (pedal.descriptionEn || pedal.descEn)) ? (pedal.descriptionEn || pedal.descEn) : (pedal.description || pedal.desc || '');
+        const descText = getPedalDescription(pedal);
         const descHtml = descText ? `<p title="${descText.replace(/"/g, '&quot;')}" class="text-xs text-[#9CA3AF] line-clamp-2 hover:line-clamp-none italic transition-all cursor-help mt-1.5">${descText}</p>` : '';
-        const categoryText = (currentLang === 'en' && pedal.categoryEn) ? pedal.categoryEn : getEffectCategory(pedal);
+        const categoryText = getPedalCategoryDisplayName(pedal);
         const maVal = pedal.maBase || pedal.maWithMargin || 20;
 
         card.innerHTML = `
@@ -5180,7 +5246,7 @@ const DEFAULT_PEDALS_FALLBACK = [
         "imageUrl": "assets/img/pedales/boss-bd2w.png",
         "manualUrl": "https://drive.google.com/file/d/1s2_oS5I51t48CMkiSzEdnQYd1CaGj9u5/view?usp=drive_link",
         "description": "Overdrive analógico clásico reinventado por Waza Craft con modo Custom.",
-        "descriptionEn": "Overdrive analógico clásico reinventado por Waza Craft con modo Custom.",
+        "descriptionEn": "Classic analog overdrive reimagined by Waza Craft with a Custom mode.",
         "maBase": 18.0,
         "maWithMargin": 23.4,
         "isStereo": false,
@@ -5201,7 +5267,7 @@ const DEFAULT_PEDALS_FALLBACK = [
         "imageUrl": "assets/img/pedales/boss-bf3.png",
         "manualUrl": "https://drive.google.com/file/d/13dCX3sCydEUsJUkshiduH7FTwrECPLjQ/view?usp=drive_link",
         "description": "Flanger estéreo de impacto con modos Ultra, Momentary y panorama rítmico Gate/Pan.",
-        "descriptionEn": "Flanger estéreo de impacto con modos Ultra, Momentary y panorama rítmico Gate/Pan.",
+        "descriptionEn": "Impactful stereo flanger with Ultra, Momentary, and rhythmic Gate/Pan panning modes.",
         "maBase": 60.0,
         "maWithMargin": 78.0,
         "isStereo": true,
@@ -5222,7 +5288,7 @@ const DEFAULT_PEDALS_FALLBACK = [
         "imageUrl": "assets/img/pedales/boss-bp1w.png",
         "manualUrl": "https://drive.google.com/file/d/1Egrv-opGsNptZOQELN44srUhibADcLwI/view?usp=drive_link",
         "description": "Preamplificador y booster analógico con modos CE, RE y NAT.",
-        "descriptionEn": "Preamplificador y booster analógico con modos CE, RE y NAT.",
+        "descriptionEn": "Analog preamp and booster featuring CE, RE, and NAT voicings.",
         "maBase": 60.0,
         "maWithMargin": 78.0,
         "isStereo": false,
@@ -5243,7 +5309,7 @@ const DEFAULT_PEDALS_FALLBACK = [
         "imageUrl": "assets/img/pedales/boss-ce2w.png",
         "manualUrl": "https://drive.google.com/file/d/1bH2ucdVymd0Hnixczqis2upQiu_nbZPR/view?usp=drive_link",
         "description": "Chorus analógico BBD con circuito premium Waza Craft y modos CE-1.",
-        "descriptionEn": "Chorus analógico BBD con circuito premium Waza Craft y modos CE-1.",
+        "descriptionEn": "All-analog BBD chorus with premium Waza Craft circuitry and CE-1 modes.",
         "maBase": 25.0,
         "maWithMargin": 32.5,
         "isStereo": true,
@@ -5264,7 +5330,7 @@ const DEFAULT_PEDALS_FALLBACK = [
         "imageUrl": "assets/img/pedales/boss-ce5.png",
         "manualUrl": "https://drive.google.com/file/d/18MQfG9nBc9XU7toL07YThgQDCyFySyCE/view?usp=drive_link",
         "description": "Amplia gama de efectos de chorus con filtros independientes de corte High y Low.",
-        "descriptionEn": "Amplia gama de efectos de chorus con filtros independientes de corte High y Low.",
+        "descriptionEn": "Wide range of chorus effects with independent High and Low cut filters.",
         "maBase": 55.0,
         "maWithMargin": 71.5,
         "isStereo": true,
@@ -5285,7 +5351,7 @@ const DEFAULT_PEDALS_FALLBACK = [
         "imageUrl": "assets/img/pedales/boss-ch1.png",
         "manualUrl": "https://drive.google.com/file/d/1e4B-FK3whnE0xdiS66TTK2JeGpL3gtuE/view?usp=drive_link",
         "description": "Chorus estéreo limpio y cristalino con perilla de EQ para corte de frecuencias.",
-        "descriptionEn": "Chorus estéreo limpio y cristalino con perilla de EQ para corte de frecuencias.",
+        "descriptionEn": "Clean, crystalline stereo chorus with an EQ knob for high-frequency shaping.",
         "maBase": 55.0,
         "maWithMargin": 71.5,
         "isStereo": true,
@@ -5306,7 +5372,7 @@ const DEFAULT_PEDALS_FALLBACK = [
         "imageUrl": "assets/img/pedales/boss-cp1x.png",
         "manualUrl": "https://drive.google.com/file/d/1y12OhUQCzkYngtkemtYo_p8vH7n48uqA/view?usp=drive_link",
         "description": "Compresor multibanda con tecnología MDP que preserva la claridad sin aplastar el ataque.",
-        "descriptionEn": "Compresor multibanda con tecnología MDP que preserva la claridad sin aplastar el ataque.",
+        "descriptionEn": "Multiband compressor with MDP technology that preserves clarity without squashing attack.",
         "maBase": 90.0,
         "maWithMargin": 117.0,
         "isStereo": false,
@@ -5327,7 +5393,7 @@ const DEFAULT_PEDALS_FALLBACK = [
         "imageUrl": "assets/img/pedales/boss-dc2w.png",
         "manualUrl": "https://drive.google.com/file/d/1S3WvoZlCCGdCkS0HmL3SLF-dhT5jjjPR/view?usp=drive_link",
         "description": "Espacializador analógico 3D de 4 botones y circuito de estudio SDD-320.",
-        "descriptionEn": "Espacializador analógico 3D de 4 botones y circuito de estudio SDD-320.",
+        "descriptionEn": "4-button 3D analog spatializer featuring the classic SDD-320 studio circuit.",
         "maBase": 65.0,
         "maWithMargin": 84.5,
         "isStereo": true,
@@ -5348,7 +5414,7 @@ const DEFAULT_PEDALS_FALLBACK = [
         "imageUrl": "assets/img/pedales/boss-dd200.png",
         "manualUrl": "https://drive.google.com/file/d/17bDNkyNaAJbzVzinmR4MNVqHH9RYT9SB/view?usp=drive_link",
         "description": "Delay programable de la serie 200 con sonido de alta resolución a 32-bit.",
-        "descriptionEn": "Delay programable de la serie 200 con sonido de alta resolución a 32-bit.",
+        "descriptionEn": "Programmable 200-series delay with high-resolution 32-bit sound quality.",
         "maBase": 225.0,
         "maWithMargin": 292.5,
         "isStereo": true,
@@ -5369,7 +5435,7 @@ const DEFAULT_PEDALS_FALLBACK = [
         "imageUrl": "assets/img/pedales/boss-dd3t.png",
         "manualUrl": "https://drive.google.com/file/d/1_Kvu4so7S8crBdZGVB5ExOo-hcbO_I_1/view?usp=drive_link",
         "description": "La reedición del clásico DD-3 con función Tap Tempo incorporada y salida Direct Out.",
-        "descriptionEn": "La reedición del clásico DD-3 con función Tap Tempo incorporada y salida Direct Out.",
+        "descriptionEn": "Reissue of the classic DD-3 featuring built-in Tap Tempo and a Direct Out jack.",
         "maBase": 70.0,
         "maWithMargin": 91.0,
         "isStereo": false,
@@ -5390,7 +5456,7 @@ const DEFAULT_PEDALS_FALLBACK = [
         "imageUrl": "assets/img/pedales/boss-dd7.png",
         "manualUrl": "https://drive.google.com/file/d/1112YctiUgiuKoOgdssvSLyVNrmYXxmm0/view?usp=drive_link",
         "description": "Delay digital compacto con modo Analog, Modulation, Reverse y 40 segundos de looper/Hold.",
-        "descriptionEn": "Delay digital compacto con modo Analog, Modulation, Reverse y 40 segundos de looper/Hold.",
+        "descriptionEn": "Compact digital delay with Analog, Modulation, Reverse modes, and a 40-second looper/Hold.",
         "maBase": 60.0,
         "maWithMargin": 78.0,
         "isStereo": true,
@@ -5411,7 +5477,7 @@ const DEFAULT_PEDALS_FALLBACK = [
         "imageUrl": "assets/img/pedales/boss-dd8.png",
         "manualUrl": "https://drive.google.com/file/d/1xjS7NHOAuML-JWAg1_qnf5Q1qzZCxNt9/view?usp=drive_link",
         "description": "Delay compacto avanzado con 11 modos, looper e ins/outs estéreo.",
-        "descriptionEn": "Delay compacto avanzado con 11 modos, looper e ins/outs estéreo.",
+        "descriptionEn": "Advanced compact delay with 11 modes, built-in looper, and stereo I/O.",
         "maBase": 100.0,
         "maWithMargin": 130.0,
         "isStereo": true,
@@ -5432,7 +5498,7 @@ const DEFAULT_PEDALS_FALLBACK = [
         "imageUrl": "assets/img/pedales/boss-dm2w.png",
         "manualUrl": "https://drive.google.com/file/d/1iQrGAyVkUIiAf0VARk-1q2RRWx9SzCfs/view?usp=drive_link",
         "description": "Delay analógico cálido de chips BBD con modos Standard (300ms) y Custom (800ms).",
-        "descriptionEn": "Delay analógico cálido de chips BBD con modos Standard (300ms) y Custom (800ms).",
+        "descriptionEn": "Warm BBD-chip analog delay with Standard (300ms) and Custom (800ms) modes.",
         "maBase": 35.0,
         "maWithMargin": 45.5,
         "isStereo": true,
@@ -5453,7 +5519,7 @@ const DEFAULT_PEDALS_FALLBACK = [
         "imageUrl": "assets/img/pedales/boss-ds1.png",
         "manualUrl": "https://drive.google.com/file/d/1OChPnTSh5OqhY3Xa-jNNGBsfsUWXzSbh/view?usp=drive_link",
         "description": "La distorsión analógica naranja más vendida de la historia desde 1978.",
-        "descriptionEn": "La distorsión analógica naranja más vendida de la historia desde 1978.",
+        "descriptionEn": "The best-selling orange analog distortion in history since 1978.",
         "maBase": 10.0,
         "maWithMargin": 13.0,
         "isStereo": false,
@@ -5474,7 +5540,7 @@ const DEFAULT_PEDALS_FALLBACK = [
         "imageUrl": "assets/img/pedales/boss-ds1x.png",
         "manualUrl": "https://drive.google.com/file/d/1Xl6OFD_MiB-IF7gAuTB1yANR_ntmGQVF/view?usp=drive_link",
         "description": "Distorsión digital avanzada con tecnología MDP para claridad polifónica.",
-        "descriptionEn": "Distorsión digital avanzada con tecnología MDP para claridad polifónica.",
+        "descriptionEn": "Advanced digital distortion powered by MDP technology for polyphonic clarity.",
         "maBase": 60.0,
         "maWithMargin": 78.0,
         "isStereo": false,
@@ -5495,7 +5561,7 @@ const DEFAULT_PEDALS_FALLBACK = [
         "imageUrl": "assets/img/pedales/boss-ds2.png",
         "manualUrl": "https://drive.google.com/file/d/1BKzCt3eWcb-UGSbgQWxK0IeCaYB7UaWk/view?usp=drive_link",
         "description": "Distorsión de dos modos con Turbo Boost para solos agresivos y penetrantes.",
-        "descriptionEn": "Distorsión de dos modos con Turbo Boost para solos agresivos y penetrantes.",
+        "descriptionEn": "Dual-mode distortion with Turbo Boost for aggressive, cutting lead tones.",
         "maBase": 15.0,
         "maWithMargin": 19.5,
         "isStereo": false,
@@ -5516,7 +5582,7 @@ const DEFAULT_PEDALS_FALLBACK = [
         "imageUrl": "assets/img/pedales/boss-eq200.png",
         "manualUrl": "https://drive.google.com/file/d/1pDkTQp7WTgOwXtZRcIkRz-bxhV8JTV_O/view?usp=drive_link",
         "description": "Ecualizador gráfico dual de 10 bandas con presets e interfaz gráfica.",
-        "descriptionEn": "Ecualizador gráfico dual de 10 bandas con presets e interfaz gráfica.",
+        "descriptionEn": "Dual 10-band graphic equalizer with onboard presets and a graphic LCD display.",
         "maBase": 170.0,
         "maWithMargin": 221.0,
         "isStereo": true,
@@ -5537,7 +5603,7 @@ const DEFAULT_PEDALS_FALLBACK = [
         "imageUrl": "assets/img/pedales/boss-fz1w.png",
         "manualUrl": "https://drive.google.com/file/d/14Us_LBxbuZDDOFu4y2VCP9C-smC3Utc5/view?usp=drive_link",
         "description": "Fuzz analógico versátil de transistores de silicio con modos Vintage y Custom.",
-        "descriptionEn": "Fuzz analógico versátil de transistores de silicio con modos Vintage y Custom.",
+        "descriptionEn": "Versatile silicon-transistor analog fuzz with Vintage and Custom modes.",
         "maBase": 16.0,
         "maWithMargin": 20.8,
         "isStereo": false,
@@ -5558,7 +5624,7 @@ const DEFAULT_PEDALS_FALLBACK = [
         "imageUrl": "assets/img/pedales/boss-ge7.png",
         "manualUrl": "https://drive.google.com/file/d/1bzgSgO1N89-q0c5zfazg-X1K_gYlqwpB/view?usp=drive_link",
         "description": "Ecualizador gráfico de 7 bandas (+/-15dB) indispensable para esculpir tonos o como boost.",
-        "descriptionEn": "Ecualizador gráfico de 7 bandas (+/-15dB) indispensable para esculpir tonos o como boost.",
+        "descriptionEn": "Essential 7-band graphic equalizer (+/-15dB) for tone sculpting or clean boosting.",
         "maBase": 30.0,
         "maWithMargin": 39.0,
         "isStereo": false,
@@ -5579,7 +5645,7 @@ const DEFAULT_PEDALS_FALLBACK = [
         "imageUrl": "assets/img/pedales/boss-hm2w.png",
         "manualUrl": "https://drive.google.com/file/d/1T9mk9YLthqQrtc4YdX1_65L1xLmRgOrN/view?usp=drive_link",
         "description": "El icónico tono \"Chainsaw\" del death metal sueco refinado por Waza Craft.",
-        "descriptionEn": "El icónico tono \"Chainsaw\" del death metal sueco refinado por Waza Craft.",
+        "descriptionEn": "The iconic Swedish death metal 'Chainsaw' tone refined by Waza Craft.",
         "maBase": 30.0,
         "maWithMargin": 39.0,
         "isStereo": false,
@@ -5600,7 +5666,7 @@ const DEFAULT_PEDALS_FALLBACK = [
         "imageUrl": "assets/img/pedales/boss-ir2.png",
         "manualUrl": "https://drive.google.com/file/d/14Y2MPdgrdfasDcaPJ4mlFf_PI2-0m4Sa/view?usp=drive_link",
         "description": "Simulador compacto con 11 emulaciones de amplificadores e impulsos Celestion IR.",
-        "descriptionEn": "Simulador compacto con 11 emulaciones de amplificadores e impulsos Celestion IR.",
+        "descriptionEn": "Compact amp and cabinet simulator with 11 amp models and Celestion IRs.",
         "maBase": 160.0,
         "maWithMargin": 208.0,
         "isStereo": true,
@@ -5621,7 +5687,7 @@ const DEFAULT_PEDALS_FALLBACK = [
         "imageUrl": "assets/img/pedales/boss-ls2-util.png",
         "manualUrl": "https://drive.google.com/file/d/1uKpGyOrUAQFCfi7O6wgikrxtKWNE98kX/view?usp=drive_link",
         "description": "Conmutador utilitario para bucles A/B y distribución de señal.",
-        "descriptionEn": "Conmutador utilitario para bucles A/B y distribución de señal.",
+        "descriptionEn": "Utility line selector for A/B loops, signal routing, and level switching.",
         "maBase": 30.0,
         "maWithMargin": 39.0,
         "isStereo": false,
@@ -5642,7 +5708,7 @@ const DEFAULT_PEDALS_FALLBACK = [
         "imageUrl": "assets/img/pedales/boss-md500.png",
         "manualUrl": "https://drive.google.com/file/d/1txJC28hN3f-9Ok1iXsFjrFd8-JDEdbkq/view?usp=drive_link",
         "description": "Procesador de modulación de buque insignia con 12 modos y pantalla gráfica.",
-        "descriptionEn": "Procesador de modulación de buque insignia con 12 modos y pantalla gráfica.",
+        "descriptionEn": "Flagship modulation processor with 12 versatile modes and a graphic display.",
         "maBase": 225.0,
         "maWithMargin": 292.5,
         "isStereo": true,
@@ -5663,7 +5729,7 @@ const DEFAULT_PEDALS_FALLBACK = [
         "imageUrl": "assets/img/pedales/boss-ms3.png",
         "manualUrl": "https://drive.google.com/file/d/1AtIWje6NwHDtBV3hjI7tpbZvJJLBkFvq/view?usp=drive_link",
         "description": "Controlador con 3 bucles de pedales físicos y procesador multiefectos integrado.",
-        "descriptionEn": "Controlador con 3 bucles de pedales físicos y procesador multiefectos integrado.",
+        "descriptionEn": "Multi-effects switcher combining 3 physical pedal loops with an integrated DSP engine.",
         "maBase": 280.0,
         "maWithMargin": 364.0,
         "isStereo": true,
@@ -5684,7 +5750,7 @@ const DEFAULT_PEDALS_FALLBACK = [
         "imageUrl": "assets/img/pedales/boss-mt2.png",
         "manualUrl": "https://drive.google.com/file/d/1IXdsc42KSNiEQQW-w6Ol33shRUcmS9OO/view?usp=drive_link",
         "description": "Distorsión pesada legendaria con ecualizador paramétrico de 3 bandas para medios.",
-        "descriptionEn": "Distorsión pesada legendaria con ecualizador paramétrico de 3 bandas para medios.",
+        "descriptionEn": "Legendary high-gain distortion featuring a 3-band parametric midrange EQ.",
         "maBase": 30.0,
         "maWithMargin": 39.0,
         "isStereo": false,
@@ -5705,7 +5771,7 @@ const DEFAULT_PEDALS_FALLBACK = [
         "imageUrl": "assets/img/pedales/boss-ns2.png",
         "manualUrl": "https://drive.google.com/file/d/1gLwZ0UNufl7D1ciS5pivIRSOpuB_LZKQ/view?usp=drive_link",
         "description": "Supresor de ruido inteligente con bucle de silencio Send/Return para overdrives.",
-        "descriptionEn": "Supresor de ruido inteligente con bucle de silencio Send/Return para overdrives.",
+        "descriptionEn": "Intelligent noise suppressor with a dedicated Send/Return loop for noisy gain pedals.",
         "maBase": 25.0,
         "maWithMargin": 32.5,
         "isStereo": false,
@@ -5726,7 +5792,7 @@ const DEFAULT_PEDALS_FALLBACK = [
         "imageUrl": "assets/img/pedales/boss-oc5.png",
         "manualUrl": "https://drive.google.com/file/d/1wudwUSztHQOz2Ot-IQTEnOnMvoOVlq6o/view?usp=drive_link",
         "description": "Octavador con modo monofónico clásico de OC-2 y motor polifónico moderno de gran tracking.",
-        "descriptionEn": "Octavador con modo monofónico clásico de OC-2 y motor polifónico moderno de gran tracking.",
+        "descriptionEn": "Octave pedal combining classic OC-2 monophonic tracking with modern polyphonic accuracy.",
         "maBase": 60.0,
         "maWithMargin": 78.0,
         "isStereo": false,
@@ -5747,7 +5813,7 @@ const DEFAULT_PEDALS_FALLBACK = [
         "imageUrl": "assets/img/pedales/boss-od1x.png",
         "manualUrl": "https://drive.google.com/file/d/1hJyqVxb_u3ZSU1n_polxnCeD0LVmd1Km/view?usp=drive_link",
         "description": "Overdrive digital moderno con tecnología MDP que responde a cada registro del mástil.",
-        "descriptionEn": "Overdrive digital moderno con tecnología MDP que responde a cada registro del mástil.",
+        "descriptionEn": "Modern digital overdrive with MDP technology that adapts across the entire fretboard.",
         "maBase": 65.0,
         "maWithMargin": 84.5,
         "isStereo": false,
@@ -5768,7 +5834,7 @@ const DEFAULT_PEDALS_FALLBACK = [
         "imageUrl": "assets/img/pedales/boss-od3.png",
         "manualUrl": "https://drive.google.com/file/d/1-sz6DTQWgo52MDP0DpvpUaOBXa69UEfk/view?usp=drive_link",
         "description": "Overdrive fluido y cálido de doble etapa con gran respuesta a la dinámica.",
-        "descriptionEn": "Overdrive fluido y cálido de doble etapa con gran respuesta a la dinámica.",
+        "descriptionEn": "Smooth, warm dual-stage overdrive with exceptional dynamic picking response.",
         "maBase": 15.0,
         "maWithMargin": 19.5,
         "isStereo": false,
@@ -5789,7 +5855,7 @@ const DEFAULT_PEDALS_FALLBACK = [
         "imageUrl": "assets/img/pedales/boss-ph3.png",
         "manualUrl": "https://drive.google.com/file/d/1hyb8Vy59dWk1DaXr5uGFQBvzN7yZH3_q/view?usp=drive_link",
         "description": "Phaser digital de 4, 8, 10 y 12 etapas con modulaciones ascendentes y descendentes (Rise/Fall).",
-        "descriptionEn": "Phaser digital de 4, 8, 10 y 12 etapas con modulaciones ascendentes y descendentes (Rise/Fall).",
+        "descriptionEn": "4-, 8-, 10-, and 12-stage digital phaser with endless Rise and Fall modulation modes.",
         "maBase": 50.0,
         "maWithMargin": 65.0,
         "isStereo": true,
@@ -5810,7 +5876,7 @@ const DEFAULT_PEDALS_FALLBACK = [
         "imageUrl": "assets/img/pedales/boss-ps6.png",
         "manualUrl": "https://drive.google.com/file/d/1cFIWp-ZRYj0P4qlZXu6ult8yuJw1CwMR/view?usp=drive_link",
         "description": "Armonizador inteligente de 4 efectos en uno: Harmony, Pitch Shifter, Detune y S-Bend.",
-        "descriptionEn": "Armonizador inteligente de 4 efectos en uno: Harmony, Pitch Shifter, Detune y S-Bend.",
+        "descriptionEn": "4-in-1 intelligent pitch processor: Harmony, Pitch Shifter, Detune, and S-Bend.",
         "maBase": 65.0,
         "maWithMargin": 84.5,
         "isStereo": true,
@@ -5831,7 +5897,7 @@ const DEFAULT_PEDALS_FALLBACK = [
         "imageUrl": "assets/img/pedales/boss-rc1.png",
         "manualUrl": "https://drive.google.com/file/d/118TiYihcQFO-Gfj-T6W4F09t-bYCZtyv/view?usp=drive_link",
         "description": "Looper estéreo minimalista con 12 minutos de grabación e indicador circular LED.",
-        "descriptionEn": "Looper estéreo minimalista con 12 minutos de grabación e indicador circular LED.",
+        "descriptionEn": "Minimalist stereo looper with 12 minutes of recording time and a circular LED indicator.",
         "maBase": 95.0,
         "maWithMargin": 123.5,
         "isStereo": true,
@@ -5852,7 +5918,7 @@ const DEFAULT_PEDALS_FALLBACK = [
         "imageUrl": "assets/img/pedales/boss-rc5.png",
         "manualUrl": "https://drive.google.com/file/d/1ubuvZhty0hOMVZzPLjQfNfSxUmQhW1za/view?usp=drive_link",
         "description": "Looper avanzado de 32 bits con ritmos de batería integrados.",
-        "descriptionEn": "Looper avanzado de 32 bits con ritmos de batería integrados.",
+        "descriptionEn": "Advanced 32-bit stereo looper with built-in rhythm patterns and LCD display.",
         "maBase": 170.0,
         "maWithMargin": 221.0,
         "isStereo": true,
@@ -5873,7 +5939,7 @@ const DEFAULT_PEDALS_FALLBACK = [
         "imageUrl": "assets/img/pedales/boss-re202.png",
         "manualUrl": "https://drive.google.com/file/d/1ewcpnhPjxQzMJddQdyomohedx7vMmK-4/view?usp=drive_link",
         "description": "Recreación exacta del Roland RE-201 Space Echo con cabezales múltiples.",
-        "descriptionEn": "Recreación exacta del Roland RE-201 Space Echo con cabezales múltiples.",
+        "descriptionEn": "Authentic multi-head recreation of the legendary Roland RE-201 Space Echo.",
         "maBase": 140.0,
         "maWithMargin": 182.0,
         "isStereo": true,
@@ -5894,7 +5960,7 @@ const DEFAULT_PEDALS_FALLBACK = [
         "imageUrl": "assets/img/pedales/boss-rv200.png",
         "manualUrl": "https://drive.google.com/file/d/1uhVB2Iq4-lOx-F7QnpT2hitboM034BvI/view?usp=drive_link",
         "description": "Procesador de reverb compacto de la serie 200 con 12 algoritmos hi-fi.",
-        "descriptionEn": "Procesador de reverb compacto de la serie 200 con 12 algoritmos hi-fi.",
+        "descriptionEn": "Compact 200-series reverb processor featuring 12 high-fidelity algorithms.",
         "maBase": 260.0,
         "maWithMargin": 338.0,
         "isStereo": true,
@@ -5915,7 +5981,7 @@ const DEFAULT_PEDALS_FALLBACK = [
         "imageUrl": "assets/img/pedales/boss-rv500.png",
         "manualUrl": "https://drive.google.com/file/d/1dDt9eju57ImtuG1gX3dAgH_fGRsfX-fz/view?usp=drive_link",
         "description": "Procesador de reverberación de buque insignia de 32-bit/96kHz con modo Simul.",
-        "descriptionEn": "Procesador de reverberación de buque insignia de 32-bit/96kHz con modo Simul.",
+        "descriptionEn": "Flagship 32-bit/96kHz reverb workstation with dual simultaneous Simul mode.",
         "maBase": 225.0,
         "maWithMargin": 292.5,
         "isStereo": true,
@@ -5936,7 +6002,7 @@ const DEFAULT_PEDALS_FALLBACK = [
         "imageUrl": "assets/img/pedales/boss-rv6.png",
         "manualUrl": "https://drive.google.com/file/d/1zIPQDNaMFK3As8AjUikdUjn8HM9cwa7y/view?usp=drive_link",
         "description": "8 algoritmos de reverberación hi-fi incluyendo Shimmer y Dynamic.",
-        "descriptionEn": "8 algoritmos de reverberación hi-fi incluyendo Shimmer y Dynamic.",
+        "descriptionEn": "8 high-fidelity reverb algorithms including Shimmer, Dynamic, and Modulate.",
         "maBase": 95.0,
         "maWithMargin": 123.5,
         "isStereo": true,
@@ -5957,7 +6023,7 @@ const DEFAULT_PEDALS_FALLBACK = [
         "imageUrl": "assets/img/pedales/boss-sd1.png",
         "manualUrl": "https://drive.google.com/file/d/1xDa7YF2UFtAWLACl0LTExryDdpwliVp8/view?usp=drive_link",
         "description": "El overdrive de recorte asimétrico estándar de la industria desde 1981.",
-        "descriptionEn": "El overdrive de recorte asimétrico estándar de la industria desde 1981.",
+        "descriptionEn": "The industry-standard asymmetric clipping overdrive since 1981.",
         "maBase": 10.0,
         "maWithMargin": 13.0,
         "isStereo": false,
@@ -5978,7 +6044,7 @@ const DEFAULT_PEDALS_FALLBACK = [
         "imageUrl": "assets/img/pedales/boss-sde3.png",
         "manualUrl": "https://drive.google.com/file/d/1CLJ9rigQsnKORhQhtEiwsMzDZr_gaZ7a/view?usp=drive_link",
         "description": "Delay compacto inspirado en el mítico procesador de rack Roland SDE-3000.",
-        "descriptionEn": "Delay compacto inspirado en el mítico procesador de rack Roland SDE-3000.",
+        "descriptionEn": "Compact stereo delay inspired by the legendary Roland SDE-3000 rack unit.",
         "maBase": 75.0,
         "maWithMargin": 97.5,
         "isStereo": true,
@@ -5999,7 +6065,7 @@ const DEFAULT_PEDALS_FALLBACK = [
         "imageUrl": "assets/img/pedales/boss-sl2.png",
         "manualUrl": "https://drive.google.com/file/d/1iMwj-ronBoIqaWG4pDmFD31ffquAM1if/view?usp=drive_link",
         "description": "Troceador rítmico estéreo que convierte la guitarra en patrones percusivos con MIDI.",
-        "descriptionEn": "Troceador rítmico estéreo que convierte la guitarra en patrones percusivos con MIDI.",
+        "descriptionEn": "Stereo rhythmic audio slicer that transforms guitar into percussive patterns with MIDI sync.",
         "maBase": 95.0,
         "maWithMargin": 123.5,
         "isStereo": true,
@@ -6020,7 +6086,7 @@ const DEFAULT_PEDALS_FALLBACK = [
         "imageUrl": "assets/img/pedales/boss-sy1.png",
         "manualUrl": "https://drive.google.com/file/d/1Ju5i6ADE7dGajCCzmEW56sNcI8j3zGW1/view?usp=drive_link",
         "description": "121 sonidos de sintetizador polifónico analógico sin latencia ni micrófonos especiales.",
-        "descriptionEn": "121 sonidos de sintetizador polifónico analógico sin latencia ni micrófonos especiales.",
+        "descriptionEn": "121 responsive polyphonic analog-style synth sounds with zero latency and no special pickup.",
         "maBase": 115.0,
         "maWithMargin": 149.5,
         "isStereo": false,
@@ -6041,7 +6107,7 @@ const DEFAULT_PEDALS_FALLBACK = [
         "imageUrl": "assets/img/pedales/boss-te2.png",
         "manualUrl": "https://drive.google.com/file/d/16V-uuq8V1YTGASFjBlOG62VZy8LUaJ_i/view?usp=drive_link",
         "description": "Reverberación ambiental dinámica MDP con envolvente espacial.",
-        "descriptionEn": "Reverberación ambiental dinámica MDP con envolvente espacial.",
+        "descriptionEn": "Dynamic MDP ambient echo and spatial reverb with touch-sensitive envelope response.",
         "maBase": 90.0,
         "maWithMargin": 117.0,
         "isStereo": true,
@@ -6062,7 +6128,7 @@ const DEFAULT_PEDALS_FALLBACK = [
         "imageUrl": "assets/img/pedales/boss-tr2.png",
         "manualUrl": "https://drive.google.com/file/d/1F7Bgh7Y23TAI3le3fyTOSLp77tuylgZN/view?usp=drive_link",
         "description": "Trémolo clásico con selector de forma de onda continuo entre suave (Wave) y cuadrada.",
-        "descriptionEn": "Trémolo clásico con selector de forma de onda continuo entre suave (Wave) y cuadrada.",
+        "descriptionEn": "Classic analog tremolo with a continuous Wave control from smooth triangle to square.",
         "maBase": 25.0,
         "maWithMargin": 32.5,
         "isStereo": false,
@@ -6083,7 +6149,7 @@ const DEFAULT_PEDALS_FALLBACK = [
         "imageUrl": "assets/img/pedales/boss-tu3.png",
         "manualUrl": "https://drive.google.com/file/d/13ceOzKBCineFC8FMMJ8ln1HNj_VC0_7t/view?usp=drive_link",
         "description": "Afinador cromático estándar de escenario con salida DC Out.",
-        "descriptionEn": "Afinador cromático estándar de escenario con salida DC Out.",
+        "descriptionEn": "Stage-standard chromatic pedal tuner with high-brightness LEDs and DC power out.",
         "maBase": 30.0,
         "maWithMargin": 39.0,
         "isStereo": false,
@@ -18108,7 +18174,7 @@ const maBase = pedal.maBase || pedal.maDraw || 20;
                     <label class="text-xs font-mono font-bold block uppercase tracking-wider" style="color: ${themeColor}">${currentLang === "en" ? "DESCRIPTION / DETAILS" : "DESCRIPCIÓN / DETALLE"}</label>
                     <div class="bg-[#121316] border border-[#2A2D36] p-3.5 rounded-xl space-y-3 font-sans text-xs">
                         <p class="text-xs text-[#FFFFFF] leading-relaxed font-sans">
-                            ${pedal.desc || pedal.description || '${currentLang === "en" ? "No description available." : "Sin descripción."}'}
+                            ${getPedalDescription(pedal) || '${currentLang === "en" ? "No description available." : "Sin descripción."}'}
                         </p>
                         <div class="pt-2.5 border-t border-[#2A2D36] font-mono space-y-1 text-xs">
                             <div class="font-bold" style="color: ${themeColor}">
