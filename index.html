@@ -230,7 +230,7 @@
 
                     <div class="bg-[#121316] border border-[#2A2D36] p-4 rounded-xl flex items-center justify-between shadow-sm">
                         <div>
-                            <p class="text-[11px] font-mono text-[#8B5CF6] uppercase font-bold">EN VENTA</p>
+                            <p class="text-[11px] font-mono text-[#8B5CF6] uppercase font-bold" data-i18n="stat_forsale_label">FOR SALE</p>
                             <h3 id="stat-forsale-count" class="text-2xl font-black text-white mt-0.5">0</h3>
                             <p id="stat-forsale-val" class="text-[11px] font-mono text-[#EAB308] font-bold mt-1">$0 USD</p>
                         </div>
@@ -241,9 +241,9 @@
 
                     <div class="bg-[#121316] border border-[#2A2D36] p-4 rounded-xl flex items-center justify-between shadow-sm">
                         <div>
-                            <p class="text-[11px] font-mono text-[#8B5CF6] uppercase font-bold">CADENAS CREADAS</p>
+                            <p class="text-[11px] font-mono text-[#8B5CF6] uppercase font-bold" data-i18n="stat_chains_label">CHAINS CREATED</p>
                             <h3 id="stat-chains-count" class="text-2xl font-black text-white mt-0.5">0</h3>
-                            <p id="stat-chains-subtext" class="text-[10px] font-mono text-[#9CA3AF] mt-1">Presets guardados</p>
+                            <p id="stat-chains-subtext" class="text-[10px] font-mono text-[#9CA3AF] mt-1" data-i18n="stat_chains_subtext">Saved presets</p>
                         </div>
                         <div class="w-10 h-10 rounded-xl bg-[#1C1E24] border border-[#2A2D36] flex items-center justify-center text-white shrink-0">
                             <i class="fa-solid fa-diagram-project text-sm text-[#8B5CF6]"></i>
@@ -260,23 +260,23 @@
                     </div>
                     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2.5 pt-1 text-xs font-mono">
                         <div class="bg-[#121316] p-2.5 rounded-xl border border-[#2A2D36]">
-                            <span class="text-[#9CA3AF] text-[11px] block">Pedales en colección</span>
+                            <span class="text-[#9CA3AF] text-[11px] block" data-i18n="exp_pedals_in_col">Pedals in collection</span>
                             <strong id="fin-summary-pedals" class="text-[#F15A24] font-bold text-xs mt-0.5 block">$0 USD</strong>
                         </div>
                         <div class="bg-[#121316] p-2.5 rounded-xl border border-[#2A2D36]">
-                            <span class="text-[#9CA3AF] text-[11px] block">Fuentes en colección</span>
+                            <span class="text-[#9CA3AF] text-[11px] block" data-i18n="exp_power_in_col">Power supplies in collection</span>
                             <strong id="fin-summary-powers" class="text-[#00A8CC] font-bold text-xs mt-0.5 block">$0 USD</strong>
                         </div>
                         <div class="bg-[#121316] p-2.5 rounded-xl border border-[#2A2D36]">
-                            <span class="text-[#9CA3AF] text-[11px] block">Costo promedio pedal</span>
+                            <span class="text-[#9CA3AF] text-[11px] block" data-i18n="exp_avg_pedal_cost">Average pedal cost</span>
                             <strong id="fin-summary-avg" class="text-white font-bold text-xs mt-0.5 block">$0 USD / pedal</strong>
                         </div>
                         <div class="bg-[#121316] p-2.5 rounded-xl border border-[#2A2D36]">
-                            <span class="text-[#9CA3AF] text-[11px] block">En venta (recuperable)</span>
+                            <span class="text-[#9CA3AF] text-[11px] block" data-i18n="exp_for_sale_rec">For sale (recoverable)</span>
                             <strong id="fin-summary-sale" class="text-[#EAB308] font-bold text-xs mt-0.5 block">$0 USD</strong>
                         </div>
                         <div class="bg-[#121316] p-2.5 rounded-xl border border-[#2A2D36] col-span-2 sm:col-span-1">
-                            <span class="text-[#9CA3AF] text-[11px] block">Presupuesto wishlist</span>
+                            <span class="text-[#9CA3AF] text-[11px] block" data-i18n="exp_wishlist_budget">Wishlist budget</span>
                             <strong id="fin-summary-wish" class="text-[#8B5CF6] font-bold text-xs mt-0.5 block">$0 USD</strong>
                         </div>
                     </div>
@@ -290,7 +290,7 @@
                         <h3 class="text-sm font-bold text-white flex items-center gap-2 uppercase tracking-wide">
                             <i class="fa-solid fa-chart-pie text-[#8B5CF6]"></i> ADN POR TIPO DE EFECTO
                         </h3>
-                        <span class="text-[10px] font-mono text-[#9CA3AF]">Distribución %</span>
+                        <span class="text-[10px] font-mono text-[#9CA3AF]" data-i18n="exp_distribution_pct">Distribution %</span>
                     </div>
                     <div id="chart-effects-container" class="space-y-3 pt-2"></div>
                 </div>
@@ -298,9 +298,9 @@
                 <div class="bg-[#1C1E24] border border-[#2A2D36] p-5 rounded-2xl space-y-4">
                     <div class="flex items-center justify-between border-b border-[#2A2D36] pb-3">
                         <h3 class="text-sm font-bold text-white flex items-center gap-2 uppercase tracking-wide">
-                            <i class="fa-solid fa-chart-bar text-[#8B5CF6]"></i> DISTRIBUCIÓN POR MARCAS
+                            <i class="fa-solid fa-chart-bar text-[#8B5CF6]"></i> <span data-i18n="exp_brand_distribution">DISTRIBUTION BY BRAND</span>
                         </h3>
-                        <span class="text-[10px] font-mono text-[#9CA3AF]">Top Fabricantes</span>
+                        <span class="text-[10px] font-mono text-[#9CA3AF]" data-i18n="exp_top_brands">Top Manufacturers</span>
                     </div>
                     <div id="chart-brands-container" class="space-y-3 pt-2"></div>
                 </div>
@@ -310,9 +310,9 @@
             <div class="bg-[#1C1E24] border border-[#2A2D36] p-5 rounded-2xl space-y-4 shadow-xl">
                 <div class="flex items-center justify-between border-b border-[#2A2D36] pb-3">
                     <h3 class="text-sm font-bold text-white flex items-center gap-2 uppercase tracking-wide">
-                        <i class="fa-solid fa-gem text-[#8B5CF6]"></i> Top 3 pedales de mayor valor
+                        <i class="fa-solid fa-gem text-[#8B5CF6]"></i> <span data-i18n="exp_top3_highest_val">TOP 3 HIGHEST VALUE PEDALS</span>
                     </h3>
-                    <span class="text-[10px] font-mono text-[#9CA3AF]">Colección activa</span>
+                    <span class="text-[10px] font-mono text-[#9CA3AF]" data-i18n="exp_active_collection">Active collection</span>
                 </div>
                 <div id="explore-top-val-grid" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
             </div>
@@ -321,9 +321,9 @@
             <div class="bg-[#1C1E24] border border-[#2A2D36] p-5 rounded-2xl space-y-4 shadow-xl">
                 <div class="flex items-center justify-between border-b border-[#2A2D36] pb-3">
                     <h3 class="text-sm font-bold text-white flex items-center gap-2 uppercase tracking-wide">
-                        <i class="fa-solid fa-stethoscope text-[#8B5CF6]"></i> PANEL DE DIAGNÓSTICO Y ALERTAS DEL RIG
+                        <i class="fa-solid fa-stethoscope text-[#8B5CF6]"></i> <span data-i18n="exp_diagnostics_alerts_panel">RIG DIAGNOSTICS & ALERTS PANEL</span>
                     </h3>
-                    <span class="text-[10px] font-mono text-[#9CA3AF]">Análisis en tiempo real</span>
+                    <span class="text-[10px] font-mono text-[#9CA3AF]" data-i18n="exp_realtime_analysis">Real-time analysis</span>
                 </div>
                 <div id="explore-diagnostics-grid" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
             </div>
@@ -3623,9 +3623,10 @@ function renderDashboardStats() {
     if (elRigVal) elRigVal.textContent = fmtRig;
 
     if (elFinTotal) elFinTotal.textContent = fmtCol;
-    if (elFinPedals) elFinPedals.textContent = `$ ${pedalValUsd.toLocaleString('en-US')} USD (${activeCollectionPedals.length} u)`;
-    if (elFinPowers) elFinPowers.textContent = `$ ${powerValUsd.toLocaleString('en-US')} USD (${activeCollectionPowers.length} u)`;
-    if (elFinAvg) elFinAvg.textContent = `$ ${avgPedalPriceUsd.toLocaleString('en-US')} USD / pedal`;
+    const unitLabel = currentLang === 'en' ? 'items' : 'u';
+    if (elFinPedals) elFinPedals.textContent = `$ ${pedalValUsd.toLocaleString('en-US')} USD (${activeCollectionPedals.length} ${unitLabel})`;
+    if (elFinPowers) elFinPowers.textContent = `$ ${powerValUsd.toLocaleString('en-US')} USD (${activeCollectionPowers.length} ${unitLabel})`;
+    if (elFinAvg) elFinAvg.textContent = `$ ${avgPedalPriceUsd.toLocaleString('en-US')} USD / ${currentLang === 'en' ? 'pedal' : 'pedal'}`;
     if (elFinSale) elFinSale.textContent = fmtSale;
     if (elFinWish) elFinWish.textContent = fmtWish;
 
@@ -3641,7 +3642,7 @@ function renderDashboardStats() {
         const sortedCats = Object.entries(categories).sort((a, b) => b[1] - a[1]);
 
         const barColors = ['#F15A24', '#00A8CC', '#8B5CF6', '#EAB308', '#10B981', '#EC4899', '#3B82F6', '#F43F5E', '#A855F7'];
-        effectsContainer.innerHTML = sortedCats.length === 0 ? '<span class="text-xs text-[#9CA3AF] italic">No hay pedales en la colección.</span>' : sortedCats.map(([cat, count], idx) => {
+        effectsContainer.innerHTML = sortedCats.length === 0 ? (currentLang === 'en' ? '<span class="text-xs text-[#9CA3AF] italic">No pedals in collection.</span>' : '<span class="text-xs text-[#9CA3AF] italic">No hay pedales en la colección.</span>') : sortedCats.map(([cat, count], idx) => {
             const pct = Math.round((count / total) * 100);
             const color = barColors[idx % barColors.length];
             return '<div class="space-y-1"><div class="flex justify-between text-xs font-mono"><span class="text-white">' + cat + '</span><span class="text-[#9CA3AF]">' + count + ' (' + pct + '%)</span></div><div class="w-full bg-[#121316] h-2 rounded-full overflow-hidden border border-[#2A2D36]"><div class="h-full rounded-full transition-all duration-500" style="width: ' + pct + '%; background-color: ' + color + '"></div></div></div>';
@@ -3653,7 +3654,7 @@ function renderDashboardStats() {
     if (brandsContainer && pedalDatabase) {
         const brands = {};
         activeCollectionPedals.forEach(p => {
-            const b = p.brand || 'Otros';
+            const b = p.brand || (currentLang === 'en' ? 'Others' : 'Otros');
             brands[b] = (brands[b] || 0) + 1;
         });
         const total = activeCollectionPedals.length || 1;
@@ -3672,7 +3673,7 @@ function renderDashboardStats() {
     if (topValGrid) {
         const pricedPedals = activeCollectionPedals.filter(p => (Number(p.priceUsd) || 0) > 0);
         if (pricedPedals.length === 0) {
-            topValGrid.innerHTML = '<span class="text-xs text-[#9CA3AF] italic col-span-full py-4 text-center block">No hay pedales con precio registrado en tu colección.</span>';
+            topValGrid.innerHTML = currentLang === 'en' ? '<span class="text-xs text-[#9CA3AF] italic col-span-full py-4 text-center block">No pedals with registered price in your collection.</span>' : '<span class="text-xs text-[#9CA3AF] italic col-span-full py-4 text-center block">No hay pedales con precio registrado en tu colección.</span>';
         } else {
             const priceGroups = {};
             pricedPedals.forEach(p => {
@@ -3684,9 +3685,9 @@ function renderDashboardStats() {
             const top3Prices = sortedPrices.slice(0, 3);
 
             const rankBadges = [
-                { label: '🥇 1º Puesto', class: 'bg-[#EAB308]/20 text-[#EAB308] border-[#EAB308]/40' },
-                { label: '🥈 2º Puesto', class: 'bg-[#9CA3AF]/20 text-white border-[#9CA3AF]/40' },
-                { label: '🥉 3º Puesto', class: 'bg-[#D97706]/20 text-[#F59E0B] border-[#D97706]/40' }
+                { label: currentLang === 'en' ? '🥇 1st Place' : '🥇 1º Puesto', class: 'bg-[#EAB308]/20 text-[#EAB308] border-[#EAB308]/40' },
+                { label: currentLang === 'en' ? '🥈 2nd Place' : '🥈 2º Puesto', class: 'bg-[#9CA3AF]/20 text-white border-[#9CA3AF]/40' },
+                { label: currentLang === 'en' ? '🥉 3rd Place' : '🥉 3º Puesto', class: 'bg-[#D97706]/20 text-[#F59E0B] border-[#D97706]/40' }
             ];
 
             topValGrid.innerHTML = top3Prices.map((price, idx) => {
@@ -3713,7 +3714,7 @@ function renderDashboardStats() {
                     pedalsHtml = `
                         <div class="space-y-1.5 pt-1">
                             <div class="text-[10px] font-mono text-[#9CA3AF] flex items-center gap-1">
-                                <i class="fa-solid fa-layer-group text-[#8B5CF6]"></i> ${pedalsInTier.length} pedales empatados:
+                                <i class="fa-solid fa-layer-group text-[#8B5CF6]"></i> ${pedalsInTier.length} ${currentLang === "en" ? "tied pedals:" : "pedales empatados:"}
                             </div>
                             <div class="space-y-1 max-h-36 overflow-y-auto pr-1">
                                 ${pedalsInTier.map(pedal => {
@@ -3762,10 +3763,10 @@ function renderDashboardStats() {
         let elecStatusHtml = '';
         let elecBadgeClass = 'border-[#00A8CC]/40 text-[#00A8CC] bg-[#00A8CC]/10';
         let elecIcon = 'fa-shield-halved text-[#00A8CC]';
-        let elecTitle = 'Ruteo & Energía';
+        let elecTitle = currentLang === 'en' ? 'ROUTING & POWER' : 'Ruteo & Energía';
 
         if (activeChainPedalIds.length === 0) {
-            elecStatusHtml = 'No hay pedales asignados en la cadena activa.';
+            elecStatusHtml = currentLang === 'en' ? 'No pedals assigned to active chain.' : 'No hay pedales asignados en la cadena activa.';
         } else {
             let unassignedCount = 0;
             let overloadedOutlets = 0;
@@ -3800,20 +3801,20 @@ function renderDashboardStats() {
             if (voltageWarnings > 0) {
                 elecBadgeClass = 'border-[#F15A24] text-[#F15A24] bg-[#F15A24]/20 animate-pulse';
                 elecIcon = 'fa-triangle-exclamation text-[#F15A24]';
-                elecTitle = 'Alerta Crítica de Voltaje';
-                elecStatusHtml = `⚠️ <strong>${voltageWarnings} salida(s) con posible conflicto de voltaje.</strong> Revisá la pestaña Mis cadenas.`;
+                elecTitle = currentLang === 'en' ? 'Critical Voltage Alert' : 'Alerta Crítica de Voltaje';
+                elecStatusHtml = `⚠️ <strong>${voltageWarnings} ${currentLang === 'en' ? 'outlet(s) with potential voltage conflict.' : 'salida(s) con posible conflicto de voltaje.'}</strong> ${currentLang === 'en' ? 'Check the My Chains tab.' : 'Revisá la pestaña Mis cadenas.'}`;
             } else if (overloadedOutlets > 0) {
                 elecBadgeClass = 'border-[#F15A24]/80 text-[#F15A24] bg-[#F15A24]/10';
                 elecIcon = 'fa-bolt text-[#F15A24]';
-                elecTitle = 'Sobrecarga de Miliamperios';
-                elecStatusHtml = `⚠️ <strong>${overloadedOutlets} salida(s) superan su capacidad máxima de mA.</strong>`;
+                elecTitle = currentLang === 'en' ? 'Milliamp Overload' : 'Sobrecarga de Miliamperios';
+                elecStatusHtml = `⚠️ <strong>${overloadedOutlets} ${currentLang === 'en' ? 'outlet(s) exceed max mA capacity.' : 'salida(s) superan su capacidad máxima de mA.'}</strong>`;
             } else if (unassignedCount > 0) {
                 elecBadgeClass = 'border-[#EAB308]/40 text-[#EAB308] bg-[#EAB308]/10';
                 elecIcon = 'fa-plug text-[#EAB308]';
-                elecTitle = 'Pedales Sin Alimentación';
-                elecStatusHtml = `Tenés <strong>${unassignedCount} pedal(es)</strong> en la cadena activa sin salida asignada.`;
+                elecTitle = currentLang === 'en' ? 'Unpowered Pedals' : 'Pedales Sin Alimentación';
+                elecStatusHtml = `${currentLang === 'en' ? 'You have' : 'Tenés'} <strong>${unassignedCount} ${currentLang === 'en' ? 'pedal(s)' : 'pedal(es)'}</strong> ${currentLang === 'en' ? 'in active chain without assigned outlet.' : 'en la cadena activa sin salida asignada.'}`;
             } else {
-                elecStatusHtml = '✅ <strong>100% de la cadena alimentada de forma segura.</strong> Sin conflictos de voltaje ni sobrecarga.';
+                elecStatusHtml = currentLang === 'en' ? '✅ <strong>100% of chain safely powered.</strong> No voltage conflicts or overloads.' : '✅ <strong>100% de la cadena alimentada de forma segura.</strong> Sin conflictos de voltaje ni sobrecarga.';
             }
         }
 
@@ -3842,7 +3843,7 @@ function renderDashboardStats() {
         const docPct = totalItems > 0 ? Math.round((withManual / totalItems) * 100) : 100;
         let docBadgeClass = 'border-[#8B5CF6]/40 text-[#8B5CF6] bg-[#8B5CF6]/10';
         let docIcon = 'fa-file-pdf text-[#8B5CF6]';
-        let docTitle = 'Manuales & Legajo PDF';
+        let docTitle = currentLang === 'en' ? 'MANUALS & PDF DOCUMENTATION' : 'Manuales & Legajo PDF';
         const missingManual = totalItems - withManual;
 
         if (docPct < 50) {
@@ -3855,7 +3856,7 @@ function renderDashboardStats() {
         // Inventory & Financial Health
         let invBadgeClass = 'border-[#EAB308]/40 text-[#EAB308] bg-[#EAB308]/10';
         let invIcon = 'fa-chart-line text-[#EAB308]';
-        let invTitle = 'Resumen del Inventario';
+        let invTitle = currentLang === 'en' ? 'INVENTORY SUMMARY' : 'Resumen del Inventario';
 
         diagGrid.innerHTML = `
             <div class="bg-[#121316] border border-[#2A2D36] p-4 rounded-xl space-y-2 flex flex-col justify-between">
@@ -3865,7 +3866,7 @@ function renderDashboardStats() {
                             <i class="fa-solid ${elecIcon}"></i> ${elecTitle}
                         </span>
                         <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded ${elecBadgeClass}">
-                            ${activeChainPedalIds.length} Pedales
+                            ${activeChainPedalIds.length} ${currentLang === 'en' ? 'Pedals' : 'Pedales'}
                         </span>
                     </div>
                     <p class="text-xs text-[#9CA3AF] leading-relaxed font-sans pt-1">
@@ -3873,8 +3874,8 @@ function renderDashboardStats() {
                     </p>
                 </div>
                 <div class="pt-2 border-t border-[#2A2D36] flex items-center justify-between text-[11px] font-mono text-[#9CA3AF]">
-                    <span>Diagnóstico eléctrico:</span>
-                    <span class="text-white font-bold">${activeChainPedalIds.length > 0 ? 'Monitoreo activo' : 'Esperando cadena'}</span>
+                    <span>${currentLang === 'en' ? 'Electrical diagnostics:' : 'Diagnóstico eléctrico:'}</span>
+                    <span class="text-white font-bold">${activeChainPedalIds.length > 0 ? (currentLang === 'en' ? 'Active monitoring' : 'Monitoreo activo') : (currentLang === 'en' ? 'Awaiting chain' : 'Esperando cadena')}</span>
                 </div>
             </div>
 
@@ -3889,11 +3890,11 @@ function renderDashboardStats() {
                         </span>
                     </div>
                     <p class="text-xs text-[#9CA3AF] leading-relaxed font-sans pt-1">
-                        <strong>${withManual} de ${totalItems} equipos</strong> cuentan con manual PDF enlazado. ${missingManual > 0 ? `Faltan ${missingManual} manuales por vincular.` : '¡Legajo técnico completo al 100%!'}
+                        ${currentLang === 'en' ? `<strong>${withManual} of ${totalItems} equipment</strong> have linked PDF manual. ${missingManual > 0 ? `${missingManual} manual(s) missing link.` : 'Full technical documentation at 100%!'}` : `<strong>${withManual} de ${totalItems} equipos</strong> cuentan con manual PDF enlazado. ${missingManual > 0 ? `Faltan ${missingManual} manuales por vincular.` : '¡Legajo técnico completo al 100%!'}`}
                     </p>
                     ${missingManualItems.length > 0 ? `
                         <div class="mt-2 pt-2 border-t border-[#2A2D36] text-[11px] font-mono">
-                            <span class="text-[#F15A24] font-bold block mb-1">Faltan manuales:</span>
+                            <span class="text-[#F15A24] font-bold block mb-1">${currentLang === "en" ? "Missing manuals:" : "Faltan manuales:"}</span>
                             <div class="text-[#9CA3AF] text-xs font-sans space-y-1 max-h-24 overflow-y-auto pr-1">
                                 ${missingManualItems.map(item => `<div class="flex items-center gap-1.5"><i class="fa-solid fa-circle-exclamation text-[10px] text-[#F15A24]"></i> ${item}</div>`).join('')}
                             </div>
@@ -3901,8 +3902,8 @@ function renderDashboardStats() {
                     ` : ''}
                 </div>
                 <div class="pt-2 border-t border-[#2A2D36] flex items-center justify-between text-[11px] font-mono text-[#9CA3AF]">
-                    <span>Documentación:</span>
-                    <span class="text-[#8B5CF6] font-bold">${docPct}% Auditado</span>
+                    <span>${currentLang === 'en' ? 'Documentation:' : 'Documentación:'}</span>
+                    <span class="text-[#8B5CF6] font-bold">${docPct}% ${currentLang === 'en' ? 'Audited' : 'Auditado'}</span>
                 </div>
             </div>
 
@@ -3913,15 +3914,15 @@ function renderDashboardStats() {
                             <i class="fa-solid ${invIcon}"></i> ${invTitle}
                         </span>
                         <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded ${invBadgeClass}">
-                            ${collectionCount} Ítems
+                            ${collectionCount} ${currentLang === 'en' ? 'Items' : 'Ítems'}
                         </span>
                     </div>
                     <p class="text-xs text-[#9CA3AF] leading-relaxed font-sans pt-1">
-                        Tu colección suma <strong>$${colValueUsd.toLocaleString('en-US')} USD</strong> ($${pedalValUsd.toLocaleString('en-US')} en pedales y $${powerValUsd.toLocaleString('en-US')} en fuentes). Promedio: <strong>$${avgPedalPriceUsd.toLocaleString('en-US')} USD/pedal</strong>.
+                        ${currentLang === 'en' ? `Your collection totals <strong>$${colValueUsd.toLocaleString('en-US')} USD</strong> ($${pedalValUsd.toLocaleString('en-US')} in pedals and $${powerValUsd.toLocaleString('en-US')} in power supplies). Average: <strong>$${avgPedalPriceUsd.toLocaleString('en-US')} USD/pedal</strong>.` : `Tu colección suma <strong>$${colValueUsd.toLocaleString('en-US')} USD</strong> ($${pedalValUsd.toLocaleString('en-US')} en pedales y $${powerValUsd.toLocaleString('en-US')} en fuentes). Promedio: <strong>$${avgPedalPriceUsd.toLocaleString('en-US')} USD/pedal</strong>.`}
                     </p>
                 </div>
                 <div class="pt-2 border-t border-[#2A2D36] flex items-center justify-between text-[11px] font-mono text-[#9CA3AF]">
-                    <span>Valor Total Rig:</span>
+                    <span>${currentLang === 'en' ? 'Total Rig Value:' : 'Valor Total Rig:'}</span>
                     <span class="text-[#EAB308] font-bold">$${(colValueUsd + saleValueUsd).toLocaleString('en-US')} USD</span>
                 </div>
             </div>
