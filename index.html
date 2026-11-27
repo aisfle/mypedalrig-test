@@ -754,7 +754,7 @@
         <!-- EQUIPMENT PRE-FILTER TOGGLE (Fuente 232 / 029.jpg) -->
         <div class="bg-[#121316] p-3 rounded-xl border border-[#2A2D36] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <span class="text-xs font-mono text-[#9CA3AF] font-bold flex items-center gap-2">
-                <i class="fa-solid fa-filter text-[#F15A24]"></i> Equipamiento a cargar:
+                <i class="fa-solid fa-filter text-[#F15A24]"></i> <span data-i18n="mc_equip_to_load">Equipment to load:</span>
             </span>
             <div class="grid grid-cols-2 sm:flex sm:items-center gap-2 w-full sm:w-auto items-stretch">
                 <button id="mc-toggle-pedal" onclick="switchMasterCatalogEquipmentType('PEDAL')" class="flex-1 sm:flex-initial px-3 py-2.5 sm:py-1.5 rounded-lg text-xs font-bold transition-all bg-[#F15A24] text-white border border-[#F15A24] flex items-center justify-center text-center gap-2 cursor-pointer shadow-sm h-full">
@@ -863,7 +863,7 @@
         <div class="space-y-2 pt-1 border-t border-[#2A2D36]/60">
             <div class="flex justify-between items-center text-xs font-mono">
                 <label class="text-[#9CA3AF]"><span data-i18n="lbl_musical_styles">Musical styles (1 to 4 optional):</span></label>
-                <span id="fav-tag-count-label" class="text-[11px] text-[#F15A24] font-bold">0 / 4 seleccionados</span>
+                <span id="fav-tag-count-label" class="text-[11px] text-[#F15A24] font-bold">0 / 4 ${currentLang === "en" ? "selected" : "seleccionados"}</span>
             </div>
             <div id="fav-tags-selector" class="flex flex-wrap gap-1.5 max-h-40 overflow-y-auto p-2 bg-[#121316] border border-[#2A2D36] rounded-xl text-xs scrollbar-thin"></div>
         </div>
@@ -17352,7 +17352,7 @@ function renderSignalChain() {
                 const assignedOutlet = assignedPs?.outlets?.find(o => o.id === assignment.outletId);
                 const outletLabel = assignedOutlet ? assignedOutlet.label.replace('Salida ', '') : '';
                 const psName = assignedPs ? assignedPs.brand : 'Fuente';
-                powerBadgeHtml = `<div class="mt-2 w-full flex items-center justify-center bg-[#121316] text-[#F15A24] border border-[#F15A24]/30 rounded py-1 px-2 text-[10px] font-bold truncate" title="${assignedPs ? assignedPs.brand + ' ' + assignedPs.model : ''}"><i class="fa-solid fa-bolt mr-1.5"></i> ${psName} - Salida ${outletLabel}</div>`;
+                powerBadgeHtml = `<div class="mt-2 w-full flex items-center justify-center bg-[#121316] text-[#F15A24] border border-[#F15A24]/30 rounded py-1 px-2 text-[10px] font-bold truncate" title="${assignedPs ? assignedPs.brand + ' ' + assignedPs.model : ''}"><i class="fa-solid fa-bolt mr-1.5"></i> ${psName} - ${currentLang === "en" ? "Outlet" : "Salida"} ${outletLabel}</div>`;
             } else {
                 powerBadgeHtml = `<div class="mt-2 w-full flex items-center justify-center bg-[#121316]/80 text-[#9CA3AF] border border-[#2A2D36] rounded py-1 px-2 text-[10px] font-bold truncate"><i class="fa-solid fa-plug mr-1.5"></i> ${currentLang === "en" ? "No Power" : "Sin Fuente"}</div>`;
             }
@@ -17534,7 +17534,7 @@ function renderSignalChain() {
             cablesSummaryEl.innerHTML = `
                 <div class="bg-[#121316] border border-[#2A2D36] p-4 rounded-xl space-y-2 mt-3 font-sans">
                     <h4 class="text-xs font-bold text-[#FFFFFF] uppercase tracking-wider flex items-center justify-between">
-                        <span class="flex items-center gap-2"><i class="fa-solid fa-plug text-[#00A8CC]"></i> Cables Interpedales Requeridos</span>
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-plug text-[#00A8CC]"></i> ${currentLang === "en" ? "REQUIRED INTER-PEDAL CABLES" : "CABLES INTERPEDALES REQUERIDOS"}</span>
                         <span class="text-[10px] font-mono text-[#9CA3AF] font-normal">${activeChainSlots.length - 1} ${currentLang === "en" ? "audio connections" : "conexiones de audio"}</span>
                     </h4>
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs font-mono pt-1">
@@ -17772,7 +17772,7 @@ function renderEnergySummaryTable() {
             if (ps && outlet) {
                 const cleanPsName = getCleanItemDisplayName(ps);
                 psName = (ps.brand && !cleanPsName.toLowerCase().includes(ps.brand.toLowerCase())) ? `${ps.brand} - ${cleanPsName}` : cleanPsName;
-                outletName = outlet.label;
+                outletName = currentLang === "en" ? outlet.label.replace("Salida", "Outlet") : outlet.label;
                 
                 const outletPedals = pedalDatabase.filter(op => {
                     if (!currentChainIds.includes(op.id)) return false;
@@ -17789,7 +17789,7 @@ function renderEnergySummaryTable() {
                 }
                 if (outlet.voltage !== '9V') {
                     isError = true;
-                    errorMsgs.push('Error Voltaje');
+                    errorMsgs.push(currentLang === 'en' ? 'Voltage Error' : 'Error Voltaje');
                 }
                 if (isError) {
                     statusHtml = `<span class="text-[#F15A24] font-bold pulse-critical">⚠️ ${errorMsgs.join(' / ')}</span>`;
@@ -18519,7 +18519,7 @@ const maBase = pedal.maBase || pedal.maDraw || 20;
                 if (!isTabChain) {
                     return `
                         <div class="bg-[#121316] p-2.5 rounded-xl border border-[#2A2D36] font-mono text-xs flex justify-between items-center">
-                            <span class="text-[#00A8CC] font-bold">${out.label}</span>
+                            <span class="text-[#00A8CC] font-bold">${currentLang === "en" ? out.label.replace("Salida", "Outlet") : out.label}</span>
                             <div class="flex items-center gap-1.5">
                                 ${voltSelectorHtml}
                                 <span class="text-[#FFFFFF]">@ ${out.maxMa} mA</span>
@@ -19142,7 +19142,7 @@ function renderSaveFavTagsSelector() {
     const container = document.getElementById('fav-tags-selector');
     const label = document.getElementById('fav-tag-count-label');
     if (!container) return;
-    if (label) label.textContent = `${selectedSaveFavTags.length} / 4 seleccionados`;
+    if (label) label.textContent = `${selectedSaveFavTags.length} / 4 ${currentLang === 'en' ? 'selected' : 'seleccionados'}`;
     container.innerHTML = ALL_GENRE_TAGS.map(tag => {
         const isSelected = selectedSaveFavTags.includes(tag);
         return `
@@ -19162,7 +19162,7 @@ function toggleSaveFavTag(tag) {
         selectedSaveFavTags = selectedSaveFavTags.filter(t => t !== tag);
     } else {
         if (selectedSaveFavTags.length >= 4) {
-            alert('Puedes seleccionar como máximo 4 estilos musicales por preset.');
+            alert(currentLang === 'en' ? 'You can select up to 4 musical styles per preset.' : 'Puedes seleccionar como máximo 4 estilos musicales por preset.');
             return;
         }
         selectedSaveFavTags.push(tag);
@@ -19416,7 +19416,7 @@ function renderFavoriteBadges() {
                 <div class="flex items-center justify-between gap-2">
                     <span class="font-bold text-xs text-[#FFFFFF] group-hover:text-[#F15A24] transition-colors">${fav.name}</span>
                     <div class="flex items-center gap-1.5 shrink-0">
-                        <button onclick="duplicateFavorite(${i}, event)" title="Duplicar preset al 100%" class="text-[#9CA3AF] hover:text-[#00A8CC] text-xs p-0.5 transition-colors cursor-pointer">
+                        <button onclick="duplicateFavorite(${i}, event)" title="${currentLang === 'en' ? 'Duplicate preset 100%' : 'Duplicar preset al 100%'}" class="text-[#9CA3AF] hover:text-[#00A8CC] text-xs p-0.5 transition-colors cursor-pointer">
                             <i class="fa-solid fa-copy"></i>
                         </button>
                         <button onclick="confirmDeleteFavorite(${i}, event)" title="${currentLang === 'en' ? 'Delete preset' : 'Eliminar preset'}" class="text-[#9CA3AF] hover:text-[#F15A24] text-xs p-0.5 transition-colors cursor-pointer">
@@ -20105,11 +20105,11 @@ function exportChainToPDF() {
             <div class="grid grid-cols-3 gap-3 text-xs font-mono">
                 <div class="bg-[#1C1E24] p-3 rounded-xl border border-[#2A2D36]">
                     <span class="text-[10px] text-[#9CA3AF] block">${currentLang === "en" ? "Chain pedals:" : "Pedales en cadena:"}</span>
-                    <strong class="text-[#F15A24] text-sm block mt-0.5">${activeSlots.length} unidades</strong>
+                    <strong class="text-[#F15A24] text-sm block mt-0.5">${activeSlots.length} ${currentLang === "en" ? "units" : "unidades"}</strong>
                 </div>
                 <div class="bg-[#1C1E24] p-3 rounded-xl border border-[#2A2D36]">
                     <span class="text-[10px] text-[#9CA3AF] block">${currentLang === "en" ? "Cumulative draw:" : "Consumo acumulado:"}</span>
-                    <strong class="text-[#00A8CC] text-sm block mt-0.5">${totalMa} mA (+30% seg)</strong>
+                    <strong class="text-[#00A8CC] text-sm block mt-0.5">${totalMa} mA (+30% ${currentLang === "en" ? "margin" : "seg"})</strong>
                 </div>
                 <div class="bg-[#1C1E24] p-3 rounded-xl border border-[#2A2D36]">
                     <span class="text-[10px] text-[#9CA3AF] block">Valoración del Rig:</span>
