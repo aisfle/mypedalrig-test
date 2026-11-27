@@ -17535,19 +17535,19 @@ function renderSignalChain() {
                 <div class="bg-[#121316] border border-[#2A2D36] p-4 rounded-xl space-y-2 mt-3 font-sans">
                     <h4 class="text-xs font-bold text-[#FFFFFF] uppercase tracking-wider flex items-center justify-between">
                         <span class="flex items-center gap-2"><i class="fa-solid fa-plug text-[#00A8CC]"></i> Cables Interpedales Requeridos</span>
-                        <span class="text-[10px] font-mono text-[#9CA3AF] font-normal">${activeChainSlots.length - 1} conexiones de audio</span>
+                        <span class="text-[10px] font-mono text-[#9CA3AF] font-normal">${activeChainSlots.length - 1} ${currentLang === "en" ? "audio connections" : "conexiones de audio"}</span>
                     </h4>
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs font-mono pt-1">
                         <div class="bg-[#1C1E24] p-2.5 rounded-lg border border-[#2A2D36] flex justify-between items-center">
-                            <span class="text-[#9CA3AF]">Cable Patch Mono (TS):</span>
+                            <span class="text-[#9CA3AF]">${currentLang === "en" ? "Mono Patch Cable (TS):" : "Cable Patch Mono (TS):"}</span>
                             <span class="font-bold text-[#FFFFFF] bg-[#00A8CC]/20 text-[#00A8CC] px-2 py-0.5 rounded">${monoCablesCount}</span>
                         </div>
                         <div class="bg-[#1C1E24] p-2.5 rounded-lg border border-[#2A2D36] flex justify-between items-center">
-                            <span class="text-[#9CA3AF]">Cable Patch Stereo (TRS):</span>
+                            <span class="text-[#9CA3AF]">${currentLang === "en" ? "Stereo Patch Cable (TRS):" : "Cable Patch Stereo (TRS):"}</span>
                             <span class="font-bold text-[#FFFFFF] bg-[#9E7BB5]/20 text-[#9E7BB5] px-2 py-0.5 rounded">${stereoCablesCount}</span>
                         </div>
                         <div class="bg-[#1C1E24] p-2.5 rounded-lg border border-[#2A2D36] flex justify-between items-center">
-                            <span class="text-[#9CA3AF]">Cable Splitter (Y):</span>
+                            <span class="text-[#9CA3AF]">${currentLang === "en" ? "Splitter Cable (Y):" : "Cable Splitter (Y):"}</span>
                             <span class="font-bold text-[#FFFFFF] bg-[#F15A24]/20 text-[#F15A24] px-2 py-0.5 rounded">${splitterCablesCount}</span>
                         </div>
                     </div>
@@ -17693,7 +17693,7 @@ function renderChainPowerSupplies() {
         
         let barColor = 'bg-[#00A8CC]';
         let textColor = 'text-[#00A8CC]';
-        let statusBadge = `<span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-[#00A8CC]/10 text-[#00A8CC] border border-[#00A8CC]/20">Seguro</span>`;
+        let statusBadge = `<span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-[#00A8CC]/10 text-[#00A8CC] border border-[#00A8CC]/20">${currentLang === "en" ? "Safe" : "Seguro"}</span>`;
         if (stats.percentage >= 80 && stats.percentage <= 100) {
             barColor = 'bg-[#F15A24]';
             textColor = 'text-[#F15A24]';
@@ -17762,9 +17762,9 @@ function renderEnergySummaryTable() {
     }
     activePedalsInChain.forEach(p => {
         const assign = getPedalPowerAssignment(p.id);
-        let psName = '<span class="text-[#9CA3AF] italic">No asignada</span>';
+        let psName = `<span class="text-[#9CA3AF] italic">${currentLang === "en" ? "Unassigned" : "No asignada"}</span>`;
         let outletName = '<span class="text-[#9CA3AF] italic">-</span>';
-        let statusHtml = '<span class="text-[#9CA3AF]">Sin conexión</span>';
+        let statusHtml = `<span class="text-[#9CA3AF]">${currentLang === "en" ? "Not connected" : "Sin conexión"}</span>`;
         if (assign.psId) {
             const ps = powerSuppliesDatabase.find(x => x.id === assign.psId);
             const outlet = ps?.outlets?.find(o => o.id === assign.outletId);
@@ -17785,7 +17785,7 @@ function renderEnergySummaryTable() {
                 let errorMsgs = [];
                 if (sumMa > outlet.maxMa) {
                     isError = true;
-                    errorMsgs.push('Sobrecarga mA');
+                    errorMsgs.push(currentLang === 'en' ? 'mA Overload' : 'Sobrecarga mA');
                 }
                 if (outlet.voltage !== '9V') {
                     isError = true;
@@ -18569,12 +18569,12 @@ const maBase = pedal.maBase || pedal.maDraw || 20;
                 } else {
                     if (activeSplitOutletId === out.id) {
                         actionControlsHtml = `
-                            <div class="pt-1.5 flex items-center gap-2">
-                                <select onchange="assignPedalToOutlet('${ps.id}', '${out.id}', this.value); activeSplitOutletId = null; this.value='';" class="flex-1 bg-[#1C1E24] text-[#FFFFFF] border border-[#00A8CC] rounded-lg px-2.5 py-1.5 text-xs font-mono focus:outline-none">
+                            <div class="pt-1.5 flex items-center gap-2 w-full min-w-0">
+                                <select onchange="assignPedalToOutlet('${ps.id}', '${out.id}', this.value); activeSplitOutletId = null; this.value='';" class="flex-1 min-w-0 truncate bg-[#1C1E24] text-[#FFFFFF] border border-[#00A8CC] rounded-lg px-2.5 py-1.5 text-xs font-mono focus:outline-none">
                                     ${addPedalOptionsHtml}
                                 </select>
-                                <button onclick="activeSplitOutletId = null; renderInspector('${ps.id}');" title="Cancelar Split" class="text-[#9CA3AF] hover:text-[#FFFFFF] text-xs px-2.5 py-1.5 bg-[#1C1E24] hover:bg-[#20232B] rounded-lg border border-[#2A2D36] transition-all">
-                                    Cancelar
+                                <button onclick="activeSplitOutletId = null; renderInspector('${ps.id}');" title="${currentLang === 'en' ? 'Cancel Split' : 'Cancelar Split'}" class="w-8 h-8 shrink-0 flex items-center justify-center text-[#9CA3AF] hover:text-[#FFFFFF] bg-[#1C1E24] hover:bg-[#20232B] rounded-lg border border-[#2A2D36] transition-all">
+                                    <i class="fa-solid fa-xmark text-xs"></i>
                                 </button>
                             </div>
                         `;
@@ -18594,11 +18594,11 @@ const maBase = pedal.maBase || pedal.maDraw || 20;
                         <div class="inline-flex items-center gap-1.5 bg-[#1C1E24] text-[#FFFFFF] px-2 py-1 rounded text-[11px] font-mono border border-[#2A2D36]">
                             <span class="font-bold text-[#00A8CC]">${p.name}</span>
                             <span class="text-[#9CA3AF] text-[9px]">(${p.maWithMargin}mA)</span>
-                            <button onclick="unassignPedalFromOutlet('${p.id}', '${ps.id}')" title="Desconectar pedal" class="text-[#9CA3AF] hover:text-[#F15A24] text-xs ml-0.5">
+                            <button onclick="unassignPedalFromOutlet('${p.id}', '${ps.id}')" title="${currentLang === 'en' ? 'Disconnect pedal' : 'Desconectar pedal'}" class="text-[#9CA3AF] hover:text-[#F15A24] text-xs ml-0.5">
                                 <i class="fa-solid fa-xmark"></i>
                             </button>
                         </div>
-                    `).join(' ') : '<span class="text-[#9CA3AF] italic text-[11px]">${currentLang === "en" ? "No pedals connected" : "Sin pedales conectados"}</span>';
+                    `).join(' ') : `<span class="text-[#9CA3AF] italic text-[11px]">${currentLang === "en" ? "No pedals connected" : "Sin pedales conectados"}</span>`;
 
                 const splitBadgeHtml = assignedPedals.length >= 2 ?
                     `<span class="text-[10px] font-mono bg-[#00A8CC]/20 text-[#00A8CC] border border-[#00A8CC]/30 px-2 py-0.5 rounded font-bold flex items-center gap-1"><i class="fa-solid fa-code-branch text-[#00A8CC]"></i> Split (${assignedPedals.length} ${currentLang === "en" ? (assignedPedals.length === 1 ? "pedal" : "pedals") : "pedales"})</span>` : '';
@@ -18672,7 +18672,7 @@ const maBase = pedal.maBase || pedal.maDraw || 20;
             <div class="space-y-2 font-mono border-t border-[#2A2D36] pt-3">
                 <h4 class="text-xs font-bold text-[#F15A24] uppercase tracking-wider flex items-center justify-between">
                     <span>${currentLang === "en" ? "PHYSICAL OUTLETS STATUS" : "ESTADO DE SALIDAS FÍSICAS"}</span>
-                    <span class="text-[10px] text-[#00A8CC] font-normal">${isTabChain ? 'Asignación Dinámica' : 'Inventario Base'}</span>
+                    <span class="text-[10px] text-[#00A8CC] font-normal">${isTabChain ? (currentLang === 'en' ? 'Dynamic Assignment' : 'Asignación Dinámica') : (currentLang === 'en' ? 'Base Inventory' : 'Inventario Base')}</span>
                 </h4>
                 <div class="space-y-2">
                     ${outletsListHtml}
@@ -19468,45 +19468,45 @@ function exportFullBackup() {
 function importFullBackup(event) {
     const file = event.target.files[0];
     if (!file) return;
+
+    // Immediately clear file input value so user can re-import the same file if desired
+    if (event && event.target) event.target.value = '';
+
     const reader = new FileReader();
     reader.onload = function(e) {
         try {
-            const parsed = JSON.parse(e.target.result);
+            let parsed = JSON.parse(e.target.result);
+            if (!parsed) return;
+
             pushHistory();
 
-            // 1. Reset active search queries & filters so imported items are not hidden by previous filter state
+            // 1. Reset all active search filters & brand/category selections to prevent hiding imported items
             currentBrandFilter = 'ALL';
             currentCategoryFilter = 'ALL';
             collectionSearchQuery = '';
             const searchInput = document.getElementById('collection-search-input') || document.getElementById('search-collection-input');
             if (searchInput) searchInput.value = '';
 
-            // 2. Load backup state data with fallback keys support
-            if (parsed.currentChainIds) currentChainIds = parsed.currentChainIds;
-            else if (parsed.current_chain) currentChainIds = parsed.current_chain;
+            // 2. Full State Reset in memory before reading backup data
+            currentChainIds = [];
+            chainSlotModes = {};
+            chainSlotRoutes = {};
+            currentPowerAssignments = {};
+            currentChainPowerSupplyIds = [];
+            favoriteChains = [];
+            pedalDatabase.length = 0;
+            powerSuppliesDatabase.length = 0;
+            wishlistDatabase.length = 0;
+            activeInspectorId = null;
 
-            if (parsed.chainSlotModes) chainSlotModes = parsed.chainSlotModes;
-            else if (parsed.chain_modes) chainSlotModes = parsed.chain_modes;
-
-            if (parsed.currentPowerAssignments) currentPowerAssignments = parsed.currentPowerAssignments;
-            else if (parsed.current_power_assignments) currentPowerAssignments = parsed.current_power_assignments;
-
-            if (parsed.currentChainPowerSupplyIds) currentChainPowerSupplyIds = parsed.currentChainPowerSupplyIds;
-            else if (parsed.current_chain_power_supplies) currentChainPowerSupplyIds = parsed.current_chain_power_supplies;
-
-            if (parsed.favoriteChains) favoriteChains = parsed.favoriteChains;
-            else if (parsed.rig_favorites) favoriteChains = parsed.rig_favorites;
-
-            if (parsed.chainSlotRoutes) chainSlotRoutes = parsed.chainSlotRoutes;
-            if (parsed.currentChainArchitecture) currentChainArchitecture = parsed.currentChainArchitecture;
-            if (parsed.parallelMixRatio !== undefined) parallelMixRatio = Number(parsed.parallelMixRatio) || 50;
-            if (parsed.parallelPhaseInverted !== undefined) parallelPhaseInverted = !!parsed.parallelPhaseInverted;
-
-            if (parsed.pedalDatabase || parsed.pedal_db) {
-                const pedalArr = parsed.pedalDatabase || parsed.pedal_db;
-                pedalDatabase.length = 0;
-                if (Array.isArray(pedalArr)) {
-                    pedalArr.forEach(p => {
+            // 3. Robust Multi-format Backup JSON Parser (handles Stringified arrays, direct Arrays, and alternate Keys)
+            let pedalArr = parsed.pedalDatabase || parsed.pedal_db || parsed.pedals || parsed.collectionPedals;
+            if (typeof pedalArr === 'string') {
+                try { pedalArr = JSON.parse(pedalArr); } catch(err){}
+            }
+            if (Array.isArray(pedalArr)) {
+                pedalArr.forEach(p => {
+                    if (p && typeof p === 'object') {
                         normalizePedalData(p);
                         const fb = typeof DEFAULT_PEDALS_FALLBACK !== 'undefined' ? DEFAULT_PEDALS_FALLBACK.find(f => f.id === p.id || (f.brand === p.brand && f.name === p.name)) : null;
                         if (fb) {
@@ -19514,30 +19514,34 @@ function importFullBackup(event) {
                             if (!p.manualUrl && fb.manualUrl) p.manualUrl = fb.manualUrl;
                         }
                         pedalDatabase.push(p);
-                    });
-                }
+                    }
+                });
             }
 
-            if (parsed.powerSuppliesDatabase || parsed.power_db) {
-                const powerArr = parsed.powerSuppliesDatabase || parsed.power_db;
-                powerSuppliesDatabase.length = 0;
-                if (Array.isArray(powerArr)) {
-                    powerArr.forEach(ps => {
+            let powerArr = parsed.powerSuppliesDatabase || parsed.power_db || parsed.powerSupplies || parsed.power_supplies;
+            if (typeof powerArr === 'string') {
+                try { powerArr = JSON.parse(powerArr); } catch(err){}
+            }
+            if (Array.isArray(powerArr)) {
+                powerArr.forEach(ps => {
+                    if (ps && typeof ps === 'object') {
                         const fb = typeof DEFAULT_POWER_SUPPLIES_FALLBACK !== 'undefined' ? DEFAULT_POWER_SUPPLIES_FALLBACK.find(f => f.id === ps.id || (f.brand === ps.brand && f.model === ps.model)) : null;
                         if (fb) {
                             if (!ps.imageUrl && fb.imageUrl) ps.imageUrl = fb.imageUrl;
                             if (!ps.manualUrl && fb.manualUrl) ps.manualUrl = fb.manualUrl;
                         }
                         powerSuppliesDatabase.push(ps);
-                    });
-                }
+                    }
+                });
             }
 
-            if (parsed.wishlistDatabase || parsed.wishlist || parsed.wishlist_db) {
-                const wishArr = parsed.wishlistDatabase || parsed.wishlist || parsed.wishlist_db;
-                wishlistDatabase.length = 0;
-                if (Array.isArray(wishArr)) {
-                    wishArr.forEach(w => {
+            let wishArr = parsed.wishlistDatabase || parsed.wishlist || parsed.wishlist_db;
+            if (typeof wishArr === 'string') {
+                try { wishArr = JSON.parse(wishArr); } catch(err){}
+            }
+            if (Array.isArray(wishArr)) {
+                wishArr.forEach(w => {
+                    if (w && typeof w === 'object') {
                         normalizePedalData(w);
                         const fb = typeof DEFAULT_PEDALS_FALLBACK !== 'undefined' ? DEFAULT_PEDALS_FALLBACK.find(f => f.id === w.id || (f.brand === w.brand && f.name === w.name)) : null;
                         if (fb) {
@@ -19545,15 +19549,65 @@ function importFullBackup(event) {
                             if (!w.manualUrl && fb.manualUrl) w.manualUrl = fb.manualUrl;
                         }
                         wishlistDatabase.push(w);
-                    });
-                }
+                    }
+                });
             }
 
-            // 3. Sync master catalog fallback data & save to localStorage
+            let chainArr = parsed.currentChainIds || parsed.current_chain || parsed.activeChain;
+            if (typeof chainArr === 'string') {
+                try { chainArr = JSON.parse(chainArr); } catch(err){}
+            }
+            if (Array.isArray(chainArr)) {
+                currentChainIds = chainArr;
+            }
+
+            let modesObj = parsed.chainSlotModes || parsed.chain_modes;
+            if (typeof modesObj === 'string') {
+                try { modesObj = JSON.parse(modesObj); } catch(err){}
+            }
+            if (modesObj && typeof modesObj === 'object') {
+                chainSlotModes = modesObj;
+            }
+
+            let powerAssignObj = parsed.currentPowerAssignments || parsed.current_power_assignments;
+            if (typeof powerAssignObj === 'string') {
+                try { powerAssignObj = JSON.parse(powerAssignObj); } catch(err){}
+            }
+            if (powerAssignObj && typeof powerAssignObj === 'object') {
+                currentPowerAssignments = powerAssignObj;
+            }
+
+            let chainPsArr = parsed.currentChainPowerSupplyIds || parsed.current_chain_power_supplies;
+            if (typeof chainPsArr === 'string') {
+                try { chainPsArr = JSON.parse(chainPsArr); } catch(err){}
+            }
+            if (Array.isArray(chainPsArr)) {
+                currentChainPowerSupplyIds = chainPsArr;
+            }
+
+            let favArr = parsed.favoriteChains || parsed.rig_favorites;
+            if (typeof favArr === 'string') {
+                try { favArr = JSON.parse(favArr); } catch(err){}
+            }
+            if (Array.isArray(favArr)) {
+                favoriteChains = favArr;
+            }
+
+            if (parsed.chainSlotRoutes) {
+                let routesObj = parsed.chainSlotRoutes;
+                if (typeof routesObj === 'string') { try { routesObj = JSON.parse(routesObj); } catch(err){} }
+                if (routesObj && typeof routesObj === 'object') chainSlotRoutes = routesObj;
+            }
+
+            if (parsed.currentChainArchitecture) currentChainArchitecture = parsed.currentChainArchitecture;
+            if (parsed.parallelMixRatio !== undefined) parallelMixRatio = Number(parsed.parallelMixRatio) || 50;
+            if (parsed.parallelPhaseInverted !== undefined) parallelPhaseInverted = !!parsed.parallelPhaseInverted;
+
+            // 4. Sync master catalog fallbacks & save to localStorage
             syncSavedItemsWithMasterCatalog();
             saveStateToLocalStorage();
 
-            // 4. Force synchronous re-render of ALL view components
+            // 5. Force synchronous re-render of ALL components across ALL tabs
             renderFavoriteBadges();
             renderBrandFilters();
             renderCategoryFilters();
@@ -19562,9 +19616,11 @@ function importFullBackup(event) {
             if (typeof renderDashboardStats === 'function') renderDashboardStats();
             if (typeof renderChainPowerSupplies === 'function') renderChainPowerSupplies();
             if (typeof renderEnergySummaryTable === 'function') renderEnergySummaryTable();
+
+            // Force tab DOM refresh so active view is fully hydrated
             if (typeof switchTab === 'function') switchTab(activeTab);
 
-            // 5. Update Inspector selection
+            // 6. Update Inspector selection cleanly
             if (currentChainIds.length > 0 && currentChainIds[0] && currentChainIds[0] !== 'EMPTY') {
                 inspectPedal(currentChainIds[0]);
             } else if (pedalDatabase.length > 0) {
@@ -19575,9 +19631,7 @@ function importFullBackup(event) {
                 renderInspector(null);
             }
 
-            if (event && event.target) event.target.value = '';
-
-            // 6. Non-blocking alert so DOM repaints BEFORE blocking modal alert appears
+            // 7. Non-blocking alert so browser repaints DOM BEFORE modal alert interrupts thread
             setTimeout(() => {
                 alert(currentLang === 'en' ? 'Full backup loaded successfully!' : '¡Respaldo completo cargado con éxito!');
             }, 50);
