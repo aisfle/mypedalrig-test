@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-        <script>
+    <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
@@ -17535,19 +17535,19 @@ function renderSignalChain() {
                 <div class="bg-[#121316] border border-[#2A2D36] p-4 rounded-xl space-y-2 mt-3 font-sans">
                     <h4 class="text-xs font-bold text-[#FFFFFF] uppercase tracking-wider flex items-center justify-between">
                         <span class="flex items-center gap-2"><i class="fa-solid fa-plug text-[#00A8CC]"></i> Cables Interpedales Requeridos</span>
-                        <span class="text-[10px] font-mono text-[#9CA3AF] font-normal">${activeChainSlots.length - 1} conexiones de audio</span>
+                        <span class="text-[10px] font-mono text-[#9CA3AF] font-normal">${activeChainSlots.length - 1} ${currentLang === "en" ? "audio connections" : "conexiones de audio"}</span>
                     </h4>
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs font-mono pt-1">
                         <div class="bg-[#1C1E24] p-2.5 rounded-lg border border-[#2A2D36] flex justify-between items-center">
-                            <span class="text-[#9CA3AF]">Cable Patch Mono (TS):</span>
+                            <span class="text-[#9CA3AF]">${currentLang === "en" ? "Mono Patch Cable (TS):" : "Cable Patch Mono (TS):"}</span>
                             <span class="font-bold text-[#FFFFFF] bg-[#00A8CC]/20 text-[#00A8CC] px-2 py-0.5 rounded">${monoCablesCount}</span>
                         </div>
                         <div class="bg-[#1C1E24] p-2.5 rounded-lg border border-[#2A2D36] flex justify-between items-center">
-                            <span class="text-[#9CA3AF]">Cable Patch Stereo (TRS):</span>
+                            <span class="text-[#9CA3AF]">${currentLang === "en" ? "Stereo Patch Cable (TRS):" : "Cable Patch Stereo (TRS):"}</span>
                             <span class="font-bold text-[#FFFFFF] bg-[#9E7BB5]/20 text-[#9E7BB5] px-2 py-0.5 rounded">${stereoCablesCount}</span>
                         </div>
                         <div class="bg-[#1C1E24] p-2.5 rounded-lg border border-[#2A2D36] flex justify-between items-center">
-                            <span class="text-[#9CA3AF]">Cable Splitter (Y):</span>
+                            <span class="text-[#9CA3AF]">${currentLang === "en" ? "Splitter Cable (Y):" : "Cable Splitter (Y):"}</span>
                             <span class="font-bold text-[#FFFFFF] bg-[#F15A24]/20 text-[#F15A24] px-2 py-0.5 rounded">${splitterCablesCount}</span>
                         </div>
                     </div>
@@ -17693,7 +17693,7 @@ function renderChainPowerSupplies() {
         
         let barColor = 'bg-[#00A8CC]';
         let textColor = 'text-[#00A8CC]';
-        let statusBadge = `<span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-[#00A8CC]/10 text-[#00A8CC] border border-[#00A8CC]/20">Seguro</span>`;
+        let statusBadge = `<span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-[#00A8CC]/10 text-[#00A8CC] border border-[#00A8CC]/20">${currentLang === "en" ? "Safe" : "Seguro"}</span>`;
         if (stats.percentage >= 80 && stats.percentage <= 100) {
             barColor = 'bg-[#F15A24]';
             textColor = 'text-[#F15A24]';
@@ -17762,9 +17762,9 @@ function renderEnergySummaryTable() {
     }
     activePedalsInChain.forEach(p => {
         const assign = getPedalPowerAssignment(p.id);
-        let psName = '<span class="text-[#9CA3AF] italic">No asignada</span>';
+        let psName = `<span class="text-[#9CA3AF] italic">${currentLang === "en" ? "Unassigned" : "No asignada"}</span>`;
         let outletName = '<span class="text-[#9CA3AF] italic">-</span>';
-        let statusHtml = '<span class="text-[#9CA3AF]">Sin conexión</span>';
+        let statusHtml = `<span class="text-[#9CA3AF]">${currentLang === "en" ? "Not connected" : "Sin conexión"}</span>`;
         if (assign.psId) {
             const ps = powerSuppliesDatabase.find(x => x.id === assign.psId);
             const outlet = ps?.outlets?.find(o => o.id === assign.outletId);
@@ -17785,7 +17785,7 @@ function renderEnergySummaryTable() {
                 let errorMsgs = [];
                 if (sumMa > outlet.maxMa) {
                     isError = true;
-                    errorMsgs.push('Sobrecarga mA');
+                    errorMsgs.push(currentLang === 'en' ? 'mA Overload' : 'Sobrecarga mA');
                 }
                 if (outlet.voltage !== '9V') {
                     isError = true;
@@ -18121,27 +18121,25 @@ function renderInspector(itemId, currentSlotMode = null) {
         const isForSale = pedal.forSale;
 
         if (isTabChain) {
-            // === VISTA PESTAÑA MIS CADENAS (PROMPT_N & 043.PNG RECOVERY) ===
+            // === VISTA PESTAÑA MIS CADENAS (FUENTE 280) ===
             const isMonoOnly = pedal.isStereo === false;
             const modeToDisplay = isMonoOnly ? 'MONO' : (currentSlotMode || 'MONO');
             const currentAssign = getPedalPowerAssignment(pedal.id);
             const currentPs = powerSuppliesDatabase.find(p => p.id === currentAssign.psId);
             const assignedOutletObj = currentPs?.outlets?.find(o => o.id === currentAssign.outletId);
-
             let safetyWarning = '';
             if (currentPs && currentAssign.outletId && currentPs.outlets) {
                 const outObj = currentPs.outlets.find(o => o.id === currentAssign.outletId);
                 if (outObj) {
                     const sumMa = pedalDatabase.filter(x => currentChainIds.includes(x.id) && getPedalPowerAssignment(x.id).psId === currentPs.id && getPedalPowerAssignment(x.id).outletId === outObj.id).reduce((s, x) => s + x.maWithMargin, 0);
                     if (sumMa > outObj.maxMa) {
-                        safetyWarning += `<div class="bg-[#F15A24]/20 border border-[#F15A24]/50 text-[#F15A24] p-2.5 rounded-lg text-[11px] font-mono mt-2">${currentLang === "en" ? "Outlet overloaded! (" + sumMa + " mA / Max " + outObj.maxMa + " mA). Reassigning pedal recommended." : "¡Salida sobrecargada! (" + sumMa + " mA / Máx " + outObj.maxMa + " mA). Se recomienda reasignar el pedal."}</div>`;
+                        safetyWarning += `<div class="bg-[#F15A24]/20 border border-[#F15A24]/50 text-[#F15A24] p-2.5 rounded-lg text-[11px] font-mono">${currentLang === "en" ? "Outlet overloaded! (" + sumMa + " mA / Max " + outObj.maxMa + " mA). Reassigning pedal recommended." : "¡Salida sobrecargada! (" + sumMa + " mA / Máx " + outObj.maxMa + " mA). Se recomienda reasignar el pedal."}</div>`;
                     }
                     if (outObj.voltage !== '9V') {
-                        safetyWarning += `<div class="bg-[#F15A24]/30 border border-[#F15A24] text-[#F15A24] p-2.5 rounded-lg text-[11px] font-mono font-bold pulse-critical mt-2">⚠️ ${currentLang === "en" ? "Critical Warning! Incompatible voltage. Outlet set to " + outObj.voltage : "¡Peligro Crítico! Voltaje incompatible. Salida configurada a " + outObj.voltage}.</div>`;
+                        safetyWarning += `<div class="bg-[#F15A24]/30 border border-[#F15A24] text-[#F15A24] p-2.5 rounded-lg text-[11px] font-mono font-bold pulse-critical">⚠️ ${currentLang === "en" ? "Critical Warning! Incompatible voltage. Outlet set to " + outObj.voltage : "¡Peligro Crítico! Voltaje incompatible. Salida configurada a " + outObj.voltage}.</div>`;
                     }
                 }
             }
-
             const photoSection = pedal.imageUrl ? `
             <div class="relative group flex justify-center bg-[#121316] p-2 rounded-xl border border-[#2A2D36] min-h-[120px] items-center">
                 <img src="${pedal.imageUrl}" alt="${pedal.name}" class="max-h-44 object-contain rounded-lg" onerror="handlePedalImgError(this)">
@@ -18165,23 +18163,21 @@ function renderInspector(itemId, currentSlotMode = null) {
             </div>
             `;
 
-            let manualButtonHtml = '';
+            let             manualButtonHtml = '';
             if (isValidManualUrl(pedal.manualUrl)) {
                 if (isFactory) {
                     manualButtonHtml = `
                         <div class="pt-1">
-                            <a href="${pedal.manualUrl}" target="_blank" rel="noopener noreferrer" class="w-full bg-[#00A8CC]/10 hover:bg-[#00A8CC]/20 text-[#00A8CC] border border-[#00A8CC]/30 font-sans font-semibold py-2.5 px-4 rounded-xl text-xs flex items-center justify-center gap-2 transition-all cursor-pointer">
-                                <i class="fa-solid fa-file-pdf"></i>
-                                <span>${currentLang === 'en' ? 'Open PDF Manual' : 'Abrir Manual PDF'}</span>
+                            <a href="${pedal.manualUrl}" target="_blank" rel="noopener noreferrer" class="w-full text-[#00A8CC] bg-[#00A8CC]/10 hover:bg-[#00A8CC]/20 border border-[#00A8CC]/30 font-semibold py-2.5 px-3 rounded-xl text-xs flex items-center justify-center gap-2 transition-all shadow-md active:scale-95">
+                                <i class="fa-solid fa-file-pdf"></i> ${currentLang === "en" ? "Open PDF Manual" : "Abrir Manual PDF"}
                             </a>
                         </div>
                     `;
                 } else {
                     manualButtonHtml = `
                         <div class="pt-1 flex items-center gap-2">
-                            <a href="${pedal.manualUrl}" target="_blank" rel="noopener noreferrer" class="flex-1 bg-[#00A8CC]/10 hover:bg-[#00A8CC]/20 text-[#00A8CC] border border-[#00A8CC]/30 font-sans font-semibold py-2.5 px-4 rounded-xl text-xs flex items-center justify-center gap-2 transition-all cursor-pointer">
-                                <i class="fa-solid fa-file-pdf"></i>
-                                <span>${currentLang === 'en' ? 'Open PDF Manual' : 'Abrir Manual PDF'}</span>
+                            <a href="${pedal.manualUrl}" target="_blank" rel="noopener noreferrer" class="flex-1 text-[#00A8CC] bg-[#00A8CC]/10 hover:bg-[#00A8CC]/20 border border-[#00A8CC]/30 font-semibold py-2.5 px-3 rounded-xl text-xs flex items-center justify-center gap-2 transition-all shadow-md active:scale-95">
+                                <i class="fa-solid fa-file-pdf"></i> ${currentLang === "en" ? "Open PDF Manual" : "Abrir Manual PDF"}
                             </a>
                             <button onclick="openEditManualModal('${isWishlist ? 'WISHLIST' : 'PEDAL'}', '${pedal.id}')" title="${currentLang === 'en' ? 'Edit Manual URL' : 'Editar URL del Manual'}" class="bg-[#1C1E24] hover:bg-[#20232B] text-[#9CA3AF] hover:text-[#FFFFFF] border border-[#2A2D36] p-2.5 rounded-xl text-xs cursor-pointer">
                                 <i class="fa-solid fa-pen"></i>
@@ -18192,18 +18188,12 @@ function renderInspector(itemId, currentSlotMode = null) {
             } else if (!isFactory) {
                 manualButtonHtml = `
                     <div class="pt-1">
-                        <button onclick="openEditManualModal('${isWishlist ? 'WISHLIST' : 'PEDAL'}', '${pedal.id}')" class="w-full bg-[#121316] hover:bg-[#20232B] text-[#00A8CC] border border-[#2A2D36] hover:border-[#00A8CC]/50 font-sans font-semibold py-2.5 px-4 rounded-xl text-xs flex items-center justify-center gap-2 transition-all cursor-pointer">
-                            <i class="fa-solid fa-plus"></i>
-                            <span>${currentLang === 'en' ? 'Add manual URL' : 'Agregar URL del manual'}</span>
+                        <button onclick="openEditManualModal('${isWishlist ? 'WISHLIST' : 'PEDAL'}', '${pedal.id}')" class="w-full bg-[#121316] hover:bg-[#20232B] text-[#00A8CC] border border-[#2A2D36] hover:border-[#00A8CC]/50 font-semibold py-2.5 px-3 rounded-xl text-xs flex items-center justify-center gap-2 transition-all shadow-md active:scale-95 cursor-pointer">
+                            <i class="fa-solid fa-plus"></i> ${currentLang === "en" ? "Add manual URL" : "Agregar URL del manual"}
                         </button>
                     </div>
                 `;
             }
-
-            const assignedSupplyText = currentPs ? `${currentPs.brand} ${currentPs.model || currentPs.name}` : (currentLang === 'en' ? 'No supply assigned' : 'Sin fuente asignada');
-            const assignedOutletText = assignedOutletObj ? `${assignedOutletObj.label} (${assignedOutletObj.voltage} @ ${assignedOutletObj.maxMa}mA)` : (currentLang === 'en' ? 'No outlet assigned' : 'Sin salida asignada');
-
-            const categoryDisplayName = getPedalCategoryDisplayName(pedal);
 
             container.innerHTML = `
                 <div class="relative pt-0.5 pr-32 pb-2 border-b border-[#2A2D36]">
@@ -18226,70 +18216,56 @@ function renderInspector(itemId, currentSlotMode = null) {
                         <h3 class="text-base sm:text-lg font-bold text-[#FFFFFF] leading-none m-0 p-0" style="margin: 0 !important; padding: 0 !important; line-height: 1.1 !important;">${pedal.name}</h3>
                         <div style="margin-top: 4px;">
                             <span class="inline-block text-[10px] font-mono bg-[#121316] text-[#00A8CC] border border-[#00A8CC]/40 px-2 py-0.5 rounded">
-                                ${categoryDisplayName}
+                                ${pedal.category}
                             </span>
                         </div>
                     </div>
                 </div>
                 ${photoSection}
                 <p id="insp-photo-error" class="hidden text-[11px] text-[#F15A24] font-mono"></p>
-                
-                <!-- RECUADRO DE ALIMENTACIÓN & SALIDA FÍSICA (PROMPT_N & 043.PNG) -->
-                <div class="bg-[#121316] border border-[#2A2D36] rounded-xl p-4 space-y-3 font-sans">
-                    <h4 class="text-xs font-mono font-bold text-[#F15A24] uppercase tracking-wider flex items-center gap-2">
-                        <i class="fa-solid fa-bolt shrink-0"></i>
-                        <span>${currentLang === 'en' ? 'POWER & PHYSICAL OUTLET (INFO)' : 'ALIMENTACIÓN & SALIDA FÍSICA (INDICADOR INFORMATIVO)'}</span>
+                <div class="bg-[#121316] p-3.5 rounded-xl border border-[#2A2D36] space-y-3 font-mono text-xs">
+                    <h4 class="font-sans text-xs font-bold text-[#F15A24] uppercase tracking-wider flex items-center gap-1.5">
+                        <i class="fa-solid fa-bolt"><i class="fa-solid fa-plug text-[#00A8CC]"></i> ${currentLang === "en" ? "POWER & PHYSICAL OUTLET (INFO)" : "ALIMENTACIÓN & SALIDA FÍSICA (INDICADOR INFORMATIVO)"}
                     </h4>
-                    
-                    <div class="flex justify-between text-xs font-mono text-[#9CA3AF]">
-                        <span>${currentLang === 'en' ? 'Base Draw:' : 'Consumo Base:'}</span>
-                        <span class="font-bold text-white">${pedal.maBase} mA</span>
+                    <div class="flex justify-between text-[#FFFFFF]">
+                        <span>${currentLang === "en" ? "Base Draw:" : "Consumo Base:"}</span>
+                        <span>${pedal.maBase} mA</span>
                     </div>
-                    
-                    <div class="flex justify-between text-xs font-mono text-[#00A8CC] font-bold">
-                        <span>${currentLang === 'en' ? 'Recommended (+30%):' : 'Recomendado (+30%):'}</span>
+                    <div class="flex justify-between text-[#00A8CC] font-bold">
+                        <span>${currentLang === "en" ? "Recommended (+30%):" : "Recomendado (+30%):"}</span>
                         <span>${pedal.maWithMargin} mA</span>
                     </div>
                     
-                    <div class="border-t border-[#2A2D36] pt-3 space-y-2.5 font-sans">
+                    <div class="space-y-2 pt-2 border-t border-[#2A2D36] font-sans">
                         <div>
-                            <label class="text-[11px] font-mono text-[#9CA3AF] block mb-1">${currentLang === 'en' ? 'Assigned supply (read-only):' : 'Fuente asignada (lectura):'}</label>
-                            <div class="bg-[#1C1E24] border border-[#2A2D36] rounded-lg px-3 py-2 flex items-center justify-between text-xs font-mono text-[#00A8CC]">
-                                <span class="truncate">${assignedSupplyText}</span>
-                                <i class="fa-solid fa-lock text-[#9CA3AF] text-xs shrink-0 ml-2" title="${currentLang === 'en' ? 'Centralized control from Power Supply panel' : 'Control centralizado desde el panel de la Fuente'}"></i>
+                            <label class="text-[10px] text-[#9CA3AF] font-mono block mb-1">${currentLang === "en" ? "Assigned supply (read-only):" : "Fuente asignada (lectura):"}</label>
+                            <div class="w-full bg-[#1C1E24] text-[#00A8CC] border border-[#2A2D36] rounded-lg px-2.5 py-1.5 text-xs font-mono font-bold flex items-center justify-between">
+                                <span>${currentPs ? `${currentPs.brand} ${currentPs.model}` : (currentLang === 'en' ? 'No supply assigned' : 'Sin fuente asignada')}</span>
+                                <i class="fa-solid fa-lock text-[10px] text-[#9CA3AF]" title="${currentLang === 'en' ? 'Centralized control from Power Supply panel' : 'Control centralizado desde el panel de la Fuente'}"></i>
                             </div>
                         </div>
-                        
                         <div>
-                            <label class="text-[11px] font-mono text-[#9CA3AF] block mb-1">${currentLang === 'en' ? 'Specific physical outlet (read-only):' : 'Salida física específica (lectura):'}</label>
-                            <div class="bg-[#1C1E24] border border-[#2A2D36] rounded-lg px-3 py-2 flex items-center justify-between text-xs font-mono text-[#00A8CC]">
-                                <span class="truncate">${assignedOutletText}</span>
-                                <i class="fa-solid fa-lock text-[#9CA3AF] text-xs shrink-0 ml-2" title="${currentLang === 'en' ? 'Centralized control from Power Supply panel' : 'Control centralizado desde el panel de la Fuente'}"></i>
+                            <label class="text-[10px] text-[#9CA3AF] font-mono block mb-1">${currentLang === "en" ? "Specific physical outlet (read-only):" : "Salida física específica (lectura):"}</label>
+                            <div class="w-full bg-[#1C1E24] text-[#00A8CC] border border-[#2A2D36] rounded-lg px-2.5 py-1.5 text-xs font-mono font-bold flex items-center justify-between">
+                                <span>${assignedOutletObj ? `${assignedOutletObj.label} (${assignedOutletObj.voltage} @ ${assignedOutletObj.maxMa}mA)` : (currentLang === 'en' ? 'No outlet assigned' : 'Sin salida asignada')}</span>
+                                <i class="fa-solid fa-lock text-[10px] text-[#9CA3AF]" title="${currentLang === 'en' ? 'Centralized control from Power Supply panel' : 'Control centralizado desde el panel de la Fuente'}"></i>
                             </div>
                         </div>
-                        
-                        <p class="text-[11px] font-sans text-[#9CA3AF] italic leading-relaxed pt-1">
-                            <i class="fa-solid fa-circle-info text-[#00A8CC] mr-1"></i>
-                            ${currentLang === 'en' ? 'To assign or modify the connection, do so from the "My Chains" view (Tab 3).' : 'Para asignar o modificar la conexión, hazlo desde la vista "Mis cadenas de pedales" (Pestaña 3).'}
+                        <p class="text-[10px] text-[#9CA3AF] font-sans italic pt-1">
+                            <i class="fa-solid fa-circle-info text-[#00A8CC] mr-1"></i>${currentLang === "en" ? "To assign or modify connection, do so from My Chains tab." : "Para asignar o modificar la conexión, hazlo desde la vista \"Mis cadenas de pedales\" (Pestaña 2)."}
                         </p>
                         ${safetyWarning}
                     </div>
                 </div>
-
                 ${manualButtonHtml}
-
-                <!-- SECCIÓN NOTAS PERSONALIZADAS (PROMPT_N & 043.PNG) -->
-                <div class="space-y-2.5 border-t border-[#2A2D36] pt-4 font-sans">
-                    <h4 class="text-xs font-mono font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                        <i class="fa-solid fa-note-sticky text-[#00A8CC]"></i>
-                        <span>${currentLang === 'en' ? 'CUSTOM NOTES' : 'NOTAS PERSONALIZADAS'}</span>
+                <div class="space-y-2 border-t border-[#2A2D36] pt-4">
+                    <h4 class="text-xs font-semibold text-[#FFFFFF] uppercase tracking-wider flex items-center justify-between">
+                        <span><i class="fa-solid fa-note-sticky text-[#00A8CC] mr-1.5"></i>${currentLang === "en" ? "CUSTOM NOTES" : "NOTAS PERSONALIZADAS"}</span>
                     </h4>
-                    
-                    <textarea id="item-notes-textarea" rows="5" placeholder="${currentLang === 'en' ? 'Patch notes, presets, or comments...' : 'Notas de parches, presets o comentarios...'}" class="w-full bg-[#121316] border border-[#2A2D36] rounded-xl p-3 text-xs font-sans text-white placeholder-[#9CA3AF]/60 focus:outline-none focus:border-[#00A8CC] resize-y min-h-[110px]">${pedal.notes || ''}</textarea>
-                    
+                    <textarea id="item-notes-textarea" rows="6" placeholder="${currentLang === 'en' ? 'Patch notes, presets, or comments...' : 'Notas de parches, presets o comentarios...'}" class="w-full bg-[#121316] border border-[#2A2D36] rounded-xl p-3 text-xs text-[#FFFFFF] focus:outline-none focus:border-[#00A8CC] resize-y font-sans min-h-[120px]">${pedal.notes || ''}</textarea>
                     <div class="flex justify-end pt-1">
-                        <button onclick="saveItemNotes('PEDAL', '${pedal.id}')" class="px-4 py-2 bg-[#00A8CC]/15 hover:bg-[#00A8CC]/25 text-[#00A8CC] border border-[#00A8CC]/40 rounded-xl text-xs font-sans font-semibold transition-all cursor-pointer">
-                            ${currentLang === 'en' ? 'Save notes' : 'Guardar notas'}
+                        <button onclick="saveItemNotes('PEDAL', '${pedal.id}')" class="px-3.5 py-2 bg-[#00A8CC]/20 hover:bg-[#00A8CC]/30 text-[#00A8CC] border border-[#00A8CC]/40 rounded-xl text-xs font-semibold transition-all shadow-sm active:scale-95">
+                            Guardar notas
                         </button>
                     </div>
                 </div>
@@ -18569,12 +18545,12 @@ const maBase = pedal.maBase || pedal.maDraw || 20;
                 } else {
                     if (activeSplitOutletId === out.id) {
                         actionControlsHtml = `
-                            <div class="pt-1.5 flex items-center gap-2">
-                                <select onchange="assignPedalToOutlet('${ps.id}', '${out.id}', this.value); activeSplitOutletId = null; this.value='';" class="flex-1 bg-[#1C1E24] text-[#FFFFFF] border border-[#00A8CC] rounded-lg px-2.5 py-1.5 text-xs font-mono focus:outline-none">
+                            <div class="pt-1.5 flex items-center gap-2 w-full min-w-0">
+                                <select onchange="assignPedalToOutlet('${ps.id}', '${out.id}', this.value); activeSplitOutletId = null; this.value='';" class="flex-1 min-w-0 truncate bg-[#1C1E24] text-[#FFFFFF] border border-[#00A8CC] rounded-lg px-2.5 py-1.5 text-xs font-mono focus:outline-none">
                                     ${addPedalOptionsHtml}
                                 </select>
-                                <button onclick="activeSplitOutletId = null; renderInspector('${ps.id}');" title="Cancelar Split" class="text-[#9CA3AF] hover:text-[#FFFFFF] text-xs px-2.5 py-1.5 bg-[#1C1E24] hover:bg-[#20232B] rounded-lg border border-[#2A2D36] transition-all">
-                                    Cancelar
+                                <button onclick="activeSplitOutletId = null; renderInspector('${ps.id}');" title="${currentLang === 'en' ? 'Cancel Split' : 'Cancelar Split'}" class="w-8 h-8 shrink-0 flex items-center justify-center text-[#9CA3AF] hover:text-[#FFFFFF] bg-[#1C1E24] hover:bg-[#20232B] rounded-lg border border-[#2A2D36] transition-all">
+                                    <i class="fa-solid fa-xmark text-xs"></i>
                                 </button>
                             </div>
                         `;
@@ -18594,11 +18570,11 @@ const maBase = pedal.maBase || pedal.maDraw || 20;
                         <div class="inline-flex items-center gap-1.5 bg-[#1C1E24] text-[#FFFFFF] px-2 py-1 rounded text-[11px] font-mono border border-[#2A2D36]">
                             <span class="font-bold text-[#00A8CC]">${p.name}</span>
                             <span class="text-[#9CA3AF] text-[9px]">(${p.maWithMargin}mA)</span>
-                            <button onclick="unassignPedalFromOutlet('${p.id}', '${ps.id}')" title="Desconectar pedal" class="text-[#9CA3AF] hover:text-[#F15A24] text-xs ml-0.5">
+                            <button onclick="unassignPedalFromOutlet('${p.id}', '${ps.id}')" title="${currentLang === 'en' ? 'Disconnect pedal' : 'Desconectar pedal'}" class="text-[#9CA3AF] hover:text-[#F15A24] text-xs ml-0.5">
                                 <i class="fa-solid fa-xmark"></i>
                             </button>
                         </div>
-                    `).join(' ') : '<span class="text-[#9CA3AF] italic text-[11px]">${currentLang === "en" ? "No pedals connected" : "Sin pedales conectados"}</span>';
+                    `).join(' ') : `<span class="text-[#9CA3AF] italic text-[11px]">${currentLang === "en" ? "No pedals connected" : "Sin pedales conectados"}</span>`;
 
                 const splitBadgeHtml = assignedPedals.length >= 2 ?
                     `<span class="text-[10px] font-mono bg-[#00A8CC]/20 text-[#00A8CC] border border-[#00A8CC]/30 px-2 py-0.5 rounded font-bold flex items-center gap-1"><i class="fa-solid fa-code-branch text-[#00A8CC]"></i> Split (${assignedPedals.length} ${currentLang === "en" ? (assignedPedals.length === 1 ? "pedal" : "pedals") : "pedales"})</span>` : '';
@@ -18672,7 +18648,7 @@ const maBase = pedal.maBase || pedal.maDraw || 20;
             <div class="space-y-2 font-mono border-t border-[#2A2D36] pt-3">
                 <h4 class="text-xs font-bold text-[#F15A24] uppercase tracking-wider flex items-center justify-between">
                     <span>${currentLang === "en" ? "PHYSICAL OUTLETS STATUS" : "ESTADO DE SALIDAS FÍSICAS"}</span>
-                    <span class="text-[10px] text-[#00A8CC] font-normal">${isTabChain ? 'Asignación Dinámica' : 'Inventario Base'}</span>
+                    <span class="text-[10px] text-[#00A8CC] font-normal">${isTabChain ? (currentLang === 'en' ? 'Dynamic Assignment' : 'Asignación Dinámica') : (currentLang === 'en' ? 'Base Inventory' : 'Inventario Base')}</span>
                 </h4>
                 <div class="space-y-2">
                     ${outletsListHtml}
@@ -19523,6 +19499,7 @@ function importFullBackup(event) {
             refreshAllCollectionViews();
             if (typeof renderDashboardStats === 'function') renderDashboardStats();
             if (typeof renderChainPowerSupplies === 'function') renderChainPowerSupplies();
+            if (typeof renderEnergySummaryTable === 'function') renderEnergySummaryTable();
             if (typeof switchTab === 'function') switchTab(activeTab);
             if (currentChainIds.length > 0 && currentChainIds[0] !== 'EMPTY') {
                 inspectPedal(currentChainIds[0]);
@@ -19530,9 +19507,9 @@ function importFullBackup(event) {
                 renderInspector(null);
             }
             if (event && event.target) event.target.value = '';
-            alert('¡Respaldo completo cargado con éxito!');
+            alert(currentLang === 'en' ? 'Full backup loaded successfully!' : '¡Respaldo completo cargado con éxito!');
         } catch (err) {
-            alert('Error al procesar el archivo JSON de respaldo.');
+            alert(currentLang === 'en' ? 'Error processing JSON backup file.' : 'Error al procesar el archivo JSON de respaldo.');
         }
     };
     reader.readAsText(file);
