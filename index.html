@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="google" content="notranslate">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Pedal Rig</title>
     <!-- Tailwind CSS CDN -->
@@ -189,15 +190,15 @@
     <main class="w-full shrink-0 lg:shrink lg:flex-1 lg:min-w-0 lg:overflow-y-auto p-4 sm:p-6 space-y-6">
 
         <!-- VISTA 1: EXPLORAR (DASHBOARD ANALÍTICO) -->
-        <div id="view-explore" class="space-y-6">
+        <div id="view-explore" class="space-y-6 !mt-0">
             <!-- SINGLE UNIFIED PURPLE BOX FOR DASHBOARD HEADER + KPI METRICS + FINANCIALS -->
             <div class="bg-[#1C1E24] border-2 border-[#8B5CF6] p-5 rounded-2xl shadow-xl space-y-4">
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b border-[#2A2D36] pb-3">
                     <div>
-                        <h2 class="text-lg font-bold text-white tracking-tight" data-i18n="explore_title">
+                        <h2 class="font-sans text-lg font-bold text-white tracking-tight leading-snug">
                             <span data-i18n="explore_title">Dashboard & Rig Analytics</span>
                         </h2>
-                        <p class="text-xs text-[#9CA3AF] mt-1" data-i18n="explore_subtitle">
+                        <p class="font-sans text-xs text-[#9CA3AF] mt-1 leading-relaxed">
                             <span data-i18n="explore_subtitle">Real-time analytical summary of your gear, brands, financial valuation & rig health.</span>
                         </p>
                     </div>
@@ -334,10 +335,10 @@
             <!-- TOP ACTION BAR -->
             <div class="bg-[#1C1E24] border-2 border-[#F15A24] rounded-2xl p-5 shadow-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-5">
                 <div class="space-y-1 min-w-[280px] flex-1">
-                    <h2 class="text-lg font-bold text-white tracking-tight whitespace-nowrap" data-i18n="collection_title">
+                    <h2 class="font-sans text-lg font-bold text-white tracking-tight leading-snug">
                         Mi colección e inventario
                     </h2>
-                    <p class="text-xs text-[#9CA3AF] max-w-xl leading-relaxed" data-i18n="collection_subtitle">
+                    <p class="font-sans text-xs text-[#9CA3AF] mt-1 leading-relaxed">
                         <span data-i18n="collection_subtitle">Manage your personal pedals, build signal chains & configure your power supplies.</span>
                     </p>
                 </div>
@@ -434,19 +435,19 @@
 <div id="view-chain" class="hidden space-y-6 !mt-0">
             <div class="bg-[#1C1E24] border-2 border-[#00A8CC] p-5 !mt-0 rounded-2xl shadow-xl space-y-4">
                 <!-- FILA 1: TÍTULO / DESCRIPCIÓN + TELEMETRÍA (CONSUMO Y PEDALES) -->
-                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#2A2D36] pb-4">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#2A2D36] pb-3">
                     <div class="space-y-1">
-                        <h2 class="text-lg font-bold text-white tracking-tight" data-i18n="chain_title">
+                        <h2 class="font-sans text-lg font-bold text-white tracking-tight leading-snug">
                             <span data-i18n="chain_title">Signal Architecture & Routing</span>
                         </h2>
-                        <p class="text-xs text-[#9CA3AF] leading-relaxed" data-i18n="chain_subtitle">
+                        <p class="font-sans text-xs text-[#9CA3AF] mt-1 leading-relaxed">
                             <span data-i18n="chain_subtitle">Design your signal routing, analyze power draw in real-time & save your favorite presets.</span>
                         </p>
                     </div>
                     <!-- TELEMETRÍA COMPACTA -->
                     <div class="flex items-center gap-2.5 flex-wrap shrink-0">
                         <div class="bg-[#121316] px-3.5 py-1.5 rounded-xl border border-[#2A2D36] font-mono space-y-0.5 min-w-[160px]">
-                            <span class="text-[#9CA3AF] text-[10px] font-bold block border-b border-[#2A2D36] pb-0.5" data-i18n="lbl_chain_draw"><span data-i18n="lbl_chain_draw">Chain Current Draw</span></span>
+                            <span class="text-[#9CA3AF] text-[10px] font-bold block border-b border-[#2A2D36] pb-0.5"><span data-i18n="lbl_chain_draw">Chain Current Draw</span></span>
                             <div class="flex items-center justify-between gap-3 text-[11px]">
                                 <span class="text-[#9CA3AF]" data-i18n="lbl_base_draw">Base Draw:</span>
                                 <span id="base-ma" class="text-[#00A8CC] font-bold">0 mA</span>
@@ -571,7 +572,7 @@
                                 <th class="py-2.5 px-3 font-semibold" data-i18n="table_draw">Draw (+30%)</th>
                                 <th class="py-2.5 px-3 font-semibold" data-i18n="table_outlet_supply">Assigned Supply</th>
                                 <th class="py-2.5 px-3 font-semibold" data-i18n="table_outlet_physical">Physical Outlet</th>
-                                <th class="py-2.5 px-3 rounded-tr-lg font-semibold" data-i18n="table_status"><span data-i18n="table_status">Status / Alerts</span></th>
+                                <th class="py-2.5 px-3 rounded-tr-lg font-semibold"><span data-i18n="table_status">Status / Alerts</span></th>
                             </tr>
                         </thead>
                         <tbody id="energy-summary-tbody" class="divide-y divide-[#2A2D36]"></tbody>
@@ -603,10 +604,10 @@
         <!-- TYPE TOGGLE -->
         <div class="grid grid-cols-2 gap-2 bg-[#121316] p-1 rounded-xl border border-[#2A2D36]">
             <button id="cem-type-pedal" onclick="setCemType('pedal')" class="py-2 text-xs font-bold rounded-lg transition-all bg-[#F15A24] text-white cursor-pointer">
-                <i class="fa-solid fa-sliders"></i> <span data-i18n="type_pedal"><span data-i18n="type_pedal">Effect or Utility Pedal</span></span>
+                <i class="fa-solid fa-sliders"></i> <span><span data-i18n="type_pedal">Effect or Utility Pedal</span></span>
             </button>
             <button id="cem-type-power" onclick="setCemType('power')" class="py-2 text-xs font-semibold rounded-lg transition-all text-[#9CA3AF] hover:text-white cursor-pointer">
-                <i class="fa-solid fa-bolt"></i> <span data-i18n="type_power"><span data-i18n="type_power">Power Supply</span></span>
+                <i class="fa-solid fa-bolt"></i> <span><span data-i18n="type_power">Power Supply</span></span>
             </button>
         </div>
 
@@ -739,10 +740,10 @@
         <!-- MODAL HEADER -->
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-[#2A2D36] pb-4">
             <div>
-                <h3 class="text-lg font-bold text-[#FFFFFF] flex items-center gap-2" data-i18n="modal_catalog_title">
+                <h3 class="text-lg font-bold text-[#FFFFFF] flex items-center gap-2">
                     <i class="fa-solid fa-layer-group text-[#F15A24]"></i> <span data-i18n="modal_catalog_title">Master Catalog - Manufacturers</span>
                 </h3>
-                <p class="text-xs text-[#9CA3AF]" data-i18n="modal_catalog_subtitle">
+                <p class="text-xs text-[#9CA3AF]">
                     <span data-i18n="modal_catalog_subtitle">Browse the official audited database and add pedals or power supplies with one click.</span>
                 </p>
             </div>
@@ -1550,6 +1551,7 @@ function toggleLanguage() {
 }
 
 function updateLanguageUI() {
+    document.documentElement.lang = currentLang;
     const toggleLabel = document.getElementById('lang-toggle-label');
     if (toggleLabel) {
         if (currentLang === 'en') {
@@ -3915,7 +3917,7 @@ function renderDashboardStats() {
         const sortedBrands = Object.entries(brands).sort((a, b) => b[1] - a[1]).slice(0, 6);
         const barColors = ['#F15A24', '#00A8CC', '#8B5CF6', '#EAB308', '#10B981', '#EC4899'];
 
-        brandsContainer.innerHTML = sortedBrands.length === 0 ? '<span class="text-xs text-[#9CA3AF] italic">No hay pedales en la colección.</span>' : sortedBrands.map(([brand, count], idx) => {
+        brandsContainer.innerHTML = sortedBrands.length === 0 ? `<span class="text-xs text-[#9CA3AF] italic">${t('col_empty_brands')}</span>` : sortedBrands.map(([brand, count], idx) => {
             const pct = Math.round((count / total) * 100);
             const color = barColors[idx % barColors.length];
             return '<div class="space-y-1"><div class="flex justify-between text-xs font-mono"><span class="text-white">' + brand + '</span><span class="text-[#9CA3AF]">' + count + ' (' + pct + '%)</span></div><div class="w-full bg-[#121316] h-2 rounded-full overflow-hidden border border-[#2A2D36]"><div class="h-full rounded-full transition-all duration-500" style="width: ' + pct + '%; background-color: ' + color + '"></div></div></div>';
@@ -4341,7 +4343,7 @@ function renderCollectionForSale() {
                         ${ps.brand}
                     </span>
                     <span class="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-[#121316] text-[#EAB308] border border-[#2A2D36]">
-                        En Venta
+                        ${t("sec_for_sale")}
                     </span>
                 </div>
                 <div class="flex items-center gap-2.5 my-1.5">
@@ -4999,7 +5001,7 @@ function renderMasterCatalog() {
                             <p class="text-[10px] text-[#9CA3AF] truncate">${currentLang === "en" ? "Power Supply" : "Fuente de alimentación"}</p>
                         </div>
                     </div>
-                    ${ps.details ? `<p title="${ps.details.replace(/"/g, '&quot;')}" class="text-xs text-[#9CA3AF] line-clamp-2 hover:line-clamp-none italic transition-all cursor-help mt-1.5">${ps.details}</p>` : ''}
+                    ${getPowerSupplyDetails(ps) ? `<p title="${getPowerSupplyDetails(ps).replace(/"/g, '&quot;')}" class="text-xs text-[#9CA3AF] line-clamp-2 hover:line-clamp-none italic transition-all cursor-help mt-1.5">${getPowerSupplyDetails(ps)}</p>` : ''}
                 </div>
                 <div class="mt-3 pt-2 border-t border-[#2A2D36] grid grid-cols-2 gap-1.5">
                     <button onclick="addFactoryPowerSupplyToWishlist('${ps.presetType}')" class="bg-[#121316] hover:bg-[#20232B] text-[#8B5CF6] border border-[#2A2D36] hover:border-[#8B5CF6]/40 px-2 py-1 rounded-lg text-xs font-semibold flex items-center justify-center gap-1 transition-all cursor-pointer">
@@ -15853,6 +15855,14 @@ function getPedalPowerAssignment(pedalId) {
 
 let wishlistDatabase = JSON.parse(localStorage.getItem('wishlist_db')) || [];
 
+let saveStateDebounceTimer = null;
+function debouncedSaveStateToLocalStorage() {
+    if (saveStateDebounceTimer) clearTimeout(saveStateDebounceTimer);
+    saveStateDebounceTimer = setTimeout(() => {
+        saveStateToLocalStorage();
+    }, 150);
+}
+
 function saveStateToLocalStorage() {
     try {
         localStorage.setItem('pedal_db', JSON.stringify(pedalDatabase));
@@ -17294,8 +17304,19 @@ function renderSignalChain() {
         card.addEventListener('dragleave', handleDragLeave);
         card.addEventListener('drop', handleDrop);
         card.addEventListener('dragend', handleDragEnd);
+
+        card.addEventListener('mouseover', (e) => {
+            if (e.target.tagName === 'SELECT' || e.target.tagName === 'BUTTON' || e.target.closest('select') || e.target.closest('button')) {
+                card.draggable = false;
+            } else {
+                card.draggable = true;
+            }
+        });
+        card.addEventListener('mouseleave', () => {
+            card.draggable = true;
+        });
         if (!pedal || pedalId === 'EMPTY') {
-            card.className = `bg-[#121316]/50 border-2 border-dashed border-[#2A2D36] rounded-xl p-4 pb-6 flex flex-col justify-between transition-all relative group cursor-grab active:cursor-grabbing hover:border-[#F15A24]/50`;
+            card.className = `bg-[#121316]/50 border-2 border-dashed border-[#2A2D36] rounded-xl p-4 pb-6 flex flex-col justify-between transition-all relative group cursor-grab active:cursor-grabbing hover:border-[#F15A24]/50 min-w-0 w-full max-w-full overflow-hidden box-border`;
             card.innerHTML = `
                 <button onclick="removeSlot(${index}, event)" class="absolute top-2 right-2 text-[#9CA3AF] hover:text-[#F15A24] text-xs w-5 h-5 flex items-center justify-center rounded-full hover:bg-[#121316] transition-all z-10">
                     <i class="fa-solid fa-xmark"></i>
@@ -17313,7 +17334,7 @@ function renderSignalChain() {
                 ${currentChainArchitecture === 'PARALLEL' ? `
                 <div class="mb-2 flex items-center justify-between text-[10px] font-mono bg-[#121316] px-2 py-1 rounded-lg border border-[#2A2D36]">
                     <span class="text-[#9CA3AF] font-bold">Ruta:</span>
-                    <select onchange="changeSlotRoute(${index}, this.value)" onclick="event.stopPropagation()" class="bg-[#121316] ${(chainSlotRoutes[index] || 'ROUTE_A') === 'ROUTE_B' ? 'text-[#8B5CF6] border-[#8B5CF6]' : ((chainSlotRoutes[index] || 'ROUTE_A') === 'MAIN' ? 'text-white border-[#2A2D36]' : 'text-[#00A8CC] border-[#00A8CC]')} rounded border px-1.5 py-0.5 text-[10px] font-mono font-bold focus:outline-none cursor-pointer">
+                    <select onchange="changeSlotRoute(${index}, this.value)" onclick="event.stopPropagation()" class="bg-[#121316] ${(chainSlotRoutes[index] || 'ROUTE_A') === 'ROUTE_B' ? 'text-[#8B5CF6] border-[#8B5CF6]' : ((chainSlotRoutes[index] || 'ROUTE_A') === 'MAIN' ? 'text-white border-[#2A2D36]' : 'text-[#00A8CC] border-[#00A8CC]')} rounded border px-1.5 py-0.5 text-[10px] font-mono font-bold focus:outline-none cursor-pointer w-full max-w-full min-w-0 truncate">
                         <option value="ROUTE_A" ${(chainSlotRoutes[index] || 'ROUTE_A') === 'ROUTE_A' ? 'selected' : ''}>Ruta A</option>
                         <option value="ROUTE_B" ${(chainSlotRoutes[index] || 'ROUTE_A') === 'ROUTE_B' ? 'selected' : ''}>Ruta B</option>
                         <option value="MAIN" ${(chainSlotRoutes[index] || 'ROUTE_A') === 'MAIN' ? 'selected' : ''}>Directa</option>
@@ -17327,13 +17348,13 @@ function renderSignalChain() {
                 </div>
                 <div class="pt-2 border-t border-[#2A2D36] flex items-center justify-between gap-2 text-[10px] font-mono text-[#9CA3AF]">
                     <span class="shrink-0 whitespace-nowrap">0 mA</span>
-                    <select onchange="swapPedalViaSelect(${index}, this.value)" onclick="event.stopPropagation()" class="bg-[#121316] text-[#9CA3AF] rounded border border-[#2A2D36] px-1 py-0.5 text-[10px] focus:outline-none min-w-0 flex-1 truncate">
+                    <select onchange="swapPedalViaSelect(${index}, this.value)" onclick="event.stopPropagation()" class="bg-[#121316] text-[#9CA3AF] rounded border border-[#2A2D36] px-1 py-0.5 text-[10px] focus:outline-none w-full max-w-full min-w-0 flex-1 truncate">
                         ${generateGroupedOptions(null)}
                     </select>
                 </div>
             `;
         } else {
-            card.className = `bg-[#1C1E24] rounded-xl p-4 pb-6 border transition-all cursor-grab active:cursor-grabbing relative group flex flex-col justify-between ${
+            card.className = `bg-[#1C1E24] rounded-xl p-4 pb-6 border transition-all cursor-grab active:cursor-grabbing relative group flex flex-col justify-between min-w-0 w-full max-w-full overflow-hidden box-border ${
                 isDuplicated 
                 ? 'border-2 border-[#F15A24] bg-[#F15A24]/10 shadow-lg shadow-[#F15A24]/20 animate-pulse' 
                 : (slotMode === 'STEREO' ? 'border-[#9E7BB5] hover:border-[#9E7BB5]' : 'border-[#00A8CC] hover:border-[#00A8CC]')
@@ -17370,7 +17391,7 @@ function renderSignalChain() {
                     <div class="flex items-center gap-1">
                         <i class="fa-solid fa-grip-vertical text-[#9CA3AF] group-hover:text-[#F15A24] text-xs mr-1 cursor-grab"></i>
                         <span class="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded ${slotBadgeNumberClass}">#${slotNum}</span>
-                        <select onchange="changeSlotMode(${index}, this.value)" onclick="event.stopPropagation()" ${isPedalMonoOnly ? 'disabled title="Este pedal es exclusivamente Mono"' : ''} class="${badgeSelectClass} ${isPedalMonoOnly ? 'opacity-60 cursor-not-allowed' : ''}">
+                        <select onchange="changeSlotMode(${index}, this.value)" onclick="event.stopPropagation()" ${isPedalMonoOnly ? 'disabled title="Este pedal es exclusivamente Mono"' : ''} class="${badgeSelectClass} ${isPedalMonoOnly ? 'opacity-60 cursor-not-allowed' : ''} w-full max-w-full min-w-0 truncate">
                             <option value="MONO" ${slotMode === 'MONO' ? 'selected' : ''}>MONO</option>
                             ${!isPedalMonoOnly ? `<option value="STEREO" ${slotMode === 'STEREO' ? 'selected' : ''}>STEREO</option>` : ''}
                         </select>
@@ -17379,25 +17400,25 @@ function renderSignalChain() {
                 ${currentChainArchitecture === 'PARALLEL' ? `
                 <div class="mb-2 flex items-center justify-between text-[10px] font-mono bg-[#121316] px-2 py-1 rounded-lg border border-[#2A2D36]">
                     <span class="text-[#9CA3AF] font-bold">Ruta:</span>
-                    <select onchange="changeSlotRoute(${index}, this.value)" onclick="event.stopPropagation()" class="bg-[#121316] ${(chainSlotRoutes[index] || 'ROUTE_A') === 'ROUTE_B' ? 'text-[#8B5CF6] border-[#8B5CF6]' : ((chainSlotRoutes[index] || 'ROUTE_A') === 'MAIN' ? 'text-white border-[#2A2D36]' : 'text-[#00A8CC] border-[#00A8CC]')} rounded border px-1.5 py-0.5 text-[10px] font-mono font-bold focus:outline-none cursor-pointer">
+                    <select onchange="changeSlotRoute(${index}, this.value)" onclick="event.stopPropagation()" class="bg-[#121316] ${(chainSlotRoutes[index] || 'ROUTE_A') === 'ROUTE_B' ? 'text-[#8B5CF6] border-[#8B5CF6]' : ((chainSlotRoutes[index] || 'ROUTE_A') === 'MAIN' ? 'text-white border-[#2A2D36]' : 'text-[#00A8CC] border-[#00A8CC]')} rounded border px-1.5 py-0.5 text-[10px] font-mono font-bold focus:outline-none cursor-pointer w-full max-w-full min-w-0 truncate">
                         <option value="ROUTE_A" ${(chainSlotRoutes[index] || 'ROUTE_A') === 'ROUTE_A' ? 'selected' : ''}>Ruta A</option>
                         <option value="ROUTE_B" ${(chainSlotRoutes[index] || 'ROUTE_A') === 'ROUTE_B' ? 'selected' : ''}>Ruta B</option>
                         <option value="MAIN" ${(chainSlotRoutes[index] || 'ROUTE_A') === 'MAIN' ? 'selected' : ''}>Directa</option>
                     </select>
                 </div>
                 ` : ''}
-                <div class="flex items-center gap-2.5 my-1">
+                <div class="flex items-center gap-2.5 my-1 min-w-0 w-full overflow-hidden">
                     ${photoTag}
-                    <div class="space-y-0.5 min-w-0 flex-1">
-                        <h4 class="font-bold text-sm ${isDuplicated ? 'text-[#F15A24]' : 'text-[#FFFFFF]'} group-hover:text-[#F15A24] transition-colors truncate">
+                    <div class="space-y-0.5 min-w-0 flex-1 overflow-hidden">
+                        <h4 class="font-bold text-sm ${isDuplicated ? 'text-[#F15A24]' : 'text-[#FFFFFF]'} group-hover:text-[#F15A24] transition-colors truncate block w-full">
                             ${pedal.name}
                         </h4>
-                        <p class="text-[10px] text-[#9CA3AF] truncate">${pedal.category}</p>
+                        <p class="text-[10px] text-[#9CA3AF] truncate block w-full">${pedal.category}</p>
                     </div>
                 </div>
                 <div class="pt-2 border-t border-[#2A2D36] flex items-center justify-between text-[10px] font-mono text-[#9CA3AF] mt-2">
                     <span class="${isDuplicated ? 'text-[#F15A24] font-bold' : ''}">${pedal.maWithMargin || pedal.maSafety || Math.round((pedal.maBase || pedal.maDraw || 20) * 1.3)}mA</span>
-                    <select onchange="swapPedalViaSelect(${index}, this.value)" onclick="event.stopPropagation()" class="bg-[#121316] text-[#9CA3AF] rounded border border-[#2A2D36] px-1 py-0.5 text-[10px] focus:outline-none truncate">
+                    <select onchange="swapPedalViaSelect(${index}, this.value)" onclick="event.stopPropagation()" class="bg-[#121316] text-[#9CA3AF] rounded border border-[#2A2D36] px-1 py-0.5 text-[10px] focus:outline-none w-full max-w-full min-w-0 truncate">
                         ${generateGroupedOptions(pedal.id)}
                     </select>
                 </div>
@@ -17572,7 +17593,7 @@ function changeSlotMode(slotIndex, newMode) {
     pushHistory();
     chainSlotModes[slotIndex] = newMode;
     renderSignalChain();
-    saveStateToLocalStorage();
+    debouncedSaveStateToLocalStorage();
 }
 
 function swapPedalViaSelect(index, newId) {
@@ -20268,7 +20289,7 @@ function changeSlotRoute(index, newRoute) {
     pushHistory();
     chainSlotRoutes[index] = newRoute;
     renderSignalChain();
-    saveStateToLocalStorage();
+    debouncedSaveStateToLocalStorage();
 }
 
 function setParallelMixRatio(ratio) {
