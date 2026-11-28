@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-            <script>
+        <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
@@ -754,7 +754,7 @@
         <!-- EQUIPMENT PRE-FILTER TOGGLE (Fuente 232 / 029.jpg) -->
         <div class="bg-[#121316] p-3 rounded-xl border border-[#2A2D36] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <span class="text-xs font-mono text-[#9CA3AF] font-bold flex items-center gap-2">
-                <i class="fa-solid fa-filter text-[#F15A24]"></i> Equipamiento a cargar:
+                <i class="fa-solid fa-filter text-[#F15A24]"></i> <span data-i18n="mc_equip_to_load">Equipment to load:</span>
             </span>
             <div class="grid grid-cols-2 sm:flex sm:items-center gap-2 w-full sm:w-auto items-stretch">
                 <button id="mc-toggle-pedal" onclick="switchMasterCatalogEquipmentType('PEDAL')" class="flex-1 sm:flex-initial px-3 py-2.5 sm:py-1.5 rounded-lg text-xs font-bold transition-all bg-[#F15A24] text-white border border-[#F15A24] flex items-center justify-center text-center gap-2 cursor-pointer shadow-sm h-full">
@@ -5107,7 +5107,7 @@ function addMasterPedalToWishlist(id) {
         wishlistDatabase.push(copy);
         saveStateToLocalStorage();
         refreshAllCollectionViews();
-        alert(`¡${item.name} agregado a tu wishlist!`);
+        alert(currentLang === "en" ? `${item.name} added to your wishlist!` : `¡${item.name} agregado a tu wishlist!`);
     } else {
         alert(currentLang === 'en' ? 'This pedal is already in your wishlist.' : 'Este pedal ya está en tu wishlist.');
     }
@@ -18199,7 +18199,7 @@ function renderInspector(itemId, currentSlotMode = null) {
             }
 
             const assignedSupplyText = currentPs ? `${currentPs.brand} ${currentPs.model || currentPs.name}` : (currentLang === 'en' ? 'No supply assigned' : 'Sin fuente asignada');
-            const assignedOutletText = assignedOutletObj ? `${currentLang === 'en' ? assignedOutletObj.label.replace('Salida', 'Outlet') : assignedOutletObj.label} (${assignedOutletObj.voltage} @ ${assignedOutletObj.maxMa}mA)` : (currentLang === 'en' ? 'No outlet assigned' : 'Sin salida asignada');
+            const assignedOutletText = assignedOutletObj ? `${assignedOutletObj.label} (${assignedOutletObj.voltage} @ ${assignedOutletObj.maxMa}mA)` : (currentLang === 'en' ? 'No outlet assigned' : 'Sin salida asignada');
 
             const categoryDisplayName = getPedalCategoryDisplayName(pedal);
 
@@ -18295,16 +18295,16 @@ function renderInspector(itemId, currentSlotMode = null) {
         } else {
             // === VISTA PESTAÑA MI COLECCIÓN (REDISEÑO A RAJA TABLA DE MAQUETA_DETALLE_PEDAL.JPG) ===
             let themeColor = '#F15A24'; // Orange (Collection)
-            let badgeText = 'Colección';
+            let badgeText = currentLang === 'en' ? 'Collection' : 'Colección';
             let badgeClass = 'bg-[#F15A24]/10 text-[#F15A24] border border-[#F15A24]/30';
 
             if (isWishlist) {
                 themeColor = '#8B5CF6'; // Purple (Wishlist)
-                badgeText = 'Deseado';
+                badgeText = currentLang === 'en' ? 'Wishlist' : 'Deseado';
                 badgeClass = 'bg-[#8B5CF6]/10 text-[#8B5CF6] border border-[#8B5CF6]/30';
             } else if (isForSale) {
                 themeColor = '#EAB308'; // Yellow (For Sale)
-                badgeText = 'En venta';
+                badgeText = currentLang === 'en' ? 'For Sale' : 'En venta';
                 badgeClass = 'bg-[#EAB308]/10 text-[#EAB308] border border-[#EAB308]/30';
             }
 
@@ -18393,7 +18393,7 @@ const maBase = pedal.maBase || pedal.maDraw || 20;
                         <h3 class="text-base sm:text-lg font-bold text-[#FFFFFF] leading-none m-0 p-0" style="margin: 0 !important; padding: 0 !important; line-height: 1.1 !important;">${pedal.name}</h3>
                         <div style="margin-top: 4px;">
                             <span class="inline-block text-[10px] font-mono bg-[#121316] border px-2 py-0.5 rounded" style="color: ${themeColor}; border-color: ${themeColor}40;">
-                                ${effCat}
+                                ${getPedalCategoryDisplayName(pedal)}
                             </span>
                         </div>
                     </div>
@@ -18411,7 +18411,7 @@ const maBase = pedal.maBase || pedal.maDraw || 20;
                                 ${currentLang === 'en' ? 'Base Draw:' : 'Consumo Base:'} ${maBase} mA
                             </div>
                             <div class="text-[#00A8CC] font-bold">
-                                Recomendado (+30%): ${maSafety} mA
+                                ${currentLang === "en" ? "Recommended (+30%):" : "Recomendado (+30%):"} ${maSafety} mA
                             </div>
                             <div class="text-[#9CA3AF] text-[11px] pt-1">
                                 ${pedal.voltage || '9V'} • ${pedal.isStereo ? 'Stereo I/O' : 'Mono I/O'}
@@ -18420,7 +18420,7 @@ const maBase = pedal.maBase || pedal.maDraw || 20;
                         <div class="pt-2.5 border-t border-[#2A2D36] font-mono space-y-1.5 text-xs">
                             <div class="flex items-center justify-between">
                                 <span class="text-[#9CA3AF] text-[11px] uppercase font-bold flex items-center gap-1.5">
-                                    <i class="fa-solid fa-tag text-xs"></i> VALOR ESTIMADO ($ USD):
+                                    <i class="fa-solid fa-tag text-xs"></i> ${currentLang === "en" ? "ESTIMATED VALUE ($ USD):" : "VALOR ESTIMADO ($ USD):"}
                                 </span>
                                 <div class="flex items-center gap-2">
                                     <span id="insp-price-val-${pedal.id}" class="font-bold text-sm ${isCustomPedalPrice ? 'text-[#F15A24]' : 'text-white'}">
@@ -18451,7 +18451,7 @@ const maBase = pedal.maBase || pedal.maDraw || 20;
                     <textarea id="item-notes-textarea" rows="6" placeholder="${currentLang === 'en' ? 'Patch notes, presets, or comments...' : 'Notas de parches, presets o comentarios...'}" class="w-full bg-[#121316] border border-[#2A2D36] rounded-xl p-3 text-xs text-[#FFFFFF] focus:outline-none focus:border-[#00A8CC] resize-y font-sans min-h-[120px]">${pedal.notes || ''}</textarea>
                     <div class="flex justify-end pt-1">
                         <button onclick="saveItemNotes('PEDAL', '${pedal.id}')" class="px-3.5 py-2 bg-[#00A8CC]/20 hover:bg-[#00A8CC]/30 text-[#00A8CC] border border-[#00A8CC]/40 rounded-xl text-xs font-semibold transition-all shadow-sm active:scale-95">
-                            Guardar notas
+                            ${currentLang === "en" ? "Save notes" : "Guardar notas"}
                         </button>
                     </div>
                 </div>
@@ -18517,7 +18517,7 @@ const maBase = pedal.maBase || pedal.maDraw || 20;
                 if (!isTabChain) {
                     return `
                         <div class="bg-[#121316] p-2.5 rounded-xl border border-[#2A2D36] font-mono text-xs flex justify-between items-center">
-                            <span class="text-[#00A8CC] font-bold">${out.label}</span>
+                            <span class="text-[#00A8CC] font-bold">${currentLang === "en" ? out.label.replace("Salida", "Outlet") : out.label}</span>
                             <div class="flex items-center gap-1.5">
                                 ${voltSelectorHtml}
                                 <span class="text-[#FFFFFF]">@ ${out.maxMa} mA</span>
@@ -18686,7 +18686,7 @@ const maBase = pedal.maBase || pedal.maDraw || 20;
                     <div class="pt-2.5 border-t border-[#2A2D36] font-mono space-y-1.5 text-xs">
                         <div class="flex items-center justify-between">
                             <span class="text-[#9CA3AF] text-[11px] uppercase font-bold flex items-center gap-1.5">
-                                <i class="fa-solid fa-tag text-xs"></i> VALOR ESTIMADO ($ USD):
+                                <i class="fa-solid fa-tag text-xs"></i> ${currentLang === "en" ? "ESTIMATED VALUE ($ USD):" : "VALOR ESTIMADO ($ USD):"}
                             </span>
                             <div class="flex items-center gap-2">
                                 <span id="insp-price-val-${ps.id}" class="font-bold text-sm ${isCustomPsPrice ? 'text-[#F15A24]' : 'text-white'}">
