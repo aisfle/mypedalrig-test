@@ -17297,7 +17297,7 @@ function renderSignalChain() {
         const card = document.createElement('div');
         card.dataset.index = index;
         card.draggable = true;
-    card.classList.add("cursor-grab");
+        card.classList.add("cursor-grab");
         card.addEventListener('dragstart', handleDragStart);
         card.addEventListener('dragover', handleDragOver);
         card.addEventListener('dragenter', handleDragEnter);
@@ -17315,17 +17315,18 @@ function renderSignalChain() {
         card.addEventListener('mouseleave', () => {
             card.draggable = true;
         });
+
         if (!pedal || pedalId === 'EMPTY') {
-            card.className = `bg-[#121316]/50 border-2 border-dashed border-[#2A2D36] rounded-xl p-4 pb-6 flex flex-col justify-between transition-all relative group cursor-grab active:cursor-grabbing hover:border-[#F15A24]/50 min-w-0 w-full max-w-full overflow-hidden box-border`;
+            card.className = `bg-[#121316]/50 border-2 border-dashed border-[#2A2D36] rounded-xl p-3.5 pb-5 flex flex-col justify-between transition-all relative group cursor-grab active:cursor-grabbing hover:border-[#F15A24]/50 min-w-0 w-full overflow-hidden box-border`;
             card.innerHTML = `
                 <button onclick="removeSlot(${index}, event)" class="absolute top-2 right-2 text-[#9CA3AF] hover:text-[#F15A24] text-xs w-5 h-5 flex items-center justify-center rounded-full hover:bg-[#121316] transition-all z-10">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
                 <div class="flex items-center justify-between gap-1 mb-2 pr-6">
-                    <div class="flex items-center gap-1">
-                        <i class="fa-solid fa-grip-vertical text-[#9CA3AF] text-xs mr-1 cursor-grab"></i>
+                    <div class="flex items-center gap-1.5 min-w-0">
+                        <i class="fa-solid fa-grip-vertical text-[#9CA3AF] text-xs mr-0.5 cursor-grab"></i>
                         <span class="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-[#121316] text-[#9CA3AF] border border-[#2A2D36]">#${slotNum}</span>
-                        <select onchange="changeSlotMode(${index}, this.value)" onclick="event.stopPropagation()" class="bg-[#121316] text-[#9CA3AF] rounded border border-[#2A2D36] px-1 py-0.5 text-[9px] font-mono font-bold">
+                        <select onchange="changeSlotMode(${index}, this.value)" onclick="event.stopPropagation()" class="bg-[#121316] text-[#9CA3AF] rounded border border-[#2A2D36] px-1.5 py-0.5 text-[9px] font-mono font-bold focus:outline-none cursor-pointer">
                             <option value="MONO" ${slotMode === 'MONO' ? 'selected' : ''}>MONO</option>
                             <option value="STEREO" ${slotMode === 'STEREO' ? 'selected' : ''}>STEREO</option>
                         </select>
@@ -17334,27 +17335,28 @@ function renderSignalChain() {
                 ${currentChainArchitecture === 'PARALLEL' ? `
                 <div class="mb-2 flex items-center justify-between text-[10px] font-mono bg-[#121316] px-2 py-1 rounded-lg border border-[#2A2D36]">
                     <span class="text-[#9CA3AF] font-bold">Ruta:</span>
-                    <select onchange="changeSlotRoute(${index}, this.value)" onclick="event.stopPropagation()" class="bg-[#121316] ${(chainSlotRoutes[index] || 'ROUTE_A') === 'ROUTE_B' ? 'text-[#8B5CF6] border-[#8B5CF6]' : ((chainSlotRoutes[index] || 'ROUTE_A') === 'MAIN' ? 'text-white border-[#2A2D36]' : 'text-[#00A8CC] border-[#00A8CC]')} rounded border px-1.5 py-0.5 text-[10px] font-mono font-bold focus:outline-none cursor-pointer w-full max-w-full min-w-0 truncate">
+                    <select onchange="changeSlotRoute(${index}, this.value)" onclick="event.stopPropagation()" class="bg-[#121316] ${(chainSlotRoutes[index] || 'ROUTE_A') === 'ROUTE_B' ? 'text-[#8B5CF6] border-[#8B5CF6]' : ((chainSlotRoutes[index] || 'ROUTE_A') === 'MAIN' ? 'text-white border-[#2A2D36]' : 'text-[#00A8CC] border-[#00A8CC]')} rounded border px-1.5 py-0.5 text-[10px] font-mono font-bold focus:outline-none cursor-pointer">
                         <option value="ROUTE_A" ${(chainSlotRoutes[index] || 'ROUTE_A') === 'ROUTE_A' ? 'selected' : ''}>Ruta A</option>
                         <option value="ROUTE_B" ${(chainSlotRoutes[index] || 'ROUTE_A') === 'ROUTE_B' ? 'selected' : ''}>Ruta B</option>
                         <option value="MAIN" ${(chainSlotRoutes[index] || 'ROUTE_A') === 'MAIN' ? 'selected' : ''}>Directa</option>
                     </select>
                 </div>
                 ` : ''}
-                    </div>
-                </div>
                 <div class="my-3 text-center">
                     <span class="text-xs text-[#9CA3AF] italic">${currentLang === "en" ? "--- Empty Slot ---" : "--- Espacio Vacío ---"}</span>
                 </div>
-                <div class="pt-2 border-t border-[#2A2D36] flex items-center justify-between gap-2 text-[10px] font-mono text-[#9CA3AF]">
-                    <span class="shrink-0 whitespace-nowrap">0 mA</span>
-                    <select onchange="swapPedalViaSelect(${index}, this.value)" onclick="event.stopPropagation()" class="bg-[#121316] text-[#9CA3AF] rounded border border-[#2A2D36] px-1 py-0.5 text-[10px] focus:outline-none w-full max-w-full min-w-0 flex-1 truncate">
+                <div class="pt-2 border-t border-[#2A2D36] flex items-center justify-between gap-2 text-[10px] font-mono text-[#9CA3AF] mt-2">
+                    <span class="shrink-0 font-bold text-[#9CA3AF]">0mA</span>
+                    <select onchange="swapPedalViaSelect(${index}, this.value)" onclick="event.stopPropagation()" class="bg-[#121316] text-[#9CA3AF] rounded border border-[#2A2D36] px-1.5 py-0.5 text-[10px] font-mono focus:outline-none max-w-[135px] truncate cursor-pointer">
                         ${generateGroupedOptions(null)}
                     </select>
                 </div>
+                <div class="mt-2 w-full flex items-center justify-center bg-[#121316]/80 text-[#9CA3AF] border border-[#2A2D36] rounded-lg py-1 px-2 text-[10px] font-mono font-bold truncate">
+                    <i class="fa-solid fa-plug mr-1.5 text-[#9CA3AF]"></i> ${currentLang === "en" ? "No Power" : "Sin Fuente"}
+                </div>
             `;
         } else {
-            card.className = `bg-[#1C1E24] rounded-xl p-4 pb-6 border transition-all cursor-grab active:cursor-grabbing relative group flex flex-col justify-between min-w-0 w-full max-w-full overflow-hidden box-border ${
+            card.className = `bg-[#1C1E24] rounded-xl p-3.5 pb-5 border transition-all cursor-grab active:cursor-grabbing relative group flex flex-col justify-between min-w-0 w-full overflow-hidden box-border ${
                 isDuplicated 
                 ? 'border-2 border-[#F15A24] bg-[#F15A24]/10 shadow-lg shadow-[#F15A24]/20 animate-pulse' 
                 : (slotMode === 'STEREO' ? 'border-[#9E7BB5] hover:border-[#9E7BB5]' : 'border-[#00A8CC] hover:border-[#00A8CC]')
@@ -17364,7 +17366,7 @@ function renderSignalChain() {
                     inspectPedal(pedal.id, slotMode);
                 }
             };
-            const photoTag = getPedalIconHTML(pedal, 'w-10 h-10');
+            const photoTag = getPedalIconHTML(pedal, 'w-11 h-11');
             const assignment = getPedalPowerAssignment(pedal.id);
             let powerBadgeHtml = '';
             if (assignment.psId && assignment.outletId) {
@@ -17372,26 +17374,29 @@ function renderSignalChain() {
                 const assignedOutlet = assignedPs?.outlets?.find(o => o.id === assignment.outletId);
                 const outletLabel = assignedOutlet ? assignedOutlet.label.replace(/Salida\s*|Outlet\s*/gi, '') : '';
                 const psName = assignedPs ? assignedPs.brand : 'Fuente';
-                powerBadgeHtml = `<div class="mt-2 w-full flex items-center justify-center bg-[#121316] text-[#F15A24] border border-[#F15A24]/30 rounded py-1 px-2 text-[10px] font-bold truncate" title="${assignedPs ? assignedPs.brand + ' ' + assignedPs.model : ''}"><i class="fa-solid fa-bolt mr-1.5"></i> ${psName} - ${currentLang === "en" ? "Outlet" : "Salida"} ${outletLabel}</div>`;
+                powerBadgeHtml = `<div class="mt-2 w-full flex items-center justify-center bg-[#121316] text-[#F15A24] border border-[#F15A24]/30 rounded-lg py-1 px-2 text-[10px] font-mono font-bold truncate" title="${assignedPs ? assignedPs.brand + ' ' + (assignedPs.model || assignedPs.name) : ''}"><i class="fa-solid fa-bolt mr-1.5 text-[#F15A24]"></i> ${psName} - ${currentLang === "en" ? "Outlet" : "Salida"} ${outletLabel}</div>`;
             } else {
-                powerBadgeHtml = `<div class="mt-2 w-full flex items-center justify-center bg-[#121316]/80 text-[#9CA3AF] border border-[#2A2D36] rounded py-1 px-2 text-[10px] font-bold truncate"><i class="fa-solid fa-plug mr-1.5"></i> ${currentLang === "en" ? "No Power" : "Sin Fuente"}</div>`;
+                powerBadgeHtml = `<div class="mt-2 w-full flex items-center justify-center bg-[#121316]/80 text-[#9CA3AF] border border-[#2A2D36] rounded-lg py-1 px-2 text-[10px] font-mono font-bold truncate"><i class="fa-solid fa-plug mr-1.5 text-[#9CA3AF]"></i> ${currentLang === "en" ? "No Power" : "Sin Fuente"}</div>`;
             }
 
             const badgeSelectClass = slotMode === 'STEREO'
-                ? 'bg-[#121316] text-[#9E7BB5] border border-[#9E7BB5] rounded px-1 py-0.5 text-[9px] font-mono font-bold focus:outline-none'
-                : 'bg-[#121316] text-[#00A8CC] border border-[#00A8CC] rounded px-1 py-0.5 text-[9px] font-mono font-bold focus:outline-none';
+                ? 'bg-[#121316] text-[#9E7BB5] border border-[#9E7BB5] rounded px-1.5 py-0.5 text-[9px] font-mono font-bold focus:outline-none cursor-pointer'
+                : 'bg-[#121316] text-[#00A8CC] border border-[#00A8CC] rounded px-1.5 py-0.5 text-[9px] font-mono font-bold focus:outline-none cursor-pointer';
             const slotBadgeNumberClass = isDuplicated
                 ? 'bg-[#F15A24]/20 text-[#F15A24] border border-[#F15A24]/40'
                 : (slotMode === 'STEREO' ? 'bg-[#9E7BB5]/10 text-[#9E7BB5] border border-[#9E7BB5]' : 'bg-[#00A8CC]/10 text-[#00A8CC] border border-[#00A8CC]');
+            
+            const categoryDisplayName = getPedalCategoryDisplayName(pedal);
+
             card.innerHTML = `
                 <button onclick="removeSlot(${index}, event)" class="absolute top-2 right-2 text-[#9CA3AF] hover:text-[#F15A24] text-xs w-5 h-5 flex items-center justify-center rounded-full hover:bg-[#121316] transition-all z-10">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
                 <div class="flex items-center justify-between gap-1 mb-2 pr-6">
-                    <div class="flex items-center gap-1">
-                        <i class="fa-solid fa-grip-vertical text-[#9CA3AF] group-hover:text-[#F15A24] text-xs mr-1 cursor-grab"></i>
+                    <div class="flex items-center gap-1.5 min-w-0">
+                        <i class="fa-solid fa-grip-vertical text-[#9CA3AF] group-hover:text-[#F15A24] text-xs mr-0.5 cursor-grab"></i>
                         <span class="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded ${slotBadgeNumberClass}">#${slotNum}</span>
-                        <select onchange="changeSlotMode(${index}, this.value)" onclick="event.stopPropagation()" ${isPedalMonoOnly ? 'disabled title="Este pedal es exclusivamente Mono"' : ''} class="${badgeSelectClass} ${isPedalMonoOnly ? 'opacity-60 cursor-not-allowed' : ''} w-full max-w-full min-w-0 truncate">
+                        <select onchange="changeSlotMode(${index}, this.value)" onclick="event.stopPropagation()" ${isPedalMonoOnly ? 'disabled title="Este pedal es exclusivamente Mono"' : ''} class="${badgeSelectClass} ${isPedalMonoOnly ? 'opacity-60 cursor-not-allowed' : ''}">
                             <option value="MONO" ${slotMode === 'MONO' ? 'selected' : ''}>MONO</option>
                             ${!isPedalMonoOnly ? `<option value="STEREO" ${slotMode === 'STEREO' ? 'selected' : ''}>STEREO</option>` : ''}
                         </select>
@@ -17400,25 +17405,25 @@ function renderSignalChain() {
                 ${currentChainArchitecture === 'PARALLEL' ? `
                 <div class="mb-2 flex items-center justify-between text-[10px] font-mono bg-[#121316] px-2 py-1 rounded-lg border border-[#2A2D36]">
                     <span class="text-[#9CA3AF] font-bold">Ruta:</span>
-                    <select onchange="changeSlotRoute(${index}, this.value)" onclick="event.stopPropagation()" class="bg-[#121316] ${(chainSlotRoutes[index] || 'ROUTE_A') === 'ROUTE_B' ? 'text-[#8B5CF6] border-[#8B5CF6]' : ((chainSlotRoutes[index] || 'ROUTE_A') === 'MAIN' ? 'text-white border-[#2A2D36]' : 'text-[#00A8CC] border-[#00A8CC]')} rounded border px-1.5 py-0.5 text-[10px] font-mono font-bold focus:outline-none cursor-pointer w-full max-w-full min-w-0 truncate">
+                    <select onchange="changeSlotRoute(${index}, this.value)" onclick="event.stopPropagation()" class="bg-[#121316] ${(chainSlotRoutes[index] || 'ROUTE_A') === 'ROUTE_B' ? 'text-[#8B5CF6] border-[#8B5CF6]' : ((chainSlotRoutes[index] || 'ROUTE_A') === 'MAIN' ? 'text-white border-[#2A2D36]' : 'text-[#00A8CC] border-[#00A8CC]')} rounded border px-1.5 py-0.5 text-[10px] font-mono font-bold focus:outline-none cursor-pointer">
                         <option value="ROUTE_A" ${(chainSlotRoutes[index] || 'ROUTE_A') === 'ROUTE_A' ? 'selected' : ''}>Ruta A</option>
                         <option value="ROUTE_B" ${(chainSlotRoutes[index] || 'ROUTE_A') === 'ROUTE_B' ? 'selected' : ''}>Ruta B</option>
                         <option value="MAIN" ${(chainSlotRoutes[index] || 'ROUTE_A') === 'MAIN' ? 'selected' : ''}>Directa</option>
                     </select>
                 </div>
                 ` : ''}
-                <div class="flex items-center gap-2.5 my-1 min-w-0 w-full overflow-hidden">
+                <div class="flex items-center gap-2.5 my-1.5 min-w-0 w-full overflow-hidden">
                     ${photoTag}
                     <div class="space-y-0.5 min-w-0 flex-1 overflow-hidden">
-                        <h4 class="font-bold text-sm ${isDuplicated ? 'text-[#F15A24]' : 'text-[#FFFFFF]'} group-hover:text-[#F15A24] transition-colors truncate block w-full">
+                        <h4 class="font-bold text-sm ${isDuplicated ? 'text-[#F15A24]' : 'text-[#FFFFFF]'} group-hover:text-[#F15A24] transition-colors truncate block w-full" title="${pedal.name}">
                             ${pedal.name}
                         </h4>
-                        <p class="text-[10px] text-[#9CA3AF] truncate block w-full">${pedal.category}</p>
+                        <p class="text-[10px] text-[#9CA3AF] truncate block w-full" title="${categoryDisplayName}">${categoryDisplayName}</p>
                     </div>
                 </div>
-                <div class="pt-2 border-t border-[#2A2D36] flex items-center justify-between text-[10px] font-mono text-[#9CA3AF] mt-2">
-                    <span class="${isDuplicated ? 'text-[#F15A24] font-bold' : ''}">${pedal.maWithMargin || pedal.maSafety || Math.round((pedal.maBase || pedal.maDraw || 20) * 1.3)}mA</span>
-                    <select onchange="swapPedalViaSelect(${index}, this.value)" onclick="event.stopPropagation()" class="bg-[#121316] text-[#9CA3AF] rounded border border-[#2A2D36] px-1 py-0.5 text-[10px] focus:outline-none w-full max-w-full min-w-0 truncate">
+                <div class="pt-2 border-t border-[#2A2D36] flex items-center justify-between gap-2 text-[10px] font-mono text-[#9CA3AF] mt-2">
+                    <span class="shrink-0 font-bold ${isDuplicated ? 'text-[#F15A24]' : 'text-[#9CA3AF]'}">${pedal.maWithMargin || pedal.maSafety || Math.round((pedal.maBase || pedal.maDraw || 20) * 1.3)}mA</span>
+                    <select onchange="swapPedalViaSelect(${index}, this.value)" onclick="event.stopPropagation()" class="bg-[#121316] text-[#9CA3AF] rounded border border-[#2A2D36] px-1.5 py-0.5 text-[10px] font-mono focus:outline-none max-w-[135px] truncate cursor-pointer">
                         ${generateGroupedOptions(pedal.id)}
                     </select>
                 </div>
@@ -17444,13 +17449,14 @@ function renderSignalChain() {
         addCard.onclick = addExtraSlot;
         addCard.innerHTML = `
             <div class="w-10 h-10 rounded-full bg-[#121316] group-hover:bg-[#F15A24] text-[#9CA3AF] group-hover:text-[#FFFFFF] flex items-center justify-center transition-all mb-2">
-                <i class="fa-solid fa-plus text-lg"></i>
+                <i class="fa-solid fa-plus text-sm"></i>
             </div>
-            <span class="text-xs font-semibold text-[#9CA3AF] group-hover:text-[#F15A24] transition-colors">${currentLang === "en" ? "Add Slot" : "Agregar Slot"}</span>
+            <span class="text-xs font-semibold text-[#9CA3AF] group-hover:text-[#FFFFFF] transition-colors">${currentLang === "en" ? "Add Slot" : "Agregar Espacio"}</span>
         `;
     }
     container.appendChild(addCard);
 
+    // --- TELEMETRÍA DE MONITOREO CONSUMO Y EQUIPOS ---
     const baseMaEl = document.getElementById('base-ma');
     const totalMaEl = document.getElementById('total-ma');
     const totalCountBadgeEl = document.getElementById('total-count-badge');
@@ -17459,131 +17465,40 @@ function renderSignalChain() {
     if (totalCountBadgeEl) totalCountBadgeEl.textContent = `${activeCount} ${currentLang === "en" ? (activeCount === 1 ? "Pedal" : "Pedals") : (activeCount === 1 ? "Pedal" : "Pedales")}`;
 
     // --- STEREO TO MONO COLLAPSE NOTICE ---
-    let firstCollapseSlotNum = null;
-    let hasSeenStereo = false;
-    currentChainIds.forEach((pedalId, index) => {
-        if (!pedalId || pedalId === 'EMPTY') return;
-        const slotMode = chainSlotModes[index] || 'MONO';
-        if (slotMode === 'STEREO') {
-            hasSeenStereo = true;
-        } else if (slotMode === 'MONO' && hasSeenStereo && firstCollapseSlotNum === null) {
-            firstCollapseSlotNum = index + 1;
-        }
-    });
-
-    const noticeEl = document.getElementById('stereo-collapse-notice');
-    if (noticeEl) {
-        if (firstCollapseSlotNum !== null) {
-            noticeEl.innerHTML = `
-                <div class="bg-[#F59E0B]/10 border border-[#F59E0B]/40 text-[#F59E0B] p-3 rounded-xl text-xs font-sans flex items-center gap-2 mt-3 animate-fade-in">
-                    <i class="fa-solid fa-circle-info text-base shrink-0"></i>
-                    <span><strong>${currentLang === "en" ? "Notice:" : "Aviso:"}</strong> ${currentLang === "en" ? "The mono pedal will collapse stereo signal starting at position #" + firstCollapseSlotNum : "El pedal mono colapsará la señal estéreo a partir de la posición #" + firstCollapseSlotNum}.</span>
-                </div>
-            `;
-            noticeEl.classList.remove('hidden');
-        } else {
-            noticeEl.classList.add('hidden');
-            noticeEl.innerHTML = '';
-        }
-    }
-
-    // --- INTERPEDAL CABLE COUNTER ---
-    let monoCablesCount = 0;
-    let stereoCablesCount = 0;
-    let splitterCablesCount = 0;
-
-    const activeChainSlots = [];
-    currentChainIds.forEach((pedalId, index) => {
-        if (pedalId && pedalId !== 'EMPTY') {
-            const pedal = pedalDatabase.find(p => p.id === pedalId);
-            const slotMode = chainSlotModes[index] || 'MONO';
-            activeChainSlots.push({ pedalId, pedal, slotMode, index });
-        }
-    });
-
-    function getPedalInputConfig(p) {
-        if (!p) return 'MONO_TS';
-        if (p.inputConfig) return p.inputConfig;
-        if (p.isStereo === false || p.io === 'Mono I/O') return 'MONO_TS';
-        const b = (p.brand || '').toLowerCase();
-        const id = (p.id || '').toLowerCase();
-        if (b.includes('chase bliss') || b.includes('kinotone') || id.startsWith('cb-') || id.startsWith('obne-') || id === 'rp-radius' || id === 'strymon-cloudburst' || id === 'kino-ghosts') {
-            if (id === 'cb-cxm-1978' || id === 'cb-big-time') return 'DUAL_TS';
-            return 'STEREO_TRS';
-        }
-        return 'DUAL_TS';
-    }
-
-    function getPedalOutputConfig(p) {
-        if (!p) return 'MONO_TS';
-        if (p.outputConfig) return p.outputConfig;
-        if (p.isStereo === false || p.io === 'Mono I/O') return 'MONO_TS';
-        const b = (p.brand || '').toLowerCase();
-        const id = (p.id || '').toLowerCase();
-        if (b.includes('chase bliss') || b.includes('kinotone') || id.startsWith('cb-') || id.startsWith('obne-') || id === 'rp-radius' || id === 'strymon-cloudburst' || id === 'kino-ghosts') {
-            if (id === 'cb-cxm-1978' || id === 'cb-big-time') return 'DUAL_TS';
-            return 'STEREO_TRS';
-        }
-        return 'DUAL_TS';
-    }
-
-    for (let i = 0; i < activeChainSlots.length - 1; i++) {
-        const slotA = activeChainSlots[i];
-        const slotB = activeChainSlots[i + 1];
-
-        if (slotA.slotMode === 'MONO' || slotB.slotMode === 'MONO') {
-            monoCablesCount++;
-        } else if (slotA.slotMode === 'STEREO' && slotB.slotMode === 'STEREO') {
-            const outA = getPedalOutputConfig(slotA.pedal);
-            const inB = getPedalInputConfig(slotB.pedal);
-            if (outA === 'STEREO_TRS' && inB === 'STEREO_TRS') {
-                stereoCablesCount++;
-            } else if ((outA === 'STEREO_TRS' && inB === 'DUAL_TS') || (outA === 'DUAL_TS' && inB === 'STEREO_TRS')) {
-                splitterCablesCount++;
-            } else if (outA === 'DUAL_TS' && inB === 'DUAL_TS') {
-                monoCablesCount += 2;
-            } else {
-                monoCablesCount++;
+    const collapseNoticeEl = document.getElementById('stereo-collapse-notice');
+    if (collapseNoticeEl) {
+        let hasStereoToMono = false;
+        let noticeText = '';
+        for (let i = 0; i < currentChainIds.length - 1; i++) {
+            const currId = currentChainIds[i];
+            const nextId = currentChainIds[i + 1];
+            const currMode = chainSlotModes[i] || 'MONO';
+            const nextMode = chainSlotModes[i + 1] || 'MONO';
+            
+            if (currId && currId !== 'EMPTY' && nextId && nextId !== 'EMPTY') {
+                if (currMode === 'STEREO' && nextMode === 'MONO') {
+                    hasStereoToMono = true;
+                    const currPedal = pedalDatabase.find(p => p.id === currId);
+                    const nextPedal = pedalDatabase.find(p => p.id === nextId);
+                    const nameA = currPedal ? currPedal.name : `#${i+1}`;
+                    const nameB = nextPedal ? nextPedal.name : `#${i+2}`;
+                    noticeText = currentLang === 'en' 
+                        ? `Signal collapse detected: ${nameA} (Stereo) feeds into ${nameB} (Mono). Stereo width will be summed to mono at slot #${i+2}.` 
+                        : `Aviso de colapso de señal: ${nameA} (Stereo) ingresa a ${nameB} (Mono). La imagen estéreo se reducirá a mono en el slot #${i+2}.`;
+                    break;
+                }
             }
         }
-    }
-
-    const cablesSummaryEl = document.getElementById('interpedal-cables-summary');
-    if (cablesSummaryEl) {
-        if (activeChainSlots.length > 1) {
-            cablesSummaryEl.innerHTML = `
-                <div class="bg-[#121316] border border-[#2A2D36] p-4 rounded-xl space-y-2 mt-3 font-sans">
-                    <h4 class="text-xs font-bold text-[#FFFFFF] uppercase tracking-wider flex items-center justify-between">
-                        <span class="flex items-center gap-2"><i class="fa-solid fa-plug text-[#00A8CC]"></i> ${currentLang === "en" ? "REQUIRED INTER-PEDAL CABLES" : "CABLES INTERPEDALES REQUERIDOS"}</span>
-                        <span class="text-[10px] font-mono text-[#9CA3AF] font-normal">${activeChainSlots.length - 1} ${currentLang === "en" ? "audio connections" : "conexiones de audio"}</span>
-                    </h4>
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs font-mono pt-1">
-                        <div class="bg-[#1C1E24] p-2.5 rounded-lg border border-[#2A2D36] flex justify-between items-center">
-                            <span class="text-[#9CA3AF]">${currentLang === "en" ? "Mono Patch Cable (TS):" : "Cable Patch Mono (TS):"}</span>
-                            <span class="font-bold text-[#FFFFFF] bg-[#00A8CC]/20 text-[#00A8CC] px-2 py-0.5 rounded">${monoCablesCount}</span>
-                        </div>
-                        <div class="bg-[#1C1E24] p-2.5 rounded-lg border border-[#2A2D36] flex justify-between items-center">
-                            <span class="text-[#9CA3AF]">${currentLang === "en" ? "Stereo Patch Cable (TRS):" : "Cable Patch Stereo (TRS):"}</span>
-                            <span class="font-bold text-[#FFFFFF] bg-[#9E7BB5]/20 text-[#9E7BB5] px-2 py-0.5 rounded">${stereoCablesCount}</span>
-                        </div>
-                        <div class="bg-[#1C1E24] p-2.5 rounded-lg border border-[#2A2D36] flex justify-between items-center">
-                            <span class="text-[#9CA3AF]">${currentLang === "en" ? "Splitter Cable (Y):" : "Cable Splitter (Y):"}</span>
-                            <span class="font-bold text-[#FFFFFF] bg-[#F15A24]/20 text-[#F15A24] px-2 py-0.5 rounded">${splitterCablesCount}</span>
-                        </div>
-                    </div>
-                </div>
-            `;
-            cablesSummaryEl.classList.remove('hidden');
+        if (hasStereoToMono) {
+            collapseNoticeEl.className = 'col-span-full bg-[#8B5CF6]/10 border border-[#8B5CF6]/30 text-[#8B5CF6] p-3 rounded-xl text-xs font-mono flex items-center gap-2 mb-3 shadow-md';
+            collapseNoticeEl.innerHTML = `<i class="fa-solid fa-[#8B5CF6] fa-circle-info text-sm shrink-0"></i><span>${noticeText}</span>`;
+            collapseNoticeEl.classList.remove('hidden');
         } else {
-            cablesSummaryEl.classList.add('hidden');
-            cablesSummaryEl.innerHTML = '';
+            collapseNoticeEl.classList.add('hidden');
         }
     }
 
-    checkGlobalElectricalSafety();
     renderChainPowerSupplies();
-    renderEnergySummaryTable();
-    saveStateToLocalStorage();
 }
 
 function changeSlotMode(slotIndex, newMode) {
