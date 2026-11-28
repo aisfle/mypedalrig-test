@@ -1429,7 +1429,7 @@ var i18n = {
         chain_favorites_presets: "CADENAS FAVORITAS / PRESETS GUARDADOS",
         chain_filter_presets_style: "FILTRAR PRESETS POR ESTILO MUSICAL:",
         opt_all_styles: "Todos los estilos",
-        empty_saved_chains: 'No hay cadenas guardadas. Haz clic en "Guardar preset" para guardar la tuya.',
+        empty_saved_chains: 'Aún no hay cadenas guardadas. Hacé clic en "Guardar preset" para guardar la tuya.',
         chain_active_signal_title: "CADENA DE SEÑAL ACTIVA",
         chain_active_signal_subtitle: "Selecciona, cambia o arrastra (Drag & Drop) cualquier pedal para reordenar tu rig.",
         btn_add_slot: "Agregar Slot",
@@ -4220,7 +4220,7 @@ function renderCollectionPedals() {
     if (effectsCounter) effectsCounter.textContent = `${effectsList.length} ${currentLang === 'en' ? (effectsList.length === 1 ? 'pedal' : 'pedals') : (effectsList.length === 1 ? 'pedal' : 'pedales')}`;
     if (utilityCounter) utilityCounter.textContent = `${utilityList.length} ${currentLang === 'en' ? (utilityList.length === 1 ? 'pedal' : 'pedals') : (utilityList.length === 1 ? 'pedal' : 'pedales')}`;
 
-    effectsGrid.innerHTML = effectsList.length === 0 ? '<span class="text-xs text-[#9CA3AF] italic col-span-full">No hay pedales de efecto.</span>' : '';
+    effectsGrid.innerHTML = effectsList.length === 0 ? `<span class="text-xs text-[#9CA3AF] italic col-span-full">${currentLang === 'en' ? 'No effect pedals in collection.' : 'No hay pedales de efecto.'}</span>` : '';
     effectsList.forEach(p => effectsGrid.appendChild(createPedalCatalogCard(p, 'effects')));
 
     utilityGrid.innerHTML = utilityList.length === 0 ? (currentLang === 'en' ? '<span class="text-xs text-[#9CA3AF] italic col-span-full">No utility pedals in collection.</span>' : '<span class="text-xs text-[#9CA3AF] italic col-span-full">No hay pedales de utilidad.</span>') : '';
@@ -17334,7 +17334,7 @@ function renderSignalChain() {
                 </div>
                 <div class="pt-2 border-t border-[#2A2D36] flex items-center justify-between text-[10px] font-mono text-[#9CA3AF]">
                     <span>0 mA</span>
-                    <select onchange="swapPedalViaSelect(${index}, this.value)" onclick="event.stopPropagation()" class="bg-[#121316] text-[#9CA3AF] rounded border border-[#2A2D36] px-1 py-0.5 text-[10px] focus:outline-none max-w-[125px] truncate">
+                    <select onchange="swapPedalViaSelect(${index}, this.value)" onclick="event.stopPropagation()" class="bg-[#121316] text-[#9CA3AF] rounded border border-[#2A2D36] px-1 py-0.5 text-[10px] focus:outline-none truncate">
                         ${generateGroupedOptions(null)}
                     </select>
                 </div>
@@ -17404,7 +17404,7 @@ function renderSignalChain() {
                 </div>
                 <div class="pt-2 border-t border-[#2A2D36] flex items-center justify-between text-[10px] font-mono text-[#9CA3AF] mt-2">
                     <span class="${isDuplicated ? 'text-[#F15A24] font-bold' : ''}">${pedal.maWithMargin || pedal.maSafety || Math.round((pedal.maBase || pedal.maDraw || 20) * 1.3)}mA</span>
-                    <select onchange="swapPedalViaSelect(${index}, this.value)" onclick="event.stopPropagation()" class="bg-[#121316] text-[#9CA3AF] rounded border border-[#2A2D36] px-1 py-0.5 text-[10px] focus:outline-none max-w-[120px] truncate">
+                    <select onchange="swapPedalViaSelect(${index}, this.value)" onclick="event.stopPropagation()" class="bg-[#121316] text-[#9CA3AF] rounded border border-[#2A2D36] px-1 py-0.5 text-[10px] focus:outline-none truncate">
                         ${generateGroupedOptions(pedal.id)}
                     </select>
                 </div>
@@ -17442,7 +17442,7 @@ function renderSignalChain() {
     const totalCountBadgeEl = document.getElementById('total-count-badge');
     if (baseMaEl) baseMaEl.textContent = `${baseMaSum} mA`;
     if (totalMaEl) totalMaEl.textContent = `${totalMaSum} mA`;
-    if (totalCountBadgeEl) totalCountBadgeEl.textContent = `${activeCount} ${currentLang === "en" ? (activeCount === 1 ? "Pedal" : "Pedals") : "Pedales"}`;
+    if (totalCountBadgeEl) totalCountBadgeEl.textContent = `${activeCount} ${currentLang === "en" ? (activeCount === 1 ? "Pedal" : "Pedals") : (activeCount === 1 ? "Pedal" : "Pedales")}`;
 
     // --- STEREO TO MONO COLLAPSE NOTICE ---
     let firstCollapseSlotNum = null;
@@ -18612,7 +18612,7 @@ const maBase = pedal.maBase || pedal.maDraw || 20;
                 return `
                     <div class="bg-[#121316] p-3 rounded-xl border ${isOver || isVoltageAlert ? 'border-[#F15A24]/80 bg-[#F15A24]/10' : 'border-[#2A2D36]'} space-y-2">
                         <div class="flex justify-between items-center font-mono text-xs font-bold">
-                            <span class="text-[#00A8CC]">${out.label} (${out.voltage})</span>
+                            <span class="text-[#00A8CC]">${currentLang === "en" ? out.label.replace("Salida", "Outlet") : out.label} (${out.voltage})</span>
                             <div class="flex items-center gap-2">
                                 ${splitBadgeHtml}
                                 <span class="${isOver ? 'text-[#F15A24]' : 'text-[#00A8CC]'}">${maSum} / ${out.maxMa} mA</span>
@@ -18677,7 +18677,7 @@ const maBase = pedal.maBase || pedal.maDraw || 20;
             ` : ''}
             <div class="space-y-2 font-mono border-t border-[#2A2D36] pt-3">
                 <h4 class="text-xs font-bold text-[#F15A24] uppercase tracking-wider flex items-center justify-between">
-                    <span>${currentLang === "en" ? "PHYSICAL OUTLETS STATUS" : "ESTADO DE SALIDAS FÍSICAS"}</span>
+                    <span>${currentLang === "en" ? "PHYSICAL OUTLETS" : "SALIDAS FÍSICAS"}</span>
                     <span class="text-[10px] text-[#00A8CC] font-normal">${isTabChain ? (currentLang === 'en' ? 'Dynamic Assignment' : 'Asignación Dinámica') : (currentLang === 'en' ? 'Base Inventory' : 'Inventario Base')}</span>
                 </h4>
                 <div class="space-y-2">
@@ -18726,7 +18726,7 @@ const maBase = pedal.maBase || pedal.maDraw || 20;
                 <textarea id="item-notes-textarea" rows="10" placeholder="${currentLang === 'en' ? 'Connection notes, special outlets or splitter...' : 'Notas de conexión, salidas especiales o splitter...'}" class="w-full bg-[#121316] border border-[#2A2D36] rounded-xl p-3 text-xs text-[#FFFFFF] focus:outline-none focus:border-[#00A8CC] resize-y font-sans min-h-[160px]">${ps.notes || ''}</textarea>
                 <div class="flex justify-end">
                     <button onclick="saveItemNotes('POWER', '${ps.id}')" class="px-3 py-1.5 bg-[#00A8CC]/20 hover:bg-[#00A8CC]/30 text-[#00A8CC] border border-[#00A8CC]/40 rounded-lg text-xs font-semibold transition-all">
-                        Guardar notas
+                        ${currentLang === 'en' ? 'Save Notes' : 'Guardar notas'}
                     </button>
                 </div>
             </div>
@@ -19373,7 +19373,7 @@ function renderFavoriteBadges() {
     });
 
     if (favoriteChains.length === 0) {
-        container.innerHTML = `<span class="text-xs text-[#9CA3AF] italic">${currentLang === "en" ? "No saved chains yet. Click \"Save Preset\" to save yours." : "No hay cadenas guardadas. Haz clic en \"Guardar preset Actual\" para guardar la tuya."}</span>`;
+        container.innerHTML = `<span class="text-xs text-[#9CA3AF] italic">${currentLang === "en" ? "No saved chains yet. Click \"Save Preset\" to save yours." : "Aún no hay cadenas guardadas. Hacé clic en \"Guardar preset\" para guardar la tuya."}</span>`;
         return;
     }
     
