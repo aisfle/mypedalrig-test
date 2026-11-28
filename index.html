@@ -567,7 +567,7 @@
                     <table class="w-full text-left text-xs font-mono text-[#FFFFFF] border-collapse">
                         <thead class="bg-[#121316] text-[#9CA3AF] border-b border-[#2A2D36]">
                             <tr>
-                                <th class="py-2.5 px-3 rounded-tl-lg font-semibold" data-i18n="table_equipment">Pedal / Equipment</th>
+                                <th class="py-2.5 px-3 rounded-tl-lg font-semibold" data-i18n="table_equipment">Pedal</th>
                                 <th class="py-2.5 px-3 font-semibold" data-i18n="table_draw">Draw (+30%)</th>
                                 <th class="py-2.5 px-3 font-semibold" data-i18n="table_outlet_supply">Assigned Supply</th>
                                 <th class="py-2.5 px-3 font-semibold" data-i18n="table_outlet_physical">Physical Outlet</th>
@@ -1259,7 +1259,9 @@ var i18n = {
         arch_series: "Series",
         arch_parallel: "Parallel Loop",
         lbl_patch_cables: "Patch cables needed",
-        table_equipment: "Pedal / Equipment",
+        table_equipment: "Pedal",
+        table_outlet_supply: "Assigned Supply",
+        table_outlet_physical: "Physical Outlet",
         table_draw: "Draw (+30%)",
         table_outlet: "Physical Outlet",
         table_voltage: "Voltage",
@@ -1426,8 +1428,8 @@ var i18n = {
         sec_favorite_chains: "CADENAS FAVORITAS / PRESETS GUARDADOS",
         chain_favorites_presets: "CADENAS FAVORITAS / PRESETS GUARDADOS",
         chain_filter_presets_style: "FILTRAR PRESETS POR ESTILO MUSICAL:",
-        opt_all_styles: "Todos los Estilos",
-        empty_saved_chains: 'No hay cadenas guardadas. Haz clic en "Guardar preset Actual" para guardar la tuya.',
+        opt_all_styles: "Todos los estilos",
+        empty_saved_chains: 'No hay cadenas guardadas. Haz clic en "Guardar preset" para guardar la tuya.',
         chain_active_signal_title: "CADENA DE SEÑAL ACTIVA",
         chain_active_signal_subtitle: "Selecciona, cambia o arrastra (Drag & Drop) cualquier pedal para reordenar tu rig.",
         btn_add_slot: "Agregar Slot",
@@ -1446,7 +1448,9 @@ var i18n = {
         arch_series: "Serie",
         arch_parallel: "Loop Paralelo",
         lbl_patch_cables: "Cables patch necesarios",
-        table_equipment: "Pedal / Equipo",
+        table_equipment: "Pedal",
+        table_outlet_supply: "Fuente asignada",
+        table_outlet_physical: "Salida física",
         table_draw: "Consumo (+30%)",
         table_outlet: "Salida Física",
         table_voltage: "Voltaje",
@@ -18455,7 +18459,7 @@ const maBase = pedal.maBase || pedal.maDraw || 20;
                     <textarea id="item-notes-textarea" rows="6" placeholder="${currentLang === 'en' ? 'Patch notes, presets, or comments...' : 'Notas de parches, presets o comentarios...'}" class="w-full bg-[#121316] border border-[#2A2D36] rounded-xl p-3 text-xs text-[#FFFFFF] focus:outline-none focus:border-[#00A8CC] resize-y font-sans min-h-[120px]">${pedal.notes || ''}</textarea>
                     <div class="flex justify-end pt-1">
                         <button onclick="saveItemNotes('PEDAL', '${pedal.id}')" class="px-3.5 py-2 bg-[#00A8CC]/20 hover:bg-[#00A8CC]/30 text-[#00A8CC] border border-[#00A8CC]/40 rounded-xl text-xs font-semibold transition-all shadow-sm active:scale-95">
-                            ${currentLang === "en" ? "Save notes" : "Guardar notas"}
+                            ${currentLang === "en" ? "Save Notes" : "Guardar notas"}
                         </button>
                     </div>
                 </div>
@@ -19346,7 +19350,7 @@ function renderPresetTagFilters() {
                 ? 'bg-[#F15A24]/10 border border-[#F15A24]/40 text-[#F15A24] font-bold' 
                 : 'bg-[#121316] border border-[#2A2D36] text-[#9CA3AF] hover:bg-[#20232B] hover:text-[#FFFFFF]'
             }">
-                ${tag === 'ALL' ? (currentLang === 'en' ? 'All Styles' : 'Todos los Estilos') : tag}
+                ${tag === 'ALL' ? (currentLang === 'en' ? 'All Styles' : 'Todos los estilos') : tag}
             </button>
         `;
     }).join('');
