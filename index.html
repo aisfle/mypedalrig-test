@@ -567,8 +567,8 @@
                     <table class="w-full text-left text-xs font-mono text-[#FFFFFF] border-collapse">
                         <thead class="bg-[#121316] text-[#9CA3AF] border-b border-[#2A2D36]">
                             <tr>
-                                <th class="py-2.5 px-3 rounded-tl-lg font-semibold">Pedal</th>
-                                <th class="py-2.5 px-3 font-semibold">Draw (+30%)</th>
+                                <th class="py-2.5 px-3 rounded-tl-lg font-semibold" data-i18n="table_equipment">Pedal / Equipment</th>
+                                <th class="py-2.5 px-3 font-semibold" data-i18n="table_draw">Draw (+30%)</th>
                                 <th class="py-2.5 px-3 font-semibold" data-i18n="table_outlet_supply">Assigned Supply</th>
                                 <th class="py-2.5 px-3 font-semibold" data-i18n="table_outlet_physical">Physical Outlet</th>
                                 <th class="py-2.5 px-3 rounded-tr-lg font-semibold" data-i18n="table_status"><span data-i18n="table_status">Status / Alerts</span></th>
@@ -4349,7 +4349,7 @@ function renderCollectionForSale() {
             <div class="mt-3 pt-2 border-t border-[#2A2D36] flex items-center justify-start">
                 <div class="flex items-center gap-2 self-start flex-wrap">
                     <button onclick="event.stopPropagation(); restorePowerSupplyFromForSale('${ps.id}')" class="bg-[#121316] hover:bg-[#20232B] text-[#9CA3AF] border border-[#2A2D36] hover:border-[#00A8CC]/40 px-2.5 py-1 rounded-lg text-xs font-mono font-semibold inline-flex items-center gap-1.5 transition-all cursor-pointer whitespace-nowrap"><i class="fa-solid fa-rotate-left text-xs text-[#00A8CC]"></i> ${currentLang === "en" ? "Back to collection" : "Vuelta a colección"}</button>
-                    <button onclick="event.stopPropagation(); executeDeleteForSaleItem('${ps.id}')" class="bg-[#121316] hover:bg-[#20232B] text-[#9CA3AF] border border-[#2A2D36] hover:border-[#F15A24]/40 px-2.5 py-1 rounded-lg text-xs font-mono font-semibold inline-flex items-center gap-1.5 transition-all cursor-pointer whitespace-nowrap"><i class="fa-solid fa-check text-xs text-[#F15A24]"></i> ¡Vendido!</button>
+                    <button onclick="event.stopPropagation(); executeDeleteForSaleItem('${ps.id}')" class="bg-[#121316] hover:bg-[#20232B] text-[#9CA3AF] border border-[#2A2D36] hover:border-[#F15A24]/40 px-2.5 py-1 rounded-lg text-xs font-mono font-semibold inline-flex items-center gap-1.5 transition-all cursor-pointer whitespace-nowrap"><i class="fa-solid fa-check text-xs text-[#F15A24]"></i> ${currentLang === "en" ? "Sold!" : "¡Vendido!"}</button>
                 </div>
             </div>
         `;
@@ -4384,7 +4384,7 @@ function createPedalCatalogCard(pedal, sectionType = 'effects') {
         actionBtnHtml = `
             <div class="flex items-center gap-2 self-start flex-wrap">
                 <button onclick="event.stopPropagation(); restorePedalFromForSale('${pedal.id}')" class="bg-[#121316] hover:bg-[#20232B] text-[#9CA3AF] border border-[#2A2D36] hover:border-[#00A8CC]/40 px-2.5 py-1 rounded-lg text-xs font-mono font-semibold inline-flex items-center gap-1.5 transition-all cursor-pointer whitespace-nowrap"><i class="fa-solid fa-rotate-left text-xs text-[#00A8CC]"></i> ${currentLang === "en" ? "Back to collection" : "Vuelta a colección"}</button>
-                <button onclick="event.stopPropagation(); executeDeleteForSaleItem('${pedal.id}')" class="bg-[#121316] hover:bg-[#20232B] text-[#9CA3AF] border border-[#2A2D36] hover:border-[#F15A24]/40 px-2.5 py-1 rounded-lg text-xs font-mono font-semibold inline-flex items-center gap-1.5 transition-all cursor-pointer whitespace-nowrap"><i class="fa-solid fa-check text-xs text-[#F15A24]"></i> ¡Vendido!</button>
+                <button onclick="event.stopPropagation(); executeDeleteForSaleItem('${pedal.id}')" class="bg-[#121316] hover:bg-[#20232B] text-[#9CA3AF] border border-[#2A2D36] hover:border-[#F15A24]/40 px-2.5 py-1 rounded-lg text-xs font-mono font-semibold inline-flex items-center gap-1.5 transition-all cursor-pointer whitespace-nowrap"><i class="fa-solid fa-check text-xs text-[#F15A24]"></i> ${currentLang === "en" ? "Sold!" : "¡Vendido!"}</button>
             </div>`;
     }
 
@@ -4723,7 +4723,7 @@ function generateCemOutletRows() {
     for (let i = 1; i <= count; i++) {
         html += `
             <div class="flex items-center gap-2 bg-[#121316] p-1.5 rounded-lg border border-[#2A2D36]">
-                <span class="text-[10px] font-mono text-[#9CA3AF] w-14">Salida ${i}</span>
+                <span class="text-[10px] font-mono text-[#9CA3AF] w-14">${currentLang === "en" ? "Outlet" : "Salida"} ${i}</span>
                 <select id="cem-outlet-volt-${i}" class="bg-[#1C1E24] text-white text-[10px] font-mono border border-[#2A2D36] rounded px-1.5 py-1">
                     <option value="9V">9V</option>
                     <option value="12V">12V</option>
@@ -4854,7 +4854,7 @@ function executeSaveCustomEquipment() {
         for (let i = 1; i <= count; i++) {
             const v = document.getElementById(`cem-outlet-volt-${i}`)?.value || '9V';
             const ma = parseInt(document.getElementById(`cem-outlet-ma-${i}`)?.value) || 500;
-            outlets.push({ id: `out-${i}`, label: `Salida ${i}`, name: `Salida ${i}`, voltage: v, maxMa: ma, isolated: true });
+            outlets.push({ id: `out-${i}`, label: `${currentLang === 'en' ? 'Outlet' : 'Salida'} ${i}`, name: `${currentLang === 'en' ? 'Outlet' : 'Salida'} ${i}`, voltage: v, maxMa: ma, isolated: true });
         }
 
         const newPs = {
@@ -16938,7 +16938,10 @@ function addFactoryPowerSupplyToWishlist(presetType) {
     if (!item) return;
 
     const exists = wishlistDatabase.some(w => w.id === item.id || (w.name && item.name && w.name.toLowerCase() === item.name.toLowerCase()));
-    if (exists) return;
+    if (exists) {
+        alert(currentLang === 'en' ? 'This power supply is already in your wishlist.' : 'Esta fuente ya está en tu wishlist.');
+        return;
+    }
 
     pushHistory();
     const copy = JSON.parse(JSON.stringify(item));
@@ -16947,8 +16950,9 @@ function addFactoryPowerSupplyToWishlist(presetType) {
     copy.isWishlist = true;
     wishlistDatabase.push(copy);
     saveStateToLocalStorage();
-    renderWishlist();
+    refreshAllCollectionViews();
     renderDashboardStats();
+    alert(currentLang === 'en' ? `${item.name} added to your wishlist!` : `¡${item.name} agregada a tu wishlist!`);
 }
 
 function addFactoryPowerSupplyToCollection(presetType) {
@@ -17348,7 +17352,7 @@ function renderSignalChain() {
             if (assignment.psId && assignment.outletId) {
                 const assignedPs = powerSuppliesDatabase.find(ps => ps.id === assignment.psId);
                 const assignedOutlet = assignedPs?.outlets?.find(o => o.id === assignment.outletId);
-                const outletLabel = assignedOutlet ? assignedOutlet.label.replace('Salida ', '') : '';
+                const outletLabel = assignedOutlet ? assignedOutlet.label.replace(/Salida\s*|Outlet\s*/gi, '') : '';
                 const psName = assignedPs ? assignedPs.brand : 'Fuente';
                 powerBadgeHtml = `<div class="mt-2 w-full flex items-center justify-center bg-[#121316] text-[#F15A24] border border-[#F15A24]/30 rounded py-1 px-2 text-[10px] font-bold truncate" title="${assignedPs ? assignedPs.brand + ' ' + assignedPs.model : ''}"><i class="fa-solid fa-bolt mr-1.5"></i> ${psName} - ${currentLang === "en" ? "Outlet" : "Salida"} ${outletLabel}</div>`;
             } else {
@@ -17770,7 +17774,7 @@ function renderEnergySummaryTable() {
             if (ps && outlet) {
                 const cleanPsName = getCleanItemDisplayName(ps);
                 psName = (ps.brand && !cleanPsName.toLowerCase().includes(ps.brand.toLowerCase())) ? `${ps.brand} - ${cleanPsName}` : cleanPsName;
-                outletName = currentLang === "en" ? outlet.label.replace("Salida", "Outlet") : outlet.label;
+                outletName = currentLang === "en" ? outlet.label.replace(/Salida\s*/i, "Outlet ") : outlet.label;
                 
                 const outletPedals = pedalDatabase.filter(op => {
                     if (!currentChainIds.includes(op.id)) return false;
@@ -18207,7 +18211,7 @@ function renderInspector(itemId, currentSlotMode = null) {
                 <div class="relative pt-0.5 pr-32 pb-2 border-b border-[#2A2D36]">
                     <div class="absolute top-0 right-0 flex items-center gap-2 z-10">
                         <div class="flex items-center gap-1 font-mono text-xs">
-                            <span class="text-[#9CA3AF] text-[10px]">${currentLang === "en" ? "Mode:" : "Seteo:"}</span>
+                            
                             <select onchange="toggleInspectorPedalStereo('${pedal.id}', this.value)" ${isMonoOnly ? 'disabled' : ''} class="bg-[#1C1E24] ${modeToDisplay === 'STEREO' ? 'text-[#9E7BB5] border-[#9E7BB5]' : 'text-[#00A8CC] border-[#00A8CC]'} border rounded px-2 py-0.5 text-xs font-bold focus:outline-none ${isMonoOnly ? 'opacity-60 cursor-not-allowed' : ''}">
                                 <option value="MONO" ${modeToDisplay === 'MONO' ? 'selected' : ''}>Mono</option>
                                 ${!isMonoOnly ? `<option value="STEREO" ${modeToDisplay === 'STEREO' ? 'selected' : ''}>Stereo</option>` : ''}
