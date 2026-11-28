@@ -978,7 +978,7 @@
                 <span data-i18n="btn_cancel">Cancel</span>
             </button>
             <button onclick="executeDeletePedal()" class="px-4 py-2 rounded-xl text-xs font-bold text-[#FFFFFF] bg-[#F15A24] hover:bg-[#d44d1b] transition-all shadow-lg">
-                Afirmar
+                <span data-i18n="btn_confirm_delete">Yes, delete</span>
             </button>
         </div>
     </div>
@@ -1003,7 +1003,7 @@
                 <span data-i18n="btn_cancel">Cancel</span>
             </button>
             <button onclick="executeDeletePowerSupply()" class="px-4 py-2 rounded-xl text-xs font-bold text-[#FFFFFF] bg-[#F15A24] hover:bg-[#d44d1b] transition-all shadow-lg">
-                Afirmar
+                <span data-i18n="btn_confirm_delete">Yes, delete</span>
             </button>
         </div>
     </div>
@@ -1289,6 +1289,7 @@ var i18n = {
         btn_for_sale: "Move to For Sale",
         btn_edit: "Edit",
         btn_delete: "Delete",
+        btn_confirm_delete: "Yes, delete",
         btn_collection: "Collection",
         
         lbl_equipment_to_load: "Equipment to load:",
@@ -1414,7 +1415,7 @@ var i18n = {
         btn_return_to_col: "Vuelta a colección",
         btn_sold: "¡Vendido!",
         
-        chain_title: "CADENA DE SEÑAL ACTIVA",
+        chain_title: "Arquitectura de señal y ruteo",
         chain_subtitle: "Selecciona, cambia o arrastra (Drag & Drop) cualquier pedal para reordenar tu rig.",
         chain_controls: "CONTROLES:",
         btn_new_chain: "Nueva cadena",
@@ -1478,6 +1479,7 @@ var i18n = {
         btn_for_sale: "Mover a En Venta",
         btn_edit: "Editar",
         btn_delete: "Eliminar",
+        btn_confirm_delete: "Sí, borrar",
         btn_collection: "Colección",
         
         lbl_equipment_to_load: "Equipamiento a cargar:",
@@ -4572,19 +4574,10 @@ function renderCategoryFilters() {
 
     const categorySet = new Set();
     if (typeof pedalDatabase !== 'undefined' && Array.isArray(pedalDatabase)) {
-        pedalDatabase.forEach(p => {
-            if (p) {
-                const cat = getEffectCategory(p);
-                if (cat) categorySet.add(cat.trim());
-            }
-        });
-    }
-    if (typeof wishlistDatabase !== 'undefined' && Array.isArray(wishlistDatabase)) {
-        wishlistDatabase.forEach(w => {
-            if (w) {
-                const cat = getEffectCategory(w);
-                if (cat) categorySet.add(cat.trim());
-            }
+        const activePedals = pedalDatabase.filter(p => p && !p.forSale && !p.isWishlist);
+        activePedals.forEach(p => {
+            const cat = getEffectCategory(p);
+            if (cat) categorySet.add(cat.trim());
         });
     }
 
@@ -17332,9 +17325,9 @@ function renderSignalChain() {
                 <div class="my-3 text-center">
                     <span class="text-xs text-[#9CA3AF] italic">${currentLang === "en" ? "--- Empty Slot ---" : "--- Espacio Vacío ---"}</span>
                 </div>
-                <div class="pt-2 border-t border-[#2A2D36] flex items-center justify-between text-[10px] font-mono text-[#9CA3AF]">
-                    <span>0 mA</span>
-                    <select onchange="swapPedalViaSelect(${index}, this.value)" onclick="event.stopPropagation()" class="bg-[#121316] text-[#9CA3AF] rounded border border-[#2A2D36] px-1 py-0.5 text-[10px] focus:outline-none truncate">
+                <div class="pt-2 border-t border-[#2A2D36] flex items-center justify-between gap-2 text-[10px] font-mono text-[#9CA3AF]">
+                    <span class="shrink-0 whitespace-nowrap">0 mA</span>
+                    <select onchange="swapPedalViaSelect(${index}, this.value)" onclick="event.stopPropagation()" class="bg-[#121316] text-[#9CA3AF] rounded border border-[#2A2D36] px-1 py-0.5 text-[10px] focus:outline-none min-w-0 flex-1 truncate">
                         ${generateGroupedOptions(null)}
                     </select>
                 </div>
@@ -18745,7 +18738,13 @@ function generateGroupedOptions(selectedPedalId) {
         grouped[p.brand].push(p);
     });
     const sortedBrands = Object.keys(grouped).sort();
-    let html = `<option value="EMPTY" ${!selectedPedalId ? 'selected' : ''}>${currentLang === "en" ? "--- Empty Slot ---" : "--- Vaciar Espacio ---"}</option>`;
+    let emptyOptionText = '';
+    if (!selectedPedalId) {
+        emptyOptionText = currentLang === "en" ? "--- Empty Slot ---" : "--- Espacio Vacío ---";
+    } else {
+        emptyOptionText = currentLang === "en" ? "--- Empty Slot ---" : "--- Vaciar Espacio ---";
+    }
+    let html = `<option value="EMPTY" ${!selectedPedalId ? 'selected' : ''}>${emptyOptionText}</option>`;
     sortedBrands.forEach(brand => {
         const pedals = grouped[brand].sort((a, b) => a.name.localeCompare(b.name));
         html += `<optgroup label="--- ${brand} ---">`;
