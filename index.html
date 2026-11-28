@@ -1595,6 +1595,7 @@ function updateLanguageUI() {
         } else if (activeTab === 'chain') {
             if (typeof renderSignalChain === 'function') renderSignalChain();
             if (typeof renderEnergySummaryTable === 'function') renderEnergySummaryTable();
+            if (typeof renderFavoriteBadges === 'function') renderFavoriteBadges();
         }
     }
 
@@ -3708,6 +3709,7 @@ function switchTab(tab) {
         if (inspector) inspector.style.borderColor = '#00A8CC';
         renderChainPowerSupplies();
         renderSignalChain();
+        if (typeof renderFavoriteBadges === 'function') renderFavoriteBadges();
     }
 
     activeInspectorId = null;
@@ -17499,9 +17501,7 @@ function renderSignalChain() {
     }
 
     renderChainPowerSupplies();
-}
-
-function changeSlotMode(slotIndex, newMode) {
+}function changeSlotMode(slotIndex, newMode) {
     const pedalId = currentChainIds[slotIndex];
     const pedal = pedalDatabase.find(p => p.id === pedalId);
     if (pedal && pedal.isStereo === false && newMode === 'STEREO') return;
@@ -17516,7 +17516,7 @@ function swapPedalViaSelect(index, newId) {
     currentChainIds[index] = newId;
     chainSlotModes[index] = 'MONO';
     renderSignalChain();
-    saveStateToLocalStorage();
+    debouncedSaveStateToLocalStorage();
 }
 
 function addExtraSlot() {
@@ -17526,7 +17526,7 @@ function addExtraSlot() {
     pushHistory();
     currentChainIds.push('EMPTY');
     renderSignalChain();
-    saveStateToLocalStorage();
+    debouncedSaveStateToLocalStorage();
 }
 
 function removeSlot(index, e) {
